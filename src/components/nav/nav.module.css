@@ -1,0 +1,10 @@
+.headerNav {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+}
+
+.headerNav a {
+  padding: 0 1rem;
+  text-decoration: none;
+}
