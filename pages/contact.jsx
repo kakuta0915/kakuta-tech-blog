@@ -1,6 +1,6 @@
 // contactページ
 
-import Hero from '../src/components/hero/hero'
+import { Hero } from '../src/components/hero/hero'
 
 export default function Contact() {
   return (

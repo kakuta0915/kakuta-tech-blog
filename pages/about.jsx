@@ -1,6 +1,6 @@
 // aboutページ
 
-import Hero from '../src/components/hero/hero'
+import { Hero } from '../src/components/hero/hero'
 
 export default function About() {
   return (
