@@ -1,18 +1,51 @@
-/* 横並び(モバイルサイズ) */
+/* 縦並び(モバイルサイズ) */
 .heroContainer {
   display: flex;
   flex-direction: column;
-  margin: 3rem;
+  text-align: center;
+  align-items: center;
+  gap: 2rem;
+  margin: 3rem 0;
 }
 
 .text {
   text-align: center;
 }
 
+.title {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1rem;
+}
+
+.image {
+  width: 100%;
+}
+
 /* 横並び(デスクトップサイズ) */
-/* @media (min-width: 768px) {
+@media (min-width: 768px) {
   .heroContainer {
     flex-direction: row;
     justify-content: space-between;
   }
-} */
+
+  .text {
+    width: 50%;
+  }
+
+  .title {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+  }
+
+  .image {
+    width: 50%;
+  }
+}

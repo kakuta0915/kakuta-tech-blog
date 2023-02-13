@@ -7,7 +7,7 @@ export default function Articles() {
   return (
     <>
       <Container>
-        <Hero title="ARTICLES" subtitle="記事一覧" />
+        <Hero title="ARTICLES" subtitle="記事一覧" imageOn />
       </Container>
     </>
   )

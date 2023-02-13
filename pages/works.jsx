@@ -7,7 +7,7 @@ export default function Works() {
   return (
     <>
       <Container>
-        <Hero title="WORKS" subtitle="自主制作一覧" />
+        <Hero title="WORKS" subtitle="自主制作一覧" imageOn />
       </Container>
     </>
   )

@@ -7,7 +7,7 @@ export default function Contact() {
   return (
     <>
       <Container>
-        <Hero title="CONTACT" subtitle="お問い合わせ" />
+        <Hero title="CONTACT" subtitle="お問い合わせ" imageOn />
       </Container>
     </>
   )
