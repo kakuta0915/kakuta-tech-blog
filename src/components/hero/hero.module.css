@@ -1,0 +1,18 @@
+/* 横並び(モバイルサイズ) */
+.heroContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 3rem;
+}
+
+.text {
+  text-align: center;
+}
+
+/* 横並び(デスクトップサイズ) */
+/* @media (min-width: 768px) {
+  .heroContainer {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+} */
