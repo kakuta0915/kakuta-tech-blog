@@ -1,9 +1,12 @@
-import { Hero } from '../src/components/hero/hero'
+import Container from '@/src/components/container/container'
+import Hero from '@/src/components/hero/hero'
 
 export default function Home() {
   return (
     <>
-      <Hero title="TOP" subtitle="トップページ" imageOn />
+      <Container>
+        <Hero title="TOP" subtitle="トップページ" imageOn />
+      </Container>
     </>
   )
 }
