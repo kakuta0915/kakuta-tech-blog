@@ -1,11 +1,14 @@
 // contactページ
 
-import { Hero } from '../src/components/hero/hero'
+import Container from '@/src/components/container/container'
+import Hero from '../src/components/hero/hero'
 
 export default function Contact() {
   return (
     <>
-      <Hero title="CONTACT" subtitle="お問い合わせ" />
+      <Container>
+        <Hero title="CONTACT" subtitle="お問い合わせ" />
+      </Container>
     </>
   )
 }
