@@ -1,6 +1,6 @@
 import { createClient } from 'microcms-js-sdk'
 
 export const client = createClient({
-  serviceDomain: 'kakuta-programming-blog',
+  serviceDomain: process.env.SERVICE_DOMAIM,
   apiKey: process.env.API_KEY,
 })
