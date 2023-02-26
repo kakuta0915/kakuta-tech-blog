@@ -1,0 +1,21 @@
+.stack {
+  padding: 1.5rem 0;
+  margin-bottom: 2rem;
+}
+
+.stack > * + * {
+  margin-top: 1rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.publish {
+  display: flex;
+  gap: 0.5rem;
+  color: var(--black);
+  flex-direction: row-reverse;
+  float: left;
+}
