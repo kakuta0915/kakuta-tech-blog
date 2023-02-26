@@ -12,10 +12,12 @@
   font-weight: 700;
 }
 
+.icon {
+  padding-top: 0.15rem;
+}
+
 .publish {
   display: flex;
   gap: 0.5rem;
   color: var(--black);
-  flex-direction: row-reverse;
-  float: left;
 }
