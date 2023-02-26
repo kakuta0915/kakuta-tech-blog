@@ -2,6 +2,13 @@ import { getPostBySlug } from '@/libs/api'
 import Container from '@/src/components/container/container'
 import PostHeader from '@/src/components/post-header/post-header'
 import Image from 'next/image'
+import PostBody from '@/src/components/post-body/post-body'
+import {
+  TwoColum,
+  TwoColumMain,
+  TwoColumSidebar,
+} from '@/src/components/two-colum/two-colum'
+import ConvertBody from '@/src/components/convert/convert-body'
 
 export default function Schedule({
   title,
@@ -25,6 +32,14 @@ export default function Schedule({
             priority
           />
         </figure>
+        <TwoColum>
+          <TwoColumMain>
+            <PostBody>
+              <ConvertBody contentHTML={content} />
+            </PostBody>
+          </TwoColumMain>
+          <TwoColumSidebar></TwoColumSidebar>
+        </TwoColum>
       </article>
     </Container>
   )
