@@ -1,4 +1,6 @@
-import { getPostBySlug } from '@/libs/api'
+// 記事ページ
+
+import { getPostBySlug, getAllSlugs } from '@/libs/api'
 import Container from '@/src/components/container/container'
 import PostHeader from '@/src/components/post-header/post-header'
 import Image from 'next/image'
@@ -60,8 +62,10 @@ export default function Post({
 }
 
 export async function getStaticPaths() {
+  const allSlugs = await getAllSlugs()
+
   return {
-    paths: ['/articles/schedule', '/articles/html'],
+    paths: allSlugs.map(({ slug }) => `/articles/${slug}`),
     fallback: false,
   }
 }
