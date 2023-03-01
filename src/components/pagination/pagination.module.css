@@ -1,0 +1,10 @@
+.flexContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.iconText {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}

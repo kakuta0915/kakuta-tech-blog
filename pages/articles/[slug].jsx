@@ -14,6 +14,8 @@ import ConvertBody from '@/src/components/convert/convert-body'
 import PostCategories from '@/src/components/post-categories/post-categories'
 import { extractText } from '@/libs/extract-text'
 import Meta from '@/src/components/meta/meta'
+import { prevNextPost } from '@/libs/prev-next-post'
+import Pagination from '@/src/components/pagination/pagination'
 
 export default function Post({
   title,
@@ -22,6 +24,8 @@ export default function Post({
   eyecatch,
   categories,
   description,
+  prevPost,
+  nextPost,
 }) {
   return (
     <Container>
@@ -56,6 +60,13 @@ export default function Post({
             <PostCategories categories={categories} />
           </TwoColumSidebar>
         </TwoColum>
+
+        <Pagination
+          prevText={prevPost.title}
+          prevUrl={`/articles/${prevPost.slug}`}
+          nextText={nextPost.title}
+          nextUrl={`/articles/${nextPost.slug}`}
+        />
       </article>
     </Container>
   )
@@ -75,7 +86,10 @@ export async function getStaticProps(context) {
 
   const post = await getPostBySlug(slug)
 
-  const description = extractText(post.content)
+  const description = extractText(post.contßent)
+
+  const allSlugs = await getAllSlugs()
+  const [prevPost, nextPost] = prevNextPost(allSlugs, slug)
 
   return {
     props: {
@@ -85,6 +99,8 @@ export async function getStaticProps(context) {
       eyecatch: post.eyecatch,
       categories: post.categories,
       description: description,
+      prevPost: prevPost,
+      nextPost: nextPost,
     },
   }
 }
