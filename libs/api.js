@@ -47,3 +47,20 @@ export async function getAllPosts(limit = 100) {
     console.log(err)
   }
 }
+
+// カテゴリーページを生成する機能
+export async function getAllCategories(limit = 100) {
+  try {
+    const categories = await client.get({
+      endpoint: 'categories',
+      queries: {
+        fields: 'name,id,slug',
+        limit: limit,
+      },
+    })
+    return categories.contents
+  } catch (err) {
+    console.log('~~ getAllCategories ~~')
+    console.log(err)
+  }
+}
