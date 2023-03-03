@@ -64,3 +64,22 @@ export async function getAllCategories(limit = 100) {
     console.log(err)
   }
 }
+
+// 記事データの取得(カテゴリーページに記事一覧を表示する機能)
+export async function getAllPostByCategory(categoryID, limit = 100) {
+  try {
+    const posts = await client.get({
+      endpoint: 'blog',
+      queries: {
+        filters: `categories[contains]${categoryID}`,
+        fields: 'title,slug,eyecatch',
+        orders: '-publishDate',
+        limit: limit,
+      },
+    })
+    return posts.contents
+  } catch (err) {
+    console.log('~~ getAllPostByCategory ~~')
+    console.log(err)
+  }
+}
