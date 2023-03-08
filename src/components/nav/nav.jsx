@@ -1,26 +1,64 @@
 // ナビコンポーネント
 
 import Link from 'next/link'
-import styels from './nav.module.css'
+import styles from './nav.module.css'
+import { useState } from 'react'
 
 export default function Nav() {
+  const [navIsOpen, setNavIsOpen] = useState(false)
+
+  const toggleNav = () => {
+    setNavIsOpen((prev) => !prev)
+  }
+
+  const closeNav = () => {
+    setNavIsOpen(false)
+  }
+
   return (
-    <nav>
-      <ul className={styels.headerNav}>
+    <nav className={navIsOpen ? styles.open : styles.close}>
+      {navIsOpen && (
+        <style jsx global>{`
+          @media (max-width: 767px) {
+            body {
+              overflow: hidden;
+              position: fixed;
+              width: 100%;
+            }
+          }
+        `}</style>
+      )}
+
+      <button className={styles.btn} onClick={toggleNav}>
+        <span className={styles.bar}></span>
+        <span className="sr-only">MENU</span>
+      </button>
+
+      <ul className={styles.headerNav}>
         <li>
-          <Link href="/">TOP</Link>
+          <Link href="/" onClick={closeNav}>
+            TOP
+          </Link>
         </li>
         <li>
-          <Link href="/about">ABOUT</Link>
+          <Link href="/about" onClick={closeNav}>
+            ABOUT
+          </Link>
         </li>
         <li>
-          <Link href="/works">WORKS</Link>
+          <Link href="/works" onClick={closeNav}>
+            WORKS
+          </Link>
         </li>
         <li>
-          <Link href="/articles/articles">ARTICLES</Link>
+          <Link href="/articles/articles" onClick={closeNav}>
+            ARTICLES
+          </Link>
         </li>
         <li>
-          <Link href="/contact">CONTACT</Link>
+          <Link href="/contact" onClick={closeNav}>
+            CONTACT
+          </Link>
         </li>
       </ul>
     </nav>
