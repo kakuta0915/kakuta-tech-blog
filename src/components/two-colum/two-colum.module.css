@@ -6,6 +6,11 @@
 }
 
 @media (min-width: 768px) {
+  .flexContainer {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
   .main {
     width: 768px;
   }

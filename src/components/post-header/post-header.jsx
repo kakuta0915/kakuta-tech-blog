@@ -3,7 +3,7 @@
 import styles from './post-header.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock } from '@fortawesome/free-regular-svg-icons'
-import ConvertDate from '../convert-date/convert-date'
+import ConvertDate from '../convert/convert-date'
 
 export default function PostHeader({ title, subtitle, publish = '' }) {
   return (
