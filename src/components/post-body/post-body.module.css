@@ -1,5 +1,5 @@
 .stack {
-  margin: 1rem auto;
+  margin: 1rem 4rem;
 }
 
 .stack > h3 {
@@ -14,13 +14,30 @@
   margin: 0 auto;
 }
 
-.stack table tr {
-}
-
 .stack table th {
   text-align: left;
-  width: 30%;
+  width: 40%;
 }
 
-.stack table td {
+@media (max-width: 768px) {
+  .stack {
+    margin: 3rem 1.5rem;
+  }
+
+  .stack table tr {
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+
+  .stack table th {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.25rem;
+  }
+
+  .stack table th,
+  .stack table td {
+    display: block;
+    width: 100%;
+  }
 }
