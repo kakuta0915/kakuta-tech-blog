@@ -27,9 +27,7 @@ export default function Meta({
 
   return (
     <Head>
-      <title>
-        {pageTitle} | {siteTitle}
-      </title>
+      <title>{pageTitle} | KAKUTA BLOG</title>
       <meta property="og:title" content={`${pageTitle} | ${siteTitle}`} />
       <meta name="description" content={pageDesc} />
       <meta property="og:description" content={pageDesc} />
