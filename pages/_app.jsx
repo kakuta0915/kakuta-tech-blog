@@ -22,6 +22,8 @@ export default function App({ Component, pageProps }) {
     }
   }, [router.events])
 
+  const getLayout = Component.getLayout || ((page) => page)
+
   return (
     <>
       <Script
@@ -43,9 +45,7 @@ export default function App({ Component, pageProps }) {
         }}
       />
 
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <Layout>{getLayout(<Component {...pageProps} />)}</Layout>
     </>
   )
 }
