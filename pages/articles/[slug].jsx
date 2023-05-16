@@ -15,6 +15,7 @@ import { extractText } from '@/libs/extract-text'
 import Meta from '@/src/components/meta/meta'
 import { prevNextPost } from '@/libs/prev-next-post'
 import Pagination from '@/src/components/pagination/pagination'
+import PostBody from '@/src/components/post-body/post-body'
 
 export default function Post({
   title,
@@ -51,7 +52,9 @@ export default function Post({
         </figure>
         <TwoColum>
           <TwoColumMain>
-            <ConvertBody contentHTML={content} />
+            <PostBody>
+              <ConvertBody contentHTML={content} />
+            </PostBody>
           </TwoColumMain>
           <TwoColumSidebar>
             <PostCategories categories={categories} />
