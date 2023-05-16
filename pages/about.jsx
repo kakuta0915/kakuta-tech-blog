@@ -2,7 +2,7 @@
 
 import Meta from '@/src/components/meta/meta'
 import Container from '@/src/components/container/container'
-import PostBody from '@/src/components/post-body/post-body'
+import Profile from '@/src/components/profile/profile'
 import Hero from '@/src/components/hero/hero'
 import Image from 'next/image'
 import eyecatch from 'images/about.jpg'
@@ -31,7 +31,7 @@ export default function About() {
         </figure>
       </Container>
 
-      <PostBody>
+      <Profile>
         <h3>このサイトについて</h3>
         <p>
           このサイト主の「実績紹介」「WEB技術の記事」などをまとめたサイトです。
@@ -85,7 +85,7 @@ export default function About() {
             </tr>
           </tbody>
         </table>
-      </PostBody>
+      </Profile>
     </>
   )
 }
