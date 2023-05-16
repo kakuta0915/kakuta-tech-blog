@@ -83,7 +83,7 @@ export async function getStaticProps(context) {
 
   const post = await getPostBySlug(slug)
 
-  const description = extractText(post.contßent)
+  const description = extractText(post.content)
 
   const allSlugs = await getAllSlugs()
   const [prevPost, nextPost] = prevNextPost(allSlugs, slug)
