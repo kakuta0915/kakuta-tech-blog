@@ -4,7 +4,6 @@ import { getPostBySlug, getAllSlugs } from '@/libs/api'
 import Container from '@/src/components/container/container'
 import PostHeader from '@/src/components/post-header/post-header'
 import Image from 'next/image'
-import PostBody from '@/src/components/post-body/post-body'
 import {
   TwoColum,
   TwoColumMain,
@@ -52,9 +51,7 @@ export default function Post({
         </figure>
         <TwoColum>
           <TwoColumMain>
-            <PostBody>
-              <ConvertBody contentHTML={content} />
-            </PostBody>
+            <ConvertBody contentHTML={content} />
           </TwoColumMain>
           <TwoColumSidebar>
             <PostCategories categories={categories} />
