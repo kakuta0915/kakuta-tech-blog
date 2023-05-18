@@ -4,22 +4,22 @@ import { siteMeta } from '@/libs/constants'
 
 export default function Sitemap() {}
 
-export async function getServerSideProps(context) {
-  const posts = await getAllSlugs()
-  const postFields = posts.map((post) => {
-    return {
-      loc: `${siteMeta.siteUrl}/pages/articles/categories/${post.slug}`,
-    }
-  })
+// export async function getServerSideProps(context) {
+//   const posts = await getAllSlugs()
+//   const postFields = posts.map((post) => {
+//     return {
+//       loc: `${siteMeta.siteUrl}/pages/articles/categories/${post.slug}`,
+//     }
+//   })
 
-  const cats = await getAllCategories()
-  const catFields = cats.map((cat) => {
-    return {
-      loc: `${siteMeta.siteUrl}/pages/articles/categories/${cat.slug}`,
-    }
-  })
+//   const cats = await getAllCategories()
+//   const catFields = cats.map((cat) => {
+//     return {
+//       loc: `${siteMeta.siteUrl}/pages/articles/categories/${cat.slug}`,
+//     }
+//   })
 
-  const allFields = [...postFields, ...catFields]
+//   const allFields = [...postFields, ...catFields]
 
-  return await getServerSideSitemap(context, allFields)
-}
+//   return await getServerSideSitemap(context, allFields)
+// }
