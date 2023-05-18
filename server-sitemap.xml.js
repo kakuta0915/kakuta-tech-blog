@@ -8,7 +8,7 @@ export async function getServerSideProps(context) {
   const posts = await getAllSlugs()
   const postFields = posts.map((post) => {
     return {
-      loc: `${siteMeta.siteUrl}/${post.slug}`,
+      loc: `${siteMeta.siteUrl}/pages/articles/categories/${post.slug}`,
     }
   })
 
