@@ -30,9 +30,10 @@ export default function Post({
   description,
   prevPost,
   nextPost,
+  tocVisible,
 }) {
   const toc = renderToc(content)
-  // console.log(toc)
+  // console.log(toc_visible)
 
   return (
     <Container>
@@ -60,7 +61,7 @@ export default function Post({
         <TwoColum>
           <TwoColumMain>
             <PostBody>
-              <TableOfContents toc={toc} />
+              {tocVisible && <TableOfContents toc={toc} />}
               <ConvertBody contentHTML={content} />
             </PostBody>
           </TwoColumMain>
@@ -109,6 +110,7 @@ export async function getStaticProps(context) {
       description: description,
       prevPost: prevPost,
       nextPost: nextPost,
+      tocVisible: post.toc_visible,
     },
   }
 }
