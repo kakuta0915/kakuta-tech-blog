@@ -16,10 +16,9 @@ import Meta from '@/src/components/meta/meta'
 import { prevNextPost } from '@/libs/prev-next-post'
 import Pagination from '@/src/components/pagination/pagination'
 import PostBody from '@/src/components/post-body/post-body'
-
-// cheerio
 import { renderToc } from '@/libs/render-toc'
 import { TableOfContents } from '@/src/components/table-of-contents/table-of-contents'
+import { Link as Scroll } from 'react-scroll'
 
 export default function Post({
   title,
@@ -33,7 +32,6 @@ export default function Post({
   tocVisible,
 }) {
   const toc = renderToc(content)
-  // console.log(toc_visible)
 
   return (
     <Container>
@@ -47,6 +45,7 @@ export default function Post({
 
       <article>
         <PostHeader title={title} subtitle="Blog Article" publish={publish} />
+
         <figure>
           <Image
             src={eyecatch.url}
@@ -62,7 +61,7 @@ export default function Post({
           <TwoColumMain>
             <PostBody>
               {tocVisible && <TableOfContents toc={toc} />}
-              <ConvertBody contentHTML={content} />
+              <ConvertBody contentHTML={content} id={`#${toc.id}`} />
             </PostBody>
           </TwoColumMain>
           <TwoColumSidebar>

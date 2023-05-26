@@ -29,6 +29,7 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "eslint-config-prettier": "^8.6.0"
+    "eslint-config-prettier": "^8.6.0",
+    "react-scroll": "^1.8.9"
   }
 }
