@@ -29,10 +29,8 @@ export default function Post({
   prevPost,
   nextPost,
   tocVisible,
-  tags,
 }) {
   const toc = renderToc(content)
-  console.log(PostTags)
 
   return (
     <Container>
@@ -61,12 +59,12 @@ export default function Post({
         <TwoColum>
           <TwoColumMain>
             <PostBody>
-              {tocVisible && <TableOfContents toc={toc} />}
               <ConvertBody contentHTML={content} id={`#${toc.id}`} />
             </PostBody>
           </TwoColumMain>
           <TwoColumSidebar>
             <PostCategories categories={categories} />
+            {tocVisible && <TableOfContents toc={toc} />}
           </TwoColumSidebar>
         </TwoColum>
 
