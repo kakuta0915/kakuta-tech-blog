@@ -10,7 +10,7 @@ export default function Category({ name, posts }) {
   return (
     <Container>
       <Meta pageTitle={name} pageDesc={`${name}に関する記事`} />
-      <PostHeader title={name} subtitle="Blog Category" />
+      <PostHeader title={`${name}に関する記事`} subtitle="Blog Category" />
       <Posts posts={posts} />
     </Container>
   )
@@ -31,6 +31,8 @@ export async function getStaticProps(context) {
   const category = allCategories.find(({ slug }) => slug === categorySlug)
 
   const posts = await getAllPostByCategory(category.id)
+
+  console.log(Category)
 
   return {
     props: {

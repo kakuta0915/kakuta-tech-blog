@@ -1,4 +1,4 @@
-// articlesページ
+// 記事一覧ページ
 
 import Meta from '@/src/components/meta/meta'
 import Container from '@/src/components/container/container'

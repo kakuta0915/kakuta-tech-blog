@@ -18,7 +18,6 @@ import Pagination from '@/src/components/pagination/pagination'
 import PostBody from '@/src/components/post-body/post-body'
 import { renderToc } from '@/libs/render-toc'
 import { TableOfContents } from '@/src/components/table-of-contents/table-of-contents'
-import { Link as Scroll } from 'react-scroll'
 
 export default function Post({
   title,
@@ -30,8 +29,10 @@ export default function Post({
   prevPost,
   nextPost,
   tocVisible,
+  tags,
 }) {
   const toc = renderToc(content)
+  console.log(PostTags)
 
   return (
     <Container>
