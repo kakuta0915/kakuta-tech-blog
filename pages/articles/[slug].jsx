@@ -45,19 +45,19 @@ export default function Post({
       <article>
         <PostHeader title={title} subtitle="Blog Article" publish={publish} />
 
-        <figure>
-          <Image
-            src={eyecatch.url}
-            alt=""
-            layout="responsive"
-            width={eyecatch.width}
-            height={eyecatch.height}
-            sizes="(min-width: 1152px) 1152px, 100vw"
-            priority
-          />
-        </figure>
         <TwoColum>
           <TwoColumMain>
+            <figure>
+              <Image
+                src={eyecatch.url}
+                alt=""
+                layout="responsive"
+                width={eyecatch.width}
+                height={eyecatch.height}
+                sizes="(min-width: 1152px) 1152px, 100vw"
+                priority
+              />
+            </figure>
             <PostBody>
               <ConvertBody contentHTML={content} id={`#${toc.id}`} />
             </PostBody>
