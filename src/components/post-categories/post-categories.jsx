@@ -1,4 +1,4 @@
-// 記事が表示するカテゴリーをリスト表示する機能
+// 記事に関連する特定のカテゴリーをリスト表示する機能
 
 import styles from './post-categories.module.css'
 import Link from 'next/link'
