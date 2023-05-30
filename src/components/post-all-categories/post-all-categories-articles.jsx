@@ -1,8 +1,8 @@
-// すべてのカテゴリーをカテゴリーページに追加
+// すべてのカテゴリーを記事一覧ページ(articles.jsx)に追加
 import Link from 'next/link'
 import styles from './post-all-categories.module.css'
 
-export function PostAllCategories({ allCategories }) {
+export function PostAllCategoriesArticles({ allCategories }) {
   return (
     <div>
       <h3>カテゴリー 一覧</h3>

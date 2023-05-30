@@ -3,10 +3,11 @@
 import Meta from '@/src/components/meta/meta'
 import Container from '@/src/components/container/container'
 import Hero from '@/src/components/hero/hero'
-import { getAllPosts } from '@/libs/api'
+import { getAllCategories, getAllPosts } from '@/libs/api'
 import Posts from '@/src/components/posts/posts'
+import { PostAllCategoriesArticles } from '@/src/components/post-all-categories/post-all-categories-articles'
 
-export default function Articles({ posts }) {
+export default function Articles({ posts, allCategories }) {
   return (
     <>
       <Container>
@@ -15,6 +16,7 @@ export default function Articles({ posts }) {
           pageDesc="プログラミング学習に関する記事をまとめたページです"
         />
         <Hero title="ARTICLES" subtitle="記事一覧" imageOn />
+        <PostAllCategoriesArticles allCategories={allCategories} />
         <Posts posts={posts} />
       </Container>
     </>
@@ -23,10 +25,12 @@ export default function Articles({ posts }) {
 
 export async function getStaticProps() {
   const posts = await getAllPosts()
+  const allCategories = await getAllCategories()
 
   return {
     props: {
       posts: posts,
+      allCategories: allCategories,
     },
   }
 }

@@ -8,7 +8,7 @@ import Meta from '@/src/components/meta/meta'
 import { TwoColum } from '@/src/components/two-colum/two-colum'
 import { TwoColumMain } from '@/src/components/two-colum/two-colum'
 import { TwoColumSidebar } from '@/src/components/two-colum/two-colum'
-import PostAllCategories from '@/src/components/post-all-categories/post-all-categories'
+import { PostAllCategories } from '@/src/components/post-all-categories/post-all-categories'
 
 export default function Category({ name, posts, allCategories }) {
   return (
