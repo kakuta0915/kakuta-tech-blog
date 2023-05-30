@@ -2,7 +2,7 @@
 import styles from './table-of-contents.module.css'
 import { Link as Scroll } from 'react-scroll'
 
-export const TableOfContents = ({ toc }) => {
+export default function TableOfContents({ toc }) {
   return (
     <div>
       <p className={styles.TableOfContentsHead}>目次</p>

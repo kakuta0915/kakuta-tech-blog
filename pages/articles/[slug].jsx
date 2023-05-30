@@ -17,8 +17,7 @@ import { prevNextPost } from '@/libs/prev-next-post'
 import Pagination from '@/src/components/pagination/pagination'
 import PostBody from '@/src/components/post-body/post-body'
 import { renderToc } from '@/libs/render-toc'
-import { TableOfContents } from '@/src/components/table-of-contents/table-of-contents'
-
+import TableOfContents from '@/src/components/table-of-contents/table-of-contents'
 export default function Post({
   title,
   publish,
