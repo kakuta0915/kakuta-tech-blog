@@ -21,7 +21,7 @@
 
 .articlesCategoriesLink {
   display: inline-block;
-  background-color: #ddd;
+  background-color: var(--gray-ddd);
   border-radius: 5px;
   font-size: 0.7rem;
   text-align: center;

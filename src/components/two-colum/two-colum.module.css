@@ -5,6 +5,10 @@
   flex-direction: column;
 }
 
+.sidebar {
+  margin-bottom: 3rem;
+}
+
 @media (min-width: 768px) {
   .flexContainer {
     flex-direction: row;
@@ -16,20 +20,10 @@
   }
 
   .sidebar {
+    margin: 0;
     width: 240px;
     position: sticky;
     top: 40px;
     align-self: flex-start;
-  }
-
-  .sidebar * {
-    text-align: right;
-  }
-
-  .sidebar :is(div, ul) {
-    width: fit-content;
-    margin-left: auto;
-    place-content: flex-end;
-    place-items: flex-end;
   }
 }

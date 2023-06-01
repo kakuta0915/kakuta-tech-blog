@@ -3,7 +3,8 @@
 :root {
   /* カラー（色） */
   --black: #222;
-  --gray: #ccc;
+  --gray-ccc: #ccc;
+  --gray-ddd: #ddd;
   --white: #fff;
   --blue: #6495ed;
   /* タイポグラフィ（フォントサイズ） */
