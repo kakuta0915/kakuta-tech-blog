@@ -5,7 +5,7 @@ import Container from '@/src/components/container/container'
 import Hero from '@/src/components/hero/hero'
 import { getAllCategories, getAllPosts } from '@/libs/api'
 import Posts from '@/src/components/posts/posts'
-import { PostAllCategoriesArticles } from '@/src/components/post-all-categories/post-all-categories-articles'
+import ArticlesCategoriesList from '@/src/components/articles-categoties-list/articles-categories-list'
 
 export default function Articles({ posts, allCategories }) {
   return (
@@ -16,7 +16,7 @@ export default function Articles({ posts, allCategories }) {
           pageDesc="プログラミング学習に関する記事をまとめたページです"
         />
         <Hero title="ARTICLES" subtitle="記事一覧" imageOn />
-        <PostAllCategoriesArticles allCategories={allCategories} />
+        <ArticlesCategoriesList allCategories={allCategories} />
         <Posts posts={posts} />
       </Container>
     </>

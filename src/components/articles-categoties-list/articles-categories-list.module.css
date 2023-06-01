@@ -1,0 +1,41 @@
+.articlesCategories {
+  margin: 3rem auto;
+  width: 100%;
+}
+
+.articlesCategoriesTitle {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.articlesCategoriesUl {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.articlesCategoriesLi {
+  margin: 0.3rem;
+}
+
+.articlesCategoriesLink {
+  display: inline-block;
+  background-color: #ddd;
+  border-radius: 5px;
+  font-size: 0.7rem;
+  text-align: center;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .articlesCategories {
+    width: 70%;
+  }
+
+  .articlesCategoriesLink {
+    font-size: 0.8rem;
+    padding: 1rem;
+  }
+}
