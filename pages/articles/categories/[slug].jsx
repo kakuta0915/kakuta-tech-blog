@@ -8,7 +8,7 @@ import Meta from '@/src/components/meta/meta'
 import { TwoColum } from '@/src/components/two-colum/two-colum'
 import { TwoColumMain } from '@/src/components/two-colum/two-colum'
 import { TwoColumSidebar } from '@/src/components/two-colum/two-colum'
-import { PostAllCategories } from '@/src/components/post-all-categories/post-all-categories'
+import SlugCategoriesList from '@/src/components/slug-categoires-list/slug-categories-list'
 
 export default function Category({ name, posts, allCategories }) {
   return (
@@ -20,7 +20,7 @@ export default function Category({ name, posts, allCategories }) {
           <Posts posts={posts} />
         </TwoColumMain>
         <TwoColumSidebar>
-          <PostAllCategories allCategories={allCategories} />
+          <SlugCategoriesList allCategories={allCategories} />
         </TwoColumSidebar>
       </TwoColum>
     </Container>

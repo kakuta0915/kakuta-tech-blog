@@ -1,0 +1,39 @@
+.slugCategories {
+  width: 100%;
+}
+
+.slugCategoriesTitle {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.slugCategoriesUl {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.slugCategoriesLi {
+  margin: 0.3rem;
+}
+
+.slugCategoriesLink {
+  display: inline-block;
+  background-color: var(--gray-ddd);
+  border-radius: 5px;
+  font-size: 0.7rem;
+  text-align: center;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .slugCategoriesUl {
+    display: block;
+  }
+
+  .slugCategoriesLi {
+    margin: 0.5rem 0;
+  }
+}
