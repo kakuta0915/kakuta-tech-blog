@@ -1,7 +1,8 @@
 // すべてのカテゴリーをカテゴリーページに追加
 import Link from 'next/link'
-
 import styles from './slug-categories-list.module.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTag } from '@fortawesome/free-solid-svg-icons'
 
 export default function SlugCategoriesList({ allCategories }) {
   return (
@@ -14,6 +15,7 @@ export default function SlugCategoriesList({ allCategories }) {
               className={styles.slugCategoriesLink}
               href={`/articles/categories/${slug}`}
             >
+              <FontAwesomeIcon className={styles.tagsIcon} icon={faTag} />
               {name}
             </Link>
           </li>

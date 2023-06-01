@@ -1,6 +1,5 @@
 .articlesCategories {
   margin: 3rem auto;
-  width: 100%;
 }
 
 .articlesCategoriesTitle {
@@ -17,25 +16,41 @@
 
 .articlesCategoriesLi {
   margin: 0.3rem;
+  width: 30%;
+}
+
+.tagsIcon {
+  font-size: 1rem;
+  margin-right: 0.5rem;
+  float: left;
 }
 
 .articlesCategoriesLink {
   display: inline-block;
-  background-color: var(--gray-ddd);
+  /* background-color: var(--gray-ddd); */
+  border-bottom: 1px dashed var(--gray-ccc);
   border-radius: 5px;
   font-size: 0.7rem;
-  text-align: center;
+  text-align: left;
   padding: 0.5rem;
   width: 100%;
 }
 
 @media (min-width: 768px) {
   .articlesCategories {
-    width: 70%;
+    /* width: 70%; */
+  }
+
+  .articlesCategoriesLi {
+    width: 20%;
+  }
+
+  .tagsIcon {
+    font-size: 1.2rem;
   }
 
   .articlesCategoriesLink {
-    font-size: 0.8rem;
-    padding: 1rem;
+    font-size: 1rem;
+    padding: 1rem 1rem 0.5rem 1rem;
   }
 }

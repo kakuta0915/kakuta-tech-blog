@@ -16,8 +16,8 @@ export default function Articles({ posts, allCategories }) {
           pageDesc="プログラミング学習に関する記事をまとめたページです"
         />
         <Hero title="ARTICLES" subtitle="記事一覧" imageOn />
-        <ArticlesCategoriesList allCategories={allCategories} />
         <Posts posts={posts} />
+        <ArticlesCategoriesList allCategories={allCategories} />
       </Container>
     </>
   )

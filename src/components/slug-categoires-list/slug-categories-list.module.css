@@ -12,20 +12,28 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  float: left;
+}
+
+.tagsIcon {
+  font-size: 1rem;
+  margin-right: 0.5rem;
+  float: left;
+  color: var(--gray-ccc);
 }
 
 .slugCategoriesLi {
   margin: 0.3rem;
+  width: 40%;
 }
 
 .slugCategoriesLink {
-  display: inline-block;
-  background-color: var(--gray-ddd);
-  border-radius: 5px;
-  font-size: 0.7rem;
-  text-align: center;
-  padding: 0.5rem;
   width: 100%;
+  display: inline-block;
+  font-size: 0.7rem;
+  text-align: left;
+  padding: 0.5rem;
+  border-bottom: 1px dashed var(--gray-ccc);
 }
 
 @media (min-width: 768px) {
@@ -35,5 +43,6 @@
 
   .slugCategoriesLi {
     margin: 0.5rem 0;
+    width: 100%;
   }
 }
