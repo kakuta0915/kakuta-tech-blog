@@ -23,7 +23,7 @@ export default function Posts({ posts }) {
               />
             </figure>
             <h2 className={styles.postsTitle}>{title}</h2>
-            <div className={flexContent}>
+            <div className={styles.flexContent}>
               <div className={styles.publishDate}>
                 <ConvertDate dateISO={publishDate} />
               </div>

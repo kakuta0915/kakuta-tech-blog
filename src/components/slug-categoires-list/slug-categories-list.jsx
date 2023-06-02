@@ -1,4 +1,4 @@
-// すべてのカテゴリーをカテゴリーページに追加
+// すべてのカテゴリーをカテゴリー / スラッグページに追加
 import Link from 'next/link'
 import styles from './slug-categories-list.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

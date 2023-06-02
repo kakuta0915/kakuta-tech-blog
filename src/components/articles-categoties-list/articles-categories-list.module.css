@@ -23,12 +23,12 @@
   font-size: 1rem;
   margin-right: 0.5rem;
   float: left;
+  color: var(--gray-1);
 }
 
 .articlesCategoriesLink {
   display: inline-block;
-  /* background-color: var(--gray-ddd); */
-  border-bottom: 1px dashed var(--gray-ccc);
+  border-bottom: 1px dashed var(--gray-1);
   border-radius: 5px;
   font-size: 0.7rem;
   text-align: left;

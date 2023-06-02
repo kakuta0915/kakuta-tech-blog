@@ -5,6 +5,7 @@ export const client = createClient({
   apiKey: process.env.API_KEY,
 })
 
+// 記事ページに必要なデータを取得する (指定した１つのslugの記事データを返す)
 export async function getPostBySlug(slug) {
   try {
     const post = await client.get({
@@ -31,12 +32,13 @@ export async function getAllSlugs(limit = 100) {
   }
 }
 
+// すべての記事データを取得する
 export async function getAllPosts(limit = 100) {
   try {
     const posts = await client.get({
       endpoint: 'blog',
       queries: {
-        fields: 'title,slug,eyecatch',
+        fields: 'title,slug,eyecatch,categories,publishDate',
         orders: '-publishDate',
         limit: limit,
       },
@@ -44,6 +46,25 @@ export async function getAllPosts(limit = 100) {
     return posts.contents
   } catch (err) {
     console.log('~~ getAllPosts ~~')
+    console.log(err)
+  }
+}
+
+// 記事データの取得(カテゴリーページにslugが一致するページを追加)
+export async function getAllPostByCategory(categoryID, limit = 100) {
+  try {
+    const posts = await client.get({
+      endpoint: 'blog',
+      queries: {
+        filters: `categories[contains]${categoryID}`,
+        fields: 'title,slug,eyecatch,categories,publishDate',
+        orders: '-publishDate',
+        limit: limit,
+      },
+    })
+    return posts.contents
+  } catch (err) {
+    console.log('~~ getAllPostByCategory ~~')
     console.log(err)
   }
 }
@@ -61,25 +82,6 @@ export async function getAllCategories(limit = 100) {
     return categories.contents
   } catch (err) {
     console.log('~~ getAllCategories ~~')
-    console.log(err)
-  }
-}
-
-// 記事データの取得(カテゴリーページに記事一覧を表示する機能)
-export async function getAllPostByCategory(categoryID, limit = 100) {
-  try {
-    const posts = await client.get({
-      endpoint: 'blog',
-      queries: {
-        filters: `categories[contains]${categoryID}`,
-        fields: 'title,slug,eyecatch',
-        orders: '-publishDate',
-        limit: limit,
-      },
-    })
-    return posts.contents
-  } catch (err) {
-    console.log('~~ getAllPostByCategory ~~')
     console.log(err)
   }
 }

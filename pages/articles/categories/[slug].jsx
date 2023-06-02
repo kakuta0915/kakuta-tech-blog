@@ -1,4 +1,4 @@
-// 取得したスラッグで生成されたカテゴリーページ
+// 取得したスラッグで生成されたカテゴリーページ (〇〇に関する記事)
 
 import { getAllCategories, getAllPostByCategory } from '@/libs/api'
 import Container from '@/src/components/container/container'
@@ -42,6 +42,8 @@ export async function getStaticProps(context) {
   const category = allCategories.find(({ slug }) => slug === categorySlug)
 
   const posts = await getAllPostByCategory(category.id)
+
+  console.log(posts)
 
   return {
     props: {

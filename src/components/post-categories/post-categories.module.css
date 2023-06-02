@@ -1,8 +1,8 @@
 .flexContainer {
   margin-bottom: 3rem;
   padding: 1rem;
-  border: 1px solid var(--gray-ccc);
-  outline: 2px solid var(--gray-ccc);
+  border: 1px solid var(--gray-1);
+  outline: 2px solid var(--gray-1);
   outline-offset: 4px;
   border-radius: 5px;
 }
@@ -13,25 +13,19 @@
   margin-bottom: 1rem;
 }
 
-.categoriesUl {
-}
-
 .categoriesLink {
   display: inline-block;
   width: 100%;
   line-height: 1.5;
-  border-bottom: 1px dashed var(--gray-ccc);
+  border-bottom: 1px dashed var(--gray-1);
   padding: 0 0.5rem 0.25rem;
   margin-bottom: 1rem;
 }
 
 .tagsIcon {
   margin: 0 0.5rem;
-  color: var(--gray-ccc);
+  color: var(--gray-1);
 }
 
 @media (min-width: 768px) {
-  .categoriesUl {
-    /* font-size: 1rem; */
-  }
 }
