@@ -1,23 +1,23 @@
 .flexContainer {
-  gap: 5rem;
   margin: 1rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
 }
 
 .main {
+  padding: 1.5rem;
   background-color: var(--white);
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
   border-radius: 5px;
-  padding: 1rem;
 }
 
 .sidebar {
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 }
 
 @media (min-width: 768px) {
   .flexContainer {
+    gap: 5rem;
     flex-direction: row;
     justify-content: space-between;
   }

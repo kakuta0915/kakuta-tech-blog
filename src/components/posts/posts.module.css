@@ -4,7 +4,7 @@
 
 .link {
   display: inline-block;
-  background-color: var(--gray-3);
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   margin-bottom: 1rem;
   padding: 0.5rem;
