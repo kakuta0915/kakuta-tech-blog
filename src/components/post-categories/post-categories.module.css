@@ -5,6 +5,7 @@
   outline: 2px solid var(--gray-1);
   outline-offset: 4px;
   border-radius: 5px;
+  background-color: var(--white);
 }
 
 .categoriesTitle {

@@ -4,9 +4,8 @@ import { Link as Scroll } from 'react-scroll'
 
 export default function TableOfContents({ toc }) {
   return (
-    <div>
-      <p className={styles.TableOfContentsHead}>目次</p>
-
+    <div className={styles.tableOfContents}>
+      <h3 className={styles.tableOfContentsTitle}>目次</h3>
       <ul>
         {toc.map((data) => (
           <Scroll
@@ -18,7 +17,9 @@ export default function TableOfContents({ toc }) {
             offset={-70}
             duration={800}
           >
-            <li key={data.id}>{data.text}</li>
+            <li className={styles.tableOfContentsLi} key={data.id}>
+              {data.text}
+            </li>
           </Scroll>
         ))}
       </ul>

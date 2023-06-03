@@ -1,0 +1,27 @@
+.tableOfContents {
+  background-color: var(--white);
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  margin-bottom: 2rem;
+  padding: 1rem;
+}
+
+.tableOfContentsTitle {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.tableOfContentsLi {
+  line-height: 2;
+}
+
+.tableOfContentsLi::before {
+  display: inline-block;
+  content: '';
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--blue);
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 0.7rem;
+}

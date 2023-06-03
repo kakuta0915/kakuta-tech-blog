@@ -62,8 +62,8 @@ export default function Post({
             </PostBody>
           </TwoColumMain>
           <TwoColumSidebar>
-            <PostCategories categories={categories} />
             {tocVisible && <TableOfContents toc={toc} />}
+            <PostCategories categories={categories} />
           </TwoColumSidebar>
         </TwoColum>
 

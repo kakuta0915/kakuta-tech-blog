@@ -5,6 +5,13 @@
   flex-direction: column;
 }
 
+.main {
+  background-color: var(--white);
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 1rem;
+}
+
 .sidebar {
   margin-bottom: 3rem;
 }

@@ -6,12 +6,10 @@ import Social from '../social/social'
 export default function Footer() {
   return (
     <footer className={styles.footerContainer}>
-      <Container>
-        <div className={styles.footerText}>
-          <Logo />
-          <Social />
-        </div>
-      </Container>
+      <div className={styles.footerText}>
+        <Logo />
+        <Social />
+      </div>
     </footer>
   )
 }
