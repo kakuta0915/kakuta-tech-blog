@@ -8,3 +8,9 @@
   align-items: center;
   gap: 0.8rem;
 }
+
+@media (min-width: 768px) {
+  .flexContainer {
+    margin: 3rem;
+  }
+}
