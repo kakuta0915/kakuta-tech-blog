@@ -5,7 +5,10 @@ import Container from '@/src/components/container/container'
 import PostHeader from '@/src/components/post-header/post-header'
 import Posts from '@/src/components/posts/posts'
 import Meta from '@/src/components/meta/meta'
-import { TwoColum } from '@/src/components/two-colum/two-colum'
+import {
+  TwoColum,
+  TwoColumSlugMain,
+} from '@/src/components/two-colum/two-colum'
 import { TwoColumMain } from '@/src/components/two-colum/two-colum'
 import { TwoColumSidebar } from '@/src/components/two-colum/two-colum'
 import SlugCategoriesList from '@/src/components/slug-categoires-list/slug-categories-list'
@@ -16,9 +19,9 @@ export default function Category({ name, posts, allCategories }) {
       <Meta pageTitle={name} pageDesc={`${name}に関する記事`} />
       <PostHeader title={`${name}に関する記事`} subtitle="Blog Category" />
       <TwoColum>
-        <TwoColumMain>
+        <TwoColumSlugMain>
           <Posts posts={posts} />
-        </TwoColumMain>
+        </TwoColumSlugMain>
         <TwoColumSidebar>
           <SlugCategoriesList allCategories={allCategories} />
         </TwoColumSidebar>
