@@ -1,18 +1,49 @@
 .slugCategories {
   width: 100%;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--gray-1);
+  background-color: var(--white);
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
+}
+
+.slugCategoriesBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .slugCategoriesTitle {
   font-size: 1.2rem;
-  margin-bottom: 1rem;
   text-align: center;
+  margin-right: 1rem;
+}
+
+.icon {
+  display: block;
+  font-size: 1.5rem;
+  padding: 1rem;
+  transition: transform 0.5s;
+}
+
+.open .icon {
+  transform: rotate(180deg);
+}
+
+.accordion {
+  overflow: hidden;
+  height: 0px;
+  transition: height 0.5s;
+}
+
+.open .accordion {
+  height: var(--categories-height);
 }
 
 .slugCategoriesUl {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  float: left;
 }
 
 .tagsIcon {
@@ -37,8 +68,26 @@
 }
 
 @media (min-width: 768px) {
+  .slugCategories {
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  .slugCategoriesTitle {
+    margin: 0;
+  }
+
+  .icon {
+    display: none;
+  }
+
+  .accordion {
+    overflow: visible;
+    height: 100%;
+  }
+
   .slugCategoriesUl {
-    /* display: block; */
   }
 
   .slugCategoriesLi {
