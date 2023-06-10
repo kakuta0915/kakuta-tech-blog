@@ -9,7 +9,6 @@ import {
   TwoColum,
   TwoColumSlugMain,
 } from '@/src/components/two-colum/two-colum'
-import { TwoColumMain } from '@/src/components/two-colum/two-colum'
 import { TwoColumSidebar } from '@/src/components/two-colum/two-colum'
 import SlugCategoriesList from '@/src/components/slug-categoires-list/slug-categories-list'
 
@@ -45,8 +44,6 @@ export async function getStaticProps(context) {
   const category = allCategories.find(({ slug }) => slug === categorySlug)
 
   const posts = await getAllPostByCategory(category.id)
-
-  console.log(posts)
 
   return {
     props: {
