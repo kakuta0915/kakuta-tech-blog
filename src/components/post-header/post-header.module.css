@@ -7,13 +7,13 @@
   margin-top: 1rem;
 }
 
-.title {
-  font-size: 1.5rem;
-}
-
 .subtitle {
   font-size: 1.2rem;
-  font-weight: 700;
+  font-weight: 500;
+}
+
+.title {
+  font-size: 1.5rem;
 }
 
 .icon {
@@ -23,8 +23,19 @@
 .publish {
   display: flex;
   gap: 0.5rem;
-  color: var(--black);
+  color: var(--gray);
 }
 
 @media (min-width: 768px) {
+  .subtitle {
+    font-size: 1.5rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .publish {
+    font-size: 1.25rem;
+  }
 }
