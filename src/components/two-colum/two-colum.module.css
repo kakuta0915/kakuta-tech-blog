@@ -17,7 +17,7 @@
 
 @media (min-width: 768px) {
   .flexContainer {
-    gap: 5rem;
+    gap: 2rem;
     flex-direction: row;
     justify-content: space-between;
   }
@@ -28,9 +28,9 @@
 
   .sidebar {
     margin: 0;
-    width: 240px;
+    width: 300px;
     position: sticky;
-    top: 40px;
+    top: 30px;
     align-self: flex-start;
   }
 }
