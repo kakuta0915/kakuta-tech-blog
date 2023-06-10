@@ -8,3 +8,9 @@
   composes: default;
   max-width: 1280px;
 }
+
+@media (min-width: 768px) {
+  .default {
+    width: 80%;
+  }
+}
