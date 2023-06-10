@@ -37,12 +37,12 @@
 }
 
 @media (min-width: 768px) {
-  .articlesCategories {
-    /* width: 70%; */
-  }
-
   .articlesCategoriesLi {
     width: 20%;
+  }
+
+  .articlesCategoriesLi:hover {
+    color: var(--blue);
   }
 
   .tagsIcon {
