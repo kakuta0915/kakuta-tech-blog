@@ -5,11 +5,9 @@ import Container from '../container/container'
 
 export default function Header() {
   return (
-    <Container large>
-      <header className={styles.header}>
-        <Logo />
-        <Nav />
-      </header>
-    </Container>
+    <header className={styles.header}>
+      <Logo />
+      <Nav />
+    </header>
   )
 }

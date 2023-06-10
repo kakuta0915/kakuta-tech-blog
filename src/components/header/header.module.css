@@ -2,7 +2,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 0;
+  padding: 1rem;
   margin: 0 auto;
   border-bottom: 1px solid var(--gray);
+  background-color: var(--white);
+}
+
+@media (min-width: 768px) {
+  .header {
+    margin-bottom: 1rem;
+    padding: 2rem 3rem;
+  }
 }
