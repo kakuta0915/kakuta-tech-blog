@@ -11,7 +11,7 @@ export default function Posts({ posts }) {
   return (
     <div className={styles.postsContainer}>
       {posts.map(({ title, slug, eyecatch, publishDate = '', categories }) => (
-        <article className={styles.post} key={slug}>
+        <article key={slug}>
           <Link className={styles.link} href={`/articles/${slug}`}>
             <figure>
               <Image
@@ -24,9 +24,6 @@ export default function Posts({ posts }) {
             </figure>
             <h2 className={styles.postsTitle}>{title}</h2>
             <div className={styles.flexContent}>
-              <div className={styles.publishDate}>
-                <ConvertDate dateISO={publishDate} />
-              </div>
               <ul className={styles.postsCategoriesUl}>
                 {categories.map(({ name, slug }) => (
                   <li className={styles.postsCategoriesLi} key={slug}>
@@ -35,6 +32,9 @@ export default function Posts({ posts }) {
                   </li>
                 ))}
               </ul>
+              <div className={styles.publishDate}>
+                <ConvertDate dateISO={publishDate} />
+              </div>
             </div>
           </Link>
         </article>
