@@ -6,7 +6,7 @@ import { faTag } from '@fortawesome/free-solid-svg-icons'
 export default function ArticlesCategoriesList({ allCategories }) {
   return (
     <div className={styles.articlesCategories}>
-      <h3 className={styles.articlesCategoriesTitle}>カテゴリー</h3>
+      <h3 className={styles.articlesCategoriesTitle}>タグ一覧</h3>
       <ul className={styles.articlesCategoriesUl}>
         {allCategories.map(({ name, slug }) => (
           <li className={styles.articlesCategoriesLi} key={slug}>

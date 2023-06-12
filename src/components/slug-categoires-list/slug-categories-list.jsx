@@ -21,7 +21,7 @@ export default function SlugCategoriesList({ allCategories }) {
       }`}
     >
       <div className={styles.slugCategoriesBtn} onClick={toggleCategories}>
-        <h3 className={styles.slugCategoriesTitle}>カテゴリー</h3>
+        <h3 className={styles.slugCategoriesTitle}>タグ一覧</h3>
         <FontAwesomeIcon className={styles.icon} icon={faCircleDown} />
       </div>
       <div

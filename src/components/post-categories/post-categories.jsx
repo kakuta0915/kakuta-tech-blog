@@ -8,7 +8,7 @@ import { faTag } from '@fortawesome/free-solid-svg-icons'
 export default function PostCategories({ categories }) {
   return (
     <div className={styles.flexContainer}>
-      <h3 className={styles.categoriesTitle}>カテゴリー</h3>
+      <h3 className={styles.categoriesTitle}>タグ</h3>
       <ul className={styles.categoriesUl}>
         {categories.map(({ name, slug }) => (
           <li className={styles.categoriesLi} key={slug}>
