@@ -5,7 +5,7 @@ import Container from '@/src/components/container/container'
 import Hero from '@/src/components/hero/hero'
 import { getAllCategories, getAllPosts } from '@/libs/api'
 import Posts from '@/src/components/posts/posts'
-import ArticlesCategoriesList from '@/src/components/articles-categoties-list/articles-categories-list'
+import CategoriesList from '@/src/components/slug-categoires-list/categories-list'
 
 export default function Articles({ posts, allCategories }) {
   return (
@@ -17,7 +17,7 @@ export default function Articles({ posts, allCategories }) {
         />
         <Hero title="ARTICLES" subtitle="記事一覧" imageOn />
         <Posts posts={posts} />
-        <ArticlesCategoriesList allCategories={allCategories} />
+        <CategoriesList allCategories={allCategories} />
       </Container>
     </>
   )

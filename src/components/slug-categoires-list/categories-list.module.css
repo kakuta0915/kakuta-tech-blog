@@ -1,4 +1,4 @@
-.slugCategories {
+.categories {
   width: 100%;
   padding: 1rem;
   margin-bottom: 1rem;
@@ -7,13 +7,13 @@
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
 }
 
-.slugCategoriesBtn {
+.categoriesBtn {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.slugCategoriesTitle {
+.categoriesTitle {
   font-size: 1.2rem;
   text-align: center;
   margin-right: 1rem;
@@ -40,7 +40,7 @@
   height: var(--categories-height);
 }
 
-.slugCategoriesUl {
+.categoriesUl {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -50,32 +50,28 @@
   font-size: 1rem;
   margin-right: 0.5rem;
   float: left;
+  vertical-align: middle;
   color: var(--gray-1);
 }
 
-.slugCategoriesLi {
+.categoriesLi {
   margin: 0.3rem;
   width: 40%;
-}
-
-.slugCategoriesLink {
-  width: 100%;
   display: inline-block;
   font-size: 0.7rem;
-  text-align: left;
   padding: 0.5rem;
   border-bottom: 1px dashed var(--gray-1);
 }
 
 @media (min-width: 768px) {
-  .slugCategories {
+  .categories {
     border: none;
     background-color: transparent;
     box-shadow: none;
   }
 
-  .slugCategoriesTitle {
-    margin: 0;
+  .categoriesTitle {
+    margin-bottom: 2rem;
   }
 
   .icon {
@@ -84,19 +80,27 @@
 
   .accordion {
     overflow: visible;
-    height: 100%;
+    height: auto;
   }
 
-  .slugCategoriesUl {
+  .categoriesLi {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    margin: 0.5rem;
+    width: 20%;
+    background-color: var(--white);
+    border: 1px solid var(--blue);
+    border-radius: 20px;
   }
 
-  .slugCategoriesLi {
-    font-size: 2rem;
-    margin: 0.5rem 0;
-    width: 100%;
-  }
-
-  .slugCategoriesLi:hover {
+  .categoriesLi:hover {
     color: var(--blue);
+    cursor: pointer;
+  }
+
+  .categoriesLink {
+    text-align: center;
   }
 }
