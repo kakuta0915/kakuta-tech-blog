@@ -1,44 +1,24 @@
 .profile {
-  margin: 8rem auto;
-  width: 70%;
+  margin: 2rem 1rem 4rem;
 }
 
-.profile > h3 {
-  margin: 3rem 0 1.5rem;
+.profileTitle {
+  margin-bottom: 1.5rem;
   padding: 0.5rem 0 0.5rem 1rem;
-  border-bottom: 2px solid var(--gray);
-  border-left: 10px solid var(--black);
+  border-bottom: 2px solid var(--blue);
+  border-left: 10px solid var(--blue);
 }
 
-.profile table {
-  width: 95%;
-  margin: 0 auto;
+.profileText {
+  margin: 0 0.5rem 3rem;
 }
 
-.profile table th {
-  text-align: left;
-  width: 40%;
-}
-
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .profile {
-    margin: 3rem 1.5rem;
+    margin: 3rem 1.5rem 7rem;
   }
 
-  .profile table tr {
-    display: block;
-    margin-bottom: 1.5rem;
-  }
-
-  .profile table th {
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 0.5rem;
-    padding-bottom: 0.25rem;
-  }
-
-  .profile table th,
-  .profile table td {
-    display: block;
-    width: 100%;
+  .profileText {
+    margin: 0 1rem 3rem;
   }
 }
