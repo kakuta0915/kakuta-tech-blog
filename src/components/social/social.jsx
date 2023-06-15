@@ -22,5 +22,3 @@ export default function Social() {
     </ul>
   )
 }
-
-//Linkの書き方について調べる
