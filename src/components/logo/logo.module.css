@@ -1,13 +1,7 @@
 .logo {
-  font-size: 1.5rem;
+  font-size: calc(var(--heading1) * 0.7);
   font-weight: bold;
   color: var(--blue-1);
   align-items: center;
   text-decoration: none;
-}
-
-@media (min-width: 768px) {
-  .logo {
-    font-size: 2.5rem;
-  }
 }
