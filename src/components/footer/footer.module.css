@@ -1,7 +1,7 @@
 .footerContainer {
   text-align: center;
   background-color: var(--blue);
-  padding: 5rem 3rem;
+  padding: var(--space-lg);
 }
 .footerText {
   color: var(--white);
@@ -14,17 +14,9 @@
 
 /* デスクトップサイズ */
 @media (min-width: 768px) {
-  .footerContainer {
-    padding: 5rem;
-  }
-
   .footerText {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-  }
-
-  .logo {
-    font-size: 2.5rem;
   }
 }
