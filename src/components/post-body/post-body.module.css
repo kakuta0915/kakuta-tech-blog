@@ -1,9 +1,26 @@
 .stack {
-  margin-top: 2rem;
+  margin-top: var(--space-md);
 }
 
-@media (min-width: 768px) {
-  .stack {
-    margin-top: 3rem;
-  }
+.stack > * + * {
+  margin-top: var(--stack-space, 1.5rem);
+}
+
+.stack h2,
+.stack h3 {
+  --stack-space: 2rem;
+}
+
+.stack h2 + *,
+.stack h3 + * {
+  --stack-space: 0.8rem;
+}
+
+.stack p {
+  line-height: 1.8;
+}
+
+.stack ul {
+  padding: revert;
+  list-style: revert;
 }
