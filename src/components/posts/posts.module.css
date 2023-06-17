@@ -1,14 +1,15 @@
 .postsContainer {
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-sm);
 }
 
 .link {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   background-color: var(--white);
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-  margin-bottom: 1rem;
-  padding: 1rem;
+  margin-bottom: var(--space-xxs);
+  padding: var(--space-xxs);
   width: 100%;
   height: 100%;
 }
@@ -19,45 +20,45 @@
 }
 
 .postsTitle {
-  font-size: 1.2rem;
+  font-size: calc(var(--body) * 1.1);
   font-weight: bold;
-  margin: 0.5rem 0 1.5rem;
-  height: 3rem;
+  margin: calc(var(--space-xxs) * 0.5) 0 calc(var(--space-xxs) * 1.5);
 }
 
-.flexContent {
+.flexBox {
   display: flex;
   justify-content: space-between;
+  margin-top: auto;
 }
 
 .postsCategoriesUl {
   display: flex;
   flex-wrap: wrap;
-  width: 60%;
 }
 
 .postsCategoriesLi {
   display: flex;
   flex-wrap: nowrap;
-  padding: 0.5rem;
-  margin: 0.25rem;
+  padding: calc(var(--space-xxs) * 0.5);
+  margin: calc(var(--space-xxs) * 0.15);
   color: var(--white);
   background-color: var(--blue);
   border-radius: 10px;
 }
 
 .icon {
-  font-size: 0.7rem;
-  padding-right: 0.2rem;
+  font-size: calc(var(--body) * 0.7);
+  padding-right: calc(var(--space-xxs) * 0.2);
   color: var(--white);
 }
 
 .name {
-  font-size: 0.7rem;
+  font-size: calc(var(--body) * 0.6);
 }
 
 .publishDate {
-  font-size: 0.8rem;
+  font-size: calc(var(--body));
+
   color: var(--gray);
   float: right;
   display: flex;
@@ -68,12 +69,17 @@
   .postsContainer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 1rem;
+    gap: var(--space-xxs);
   }
 
   .link {
     transition: box-shadow 0.3s, transform 0.3s;
   }
+
+  .publishDate {
+    font-size: calc(var(--body) * 0.9);
+  }
+
   .link:hover {
     box-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
     transform: scale(1.05);
