@@ -5,7 +5,7 @@ import Container from '@/src/components/container/container'
 import Hero from '@/src/components/hero/hero'
 import { getAllCategories, getAllPosts } from '@/libs/api'
 import Posts from '@/src/components/posts/posts'
-import CategoriesList from '@/src/components/slug-categoires-list/categories-list'
+import CategoriesList from '@/src/components/categoires-list/categories-list'
 
 export default function Articles({ posts, allCategories }) {
   return (
