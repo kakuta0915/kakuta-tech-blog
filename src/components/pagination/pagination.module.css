@@ -1,23 +1,31 @@
 .flexContainer {
   display: flex;
   justify-content: space-between;
-  margin: 2rem;
+  margin: var(--space-sm);
 }
 
 .iconText {
-  font-size: 0.8rem;
+  font-size: calc(var(--body) * 0.8);
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 0.5rem;
+}
+
+.prev {
+  margin-right: var(--space-xxs);
+}
+
+.next {
+  margin-left: var(--space-xxs);
 }
 
 @media (min-width: 768px) {
   .flexContainer {
-    margin: 5rem 1rem;
+    margin: var(--space-lg);
   }
 
   .iconText {
-    font-size: 1rem;
+    font-size: var(--body);
   }
 
   .iconText:hover {
