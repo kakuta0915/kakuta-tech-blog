@@ -1,19 +1,20 @@
 .stack {
-  padding: 1rem;
-  margin: 2rem 0;
+  padding: var(--space-xxs);
+  margin: var(--space-xs) 0;
 }
 
 .stack > * + * {
-  margin-top: 1rem;
+  margin-top: var(--space-xxs);
 }
 
 .subtitle {
-  font-size: 1.2rem;
+  font-size: var(--heading3);
   font-weight: 500;
 }
 
 .title {
-  font-size: 1.5rem;
+  font-size: calc(var(--heading1) * 0.8);
+  margin-top: 0.2rem;
 }
 
 .icon {
@@ -24,18 +25,5 @@
   display: flex;
   gap: 0.5rem;
   color: var(--gray);
-}
-
-@media (min-width: 768px) {
-  .subtitle {
-    font-size: 1.5rem;
-  }
-
-  .title {
-    font-size: 2.5rem;
-  }
-
-  .publish {
-    font-size: 1.25rem;
-  }
+  font-size: var(--small-heading3);
 }
