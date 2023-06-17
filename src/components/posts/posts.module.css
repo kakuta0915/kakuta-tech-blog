@@ -19,21 +19,22 @@
   aspect-ratio: 16/9;
 }
 
+.publishDate {
+  font-size: calc(var(--body));
+  color: var(--gray);
+  margin: calc(var(--space-xxs) * 0.5) 0;
+}
+
 .postsTitle {
   font-size: calc(var(--body) * 1.1);
   font-weight: bold;
-  margin: calc(var(--space-xxs) * 0.5) 0 calc(var(--space-xxs) * 1.5);
-}
-
-.flexBox {
-  display: flex;
-  justify-content: space-between;
-  margin-top: auto;
+  margin-bottom: var(--space-xxs);
 }
 
 .postsCategoriesUl {
   display: flex;
   flex-wrap: wrap;
+  margin-top: auto;
 }
 
 .postsCategoriesLi {
@@ -54,15 +55,6 @@
 
 .name {
   font-size: calc(var(--body) * 0.6);
-}
-
-.publishDate {
-  font-size: calc(var(--body));
-
-  color: var(--gray);
-  float: right;
-  display: flex;
-  align-items: flex-end;
 }
 
 @media (min-width: 768px) {
