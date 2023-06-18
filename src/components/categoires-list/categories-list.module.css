@@ -1,7 +1,7 @@
 .categories {
   width: 100%;
-  padding: 1rem;
-  margin-bottom: 1rem;
+  padding: var(--space-xxs);
+  margin-bottom: var(--space-xs);
   border: 1px solid var(--gray-1);
   background-color: var(--white);
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
@@ -14,15 +14,14 @@
 }
 
 .categoriesTitle {
-  font-size: 1.2rem;
+  font-size: var(--heading3);
+  margin: var(--space-xxs);
   text-align: center;
-  margin-right: 1rem;
 }
 
 .icon {
   display: block;
-  font-size: 1.5rem;
-  padding: 1rem;
+  font-size: calc(var(--body) * 1.5);
   transition: transform 0.4s;
 }
 
@@ -47,19 +46,19 @@
 }
 
 .tagsIcon {
-  font-size: 1rem;
-  margin-right: 0.5rem;
+  color: var(--gray-1);
+  font-size: var(--body);
+  margin-right: calc(var(--space-xxs) * 0.5);
   float: left;
   vertical-align: middle;
-  color: var(--gray-1);
 }
 
 .categoriesLi {
-  margin: 0.3rem;
-  width: 40%;
   display: inline-block;
-  font-size: 0.7rem;
-  padding: 0.5rem;
+  width: 40%;
+  font-size: calc(var(--body) * 0.8);
+  margin: calc(var(--space-xxs) * 0.4);
+  padding: calc(var(--space-xxs) * 0.5);
   border-bottom: 1px dashed var(--gray-1);
 }
 
@@ -70,8 +69,8 @@
     box-shadow: none;
   }
 
-  .categoriesTitle {
-    margin-bottom: 2rem;
+  .categoriesBtn {
+    margin-bottom: var(--space-xxs);
   }
 
   .icon {
@@ -88,7 +87,7 @@
     justify-content: center;
     align-items: center;
     font-size: 1rem;
-    margin: 0.5rem;
+    margin: calc(var(--space-xxs) * 0.5);
     width: 20%;
     background-color: var(--white);
     border: 1px solid var(--blue);
