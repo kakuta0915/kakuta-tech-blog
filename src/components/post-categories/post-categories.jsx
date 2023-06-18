@@ -11,7 +11,7 @@ export default function PostCategories({ categories }) {
       <h3 className={styles.categoriesTitle}>タグ</h3>
       <ul className={styles.categoriesUl}>
         {categories.map(({ name, slug }) => (
-          <li className={styles.categoriesLi} key={slug}>
+          <li key={slug}>
             <Link
               className={styles.categoriesLink}
               href={`/articles/categories/${slug}`}
