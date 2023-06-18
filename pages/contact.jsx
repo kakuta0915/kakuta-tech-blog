@@ -7,14 +7,12 @@ import Form from '@/src/components/form/form'
 
 export default function Contact() {
   return (
-    <>
-      <Container>
-        <Meta
-          pageTitle="CONTACT"
-          pageDesc="お問い合わせはこちらからお願いいたします"
-        />
-        <Hero title="CONTACT" subtitle="お問い合わせ" imageOn />
-      </Container>
+    <Container>
+      <Meta
+        pageTitle="CONTACT"
+        pageDesc="お問い合わせはこちらからお願いいたします"
+      />
+      <Hero title="CONTACT" subtitle="お問い合わせ" imageOn />
 
       <Form>
         <form>
@@ -50,6 +48,6 @@ export default function Contact() {
           送信する
         </button>
       </Form>
-    </>
+    </Container>
   )
 }

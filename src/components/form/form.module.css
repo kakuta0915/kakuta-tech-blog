@@ -1,44 +1,43 @@
-.form {
+.stack {
   width: 80%;
-  margin: 0 auto;
+  margin: var(--space-lg) auto;
 }
-.form form ul li {
+.stack ul > * {
+  display: flex;
+  flex-direction: column;
   margin-bottom: 3rem;
 }
-.form label {
+.stack label {
+  padding: var(--space-xxs);
   display: inline-block;
-  width: 30%;
-  padding: 1rem;
   font-weight: bold;
 }
-.form label span {
+.stack label > * {
   font-weight: normal;
-  font-size: 0.8rem;
+  font-size: calc(var(--space-xxs) * 0.8);
   color: red;
-  margin-left: 0.8rem;
+  margin-left: calc(var(--space-xxs) * 0.8);
 }
-.form input[type='text'],
-.form input[type='email'] {
-  padding: 1rem;
+.stack input[type='text'],
+.stack input[type='email'] {
+  padding: var(--space-xxs);
 }
 
-.form textarea {
+.stack textarea {
   vertical-align: middle;
-  padding: 1rem;
+  padding: var(--space-xxs);
   height: 15rem;
 }
 
-.form input[type='text'],
-.form input[type='email'],
-.form textarea {
-  width: 60%;
-  margin-left: 10%;
-  font-size: 1.2rem;
+.stack input[type='text'],
+.stack input[type='email'],
+.stack textarea {
+  font-size: calc(var(--body) * 1.2);
   border: 1px solid #ccc;
 }
 
-.form label::before,
-.form textarea::before {
+.stack label::before,
+.stack textarea::before {
   display: inline-block;
   content: '';
   width: 1rem;
@@ -48,19 +47,36 @@
   border-radius: 50%;
 }
 
-.form button {
+.stack button {
   display: block;
-  padding: 1rem 3rem;
-  margin: 5rem auto;
-  font-size: 1.2rem;
+  font-size: calc(var(--body) * 1.2);
+  padding: var(--space-xxs) var(--space-lg);
+  margin: var(--space-lg) auto;
 }
 
-@media (max-width: 768px) {
-  .form label,
-  .form input[type='text'],
-  .form input[type='email'],
-  .form textarea {
-    width: 100%;
+@media (min-width: 768px) {
+  .stack {
+    width: 90%;
+  }
+
+  .stack ul > * {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .stack label {
+    width: 40%;
+  }
+
+  .stack input[type='text'],
+  .stack input[type='email'],
+  .stack textarea {
+    width: 60%;
     margin: 0 auto;
+  }
+
+  .stack button:hover {
+    color: var(--blue);
+    cursor: pointer;
   }
 }
