@@ -3,8 +3,7 @@
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
   border-top: 5px solid var(--blue);
   border-radius: 5px;
-  margin-bottom: 2rem;
-  padding: 1rem;
+  padding: var(--space-xs);
 }
 
 .tocBtn {
@@ -13,17 +12,17 @@
   align-items: center;
 }
 
-.tocTitle {
+.tocBtn > h3 {
   text-align: center;
-  margin-right: 1rem;
+  margin-right: var(--space-xs);
   color: var(--blue);
 }
 
 .icon {
-  font-size: 1.5rem;
-  padding: 1rem;
-  transition: 0.4s;
+  font-size: var(--space-sm);
+  padding: var(--space-xxs);
   color: var(--gray-1);
+  transition: 0.4s;
 }
 
 .open .icon {
@@ -40,15 +39,15 @@
   height: var(--toc-height);
 }
 
-.tocUl {
-  margin: 0 0 1rem 2rem;
+.accordion > ul {
+  margin: 0 0 var(--space-xxs) var(--space-sm);
 }
 
 .tocLi {
   position: relative;
   line-height: 2;
   cursor: pointer;
-  padding: 1rem 1rem 1rem 1.5rem;
+  padding: var(--space-xxs) var(--space-xxs) var(--space-xxs) var(--space-xs);
 }
 
 .tocLi::before {
@@ -70,8 +69,8 @@
     overflow-y: scroll;
   }
 
-  .tocTitle {
-    margin-bottom: 1rem;
+  .tocBtn > h3 {
+    margin: 0 auto var(--space-xxs);
   }
 
   .icon {
@@ -80,6 +79,10 @@
 
   .accordion {
     height: auto;
+  }
+
+  .accordion > ul {
+    margin-left: var(--space-xxs);
   }
 
   .tocLi:hover {

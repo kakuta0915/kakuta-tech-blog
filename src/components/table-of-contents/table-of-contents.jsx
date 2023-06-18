@@ -15,7 +15,7 @@ export default function TableOfContents({ toc }) {
   return (
     <div className={`${styles.toc} ${tocOpen ? styles.open : styles.close}`}>
       <div className={styles.tocBtn} onClick={toggleToc}>
-        <h3 className={styles.tocTitle}>目次</h3>
+        <h3>目次</h3>
         <FontAwesomeIcon className={styles.icon} icon={faCircleDown} />
       </div>
       <div
@@ -27,7 +27,7 @@ export default function TableOfContents({ toc }) {
             : '0px',
         }}
       >
-        <ul className={styles.tocUl}>
+        <ul>
           {toc.map((data) => (
             <Scroll
               className={styles.scroll}
