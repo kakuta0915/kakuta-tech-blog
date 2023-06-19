@@ -8,8 +8,8 @@ import ConvertDate from '../convert/convert-date'
 export default function PostHeader({ title, subtitle, publish = '' }) {
   return (
     <div className={styles.stack}>
-      <p className={styles.subtitle}>{subtitle}</p>
-      <h1 className={styles.title}>{title}</h1>
+      <p>{subtitle}</p>
+      <h1>{title}</h1>
       {publish && (
         <div className={styles.publish}>
           <FontAwesomeIcon

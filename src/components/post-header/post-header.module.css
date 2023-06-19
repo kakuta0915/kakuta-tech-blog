@@ -7,13 +7,13 @@
   margin-top: var(--space-xxs);
 }
 
-.subtitle {
+.stack > p {
   font-size: var(--heading3);
   font-weight: 500;
 }
 
-.title {
-  font-size: calc(var(--heading1) * 0.8);
+.stack > h1 {
+  font-size: calc(var(--heading1) * 0.7);
   margin-top: 0.2rem;
 }
 
