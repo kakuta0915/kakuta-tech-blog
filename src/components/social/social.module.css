@@ -4,6 +4,6 @@
   font-size: calc(var(--heading1) * 0.8);
 }
 
-.socialList li {
+.socialList > li {
   padding: calc(var(--space-xs) * 0.5);
 }
