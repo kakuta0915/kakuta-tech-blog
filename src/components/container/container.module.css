@@ -2,7 +2,6 @@
   width: 95%;
   max-width: 1152px;
   margin: 0 auto;
-  /* background-color: aquamarine; */
 }
 
 .large {
@@ -12,6 +11,6 @@
 
 @media (min-width: 768px) {
   .default {
-    width: 80%;
+    width: 85%;
   }
 }
