@@ -25,13 +25,13 @@
   margin: calc(var(--space-xxs) * 0.5) 0;
 }
 
-.postsTitle {
+.link > h2 {
   font-size: calc(var(--body) * 1.1);
   font-weight: bold;
   margin-bottom: var(--space-xxs);
 }
 
-.postsCategoriesUl {
+.link > ul {
   display: flex;
   flex-wrap: wrap;
   margin-top: auto;

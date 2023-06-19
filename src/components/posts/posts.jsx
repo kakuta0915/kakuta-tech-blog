@@ -25,8 +25,8 @@ export default function Posts({ posts }) {
             <div className={styles.publishDate}>
               <ConvertDate dateISO={publishDate} />
             </div>
-            <h2 className={styles.postsTitle}>{title}</h2>
-            <ul className={styles.postsCategoriesUl}>
+            <h2>{title}</h2>
+            <ul>
               {categories.map(({ name, slug }) => (
                 <li className={styles.postsCategoriesLi} key={slug}>
                   <FontAwesomeIcon className={styles.icon} icon={faTag} />
