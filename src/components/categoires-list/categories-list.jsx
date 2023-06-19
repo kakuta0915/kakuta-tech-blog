@@ -21,7 +21,7 @@ export default function CategoriesList({ allCategories }) {
       }`}
     >
       <div className={styles.categoriesBtn} onClick={toggleCategories}>
-        <h3 className={styles.categoriesTitle}>タグ一覧</h3>
+        <h3>タグ一覧</h3>
         <FontAwesomeIcon className={styles.icon} icon={faCircleDown} />
       </div>
       <div
@@ -33,7 +33,7 @@ export default function CategoriesList({ allCategories }) {
             : '0px',
         }}
       >
-        <ul className={styles.categoriesUl}>
+        <ul>
           {allCategories.map(({ name, slug }) => (
             <li className={styles.categoriesLi} key={slug}>
               <Link

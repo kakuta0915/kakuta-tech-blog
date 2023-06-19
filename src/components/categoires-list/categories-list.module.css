@@ -13,7 +13,7 @@
   align-items: center;
 }
 
-.categoriesTitle {
+.categoriesBtn > h3 {
   font-size: var(--heading3);
   margin: var(--space-xxs);
   text-align: center;
@@ -21,7 +21,7 @@
 
 .icon {
   display: block;
-  font-size: calc(var(--body) * 1.5);
+  font-size: var(--heading2);
   transition: transform 0.4s;
 }
 
@@ -39,7 +39,7 @@
   height: var(--categories-height);
 }
 
-.categoriesUl {
+.accordion > ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
