@@ -6,8 +6,8 @@ export default function Hero({ title, subtitle, imageOn = false }) {
   return (
     <div className={`${styles.heroContainerCenter} ${styles.heroContainer}`}>
       <div className={styles.text}>
-        <h1 className={styles.title}>{title}</h1>
-        <p className={styles.subtitle}>{subtitle}</p>
+        <h1>{title}</h1>
+        <p>{subtitle}</p>
       </div>
       {imageOn && (
         <figure className={styles.image}>

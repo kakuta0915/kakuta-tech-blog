@@ -11,12 +11,12 @@
   padding: var(--space-xs);
 }
 
-.title {
+.text > h1 {
   margin-bottom: calc(var(--space-xs) * 0.5);
 }
 
-.subtitle {
-  font-size: var(--small-heading2);
+.text > p {
+  font-size: var(--small-heading3);
 }
 
 .image {
