@@ -6,14 +6,14 @@
   padding: var(--space-xxs);
 }
 
-.categoriesTitle {
+.flexContainer > h3 {
   font-size: var(--heading3);
   color: var(--blue);
   text-align: center;
   margin-bottom: var(--space-xxs);
 }
 
-.categoriesUl {
+.flexContainer > ul {
   margin: var(--space-xs) var(--space-xs) 0;
 }
 
@@ -33,7 +33,7 @@
 }
 
 @media (min-width: 768px) {
-  .categoriesUl {
+  .flexContainer > ul {
     margin: calc(var(--space-xxs) * 0.5) calc(var(--space-xxs) * 0.5) 0;
   }
 

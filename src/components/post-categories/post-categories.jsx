@@ -1,4 +1,4 @@
-// 記事に関連する特定のカテゴリーをリスト表示する機能
+// 記事に関連する特定のタグをリスト表示する機能
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styles from './post-categories.module.css'
@@ -8,8 +8,8 @@ import { faTag } from '@fortawesome/free-solid-svg-icons'
 export default function PostCategories({ categories }) {
   return (
     <div className={styles.flexContainer}>
-      <h3 className={styles.categoriesTitle}>タグ</h3>
-      <ul className={styles.categoriesUl}>
+      <h3>タグ</h3>
+      <ul>
         {categories.map(({ name, slug }) => (
           <li key={slug}>
             <Link
