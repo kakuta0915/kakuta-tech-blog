@@ -2,6 +2,7 @@
 
 import parse from 'html-react-parser'
 import Image from 'next/image'
+import hljs from 'highlight.js'
 
 export default function ConvertBody({ contentHTML }) {
   const contentReact = parse(contentHTML, {
@@ -18,6 +19,12 @@ export default function ConvertBody({ contentHTML }) {
             sizes="(min-width: 768px) 768px, 100vw"
           />
         )
+      }
+      if (node.name === 'code') {
+        const result = hljs.highlightAuto(node.children[0].data)
+        const dom = parse(result.value)
+
+        return <code className="hljs">{dom}</code>
       }
     },
   })

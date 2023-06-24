@@ -18,6 +18,8 @@ import Pagination from '@/src/components/pagination/pagination'
 import PostBody from '@/src/components/post-body/post-body'
 import { renderToc } from '@/libs/render-toc'
 import TableOfContents from '@/src/components/table-of-contents/table-of-contents'
+import 'highlight.js/styles/night-owl.css'
+
 export default function Post({
   title,
   publish,
@@ -57,6 +59,7 @@ export default function Post({
                 priority
               />
             </figure>
+
             <PostBody>
               <ConvertBody contentHTML={content} id={`#${toc.id}`} />
             </PostBody>
@@ -95,6 +98,7 @@ export async function getStaticProps(context) {
   const description = extractText(post.content)
 
   const allSlugs = await getAllSlugs()
+
   const [prevPost, nextPost] = prevNextPost(allSlugs, slug)
 
   return {
