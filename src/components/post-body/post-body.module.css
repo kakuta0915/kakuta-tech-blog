@@ -3,24 +3,35 @@
 }
 
 .stack > * + * {
-  margin-top: var(--stack-space, 1.5rem);
+  margin-top: var(--space-xs);
 }
 
 .stack h2,
 .stack h3 {
-  --stack-space: 2rem;
+  margin-top: var(--space-md);
+  padding: 0.8rem;
+  border-left: 5px solid var(--blue);
+  border-bottom: 1px solid var(--gray-1);
 }
 
 .stack h2 + *,
 .stack h3 + * {
-  --stack-space: 0.8rem;
+  margin-top: 0.8rem;
 }
 
 .stack p {
   line-height: 1.8;
 }
 
+.stack code {
+  margin-bottom: var(--space-md);
+}
+
 .stack ul {
   padding: revert;
   list-style: revert;
+}
+
+.stack li {
+  margin-bottom: 2rem;
 }
