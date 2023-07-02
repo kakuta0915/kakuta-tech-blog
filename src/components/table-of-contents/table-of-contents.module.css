@@ -47,12 +47,12 @@
   position: relative;
   line-height: 2;
   cursor: pointer;
-  padding: var(--space-xxs) var(--space-xxs) var(--space-xxs) var(--space-xs);
+  padding: var(--space-xxs);
 }
 
 .tocLi::before {
   position: absolute;
-  top: 25px;
+  top: 26px;
   left: -10px;
   display: inline-block;
   content: '';
