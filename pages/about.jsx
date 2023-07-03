@@ -5,7 +5,7 @@ import Container from '@/src/components/container/container'
 import Profile from '@/src/components/profile/profile'
 import Hero from '@/src/components/hero/hero'
 import Image from 'next/image'
-import eyecatch from 'images/about.jpg'
+import eyecatch from 'images/about.png'
 
 export default function About() {
   return (
