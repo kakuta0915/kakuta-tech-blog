@@ -1,6 +1,6 @@
 .stack {
   width: 80%;
-  margin: var(--space-lg) auto;
+  margin: var(--space-md) auto;
 }
 .stack ul > * {
   display: flex;
@@ -57,6 +57,7 @@
 @media (min-width: 768px) {
   .stack {
     width: 90%;
+    margin-top: var(--space-lg);
   }
 
   .stack ul > * {

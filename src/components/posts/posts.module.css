@@ -1,5 +1,5 @@
 .postsContainer {
-  margin-bottom: var(--space-sm);
+  margin: var(--space-sm) 0;
 }
 
 .link {
