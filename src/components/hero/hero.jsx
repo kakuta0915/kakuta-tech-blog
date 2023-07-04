@@ -1,26 +1,10 @@
 import styles from './hero.module.css'
-import Image from 'next/image'
-import cube from 'images/cube.jpg'
 
-export default function Hero({ title, subtitle, imageOn = false }) {
+export default function Hero({ title, subtitle }) {
   return (
-    <div className={`${styles.heroContainerCenter} ${styles.heroContainer}`}>
-      <div className={styles.text}>
-        <h1>{title}</h1>
-        <p>{subtitle}</p>
-      </div>
-      {imageOn && (
-        <figure className={styles.image}>
-          <Image
-            src={cube}
-            alt=""
-            layout="responsive"
-            sizes="(min-width: 1152px) 576px, (min-width: 768px) 50vw, 100vw"
-            priority
-            placeholder="blur"
-          />
-        </figure>
-      )}
+    <div className={styles.heroContainer}>
+      <h1>{title}</h1>
+      <p>{subtitle}</p>
     </div>
   )
 }
