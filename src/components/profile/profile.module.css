@@ -6,10 +6,14 @@
   margin-bottom: var(--space-sm);
   padding: calc(var(--space-xxs) * 0.5) 0 calc(var(--space-xxs) * 0.5)
     var(--space-xxs);
-  border-bottom: 2px solid var(--blue);
+  border-bottom: 1px solid var(--gray);
   border-left: 10px solid var(--blue);
 }
 
+.profile > h4 {
+  margin: 1rem;
+}
+
 .profile > p {
-  padding: 0 0 var(--space-lg) var(--space-xs);
+  margin: 0 var(--space-xs) var(--space-md);
 }
