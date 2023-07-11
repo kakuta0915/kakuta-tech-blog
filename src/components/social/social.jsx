@@ -8,7 +8,7 @@ export default function Social() {
   return (
     <ul className={styles.socialList}>
       <li>
-        <Link href="https://twitter.com/home">
+        <Link href="https://twitter.com/_takeru0915_">
           <FontAwesomeIcon icon={faTwitter} />
           <span className="sr-only">Twitter</span>
         </Link>
