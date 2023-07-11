@@ -1,0 +1,39 @@
+.topContents {
+  text-align: center;
+  margin: var(--space-md) var(--space-xxs);
+}
+
+.topContents > h3 {
+  margin-bottom: var(--space-xs);
+}
+
+.topContents h3 + * {
+  margin-bottom: var(--space-sm);
+}
+
+.topContents > p {
+  padding-bottom: var(--space-xs);
+}
+
+.topContents figure {
+  margin-bottom: var(--space-sm);
+}
+
+.topContents img {
+  display: inline-block;
+  border-radius: 50%;
+  width: 30%;
+  height: 30%;
+  object-fit: cover;
+}
+
+.btnBox {
+  padding: var(--space-sm) 0 var(--space-md);
+  text-align: center;
+}
+
+.btn {
+  background-color: var(--blue-2);
+  padding: var(--space-xxs) var(--space-sm);
+  color: var(--white);
+}
