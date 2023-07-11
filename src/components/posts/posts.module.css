@@ -57,6 +57,18 @@
   font-size: calc(var(--body) * 0.6);
 }
 
+.btnBox {
+  padding: var(--space-xxs);
+  margin-bottom: var(--space-md);
+  text-align: center;
+}
+
+.btn {
+  background-color: var(--blue-2);
+  padding: var(--space-xxs) var(--space-sm);
+  color: var(--white);
+}
+
 @media (min-width: 768px) {
   .postsContainer {
     display: grid;
