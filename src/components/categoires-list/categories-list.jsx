@@ -2,8 +2,9 @@
 import Link from 'next/link'
 import styles from './categories-list.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleDown, faTag } from '@fortawesome/free-solid-svg-icons'
+import { faCircleDown } from '@fortawesome/free-solid-svg-icons'
 import { useState, useRef } from 'react'
+import Image from 'next/image'
 
 export default function CategoriesList({ allCategories }) {
   const [categoriesOpen, setCategoriesOpen] = useState(false)
@@ -21,7 +22,7 @@ export default function CategoriesList({ allCategories }) {
       }`}
     >
       <div className={styles.categoriesBtn} onClick={toggleCategories}>
-        <h3>タグ一覧</h3>
+        <h3>カテゴリ 一覧</h3>
         <FontAwesomeIcon className={styles.icon} icon={faCircleDown} />
       </div>
       <div
@@ -34,14 +35,20 @@ export default function CategoriesList({ allCategories }) {
         }}
       >
         <ul>
-          {allCategories.map(({ name, slug }) => (
-            <li className={styles.categoriesLi} key={slug}>
+          {allCategories.map(({ name, slug, icon }) => (
+            <li className={styles.categoriesList} key={slug}>
               <Link
                 className={styles.categoriesLink}
                 href={`/articles/categories/${slug}`}
               >
-                <FontAwesomeIcon className={styles.tagsIcon} icon={faTag} />
-                {name}
+                <Image
+                  className={styles.iconImg}
+                  src={icon.url}
+                  width={icon.width}
+                  height={icon.height}
+                  alt=""
+                />
+                <span className={styles.name}>{name}</span>
               </Link>
             </li>
           ))}

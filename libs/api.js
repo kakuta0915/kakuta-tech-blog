@@ -75,7 +75,7 @@ export async function getAllCategories(limit = 100) {
     const categories = await client.get({
       endpoint: 'categories',
       queries: {
-        fields: 'name,id,slug',
+        fields: 'id,icon,name,slug',
         limit: limit,
       },
     })
