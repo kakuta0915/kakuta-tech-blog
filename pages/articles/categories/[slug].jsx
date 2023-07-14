@@ -7,11 +7,15 @@ import Posts from '@/src/components/posts/posts'
 import Meta from '@/src/components/meta/meta'
 import CategoriesList from '@/src/components/categoires-list/categories-list'
 
-export default function Category({ name, posts, allCategories }) {
+export default function Category({ icon, name, posts, allCategories }) {
   return (
     <Container>
       <Meta pageTitle={name} pageDesc={`${name}に関する記事`} />
-      <PostHeader title={`${name}に関する記事`} subtitle="Blog Category" />
+      <PostHeader
+        icon={icon}
+        title={` ${name}に関する記事`}
+        subtitle="Blog Category"
+      />
       <Posts posts={posts} />
       <CategoriesList allCategories={allCategories} />
     </Container>
@@ -35,6 +39,7 @@ export async function getStaticProps(context) {
   const posts = await getAllPostByCategory(category.id)
   return {
     props: {
+      icon: category.icon,
       name: category.name,
       posts: posts,
       allCategories: allCategories,

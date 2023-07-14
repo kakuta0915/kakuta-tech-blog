@@ -1,6 +1,6 @@
 // 記事ページ
 
-import { getPostBySlug, getAllSlugs } from '@/libs/api'
+import { getPostBySlug, getAllSlugs, getAllCategories } from '@/libs/api'
 import Container from '@/src/components/container/container'
 import PostHeader from '@/src/components/post-header/post-header'
 import Image from 'next/image'
@@ -21,6 +21,7 @@ import TableOfContents from '@/src/components/table-of-contents/table-of-content
 import 'highlight.js/styles/night-owl.css'
 
 export default function Post({
+  icon,
   title,
   publish,
   content,
@@ -44,7 +45,12 @@ export default function Post({
       />
 
       <article>
-        <PostHeader title={title} subtitle="Blog Article" publish={publish} />
+        <PostHeader
+          icon={icon}
+          title={title}
+          subtitle="Blog Article"
+          publish={publish}
+        />
 
         <TwoColum>
           <TwoColumMain>
@@ -91,18 +97,24 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  const slug = context.params.slug
+  const slug1 = context.params.slug
 
-  const post = await getPostBySlug(slug)
+  const post = await getPostBySlug(slug1)
 
   const description = extractText(post.content)
 
   const allSlugs = await getAllSlugs()
 
-  const [prevPost, nextPost] = prevNextPost(allSlugs, slug)
+  const [prevPost, nextPost] = prevNextPost(allSlugs, slug1)
+
+  const allCategories = await getAllCategories()
+  const category = allCategories.find(({ slug }) => slug === slug1)
+
+  console.log(category.icon)
 
   return {
     props: {
+      icon: category.icon,
       title: post.title,
       publish: post.publishDate,
       content: post.content,
