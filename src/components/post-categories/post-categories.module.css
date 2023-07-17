@@ -17,9 +17,14 @@
   margin: var(--space-xs) var(--space-xs) 0;
 }
 
+.flexContainer > li {
+  display: block;
+  text-align: center;
+}
+
 .categoriesLink {
-  display: inline-block;
-  width: 100%;
+  display: flex;
+  flex-direction: row;
   line-height: 1.5;
   font-size: var(--body);
   border-bottom: 1px dashed var(--gray-1);
@@ -27,9 +32,10 @@
   margin-bottom: var(--space-xxs);
 }
 
-.tagsIcon {
-  margin: 0 calc(var(--space-xxs) * 0.5);
-  color: var(--gray-1);
+.icon {
+  width: 1.6rem;
+  height: 1.6rem;
+  margin: 0 1rem;
 }
 
 @media (min-width: 768px) {
