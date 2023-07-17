@@ -1,1 +1,31 @@
 <img src='images/ogp.jpg'>
+ 
+ ## サイト紹介
+ 
+ このサイトは、私がプログラミング学習時に躓いた箇所などをまとめた技術ブログサイトです。
+
+**サイト URL**
+https://kakuta-tech-blog.vercel.app/
+
+## 使用技術
+
+### フロントエンド
+
+- [React](https://ja.reactjs.org/)
+- [Next.js](https://nextjs.org/)
+
+### サーバーサイド
+
+- [Node.js](https://nodejs.org/ja)
+
+### インフラ
+
+- [Vercel](https://vercel.com/home)
+
+### 環境構築
+
+- [webpack](https://webpack.js.org/)
+
+### その他技術
+
+- [microCMS](https://microcms.io/)
