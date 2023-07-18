@@ -23,10 +23,7 @@ https://kakuta-tech-blog.vercel.app/
 
 - [Vercel](https://vercel.com/home)
 
-### 環境構築
-
-- [webpack](https://webpack.js.org/)
-
 ### その他技術
 
+- [webpack](https://webpack.js.org/)
 - [microCMS](https://microcms.io/)
