@@ -37,3 +37,10 @@
   padding: var(--space-xxs) var(--space-sm);
   color: var(--white);
 }
+
+@media (min-width: 768px) {
+  .btn:hover {
+    background-color: var(--blue-1);
+    color: var(--white);
+  }
+}
