@@ -14,7 +14,6 @@
   --base-color: #f5f5f5;
 
   /* フォントサイズ */
-
   --body: clamp(1rem, 0.95rem + 0.2vw, 1.125rem); /* 16-18px */
   --display: clamp(4.5rem, 1.83rem + 11.34vw, 10rem); /* 72-160px */
   --heading1: clamp(2rem, 1.3rem + 3vw, 4rem); /* 32-64px */
@@ -73,6 +72,7 @@ body,
 h1,
 h2,
 h3,
+h4,
 p,
 figure,
 ul {
