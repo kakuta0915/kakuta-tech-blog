@@ -6,21 +6,37 @@
   margin-top: var(--space-xs);
 }
 
-.stack h2,
-.stack h3 {
+.stack h2 + *,
+.stack h3 + *,
+.stack h4 + * {
+  margin-top: 0.8rem;
+}
+
+.stack h2 {
   margin-top: var(--space-md);
+  padding: var(--space-xxs);
+  background: #eeeeee;
+  border-left: solid 8px var(--blue);
+}
+
+.stack h3 {
   padding: 0.8rem;
   border-left: 5px solid var(--blue);
   border-bottom: 1px solid var(--gray-1);
 }
 
-.stack h2 + *,
-.stack h3 + * {
-  margin-top: 0.8rem;
+.stack h4 {
+  display: inline-block;
+  padding: 0 0.5rem;
+  background: linear-gradient(transparent 60%, #87afff 90%);
 }
 
 .stack p {
-  line-height: 1.8;
+  line-height: 1.7;
+}
+
+.stack strong {
+  color: var(--blue-1);
 }
 
 .stack code {
