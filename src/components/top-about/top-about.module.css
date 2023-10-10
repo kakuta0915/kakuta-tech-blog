@@ -29,18 +29,20 @@
 
 .btnBox {
   padding: var(--space-sm) 0 var(--space-md);
-  text-align: center;
 }
 
 .btn {
-  background-color: var(--blue-2);
+  background-color: var(--blue-1);
   padding: var(--space-xxs) var(--space-sm);
   color: var(--white);
+  display: inline-block;
+  transition: 0.3s;
 }
 
 @media (min-width: 768px) {
   .btn:hover {
-    background-color: var(--blue-1);
+    background-color: var(--blue);
     color: var(--white);
+    transform: scale(1.05);
   }
 }
