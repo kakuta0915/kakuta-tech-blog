@@ -58,15 +58,17 @@
 }
 
 .btnBox {
-  padding: var(--space-xxs);
-  margin-bottom: var(--space-md);
+  padding: var(--space-sm) 0;
+  margin-bottom: var(--space-lg);
   text-align: center;
 }
 
 .btn {
-  background-color: var(--blue-2);
+  display: inline-block;
+  background-color: var(--blue-1);
   padding: var(--space-xxs) var(--space-sm);
   color: var(--white);
+  transition: 0.3s;
 }
 
 @media (min-width: 768px) {
@@ -90,7 +92,8 @@
   }
 
   .btn:hover {
-    background-color: var(--blue-1);
+    background-color: var(--blue);
     color: var(--white);
+    transform: scale(1.05);
   }
 }

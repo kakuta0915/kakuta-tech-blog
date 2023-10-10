@@ -32,10 +32,10 @@
 }
 
 .btn {
+  display: inline-block;
   background-color: var(--blue-1);
   padding: var(--space-xxs) var(--space-sm);
   color: var(--white);
-  display: inline-block;
   transition: 0.3s;
 }
 
