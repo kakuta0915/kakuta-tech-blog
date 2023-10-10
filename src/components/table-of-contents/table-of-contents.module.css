@@ -47,7 +47,8 @@
   position: relative;
   line-height: 2;
   cursor: pointer;
-  padding: var(--space-xxs);
+  padding: var(--space-xxs) var(--space-xxs) 0.5rem;
+  border-bottom: 1px dashed var(--gray-1);
 }
 
 .tocLi::before {
