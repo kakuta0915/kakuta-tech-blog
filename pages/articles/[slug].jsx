@@ -108,11 +108,12 @@ export async function getStaticProps(context) {
   const [prevPost, nextPost] = prevNextPost(allSlugs, slug1)
 
   const allCategories = await getAllCategories()
-  const category = allCategories.find(({ slug }) => slug === slug1)
+  // const category = allCategories.find(({ slug }) => slug === slug1)
 
   return {
     props: {
-      icon: category.icon,
+      // icon: category.icon,
+      // icon: filteredCategories.icon,
       title: post.title,
       publish: post.publishDate,
       content: post.content,
