@@ -97,23 +97,23 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  const slug1 = context.params.slug
+  const slug = context.params.slug
 
-  const post = await getPostBySlug(slug1)
+  const post = await getPostBySlug(slug)
 
   const description = extractText(post.content)
 
   const allSlugs = await getAllSlugs()
 
-  const [prevPost, nextPost] = prevNextPost(allSlugs, slug1)
+  const [prevPost, nextPost] = prevNextPost(allSlugs, slug)
 
   const allCategories = await getAllCategories()
-  // const category = allCategories.find(({ slug }) => slug === slug1)
+
+  const category = allCategories.find(({ slug }) => slug === post.category)
 
   return {
     props: {
-      // icon: category.icon,
-      // icon: filteredCategories.icon,
+      icon: category.icon,
       title: post.title,
       publish: post.publishDate,
       content: post.content,

@@ -57,7 +57,7 @@ export async function getAllPostByCategory(categoryID, limit = 100) {
       endpoint: 'blog',
       queries: {
         filters: `categories[contains]${categoryID}`,
-        fields: 'title,slug,eyecatch,categories,publishDate',
+        fields: 'title,category,slug,eyecatch,categories,publishDate',
         orders: '-publishDate',
         limit: limit,
       },
