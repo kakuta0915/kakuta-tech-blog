@@ -9,13 +9,13 @@ import Image from 'next/image'
 export default function PostHeader({ icon, title, subtitle, publish = '' }) {
   return (
     <div className={styles.header}>
-      {/* <Image
+      <Image
         src={icon.url}
         alt=""
         width={icon.width}
         height={icon.height}
         className={styles.headerIcon}
-      /> */}
+      />
       <div className={styles.headerTitle}>
         <p>{subtitle}</p>
         <h1>{title}</h1>
