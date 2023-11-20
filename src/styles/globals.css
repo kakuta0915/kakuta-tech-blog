@@ -94,10 +94,10 @@ a {
 
 blockquote {
   position: relative;
-  /* padding: 5px 10px 5px 32px; */
-  padding: var(--space-xxs) var(--space-xxs) var(--space-xxs) var(--space-sm);
+  padding: var(--space-xxs) var(--space-xxs) var(--space-xxs)
+    calc(var(--space-xs) * 1.2);
+  margin: 0 var(--space-xs);
   box-sizing: border-box;
-  font-style: italic;
   background: #f3f3f3;
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
 }
@@ -109,13 +109,13 @@ blockquote:before {
   left: -15px;
   width: 40px;
   height: 30px;
+  padding-top: 5px;
   text-align: center;
   content: '\f10d';
   font-family: FontAwesome;
-  color: #fff;
+  color: var(--white);
   font-size: 18px;
-  line-height: 30px;
-  background: #92d4ff;
+  background: var(--blue);
   box-shadow: 0 2px 2px rgba(26, 26, 26, 0.14);
   font-weight: 900;
 }
@@ -127,20 +127,12 @@ blockquote:after {
   left: -15px;
   border: none;
   border-bottom: solid 8px transparent;
-  border-right: solid 15px #6eb3e0;
+  border-right: solid 15px var(--blue-2);
 }
 
 blockquote p {
   position: relative;
   padding: 0;
-  margin: 10px 0;
+  margin: 0.3rem 0;
   z-index: 3;
-  line-height: 1.7;
-}
-
-blockquote cite {
-  display: block;
-  text-align: right;
-  color: #888888;
-  font-size: 0.9em;
 }
