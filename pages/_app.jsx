@@ -4,6 +4,7 @@ import * as gtag from 'libs/gtag'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import styles from '@/src/styles/globals.css'
+import '@fortawesome/fontawesome-free/css/all.min.css'
 
 // Font Awesomeの設定
 import '@fortawesome/fontawesome-svg-core/styles.css'
