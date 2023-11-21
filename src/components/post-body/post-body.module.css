@@ -100,7 +100,6 @@
 /* 関連記事のレイアウト */
 .stack h5 {
   font-size: var(--body);
-  margin-top: var(--space-xs);
   background-color: var(--blue);
   color: var(--white);
   display: inline-block;
