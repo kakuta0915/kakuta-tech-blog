@@ -51,6 +51,12 @@
   margin-bottom: 2rem;
 }
 
+.stack hr {
+  color: var(--gray-2);
+  border: 3px solid;
+  margin: 0.25rem 0 0;
+}
+
 /* 引用のレイアウト */
 .stack > blockquote {
   position: relative;
