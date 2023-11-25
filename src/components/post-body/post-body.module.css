@@ -42,8 +42,12 @@
   margin-bottom: var(--space-md);
 }
 
+.stack ol {
+  padding-left: var(--space-xs);
+}
+
 .stack ul {
-  padding: revert;
+  padding-left: var(--space-xs);
   list-style: revert;
 }
 
