@@ -42,18 +42,23 @@
   margin-bottom: var(--space-md);
 }
 
-.stack ol {
+.stack ol,
+.stack ul {
   padding-left: var(--space-xs);
+  font-weight: 600;
 }
 
 .stack ul {
-  padding-left: var(--space-xs);
   list-style: revert;
+}
+
+.stack ol * li,
+.stack ul * li {
+  font-weight: normal;
 }
 
 .stack li {
   margin-bottom: 2rem;
-  font-weight: 600;
 }
 .stack li > p {
   font-weight: normal;
