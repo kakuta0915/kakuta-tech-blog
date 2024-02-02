@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, Element, animateScroll as scroll } from 'react-scroll';
+// import { Link, Element, animateScroll as scroll } from 'react-scroll';
 import { getAllPosts } from '@/libs/api'
 import Meta from '@/src/components/meta/meta'
 import Container from '@/src/components/container/container'
@@ -10,21 +10,21 @@ import TopAbout from '@/src/components/top-about/top-about'
 import Posts from '@/src/components/posts/posts'
 
 export default function Home({ posts }) {
-  const [isAnimated, setIsAnimated] = useState(false);
+  // const [isAnimated, setIsAnimated] = useState(false);
 
-    const handleScroll = () => {
-    const offset = window.innerHeight / 1.5; // スクロール位置からのオフセット
-    if (window.scrollY > offset && !isAnimated) {
-      setIsAnimated(true);
-    }
-  };
+  //   const handleScroll = () => {
+  //   const offset = window.innerHeight / 1.5; // スクロール位置からのオフセット
+  //   if (window.scrollY > offset && !isAnimated) {
+  //     setIsAnimated(true);
+  //   }
+  // };
 
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [isAnimated]);
+  // useEffect(() => {
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, [isAnimated]);
 
   return (
     <Container>
@@ -37,8 +37,8 @@ export default function Home({ posts }) {
       />
       <Hero title="TOP" subtitle="トップページ" />
 
-      <Element name="section1" className={styles.fadeInSection}>
-        {/* ここにフェードインしたいコンテンツを配置 */}
+      {/* <Element name="section1" className={styles.fadeInSection}>
+        ここにフェードインしたいコンテンツを配置 */}
           <figure style={{ padding: '1rem' }}>
           <Image
             src={eyecatch}
@@ -47,10 +47,10 @@ export default function Home({ posts }) {
             sizes="(min-width: 1152px) 1152px, 100vw"
             priority
             placeholder="blur"
-            className={isAnimated ? styles.fadeInImage : ''}
+            // className={isAnimated ? styles.fadeInImage : ''}
           />
         </figure>
-        </Element>
+        {/* </Element> */}
       <TopAbout />
 
       <Posts posts={posts} btn />
