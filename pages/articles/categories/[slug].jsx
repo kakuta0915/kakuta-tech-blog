@@ -2,7 +2,7 @@
 
 import { getAllCategories, getAllPostByCategory } from '@/libs/api'
 import Container from '@/src/components/container/container'
-import PostHeader from '@/src/components/post-header/post-header'
+import PostHeader from '@/src/components/layout/post-header/post-header'
 import Posts from '@/src/components/posts/posts'
 import Meta from '@/src/components/meta/meta'
 import CategoriesList from '@/src/components/categoires-list/categories-list'

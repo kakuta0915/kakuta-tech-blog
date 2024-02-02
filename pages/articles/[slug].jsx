@@ -2,7 +2,7 @@
 
 import { getPostBySlug, getAllSlugs, getAllCategories } from '@/libs/api'
 import Container from '@/src/components/container/container'
-import PostHeader from '@/src/components/post-header/post-header'
+import PostHeader from '@/src/components/layout/post-header/post-header'
 import Image from 'next/image'
 import {
   TwoColum,
