@@ -12,7 +12,7 @@ import {
 import ConvertBody from '@/src/components/convert/ConvertBody'
 import PostCategories from '@/src/components/post-categories/PostCategories'
 import { extractText } from '@/libs/extract-text'
-import Meta from '@/src/components/meta/Meta'
+import Meta from '@/src/components/elements/meta/Meta'
 import { prevNextPost } from '@/libs/prev-next-post'
 import Pagination from '@/src/components/elements/pagination/Pagination'
 import PostBody from '@/src/components/post-body/PostBody'

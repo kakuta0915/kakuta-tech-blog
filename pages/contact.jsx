@@ -1,6 +1,6 @@
 // contactページ
 
-import Meta from '@/src/components/meta/Meta'
+import Meta from '@/src/components/elements/meta/Meta'
 import Container from '@/src/components/layouts/container/Container'
 import Hero from '@/src/components/elements/hero/Hero'
 import Image from 'next/image'
