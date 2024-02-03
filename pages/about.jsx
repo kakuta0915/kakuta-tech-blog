@@ -1,9 +1,9 @@
 // aboutページ
 
-import Meta from '@/src/components/meta/meta'
-import Container from '@/src/components/container/container'
-import Profile from '@/src/components/profile/profile'
-import Hero from '@/src/components/hero/hero'
+import Meta from '@/src/components/meta/Meta'
+import Container from '@/src/components/layouts/container/Container'
+import Profile from '@/src/components/profile/Profile'
+import Hero from '@/src/components/hero/Hero'
 import Image from 'next/image'
 import eyecatch from 'images/about.jpg'
 

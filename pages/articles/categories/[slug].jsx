@@ -1,11 +1,11 @@
 // 取得したスラッグで生成されたカテゴリーページ (〇〇に関する記事)
 
 import { getAllCategories, getAllPostByCategory } from '@/libs/api'
-import Container from '@/src/components/container/container'
-import PostHeader from '@/src/components/layouts/post-header/post-header'
-import Posts from '@/src/components/posts/posts'
-import Meta from '@/src/components/meta/meta'
-import CategoriesList from '@/src/components/categoires-list/categories-list'
+import Container from '@/src/components/layouts/container/Container'
+import PostHeader from '@/src/components/layouts/post-header/PostHeader'
+import Posts from '@/src/components/posts/Posts'
+import Meta from '@/src/components/meta/Meta'
+import CategoriesList from '@/src/components/categoires-list/CategoriesList'
 
 export default function Category({ icon, name, posts, allCategories }) {
   return (

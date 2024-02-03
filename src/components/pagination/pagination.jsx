@@ -1,6 +1,6 @@
 // ページネーション機能の追加
 
-import styles from './pagination.module.css'
+import styles from './Pagination.module.css'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {

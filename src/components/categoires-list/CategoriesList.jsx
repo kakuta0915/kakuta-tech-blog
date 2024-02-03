@@ -1,6 +1,6 @@
 // すべてのカテゴリーをカテゴリー / スラッグページに追加
 import Link from 'next/link'
-import styles from './categories-list.module.css'
+import styles from './CategoriesList.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleDown } from '@fortawesome/free-solid-svg-icons'
 import { useState, useRef } from 'react'

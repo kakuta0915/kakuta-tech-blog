@@ -1,5 +1,5 @@
 import Logo from '../../logo/logo'
-import Nav from '../../nav/nav'
+import Nav from '../../nav/Nav'
 import styles from './header.module.css'
 
 export default function Header() {

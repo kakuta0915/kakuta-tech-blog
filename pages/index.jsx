@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 // import { Link, Element, animateScroll as scroll } from 'react-scroll';
 import { getAllPosts } from '@/libs/api'
-import Meta from '@/src/components/meta/meta'
-import Container from '@/src/components/container/container'
-import Hero from '@/src/components/hero/hero'
+import Meta from '@/src/components/meta/Meta'
+import Container from '@/src/components/layouts/container/Container'
+import Hero from '@/src/components/hero/Hero'
 import Image from 'next/image'
 import eyecatch from 'images/index.jpg'
 import TopAbout from '@/src/components/top-about/top-about'
-import Posts from '@/src/components/posts/posts'
+import Posts from '@/src/components/posts/Posts'
 
 export default function Home({ posts }) {
   // const [isAnimated, setIsAnimated] = useState(false);
