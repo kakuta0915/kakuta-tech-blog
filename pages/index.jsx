@@ -7,7 +7,7 @@ import Hero from '@/src/components/elements/hero/Hero'
 import Image from 'next/image'
 import eyecatch from 'images/index.jpg'
 import TopAbout from '@/src/components/top-about/top-about'
-import Posts from '@/src/components/posts/Posts'
+import Posts from '@/pages/articles/components/Posts/Posts'
 
 export default function Home({ posts }) {
   // const [isAnimated, setIsAnimated] = useState(false);

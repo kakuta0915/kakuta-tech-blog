@@ -2,7 +2,7 @@
 
 import { getPostBySlug, getAllSlugs, getAllCategories } from '@/libs/api'
 import Container from '@/src/components/layouts/container/Container'
-import PostHeader from '@/src/components/layouts/post-header/PostHeader'
+import PostHeader from '@/pages/articles/components/PostHeader/PostHeader'
 import Image from 'next/image'
 import {
   TwoColum,
@@ -10,12 +10,12 @@ import {
   TwoColumSidebar,
 } from '@/src/components/layouts/two-colum/TwoColum'
 import ConvertBody from '@/src/components/convert/ConvertBody'
-import PostCategories from '@/src/components/post-categories/PostCategories'
+import PostCategories from '@/pages/articles/components/PostCategories/PostCategories'
 import { extractText } from '@/libs/extract-text'
 import Meta from '@/src/components/elements/meta/Meta'
 import { prevNextPost } from '@/libs/prev-next-post'
 import Pagination from '@/src/components/elements/pagination/Pagination'
-import PostBody from '@/src/components/post-body/PostBody'
+import PostBody from '@/pages/articles/components/PostBody/PostBody'
 import { renderToc } from '@/libs/render-toc'
 import TableOfContents from '@/src/components/elements/table-of-contents/TableOfContents'
 import 'highlight.js/styles/night-owl.css'

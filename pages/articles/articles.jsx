@@ -6,7 +6,7 @@ import Hero from '@/src/components/elements/hero/Hero'
 import Image from 'next/image'
 import eyecatch from 'images/articles.jpg'
 import { getAllCategories, getAllPosts } from '@/libs/api'
-import Posts from '@/src/components/posts/Posts'
+import Posts from '@/pages/articles/components/Posts/Posts'
 import CategoriesList from '@/src/components/elements/categoires-list/CategoriesList'
 
 export default function Articles({ posts, allCategories }) {
