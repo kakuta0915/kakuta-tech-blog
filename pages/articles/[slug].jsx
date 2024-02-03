@@ -2,13 +2,13 @@
 
 import { getPostBySlug, getAllSlugs, getAllCategories } from '@/libs/api'
 import Container from '@/src/components/container/container'
-import PostHeader from '@/src/components/layout/post-header/post-header'
+import PostHeader from '@/src/components/layouts/post-header/post-header'
 import Image from 'next/image'
 import {
   TwoColum,
   TwoColumMain,
   TwoColumSidebar,
-} from '@/src/components/two-colum/two-colum'
+} from '@/src/components/layouts/two-colum/TwoColum'
 import ConvertBody from '@/src/components/convert/convert-body'
 import PostCategories from '@/src/components/post-categories/post-categories'
 import { extractText } from '@/libs/extract-text'

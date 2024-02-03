@@ -1,4 +1,4 @@
-import styles from './footer.module.css'
+import styles from './Footer.module.css'
 import Social from '../../social/social'
 import Logo from '../../logo/logo'
 
