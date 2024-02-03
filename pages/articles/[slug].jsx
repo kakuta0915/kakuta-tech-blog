@@ -10,14 +10,14 @@ import {
   TwoColumSidebar,
 } from '@/src/components/layouts/two-colum/TwoColum'
 import ConvertBody from '@/src/components/convert/ConvertBody'
-import PostCategories from '@/src/components/post-categories/post-categories'
+import PostCategories from '@/src/components/post-categories/PostCategories'
 import { extractText } from '@/libs/extract-text'
 import Meta from '@/src/components/meta/Meta'
 import { prevNextPost } from '@/libs/prev-next-post'
-import Pagination from '@/src/components/pagination/Pagination'
+import Pagination from '@/src/components/elements/pagination/Pagination'
 import PostBody from '@/src/components/post-body/PostBody'
 import { renderToc } from '@/libs/render-toc'
-import TableOfContents from '@/src/components/table-of-contents/TableOfContents'
+import TableOfContents from '@/src/components/elements/table-of-contents/TableOfContents'
 import 'highlight.js/styles/night-owl.css'
 
 export default function Post({

@@ -2,12 +2,12 @@
 
 import Meta from '@/src/components/meta/Meta'
 import Container from '@/src/components/layouts/container/Container'
-import Hero from '@/src/components/hero/Hero'
+import Hero from '@/src/components/elements/hero/Hero'
 import Image from 'next/image'
 import eyecatch from 'images/articles.jpg'
 import { getAllCategories, getAllPosts } from '@/libs/api'
 import Posts from '@/src/components/posts/Posts'
-import CategoriesList from '@/src/components/categoires-list/CategoriesList'
+import CategoriesList from '@/src/components/elements/categoires-list/CategoriesList'
 
 export default function Articles({ posts, allCategories }) {
   return (

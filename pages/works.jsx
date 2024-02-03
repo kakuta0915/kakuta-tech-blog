@@ -2,7 +2,7 @@
 
 import Meta from '@/src/components/meta/Meta'
 import Container from '@/src/components/layouts/container/Container'
-import Hero from '@/src/components/hero/Hero'
+import Hero from '@/src/components/elements/hero/Hero'
 import eyecatch from 'images/works.jpg'
 import Image from 'next/image'
 
