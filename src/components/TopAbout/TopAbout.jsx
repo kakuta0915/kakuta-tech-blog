@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import styles from './top-about.module.css'
+import styles from './TopAbout.module.css'
 import kakuta0915 from 'images/kakuta0915.jpg'
 import Link from 'next/link'
 

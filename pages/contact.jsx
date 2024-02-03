@@ -1,11 +1,11 @@
 // contactページ
 
-import Meta from '@/src/components/elements/meta/Meta'
-import Container from '@/src/components/layouts/container/Container'
-import Hero from '@/src/components/elements/hero/Hero'
+import Meta from '@/src/components/Elements/meta/Meta'
+import Container from '@/src/components/Layouts/Container/Container'
+import Hero from '@/src/components/Elements/hero/Hero'
 import Image from 'next/image'
 import eyecatch from 'images/contact.jpg'
-import Form from '@/src/components/form/form'
+import Form from '@/src/components/Form/form'
 
 export default function Contact() {
   return (
