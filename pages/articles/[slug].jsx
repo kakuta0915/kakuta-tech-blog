@@ -12,12 +12,12 @@ import {
 import ConvertBody from '@/pages/articles/components/Convert/ConvertBody'
 import PostCategories from '@/pages/articles/components/PostCategories/PostCategories'
 import { extractText } from '@/libs/extract-text'
-import Meta from '@/src/components/Elements/meta/Meta'
+import Meta from '@/src/components/Elements/Meta/Meta'
 import { prevNextPost } from '@/libs/prev-next-post'
-import Pagination from '@/src/components/Elements/pagination/Pagination'
+import Pagination from '@/src/components/Elements/Pagination/Pagination'
 import PostBody from '@/pages/articles/components/PostBody/PostBody'
 import { renderToc } from '@/libs/render-toc'
-import TableOfContents from '@/src/components/Elements/table-of-contents/TableOfContents'
+import TableOfContents from '@/src/components/Elements/TableOfContents/TableOfContents'
 import 'highlight.js/styles/night-owl.css'
 
 export default function Post({

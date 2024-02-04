@@ -4,8 +4,8 @@ import { getAllCategories, getAllPostByCategory } from '@/libs/api'
 import Container from '@/src/components/Layouts/Container/Container'
 import PostHeader from '@/pages/articles/components/PostHeader/PostHeader'
 import Posts from '@/pages/articles/components/Posts/Posts'
-import Meta from '@/src/components/Elements/meta/Meta'
-import CategoriesList from '@/src/components/Elements/categoires-list/CategoriesList'
+import Meta from '@/src/components/Elements/Meta/Meta'
+import CategoriesList from '@/src/components/Elements/CategoiresList/CategoriesList'
 
 export default function Category({ icon, name, posts, allCategories }) {
   return (

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 // import { Link, Element, animateScroll as scroll } from 'react-scroll';
 import { getAllPosts } from '@/libs/api'
-import Meta from '@/src/components/Elements/meta/Meta'
+import Meta from '@/src/components/Elements/Meta/Meta'
 import Container from '@/src/components/Layouts/Container/Container'
-import Hero from '@/src/components/Elements/hero/Hero'
+import Hero from '@/src/components/Elements/Hero/Hero'
 import Image from 'next/image'
 import eyecatch from 'images/index.jpg'
 import TopAbout from '@/src/components/TopAbout/TopAbout'

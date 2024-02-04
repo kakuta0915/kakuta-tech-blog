@@ -1,8 +1,8 @@
 // worksページ
 
-import Meta from '@/src/components/Elements/meta/Meta'
+import Meta from '@/src/components/Elements/Meta/Meta'
 import Container from '@/src/components/Layouts/Container/Container'
-import Hero from '@/src/components/Elements/hero/Hero'
+import Hero from '@/src/components/Elements/Hero/Hero'
 import eyecatch from 'images/works.jpg'
 import Image from 'next/image'
 
