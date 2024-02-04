@@ -1,11 +1,10 @@
-// contactページ
-
+// Contactページ
 import Meta from '@/src/components/elements/Meta/Meta'
 import Container from '@/src/components/layouts/Container/Container'
 import Hero from '@/src/components/elements/Hero/Hero'
 import Image from 'next/image'
 import eyecatch from 'images/contact.jpg'
-import Form from '@/src/components/Form/form'
+import styles from './page.module.css'
 
 export default function Contact() {
   return (
@@ -17,19 +16,52 @@ export default function Contact() {
         pageImgW={eyecatch.width}
         pageImgH={eyecatch.height}
       />
-      <Hero title="CONTACT" subtitle="お問い合わせ" />
-      <figure style={{ padding: '1rem' }}>
-        <Image
-          src={eyecatch}
-          alt=""
-          layout="responsive"
-          sizes="(min-width: 1152px) 1152px, 100vw"
-          priority
-          placeholder="blur"
-        />
-      </figure>
+      <div className={styles.contact}>
+        <Hero title="CONTACT" subtitle="お問い合わせ" />
+        <figure>
+          <Image
+            src={eyecatch}
+            alt=""
+            layout="responsive"
+            sizes="(min-width: 1152px) 1152px, 100vw"
+            priority
+            placeholder="blur"
+          />
+        </figure>
 
-      <Form />
+        <form className={styles.form}>
+          <ul>
+            <li>
+              <label for="username">
+                お名前
+                <span>【必須】</span>
+              </label>
+              <input type="text" id="username" name="username" />
+            </li>
+            <li>
+              <label for="company">会社名</label>
+              <input type="text" id="company" name="company" />
+            </li>
+            <li>
+              <label for="email">
+                メールアドレス
+                <span>【必須】</span>
+              </label>
+              <input type="email" id="email" name="email" />
+            </li>
+            <li>
+              <label for="detail">
+                お問い合わせ内容
+                <span>【必須】</span>
+              </label>
+              <textarea id="detail" name="detail"></textarea>
+            </li>
+          </ul>
+        </form>
+        <button className={styles.button} type="submit" value="送信">
+          送信する
+        </button>
+      </div>
     </Container>
   )
 }
