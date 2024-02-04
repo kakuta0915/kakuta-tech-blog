@@ -1,23 +1,23 @@
 // 記事ページ
 
 import { getPostBySlug, getAllSlugs, getAllCategories } from '@/libs/api'
-import Container from '@/src/components/Layouts/Container/Container'
+import Container from '@/src/components/layouts/Container/Container'
 import PostHeader from '@/pages/articles/components/PostHeader/PostHeader'
 import Image from 'next/image'
 import {
   TwoColum,
   TwoColumMain,
   TwoColumSidebar,
-} from '@/src/components/Layouts/TwoColum/TwoColum'
+} from '@/src/components/layouts/TwoColum/TwoColum'
 import ConvertBody from '@/pages/articles/components/Convert/ConvertBody'
 import PostCategories from '@/pages/articles/components/PostCategories/PostCategories'
 import { extractText } from '@/libs/extract-text'
-import Meta from '@/src/components/Elements/Meta/Meta'
+import Meta from '@/src/components/elements/Meta/Meta'
 import { prevNextPost } from '@/libs/prev-next-post'
-import Pagination from '@/src/components/Elements/Pagination/Pagination'
+import Pagination from '@/src/components/elements/Pagination/Pagination'
 import PostBody from '@/pages/articles/components/PostBody/PostBody'
 import { renderToc } from '@/libs/render-toc'
-import TableOfContents from '@/src/components/Elements/TableOfContents/TableOfContents'
+import TableOfContents from '@/src/components/elements/TableOfContents/TableOfContents'
 import 'highlight.js/styles/night-owl.css'
 
 export default function Post({

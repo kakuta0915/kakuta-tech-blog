@@ -36,27 +36,27 @@ export default function Nav() {
 
       <ul className={styles.headerNav}>
         <li>
-          <Link href="/" onClick={closeNav}>
+          <Link href="/home/page" onClick={closeNav}>
             TOP
           </Link>
         </li>
         <li>
-          <Link href="/about" onClick={closeNav}>
+          <Link href="/about/page" onClick={closeNav}>
             ABOUT
           </Link>
         </li>
         <li>
-          <Link href="/works" onClick={closeNav}>
+          <Link href="/works/page" onClick={closeNav}>
             WORKS
           </Link>
         </li>
         <li>
-          <Link href="/articles/articles" onClick={closeNav}>
+          <Link href="/articles/page" onClick={closeNav}>
             ARTICLES
           </Link>
         </li>
         <li>
-          <Link href="/contact" onClick={closeNav}>
+          <Link href="/contact/page" onClick={closeNav}>
             CONTACT
           </Link>
         </li>

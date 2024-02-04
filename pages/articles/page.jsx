@@ -1,13 +1,13 @@
 // 記事一覧ページ
 
-import Meta from '@/src/components/Elements/Meta/Meta'
-import Container from '@/src/components/Layouts/Container/Container'
-import Hero from '@/src/components/Elements/Hero/Hero'
+import Meta from '@/src/components/elements/Meta/Meta'
+import Container from '@/src/components/layouts/Container/Container'
+import Hero from '@/src/components/elements/Hero/Hero'
 import Image from 'next/image'
 import eyecatch from 'images/articles.jpg'
 import { getAllCategories, getAllPosts } from '@/libs/api'
 import Posts from '@/pages/articles/components/Posts/Posts'
-import CategoriesList from '@/src/components/Elements/CategoiresList/CategoriesList'
+import CategoriesList from '@/src/components/elements/CategoiresList/CategoriesList'
 
 export default function Articles({ posts, allCategories }) {
   return (
