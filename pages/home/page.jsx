@@ -6,8 +6,10 @@ import Container from '@/src/components/layouts/Container/Container'
 import Hero from '@/src/components/elements/Hero/Hero'
 import Image from 'next/image'
 import eyecatch from 'images/index.jpg'
-import TopAbout from '@/src/components/TopAbout/TopAbout'
 import Posts from '@/pages/articles/components/Posts/Posts'
+import Link from 'next/link';
+import styles from './page.module.css'
+import kakuta0915 from 'images/kakuta0915.jpg'
 
 export default function Home({ posts }) {
   // const [isAnimated, setIsAnimated] = useState(false);
@@ -39,20 +41,47 @@ export default function Home({ posts }) {
 
       {/* <Element name="section1" className={styles.fadeInSection}>
         ここにフェードインしたいコンテンツを配置 */}
-          <figure style={{ padding: '1rem' }}>
+      <figure style={{ padding: '1rem' }}>
+        <Image
+          src={eyecatch}
+          alt=""
+          layout="responsive"
+          sizes="(min-width: 1152px) 1152px, 100vw"
+          priority
+          placeholder="blur"
+          // className={isAnimated ? styles.fadeInImage : ''}
+        />
+      </figure>
+      {/* </Element> */}
+
+      <div className={styles.aboutContents}>
+        <h3>このサイトについて</h3>
+        <p>
+          Next.jsとmicroCMSと組み合わせてプログラミングの技術ブログを制作してみました。
+          <br />
+          学習時に躓いた箇所などを記事にしてまとめています。
+        </p>
+        <h3>プロフィール</h3>
+        <figure>
           <Image
-            src={eyecatch}
+            src={kakuta0915}
             alt=""
-            layout="responsive"
-            sizes="(min-width: 1152px) 1152px, 100vw"
+            objectFit="contain"
             priority
             placeholder="blur"
-            // className={isAnimated ? styles.fadeInImage : ''}
           />
         </figure>
-        {/* </Element> */}
-      <TopAbout />
-
+        <p>
+          エンジニア転職を目標に日々独学でプログラミング学習をしています。
+          <br />
+          日々の学習で躓いた箇所などを記事にしています。
+        </p>
+        <div className={styles.btnBox}>
+          <Link className={styles.btn} href="./about">
+            MORE
+          </Link>
+        </div>
+      </div>
       <Posts posts={posts} btn />
     </Container>
   )
