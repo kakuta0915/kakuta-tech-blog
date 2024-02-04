@@ -3,7 +3,7 @@
 import styles from './PostHeader.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock } from '@fortawesome/free-regular-svg-icons'
-import ConvertDate from '../../../../src/components/Convert/ConvertDate'
+import ConvertDate from '../Convert/ConvertDate'
 import Image from 'next/image'
 
 export default function PostHeader({ icon, title, subtitle, publish = '' }) {

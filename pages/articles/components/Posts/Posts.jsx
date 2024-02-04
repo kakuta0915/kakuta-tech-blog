@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTag } from '@fortawesome/free-solid-svg-icons'
-import ConvertDate from '../../../../src/components/Convert/ConvertDate'
+import ConvertDate from '../Convert/ConvertDate'
 
 export default function Posts({ posts, btn = false }) {
   return (

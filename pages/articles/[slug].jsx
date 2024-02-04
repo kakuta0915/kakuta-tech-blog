@@ -9,7 +9,7 @@ import {
   TwoColumMain,
   TwoColumSidebar,
 } from '@/src/components/Layouts/TwoColum/TwoColum'
-import ConvertBody from '@/src/components/Convert/ConvertBody'
+import ConvertBody from '@/pages/articles/components/Convert/ConvertBody'
 import PostCategories from '@/pages/articles/components/PostCategories/PostCategories'
 import { extractText } from '@/libs/extract-text'
 import Meta from '@/src/components/Elements/meta/Meta'
