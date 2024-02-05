@@ -1,6 +1,6 @@
 // aboutページ
 
-import Meta from '../../src/components/elements/meta/meta'
+import Meta from '../../src/components/elements/meta'
 import Container from '../../src/components/layouts/container'
 import Hero from '../../src/components/elements/hero'
 import Image from 'next/image'
