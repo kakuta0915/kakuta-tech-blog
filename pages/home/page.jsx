@@ -39,7 +39,6 @@ export default function Home({ posts }) {
           pageImgH={eyecatch.height}
         />
         <Hero title="TOP" subtitle="トップページ" />
-      </Container>
       {/* <Element name="section1" className={styles.fadeInSection}>
         ここにフェードインしたいコンテンツを配置 */}
         <Image
@@ -52,7 +51,6 @@ export default function Home({ posts }) {
           // className={isAnimated ? styles.fadeInImage : ''}
         />
       {/* </Element> */}
-      <Container>
         <div className={styles.aboutContents}>
           <h3>このサイトについて</h3>
           <p>
