@@ -1,4 +1,4 @@
-import Layout from '@/src/components/layout/layout'
+import Layout from '@/src/components/layouts/layout'
 import Script from 'next/script'
 import * as gtag from 'libs/gtag'
 import { useEffect } from 'react'
