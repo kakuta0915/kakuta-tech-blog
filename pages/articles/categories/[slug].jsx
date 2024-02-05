@@ -5,7 +5,7 @@ import Container from '@/src/components/layouts/container/Container'
 import PostHeader from '@/pages/articles/components/post-header/PostHeader'
 import Posts from '../components/posts/Posts'
 import Meta from '@/src/components/elements/meta/Meta'
-import CategoriesList from '@/src/components/elements/categoires-list/categories-list'
+import CategoriesList from '@/src/components/elements/categoires-list/CategoriesList'
 
 export default function Category({ icon, name, posts, allCategories }) {
   return (

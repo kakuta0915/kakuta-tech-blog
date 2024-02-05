@@ -8,7 +8,7 @@ import {
   TwoColum,
   TwoColumMain,
   TwoColumSidebar,
-} from '@/src/components/layouts/two-colum/two-colum'
+} from '@/src/components/layouts/two-colum/TwoColum'
 import ConvertBody from '@/pages/articles/components/convert/ConvertBody'
 import PostCategories from '@/pages/articles/components/post-categories/PostCategories'
 import { extractText } from '@/libs/extract-text'
@@ -17,7 +17,7 @@ import { prevNextPost } from '@/libs/prev-next-post'
 import Pagination from '@/src/components/elements/pagination/Pagination'
 import PostBody from '@/pages/articles/components/post-body/PostBody'
 import { renderToc } from '@/libs/render-toc'
-import TableOfContents from '@/src/components/elements/table-of-contents/table-of-contents'
+import TableOfContents from '@/src/components/elements/table-of-contents/TableOfContents'
 import 'highlight.js/styles/night-owl.css'
 
 export default function Post({
