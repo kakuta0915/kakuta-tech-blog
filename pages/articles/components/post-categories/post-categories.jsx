@@ -1,6 +1,6 @@
 // 記事に関連する特定のタグをリスト表示する機能
 
-import styles from './PostCategories.module.css'
+import styles from './post-categories.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
 

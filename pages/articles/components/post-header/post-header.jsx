@@ -1,6 +1,6 @@
 // 記事のヘッダー部分 (タイトル、サブタイトル、投稿日)
 
-import styles from './PostHeader.module.css'
+import styles from './post-header.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock } from '@fortawesome/free-regular-svg-icons'
 import ConvertDate from '../convert/convert-date'
