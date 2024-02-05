@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 // import { Link, Element, animateScroll as scroll } from 'react-scroll';
 import { getAllPosts } from '@/libs/api'
-import Meta from '@/src/components/elements/meta/Meta'
-import Container from '@/src/components/layouts/container/Container'
-import Hero from '@/src/components/elements/hero/Hero'
+import Meta from '@/src/components/elements/meta/meta'
+import Container from '@/src/components/layouts/container/container'
+import Hero from '@/src/components/elements/hero/hero'
 import Image from 'next/image'
 import eyecatch from 'images/index.jpg'
-import Posts from '@/pages/articles/components/posts/Posts'
+import Posts from '@/pages/articles/components/posts/posts'
 import Link from 'next/link';
 import styles from './page.module.css'
 import kakuta0915 from 'images/kakuta0915.jpg'
