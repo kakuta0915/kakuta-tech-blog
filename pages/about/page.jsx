@@ -1,5 +1,4 @@
 // aboutページ
-
 import Meta from '@/src/components/elements/meta/meta'
 import Container from '@/src/components/layouts/container/container'
 import Hero from '@/src/components/elements/hero/hero'
