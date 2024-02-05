@@ -1,0 +1,34 @@
+.flexContainer {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.main {
+  padding: var(--space-xxs);
+  background-color: var(--white);
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.sidebar {
+  margin-bottom: var(--space-xxs);
+}
+
+@media (min-width: 768px) {
+  .flexContainer {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .main {
+    width: 72%;
+  }
+
+  .sidebar {
+    margin: 0;
+    width: 25%;
+    position: sticky;
+    top: 20px;
+    align-self: flex-start;
+  }
+}

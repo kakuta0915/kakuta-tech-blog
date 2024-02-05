@@ -1,0 +1,22 @@
+.footerContainer {
+  text-align: center;
+  background-color: var(--blue);
+  padding: var(--space-lg);
+}
+.footerText {
+  color: var(--white);
+  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* デスクトップサイズ */
+@media (min-width: 768px) {
+  .footerText {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

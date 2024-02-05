@@ -1,0 +1,16 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-xxs);
+  margin: 0 auto;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
+  background-color: var(--white);
+}
+
+@media (min-width: 768px) {
+  .header {
+    margin-bottom: var(--space-xxs);
+    padding: 2rem 3rem;
+  }
+}
