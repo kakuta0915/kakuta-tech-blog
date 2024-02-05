@@ -1,4 +1,4 @@
-import styles from './Social.module.css'
+import styles from './social.module.css'
 import Link from 'next/link'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
