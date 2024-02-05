@@ -1,7 +1,7 @@
 // 記事ページ
 
 import { getPostBySlug, getAllSlugs, getAllCategories } from '@/libs/api'
-import Container from '../../src/components/layouts/container/container'
+import Container from '@/src/components/layouts/container/container'
 import PostHeader from '@/pages/articles/components/post-header/post-header'
 import Image from 'next/image'
 import {
@@ -12,7 +12,7 @@ import {
 import ConvertBody from '@/pages/articles/components/convert/convert-body'
 import PostCategories from '@/pages/articles/components/post-categories/post-categories'
 import { extractText } from '@/libs/extract-text'
-import Meta from '../../src/components/elements/meta/meta'
+import Meta from '@/src/components/elements/meta/meta'
 import { prevNextPost } from '@/libs/prev-next-post'
 import Pagination from '@/src/components/elements/pagination/pagination'
 import PostBody from '@/pages/articles/components/post-body/post-body'
