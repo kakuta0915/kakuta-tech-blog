@@ -1,12 +1,19 @@
 // ロゴコンポーネント
 
 import Link from 'next/link'
-import styles from './logo.module.css'
+import styles from './Logo.module.css'
+import Image from 'next/image'
+import logo from '@/images/logo.png'
 
-export default function Logo({ footerLogo = false }) {
+export default function Logo({ footerLink = false }) {
   return (
-    <Link href="/" className={footerLogo ? styles.footerLogo : styles.logo}>
-      KAKUTA TECH BLOG
+    <Link href="../home/page" className={footerLink ? styles.footerLink : styles.headerLink}>
+      <Image
+      className={styles.linkImage}
+        src={logo}
+        alt="Logo Image"
+        priority
+      />
     </Link>
   )
 }
