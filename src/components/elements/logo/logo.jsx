@@ -9,7 +9,7 @@ export default function Logo({ footerLink = false }) {
   return (
     <Link href="../home/page" className={footerLink ? styles.footerLink : styles.headerLink}>
       <Image
-      className={styles.linkImage}
+        className={styles.linkImage}
         src={logo}
         alt="Logo Image"
         priority

@@ -29,19 +29,19 @@ export default function Home({ posts }) {
   // }, [isAnimated]);
 
   return (
-    <Container>
-      <Meta
-        pageTitle="TOP"
-        pageDesc="プログラミング学習記録をまとめたサイト"
-        pageImg={eyecatch.src}
-        pageImgW={eyecatch.width}
-        pageImgH={eyecatch.height}
-      />
-      <Hero title="TOP" subtitle="トップページ" />
-
+    <>
+      <Container>
+        <Meta
+          pageTitle="TOP"
+          pageDesc="プログラミング学習記録をまとめたサイト"
+          pageImg={eyecatch.src}
+          pageImgW={eyecatch.width}
+          pageImgH={eyecatch.height}
+        />
+        <Hero title="TOP" subtitle="トップページ" />
+      </Container>
       {/* <Element name="section1" className={styles.fadeInSection}>
         ここにフェードインしたいコンテンツを配置 */}
-      <figure style={{ padding: '1rem' }}>
         <Image
           src={eyecatch}
           alt=""
@@ -51,39 +51,39 @@ export default function Home({ posts }) {
           placeholder="blur"
           // className={isAnimated ? styles.fadeInImage : ''}
         />
-      </figure>
       {/* </Element> */}
-
-      <div className={styles.aboutContents}>
-        <h3>このサイトについて</h3>
-        <p>
-          Next.jsとmicroCMSと組み合わせてプログラミングの技術ブログを制作してみました。
-          <br />
-          学習時に躓いた箇所などを記事にしてまとめています。
-        </p>
-        <h3>プロフィール</h3>
-        <figure>
-          <Image
-            src={kakuta0915}
-            alt=""
-            objectFit="contain"
-            priority
-            placeholder="blur"
-          />
-        </figure>
-        <p>
-          エンジニア転職を目標に日々独学でプログラミング学習をしています。
-          <br />
-          日々の学習で躓いた箇所などを記事にしています。
-        </p>
-        <div className={styles.btnBox}>
-          <Link className={styles.btn} href="./about">
-            MORE
-          </Link>
+      <Container>
+        <div className={styles.aboutContents}>
+          <h3>このサイトについて</h3>
+          <p>
+            Next.jsとmicroCMSと組み合わせてプログラミングの技術ブログを制作してみました。
+            <br />
+            学習時に躓いた箇所などを記事にしてまとめています。
+          </p>
+          <h3>プロフィール</h3>
+          <figure>
+            <Image
+              src={kakuta0915}
+              alt=""
+              objectFit="contain"
+              priority
+              placeholder="blur"
+            />
+          </figure>
+          <p>
+            エンジニア転職を目標に日々独学でプログラミング学習をしています。
+            <br />
+            日々の学習で躓いた箇所などを記事にしています。
+          </p>
+          <div className={styles.btnBox}>
+            <Link className={styles.btn} href="./about">
+              MORE
+            </Link>
+          </div>
         </div>
-      </div>
-      <Posts posts={posts} btn />
-    </Container>
+        <Posts posts={posts} btn />
+      </Container>
+    </>
   )
 }
 
