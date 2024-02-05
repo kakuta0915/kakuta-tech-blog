@@ -1,11 +1,11 @@
 // 記事一覧のコンポーネント
 
-import styles from './posts.module.css'
+import styles from './Posts.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTag } from '@fortawesome/free-solid-svg-icons'
-import ConvertDate from '../convert/convert-date'
+import ConvertDate from '../convert/ConvertDate'
 
 export default function Posts({ posts, btn = false }) {
   return (
