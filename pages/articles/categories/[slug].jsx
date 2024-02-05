@@ -3,7 +3,7 @@
 import { getAllCategories, getAllPostByCategory } from '@/libs/api'
 import Container from '@/src/components/layouts/container/container'
 import PostHeader from '@/pages/articles/components/post-header/post-header'
-import Posts from '@/pages/articles/components/posts/posts'
+import Posts from '../components/posts/Posts'
 import Meta from '@/src/components/elements/meta/meta'
 import CategoriesList from '@/src/components/elements/categoires-list/categories-list'
 
