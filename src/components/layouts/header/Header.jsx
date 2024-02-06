@@ -1,4 +1,4 @@
-import Logo from '../../elements/logo/Logo'
+import Logo from '../../elements/logo/logo'
 import Nav from '../../elements/nav/Nav'
 import styles from './Header.module.css'
 
