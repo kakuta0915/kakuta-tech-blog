@@ -6,7 +6,7 @@ import Link from 'next/link'
 export default function TopAbout() {
   return (
     <div className={styles.topContents}>
-      <h3>このサイトについて</h3>
+      <h3>このサイトについてa</h3>
       <p>
         Next.jsとmicroCMSと組み合わせてプログラミングの技術ブログを制作してみました。
         <br />
