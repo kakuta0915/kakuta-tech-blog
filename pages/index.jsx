@@ -1,6 +1,6 @@
 import { getAllPosts } from '@/libs/api'
 import Meta from '@/src/components/meta/meta'
-import Container from '@/src/components/container/container'
+import Container from '@/src/components/layouts/container/container'
 import Hero from '@/src/components/hero/hero'
 import Image from 'next/image'
 import eyecatch from 'images/index.jpg'
