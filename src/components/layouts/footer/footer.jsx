@@ -1,12 +1,13 @@
-import styles from './footer.module.css'
-import Social from '../../social/social'
-import Logo from '../../logo/logo'
+
+import styles from './Footer.module.css'
+import Social from '../../elements/social/Social'
+import Logo from '../../elements/logo/Logo'
 
 export default function Footer() {
   return (
     <footer className={styles.footerContainer}>
       <div className={styles.footerText}>
-        <Logo footerLogo />
+        <Logo footerLink />
         <Social />
       </div>
     </footer>
