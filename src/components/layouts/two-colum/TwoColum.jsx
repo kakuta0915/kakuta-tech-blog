@@ -1,5 +1,4 @@
 // 2段組みのレイアウト
-
 import styles from './TwoColum.module.css'
 
 export function TwoColum({ children }) {

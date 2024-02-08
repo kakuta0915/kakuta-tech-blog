@@ -1,6 +1,6 @@
-import Logo from '../../logo/logo'
-import Nav from '../../nav/nav'
-import styles from './header.module.css'
+import Logo from '../../elements/logo/Logo'
+import Nav from '../../elements/nav/Nav'
+import styles from './Header.module.css'
 
 export default function Header() {
   return (
