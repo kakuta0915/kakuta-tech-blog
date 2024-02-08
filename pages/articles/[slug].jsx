@@ -1,20 +1,20 @@
 // 記事ページ
 import { getPostBySlug, getAllSlugs, getAllCategories } from '@/libs/api'
 import Container from '@/src/components/layouts/container/Container'
-import PostHeader from '@/pages/articles/components/post-header/PostHeader'
+import PostHeader from '@/src/components/elements/post-header/PostHeader'
 import Image from 'next/image'
 import {
   TwoColum,
   TwoColumMain,
   TwoColumSidebar,
 } from '@/src/components/layouts/two-colum/TwoColum'
-import ConvertBody from '@/pages/articles/components/convert/ConvertBody'
-import PostCategories from '@/pages/articles/components/post-categories/PostCategories'
+import ConvertBody from '@/src/components/elements/convert/ConvertBody'
+import PostCategories from '@/src/components/elements/post-categories/PostCategories'
 import { extractText } from '@/libs/extract-text'
 import Meta from '@/src/components/elements/meta/Meta'
 import { prevNextPost } from '@/libs/prev-next-post'
 import Pagination from '@/src/components/elements/pagination/Pagination'
-import PostBody from '@/pages/articles/components/post-body/PostBody'
+import PostBody from '@/src/components/elements/post-body/PostBody'
 import { renderToc } from '@/libs/render-toc'
 import TableOfContents from '@/src/components/elements/table-of-contents/TableOfContents'
 import 'highlight.js/styles/night-owl.css'

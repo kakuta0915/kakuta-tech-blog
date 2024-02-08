@@ -1,8 +1,8 @@
 // 取得したスラッグで生成されたカテゴリーページ (〇〇に関する記事)
 import { getAllCategories, getAllPostByCategory } from '@/libs/api'
 import Container from '@/src/components/layouts/container/Container'
-import PostHeader from '../components/post-header/PostHeader'
-import Posts from '../components/posts/Posts'
+import PostHeader from '../../../src/components/elements/post-header/PostHeader'
+import Posts from '../../../src/components/elements/posts/Posts'
 import Meta from '@/src/components/elements/meta/Meta'
 import CategoriesList from '@/src/components/elements/categoires-list/CategoriesList'
 
