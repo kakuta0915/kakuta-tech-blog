@@ -4,6 +4,7 @@ import Container from '@/src/components/layouts/container/Container'
 import Hero from '@/src/components/elements/hero/Hero'
 import eyecatch from 'images/works.jpg'
 import Image from 'next/image'
+import styles from '@/src/styles/works.module.css'
 
 export default function Works() {
   return (

@@ -4,7 +4,7 @@ import Container from '@/src/components/layouts/container/Container'
 import Hero from '@/src/components/elements/hero/Hero'
 import Image from 'next/image'
 import eyecatch from 'images/contact.jpg'
-import styles from './page.module.css'
+import styles from '@/src/styles/contact.module.css'
 
 export default function Contact() {
   return (
