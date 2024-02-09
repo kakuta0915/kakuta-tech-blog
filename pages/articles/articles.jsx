@@ -6,12 +6,11 @@ import CategoriesList from '@/src/components/elements/categoires-list/Categories
 import Image from 'next/image'
 import eyecatch from 'images/articles.jpg'
 import { getAllCategories, getAllPosts } from '@/libs/api'
-import Container from '../../src/components/layouts/container/Container'
 
 export default function Articles({ posts, allCategories }) {
   return (
     <>
-      <Container>
+      <>
         <Meta
           pageTitle="ARTICLES"
           pageDesc="プログラミング学習に関する記事をまとめたページです"
@@ -32,7 +31,7 @@ export default function Articles({ posts, allCategories }) {
         </figure>
         <Posts posts={posts} />
         <CategoriesList allCategories={allCategories} />
-      </Container>
+      </>
     </>
   )
 }

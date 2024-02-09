@@ -17,7 +17,6 @@ import PostBody from '@/src/components/elements/post-body/PostBody'
 import { renderToc } from '@/libs/render-toc'
 import TableOfContents from '@/src/components/elements/table-of-contents/TableOfContents'
 import 'highlight.js/styles/night-owl.css'
-import Container from '@/src/components/layouts/container/Container'
 
 export default function Post({
   icon,
@@ -34,7 +33,7 @@ export default function Post({
   const toc = renderToc(content)
 
   return (
-    <Container>
+    <>
       <Meta
         pageTitle={title}
         pageDesc={description}
@@ -82,7 +81,7 @@ export default function Post({
           nextUrl={`/articles/${nextPost.slug}`}
         />
       </article>
-    </Container>
+    </>
   )
 }
 

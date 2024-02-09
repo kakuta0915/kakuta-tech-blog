@@ -4,11 +4,10 @@ import Hero from '@/src/components/elements/hero/Hero'
 import Image from 'next/image'
 import eyecatch from 'images/contact.jpg'
 import styles from '@/src/styles/contact.module.css'
-import Container from '../src/components/layouts/container/Container'
 
 export default function Contact() {
   return (
-    <Container>
+    <>
       <Meta
         pageTitle="CONTACT"
         pageDesc="お問い合わせはこちらからお願いいたします"
@@ -62,6 +61,6 @@ export default function Contact() {
           送信する
         </button>
       </div>
-    </Container>
+    </>
   )
 }

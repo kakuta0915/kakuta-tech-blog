@@ -4,11 +4,10 @@ import Hero from '@/src/components/elements/hero/Hero'
 import Image from 'next/image'
 import eyecatch from 'images/about.jpg'
 import styles from '@/src/styles/about.module.css'
-import Container from '../src/components/layouts/container/Container'
 
 export default function About() {
   return (
-      <Container>
+      <>
         <Meta
           pageTitle="ABOUT"
           pageDesc="このサイトについての説明とプロフィールのページです"
@@ -86,6 +85,6 @@ export default function About() {
           <h4>趣味</h4>
           <p>プログラミング、アニメ鑑賞、筋力トレーニング、絵描き、読書、散歩。</p>
         </div>
-      </Container>
+      </>
   )
 }
