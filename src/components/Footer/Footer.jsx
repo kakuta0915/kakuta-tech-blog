@@ -1,7 +1,7 @@
 
 import styles from './Footer.module.css'
-import Social from '../../elements/social/Social'
-import Logo from '../../elements/logo/Logo'
+import Social from '../Social/Social'
+import Logo from '../Logo/Logo'
 
 export default function Footer() {
   return (

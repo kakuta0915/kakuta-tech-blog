@@ -1,22 +1,23 @@
 // 記事ページ
 import { getPostBySlug, getAllSlugs, getAllCategories } from '@/libs/api'
-import PostHeader from '@/src/components/elements/post-header/PostHeader'
+import PostHeader from '@/src/components/PostHeader/PostHeader'
 import Image from 'next/image'
 import {
   TwoColum,
   TwoColumMain,
   TwoColumSidebar,
-} from '@/src/components/layouts/two-colum/TwoColum'
-import ConvertBody from '@/src/components/elements/convert/ConvertBody'
-import PostCategories from '@/src/components/elements/post-categories/PostCategories'
+} from '@/src/components/TwoColum/TwoColum'
+import ConvertBody from '@/src/components/Convert/ConvertBody'
+import PostCategories from '@/src/components/PostCategories/PostCategories'
 import { extractText } from '@/libs/extract-text'
-import Meta from '@/src/components/elements/meta/Meta'
+import Meta from '@/src/components/Meta/Meta'
 import { prevNextPost } from '@/libs/prev-next-post'
-import Pagination from '@/src/components/elements/pagination/Pagination'
-import PostBody from '@/src/components/elements/post-body/PostBody'
+import Pagination from '@/src/components/Pagination/Pagination'
+import PostBody from '@/src/components/PostBody/PostBody'
 import { renderToc } from '@/libs/render-toc'
-import TableOfContents from '@/src/components/elements/table-of-contents/TableOfContents'
+import TableOfContents from '@/src/components/TableOfContents/TableOfContents'
 import 'highlight.js/styles/night-owl.css'
+import Container from '@/src/components/Container/Container'
 
 export default function Post({
   icon,
@@ -33,7 +34,7 @@ export default function Post({
   const toc = renderToc(content)
 
   return (
-    <>
+    <Container>
       <Meta
         pageTitle={title}
         pageDesc={description}
@@ -81,7 +82,7 @@ export default function Post({
           nextUrl={`/articles/${nextPost.slug}`}
         />
       </article>
-    </>
+    </Container>
   )
 }
 

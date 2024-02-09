@@ -1,13 +1,14 @@
 // 取得したスラッグで生成されたカテゴリーページ (〇〇に関する記事)
 import { getAllCategories, getAllPostByCategory } from '@/libs/api'
-import PostHeader from '../../../src/components/elements/post-header/PostHeader'
-import Posts from '../../../src/components/elements/posts/Posts'
-import Meta from '@/src/components/elements/meta/Meta'
-import CategoriesList from '@/src/components/elements/categoires-list/CategoriesList'
+import PostHeader from '@/src/components/PostHeader/PostHeader'
+import Posts from '@/src/components/Posts/Posts'
+import Meta from '@/src/components/Meta/Meta'
+import CategoriesList from '@/src/components/CategoiresList/CategoriesList'
+import Container from '@/src/components/Container/Container'
 
 export default function Category({ icon, name, posts, allCategories }) {
   return (
-    <>
+    <Container>
       <Meta pageTitle={name} pageDesc={`${name}に関する記事`} />
       <PostHeader
         icon={icon}
@@ -16,7 +17,7 @@ export default function Category({ icon, name, posts, allCategories }) {
       />
       <Posts posts={posts} />
       <CategoriesList allCategories={allCategories} />
-    </>
+    </Container>
   )
 }
 

@@ -1,10 +1,10 @@
 // worksページ
-import Meta from '@/src/components/elements/meta/Meta'
-import Container from '@/src/components/layouts/container/Container'
-import Hero from '@/src/components/elements/hero/Hero'
+import Meta from '@/src/components/Meta/Meta'
+import Hero from '@/src/components/Hero/Hero'
 import eyecatch from 'images/works.jpg'
 import Image from 'next/image'
 import styles from '@/src/styles/works.module.css'
+import Container from '@/src/components/Container/Container'
 
 export default function Works() {
   return (

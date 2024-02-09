@@ -1,16 +1,17 @@
 // 記事一覧ページ
-import Meta from '@/src/components/elements/meta/Meta'
-import Hero from '@/src/components/elements/hero/Hero'
-import Posts from '@/src/components/elements/posts/Posts'
-import CategoriesList from '@/src/components/elements/categoires-list/CategoriesList'
+import Meta from '@/src/components/Meta/Meta'
+import Hero from '@/src/components/Hero/Hero'
+import Posts from '@/src/components/Posts/Posts'
+import CategoriesList from '@/src/components/CategoiresList/CategoriesList'
 import Image from 'next/image'
 import eyecatch from 'images/articles.jpg'
 import { getAllCategories, getAllPosts } from '@/libs/api'
+import Container from '@/src/components/Container/Container'
 
 export default function Articles({ posts, allCategories }) {
   return (
     <>
-      <>
+      <Container>
         <Meta
           pageTitle="ARTICLES"
           pageDesc="プログラミング学習に関する記事をまとめたページです"
@@ -31,7 +32,7 @@ export default function Articles({ posts, allCategories }) {
         </figure>
         <Posts posts={posts} />
         <CategoriesList allCategories={allCategories} />
-      </>
+      </Container>
     </>
   )
 }
