@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react';
-// import { Link, Element, animateScroll as scroll } from 'react-scroll';
 import { getAllPosts } from '@/libs/api'
 import Meta from '@/src/components/Meta/Meta'
 import Hero from '@/src/components/Hero/Hero'
@@ -7,27 +5,11 @@ import Image from 'next/image'
 import eyecatch from 'images/index.jpg'
 import Posts from '@/src/components/Posts/Posts'
 import Link from 'next/link';
-import styles from '@/src/styles/home.module.css'
+import styles from '@/src/styles/index.module.css'
 import kakuta0915 from 'images/kakuta0915.jpg'
 import Container from '@/src/components/Container/Container';
 
 export default function Home({ posts }) {
-  // const [isAnimated, setIsAnimated] = useState(false);
-
-  //   const handleScroll = () => {
-  //   const offset = window.innerHeight / 1.5; // スクロール位置からのオフセット
-  //   if (window.scrollY > offset && !isAnimated) {
-  //     setIsAnimated(true);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   window.addEventListener('scroll', handleScroll);
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //   };
-  // }, [isAnimated]);
-
   return (
     <>
       <Container>
@@ -39,8 +21,6 @@ export default function Home({ posts }) {
           pageImgH={eyecatch.height}
         />
         <Hero title="TOP" subtitle="トップページ" />
-      {/* <Element name="section1" className={styles.fadeInSection}>
-        ここにフェードインしたいコンテンツを配置 */}
         <Image
           src={eyecatch}
           alt=""
@@ -48,9 +28,7 @@ export default function Home({ posts }) {
           sizes="(min-width: 1152px) 1152px, 100vw"
           priority
           placeholder="blur"
-          // className={isAnimated ? styles.fadeInImage : ''}
         />
-      {/* </Element> */}
         <div className={styles.aboutContents}>
           <h3>このサイトについて</h3>
           <p>
