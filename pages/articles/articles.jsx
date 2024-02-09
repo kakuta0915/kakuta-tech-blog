@@ -6,7 +6,7 @@ import CategoriesList from '@/src/components/elements/categoires-list/Categories
 import Image from 'next/image'
 import eyecatch from 'images/articles.jpg'
 import { getAllCategories, getAllPosts } from '@/libs/api'
-import Container from '@/src/components/layouts/container/Container'
+import Container from '../../src/components/layouts/container/Container'
 
 export default function Articles({ posts, allCategories }) {
   return (
