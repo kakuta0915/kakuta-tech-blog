@@ -15,9 +15,9 @@
 }
 
 .profile > h4 {
-  margin: 1rem;
+  padding: var(--space-xxs);
 }
 
 .profile > p {
-  margin: 0 var(--space-xs) var(--space-md);
+  margin: 0 var(--space-xs) var(--space-xs);
 }
