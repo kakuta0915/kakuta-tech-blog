@@ -1,6 +1,5 @@
 // 記事ページ
 import { getPostBySlug, getAllSlugs, getAllCategories } from '@/libs/api'
-import Container from '@/src/components/layouts/container/Container'
 import PostHeader from '@/src/components/elements/post-header/PostHeader'
 import Image from 'next/image'
 import {
@@ -18,6 +17,7 @@ import PostBody from '@/src/components/elements/post-body/PostBody'
 import { renderToc } from '@/libs/render-toc'
 import TableOfContents from '@/src/components/elements/table-of-contents/TableOfContents'
 import 'highlight.js/styles/night-owl.css'
+import Container from '@/src/components/layouts/container/Container'
 
 export default function Post({
   icon,
