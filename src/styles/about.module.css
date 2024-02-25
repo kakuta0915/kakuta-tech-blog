@@ -28,9 +28,9 @@
   display: inline-block;
   color: var(--white);
   font-size: var(--body);
-  margin: calc(var(--space-xxs) * 0.5);
+  margin: calc(var(--space-xxs) * 0.3);
   padding: calc(var(--space-xxs) * 0.5);
-  border-radius: 5px;
+  border-radius: 7px;
   border: 2px solid var(--white);
   background-color: var(--blue-2);
   transition: background-color 0.5s ease,  border 0.5s ease;
