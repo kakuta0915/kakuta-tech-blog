@@ -3,6 +3,7 @@ import Meta from '@/src/components/Meta/Meta'
 import Hero from '@/src/components/Hero/Hero'
 import Image from 'next/image'
 import eyecatch from 'images/about.jpg'
+import kakuta0915 from 'images/kakuta0915.png'
 import styles from '@/src/styles/about.module.css'
 import Container from '@/src/components/Container/Container'
 
@@ -46,6 +47,25 @@ export default function About() {
           </p>
 
           <h3>プロフィール</h3>
+          <figure>
+            <Image
+              src={kakuta0915}
+              alt=""
+              objectFit="contain"
+              priority
+              placeholder="blur"
+            />
+          </figure>
+          <div className={styles.profileIcon}>
+            <a href="https://github.com/kakuta0915">Git Hub</a>
+            <a href="https://twitter.com/_kakuta0915_">X</a>
+            <a href="https://qiita.com/kakuta0915">Qiita</a>
+            <a href="https://zenn.dev/kakuta0915">Zenn</a>
+            <a href="">Note</a>
+          </div>
+
+          <h4>名前</h4>
+          <p>KAKUTAです。<a className={styles.profileName} href="https://twitter.com/_kakuta0915_" target="_blank" rel="noreferrer">(@_kakuta0915_)</a> </p>
           <p>
             エンジニア転職を目指し、自主的にプログラミングを学習しています。日々の学びや経験を通じて、技術力の向上と実践的なスキルの構築に注力しています。これまでの学習過程やスキルセットについて、詳しくご紹介いたします。
           </p>
@@ -66,7 +86,7 @@ export default function About() {
             こうしてプログラミングが趣味から仕事に転じる夢が芽生え、その道を進むことを決断しました。
           </p>
 
-          <h4>どんなエンジニアになりたい?</h4>
+          <h4>どんなエンジニアになりたいか</h4>
           <p>
             私はこれまで5年間、介護士として病院や介護施設での現場経験を積んできました。この経験を活かし、将来的には医療・介護業界において専門的なITエンジニアとして貢献できる存在になりたいと思っています。
             <br />
