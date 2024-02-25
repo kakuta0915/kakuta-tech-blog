@@ -7,7 +7,7 @@ import logo from '@/images/logo.png'
 
 export default function Logo({ footerLink = false }) {
   return (
-    <Link href="../../home" className={footerLink ? styles.footerLink : styles.headerLink}>
+    <Link href="/" className={footerLink ? styles.footerLink : styles.headerLink}>
       <Image
         className={styles.linkImage}
         src={logo}
