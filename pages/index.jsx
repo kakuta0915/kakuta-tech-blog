@@ -6,7 +6,7 @@ import eyecatch from 'images/index.jpg'
 import Posts from '@/src/components/Posts/Posts'
 import Link from 'next/link';
 import styles from '@/src/styles/index.module.css'
-import kakuta0915 from 'images/kakuta0915.jpg'
+import kakuta0915 from 'images/kakuta0915.png'
 import Container from '@/src/components/Container/Container';
 
 export default function Home({ posts }) {
