@@ -61,7 +61,6 @@ export default function About() {
             <a href="https://twitter.com/_kakuta0915_">X</a>
             <a href="https://qiita.com/kakuta0915">Qiita</a>
             <a href="https://zenn.dev/kakuta0915">Zenn</a>
-            <a href="">Note</a>
           </div>
 
           <h4>名前</h4>
