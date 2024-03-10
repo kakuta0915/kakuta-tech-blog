@@ -28,7 +28,6 @@ export default function Works() {
             placeholder="blur"
           />
         </figure>
-        aaa
       </Container>
     </>
   )
