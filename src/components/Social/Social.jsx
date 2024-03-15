@@ -9,7 +9,7 @@ export default function Social() {
     <ul className={styles.socialList}>
       <li>
         <Link
-          href="https://twitter.com/_takeru0915_"
+          href="https://twitter.com/_kakuta0915_"
           target="_blank"
           rel="noopener noreferrer"
         >
