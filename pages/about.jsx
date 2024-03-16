@@ -96,7 +96,7 @@ export default function About() {
 
           <h4>技術スタック</h4>
           <p>
-            HTML5 / CSS3 / JavaScript (ES2020) / Sass / TypeScript / Node.js / jQuery / React / Next.js  / Git / GitHub / Gulp / microCMS / Linux / Firebase / Docker / ESLint / Prettier
+            HTML5 / CSS3 / JavaScript (ES2020) / Sass / TypeScript / Node.js / jQuery / React / Next.js  / Git / GitHub / Gulp / microCMS / Linux / Firebase / Docker / ESLint / Prettier / Vercel
           </p>
 
           <h4>これから学びたい技術</h4>
