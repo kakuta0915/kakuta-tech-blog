@@ -5,7 +5,7 @@ import Posts from '@/src/components/Posts/Posts'
 import CategoriesList from '@/src/components/CategoiresList/CategoriesList'
 import Image from 'next/image'
 import eyecatch from 'images/articles.jpg'
-import { getAllCategories, getAllPosts } from '@/libs/api'
+import { getAllArticles, getAllCategories } from '@/libs/api'
 import Container from '@/src/components/Container/Container'
 
 export default function Articles({ posts, allCategories }) {
@@ -38,7 +38,7 @@ export default function Articles({ posts, allCategories }) {
 }
 
 export async function getStaticProps() {
-  const posts = await getAllPosts()
+  const posts = await getAllArticles()
   const allCategories = await getAllCategories()
 
   return {

@@ -1,4 +1,4 @@
-import { getAllPosts } from '@/libs/api'
+import { getAllArticles } from '@/libs/api'
 import Meta from '@/src/components/Meta/Meta'
 import Hero from '@/src/components/Hero/Hero'
 import Image from 'next/image'
@@ -57,14 +57,14 @@ export default function Home({ posts }) {
             </Link>
           </div>
         </div>
-        <Posts posts={posts} btn />
+        <Posts posts={posts} maxPosts={6} btn />
       </Container>
     </>
   )
 }
 
 export async function getStaticProps() {
-  const posts = await getAllPosts(6)
+  const posts = await getAllArticles()
 
   return {
     props: {
