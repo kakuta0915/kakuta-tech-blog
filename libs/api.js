@@ -125,7 +125,6 @@ export async function getAllArticles(maxArticles = Infinity) {
   let allArticles = [...qiitaArticles, ...microCMSArticles]
   allArticles.sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate))
 
-  // 最大取得件数が指定されている場合、それに応じて記事をフィルタリング
   if (maxArticles !== Infinity) {
     allArticles = allArticles.slice(0, maxArticles)
   }
