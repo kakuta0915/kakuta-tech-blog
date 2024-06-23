@@ -2,8 +2,8 @@ import { createClient } from 'microcms-js-sdk'
 import axios from 'axios'
 
 export const client = createClient({
-  serviceDomain: process.env.SERVICE_DOMAIN,
-  apiKey: process.env.API_KEY,
+  serviceDomain: process.env.NEXT_PUBLIC_SERVICE_DOMAIN,
+  apiKey: process.env.NEXT_PUBLIC_API_KEY,
 })
 
 // 記事ページに必要なデータを取得する (指定した１つのslugの記事データを返す)
