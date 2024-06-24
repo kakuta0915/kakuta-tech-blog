@@ -2,8 +2,8 @@ import { createClient } from 'microcms-js-sdk'
 import axios from 'axios'
 
 export const client = createClient({
-  serviceDomain: process.env.NEXT_PUBLIC_SERVICE_DOMAIN,
-  apiKey: process.env.NEXT_PUBLIC_API_KEY,
+  serviceDomain: process.env.SERVICE_DOMAIN,
+  apiKey: process.env.API_KEY,
 })
 
 // 記事ページに必要なデータを取得する (指定した１つのslugの記事データを返す)
@@ -95,7 +95,7 @@ export async function getAllQiitaArticles() {
   try {
     const response = await axios.get(QIITA_API_URL, {
       headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_QIITA_API_TOKEN}`,
+        Authorization: `Bearer ${process.env.QIITA_API_TOKEN}`,
       },
       params: {
         per_page: 100,
