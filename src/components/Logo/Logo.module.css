@@ -1,5 +1,5 @@
 .headerLink {
-  width: 50%;
+  width: 60%;
 }
 
 .linkImage {
@@ -12,14 +12,13 @@
   width: 100%;
 }
 
-
 /* デスクトップサイズ */
 @media (min-width: 768px) {
-.headerLink {
-  width: 25%;
-}
+  .headerLink {
+    width: 32%;
+  }
 
-.footerLink{
-  width: 50%;
-}
+  .footerLink {
+    width: 50%;
+  }
 }
