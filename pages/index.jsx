@@ -2,7 +2,7 @@ import { getAllArticles } from '@/libs/api'
 import Meta from '@/src/components/Meta/Meta'
 import Hero from '@/src/components/Hero/Hero'
 import Image from 'next/image'
-import eyecatch from 'images/index.jpg'
+import eyecatch from '/images/index.jpg'
 import Posts from '@/src/components/Posts/Posts'
 import Link from 'next/link'
 import styles from '@/src/styles/index.module.css'
@@ -12,23 +12,20 @@ import Container from '@/src/components/Container/Container'
 export default function Home({ posts }) {
   return (
     <>
+      <Meta
+        pageTitle="TOP"
+        pageDesc="プログラミング学習記録をまとめたサイト"
+        pageImg={eyecatch.src}
+        pageImgW={eyecatch.width}
+        pageImgH={eyecatch.height}
+      />
+      <Hero
+        title="KAKUTA"
+        title2="TECH BLOG"
+        description="このサイトでは、Next.jsとmicroCMSを組み合わせ、プログラミングの技術ブログを制作しました。 開発過程で学習時に躓いた箇所や解決策について、詳細な記事をまとめています。"
+        imageSrc="./images/index.jpg"
+      />
       <Container>
-        <Meta
-          pageTitle="TOP"
-          pageDesc="プログラミング学習記録をまとめたサイト"
-          pageImg={eyecatch.src}
-          pageImgW={eyecatch.width}
-          pageImgH={eyecatch.height}
-        />
-        <Hero title="TOP" subtitle="トップページ" />
-        <Image
-          src={eyecatch}
-          alt=""
-          layout="responsive"
-          sizes="(min-width: 1152px) 1152px, 100vw"
-          priority
-          placeholder="blur"
-        />
         <div className={styles.aboutContents}>
           <h3>このサイトについて</h3>
           <p>
