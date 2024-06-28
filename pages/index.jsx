@@ -14,7 +14,7 @@ export default function Home({ posts }) {
     <>
       <Meta
         pageTitle="TOP"
-        pageDesc="プログラミング学習記録をまとめたサイト"
+        pageDesc="プログラミン  グ学習記録をまとめたサイト"
         pageImg={eyecatch.src}
         pageImgW={eyecatch.width}
         pageImgH={eyecatch.height}
@@ -24,6 +24,7 @@ export default function Home({ posts }) {
         title2="TECH BLOG"
         description="このサイトでは、Next.jsとmicroCMSを組み合わせ、プログラミングの技術ブログを制作しました。 開発過程で学習時に躓いた箇所や解決策について、詳細な記事をまとめています。"
         imageSrc="./images/index.jpg"
+        contact={true}
       />
       <Container>
         <div className={styles.aboutContents}>
