@@ -10,7 +10,6 @@
 
 @media (min-width: 768px) {
   .header {
-    margin-bottom: var(--space-xxs);
-    padding: 2rem 3rem;
+    padding: 0 var(--space-sm);
   }
 }
