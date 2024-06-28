@@ -1,24 +1,23 @@
-.headerLink {
+.headerLogo {
   width: 60%;
 }
 
 .linkImage {
   width: 100%;
   height: 100%;
-  border-radius: 10px;
 }
 
-.footerLink {
+.footerLogo {
   width: 100%;
 }
 
 /* デスクトップサイズ */
 @media (min-width: 768px) {
-  .headerLink {
+  .headerLogo {
     width: 32%;
   }
 
-  .footerLink {
+  .footerLogo {
     width: 50%;
   }
 }
