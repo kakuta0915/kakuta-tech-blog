@@ -8,6 +8,7 @@ import Posts from '@/src/components/Posts/Posts'
 import eyecatch from '/images/index.jpg'
 import kakuta0915 from 'images/kakuta0915.png'
 import styles from '@/src/styles/index.module.css'
+import Social from '@/src/components/Social/Social'
 
 export default function Home({ posts }) {
   return (
@@ -28,27 +29,19 @@ export default function Home({ posts }) {
       />
       <Container>
         <div className={styles.aboutContents}>
-          <h3>このサイトについて</h3>
+          <h2>About Me</h2>
           <p>
-            Next.jsとmicroCMSと組み合わせてプログラミングの技術ブログを制作してみました。
-            <br />
-            学習時に躓いた箇所などを記事にしてまとめています。
+            エンジニア転職を目指し、自主的にプログラミングを学習しています。日々の学びや経験を通じて、技術力の向上と実践的なスキルの構築に注力しています。これまでの学習過程やスキルセットについて、詳しくご紹介いたします。
           </p>
-          <h3>プロフィール</h3>
-          <figure>
-            <Image
-              src={kakuta0915}
-              alt=""
-              objectFit="contain"
-              priority
-              placeholder="blur"
-            />
-          </figure>
-          <p>
-            エンジニア転職を目標に日々独学でプログラミング学習をしています。
-            <br />
-            日々の学習で躓いた箇所などを記事にしています。
-          </p>
+          <Image
+            className={styles.profileIcon}
+            src={kakuta0915}
+            alt=""
+            objectFit="contain"
+            priority
+            placeholder="blur"
+          />
+          <Social />
           <div className={styles.btnBox}>
             <Link className={styles.btn} href="./about">
               MORE
