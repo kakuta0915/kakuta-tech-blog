@@ -1,9 +1,33 @@
 .socialList {
   display: flex;
+  justify-content: center;
   gap: 1rem;
-  font-size: calc(var(--heading1) * 0.8);
 }
 
-.socialList > li {
-  padding: calc(var(--space-xs) * 0.5);
+.link {
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.icon {
+  border: 1px solid var(--gray-2);
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+}
+
+@media (min-width: 768px) {
+  .socialList {
+    gap: 1.5rem;
+  }
+
+  .icon {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  .link:hover {
+    transform: scale(1.1);
+  }
 }

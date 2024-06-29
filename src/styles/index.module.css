@@ -4,32 +4,26 @@
   margin: var(--space-md) var(--space-xxs);
 }
 
-.aboutContents > h3 {
+.aboutContents > h2 {
+  font-size: clamp(2rem, 1.636rem + 1.82vw, 3rem);
   margin-bottom: var(--space-xs);
-}
-
-.aboutContents h3 + * {
-  margin-bottom: var(--space-sm);
 }
 
 .aboutContents > p {
   padding-bottom: var(--space-xs);
 }
 
-.aboutContents figure {
-  margin-bottom: var(--space-sm);
-}
-
-.aboutContents img {
+.aboutContents .profileIcon {
   display: inline-block;
   border-radius: 50%;
   width: 30%;
   height: 30%;
   object-fit: cover;
+  margin: var(--space-md) auto var(--space-sm);
 }
 
 .btnBox {
-  padding: var(--space-sm) 0 var(--space-md);
+  padding: var(--space-md) 0 var(--space-md);
 }
 
 .btn {
