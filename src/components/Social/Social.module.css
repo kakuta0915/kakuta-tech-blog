@@ -1,9 +1,22 @@
 .socialList {
   display: flex;
-  gap: 1rem;
-  font-size: calc(var(--heading1) * 0.8);
+  gap: 0.25rem;
+  /* font-size: calc(var(--heading1) * 0.8); */
 }
 
 .socialList > li {
-  padding: calc(var(--space-xs) * 0.5);
+  margin: 0.5rem;
+  max-width: 100%;
+}
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+@media (min-width: 768px) {
+  .icon {
+    width: 3rem;
+    height: 3rem;
+  }
 }

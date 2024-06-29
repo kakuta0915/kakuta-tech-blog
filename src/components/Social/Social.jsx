@@ -1,8 +1,8 @@
-import styles from './Social.module.css'
 import Link from 'next/link'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons'
+import { faXTwitter, faGithub } from '@fortawesome/free-brands-svg-icons'
+import styles from './Social.module.css'
+import Image from 'next/image'
 
 export default function Social() {
   return (
@@ -13,8 +13,13 @@ export default function Social() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <FontAwesomeIcon icon={faTwitter} />
-          <span className="sr-only">Twitter</span>
+          <Image
+            src="/images/x.png"
+            alt=""
+            className={styles.icon}
+            width={30}
+            height={30}
+          />
         </Link>
       </li>
       <li>
@@ -23,8 +28,43 @@ export default function Social() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <FontAwesomeIcon icon={faGithub} />
-          <span className="sr-only">GitHub</span>
+          <Image
+            src="/images/github.png"
+            alt=""
+            className={styles.icon}
+            width={30}
+            height={30}
+          />
+        </Link>
+      </li>
+      <li>
+        <Link
+          href="https://qiita.com/kakuta0915"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            src="/images/qiita.png"
+            alt=""
+            className={styles.icon}
+            width={30}
+            height={30}
+          />
+        </Link>
+      </li>
+      <li>
+        <Link
+          href="https://zenn.dev/kakuta0915"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            src="/images/zenn.png"
+            alt=""
+            className={styles.icon}
+            width={30}
+            height={30}
+          />
         </Link>
       </li>
     </ul>
