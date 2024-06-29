@@ -1,8 +1,6 @@
-import Link from 'next/link'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faXTwitter, faGithub } from '@fortawesome/free-brands-svg-icons'
-import styles from './Social.module.css'
 import Image from 'next/image'
+import Link from 'next/link'
+import styles from './Social.module.css'
 
 export default function Social() {
   return (
