@@ -67,8 +67,13 @@ export default function Home({ posts }) {
         </section>
 
         <section className={styles.worklistSection}>
-          <h2>Work</h2>
+          <h2>Works</h2>
           <Worklist worksData={worksData} />
+          <div className={styles.btnBox}>
+            <Link className={styles.btn} href="./about">
+              MORE
+            </Link>
+          </div>
         </section>
       </Container>
     </>
