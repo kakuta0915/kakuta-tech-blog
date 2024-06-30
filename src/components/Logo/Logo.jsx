@@ -1,10 +1,9 @@
 // ロゴコンポーネント
-
 import Link from 'next/link'
 import styles from './Logo.module.css'
 import Image from 'next/image'
-import headerLogo from '@/images/headerLogo.png'
-import footerLogoImage from '@/images/footerLogo.png'
+import headerLogo from '@/public/images/headerLogo.png'
+import footerLogoImage from '@/public/images/footerLogo.png'
 
 export default function Logo({ isFooterLogo = false }) {
   return (

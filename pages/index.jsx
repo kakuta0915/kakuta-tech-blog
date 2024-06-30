@@ -6,16 +6,16 @@ import Hero from '@/src/components/Hero/Hero'
 import Container from '@/src/components/Container/Container'
 import Posts from '@/src/components/Posts/Posts'
 import Social from '@/src/components/Social/Social'
-import eyecatch from '/images/index.jpg'
 import Worklist from '@/src/components/Worklist/Worklist'
-import kakuta0915 from 'images/kakuta0915.png'
 import styles from '@/src/styles/index.module.css'
+import eyecatch from '@/public/images/index.jpg'
+import kakuta0915 from '@/public/images/kakuta0915.png'
 
 export default function Home({ posts }) {
   const worksData = [
     {
       id: 1,
-      imageUrl: '/kenshinkai.png',
+      imageUrl: '/images/kenshinkai.png',
       title: '健進会',
       description:
         '「尊厳と自立の尊重」を理念に都内各所に介護施設を運営しています。',
@@ -36,7 +36,7 @@ export default function Home({ posts }) {
         title="KAKUTA"
         title2="TECH BLOG"
         description="このサイトでは、Next.jsとmicroCMSを組み合わせ、プログラミングの技術ブログを制作しました。 開発過程で学習時に躓いた箇所や解決策について、詳細な記事をまとめています。"
-        imageSrc="./images/index.jpg"
+        imageSrc="/images/index.jpg"
         contact={true}
       />
       <Container>

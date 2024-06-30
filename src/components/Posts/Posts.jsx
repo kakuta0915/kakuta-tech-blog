@@ -8,7 +8,7 @@ import ConvertDate from '../Convert/ConvertDate'
 import { getAllArticles } from '@/libs/api'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTag } from '@fortawesome/free-solid-svg-icons'
-import qiitaImg from '@/images/qiita.png'
+import qiitaImg from '@/public/images/qiitaEyecatch.png'
 
 export default function Posts({ btn = false, maxPosts }) {
   const [articles, setArticles] = useState([])

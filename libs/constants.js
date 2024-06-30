@@ -5,5 +5,5 @@ export const siteMeta = {
   siteLang: 'ja',
   siteLocal: 'ja_JP',
   siteType: 'website',
-  siteIcon: '..//favicon.png',
+  siteIcon: '/images/favicon.png',
 }

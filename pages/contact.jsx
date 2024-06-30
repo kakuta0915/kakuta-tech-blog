@@ -1,10 +1,9 @@
 // Contactページ
-import Image from 'next/image'
 import Meta from '@/src/components/Meta/Meta'
 import Hero from '@/src/components/Hero/Hero'
 import Container from '@/src/components/Container/Container'
 import styles from '@/src/styles/contact.module.css'
-import eyecatch from 'images/contact.jpg'
+import eyecatch from '@/public/images/contact.jpg'
 
 export default function Contact() {
   return (

@@ -5,7 +5,7 @@ import Hero from '@/src/components/Hero/Hero'
 import Container from '@/src/components/Container/Container'
 import Posts from '@/src/components/Posts/Posts'
 import CategoriesList from '@/src/components/CategoiresList/CategoriesList'
-import eyecatch from 'images/articles.jpg'
+import eyecatch from '@/public/images/articles.jpg'
 
 export default function Articles({ posts, allCategories }) {
   return (

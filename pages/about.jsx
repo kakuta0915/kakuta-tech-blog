@@ -4,8 +4,8 @@ import Meta from '@/src/components/Meta/Meta'
 import Hero from '@/src/components/Hero/Hero'
 import Container from '@/src/components/Container/Container'
 import styles from '@/src/styles/about.module.css'
-import eyecatch from 'images/about.jpg'
-import kakuta0915 from 'images/kakuta0915.png'
+import eyecatch from '@/public/images/about.jpg'
+import kakuta0915 from '@/public/images/kakuta0915.png'
 
 export default function About() {
   return (

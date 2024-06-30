@@ -1,16 +1,15 @@
 // worksページ
-import Image from 'next/image'
 import Meta from '@/src/components/Meta/Meta'
 import Hero from '@/src/components/Hero/Hero'
 import Container from '@/src/components/Container/Container'
 import Worklist from '@/src/components/Worklist/Worklist'
 import styles from '@/src/styles/works.module.css'
-import eyecatch from 'images/works.jpg'
+import eyecatch from '@/public/images/works.jpg'
 
 const worksData = [
   {
     id: 1,
-    imageUrl: '/kenshinkai.png',
+    imageUrl: '/images/kenshinkai.png',
     title: '健進会',
     description:
       '「尊厳と自立の尊重」を理念に都内各所に介護施設を運営しています。',
