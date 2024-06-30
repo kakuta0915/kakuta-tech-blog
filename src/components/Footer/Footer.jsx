@@ -4,11 +4,9 @@ import Logo from '../Logo/Logo'
 
 export default function Footer() {
   return (
-    <footer className={styles.footerContainer}>
-      <div className={styles.footerText}>
-        <Logo isFooterLogo={true} />
-        <Social />
-      </div>
+    <footer className={styles.footer}>
+      <Logo isFooterLogo={true} />
+      <Social isFooterSocial={true} />
     </footer>
   )
 }

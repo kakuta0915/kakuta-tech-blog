@@ -8,7 +8,8 @@
 }
 
 .footerLogo {
-  width: 100%;
+  width: 50%;
+  margin-left: var(--space-xs);
 }
 
 /* デスクトップサイズ */
@@ -18,6 +19,6 @@
   }
 
   .footerLogo {
-    width: 50%;
+    width: 40%;
   }
 }
