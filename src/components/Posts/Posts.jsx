@@ -1,13 +1,13 @@
 // 記事一覧のコンポーネント
 
 import React, { useState, useEffect } from 'react'
-import styles from './Posts.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
-import ConvertDate from '../Convert/ConvertDate'
 import { getAllArticles } from '@/libs/api'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTag } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import ConvertDate from '../Convert/ConvertDate'
+import styles from './Posts.module.css'
 import qiitaImg from '@/public/images/qiitaEyecatch.png'
 
 export default function Posts({ btn = false, maxPosts }) {

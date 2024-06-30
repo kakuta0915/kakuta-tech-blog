@@ -1,7 +1,7 @@
 // ロゴコンポーネント
 import Link from 'next/link'
-import styles from './Logo.module.css'
 import Image from 'next/image'
+import styles from './Logo.module.css'
 import headerLogo from '@/public/images/headerLogo.png'
 import footerLogoImage from '@/public/images/footerLogo.png'
 

@@ -1,16 +1,14 @@
 // ナビコンポーネント
 
+import { useState } from 'react'
 import Link from 'next/link'
 import styles from './Nav.module.css'
-import { useState } from 'react'
 
 export default function Nav() {
   const [navIsOpen, setNavIsOpen] = useState(false)
-
   const toggleNav = () => {
     setNavIsOpen((prev) => !prev)
   }
-
   const closeNav = () => {
     setNavIsOpen(false)
   }
