@@ -2,9 +2,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styles from './Social.module.css'
 
-export default function Social() {
+export default function Social({ isFooterSocial }) {
+  const containerClass = isFooterSocial
+    ? styles.socialListFooter
+    : styles.socialList
+
   return (
-    <div className={styles.socialList}>
+    <div className={containerClass}>
       <Link
         className={styles.link}
         href="https://twitter.com/_kakuta0915_"

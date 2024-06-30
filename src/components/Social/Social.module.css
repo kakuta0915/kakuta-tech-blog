@@ -4,6 +4,13 @@
   gap: 1rem;
 }
 
+.socialListFooter {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: var(--space-xxs);
+}
+
 .link {
   display: inline-block;
   cursor: pointer;
@@ -13,13 +20,19 @@
 .icon {
   border: 1px solid var(--gray-2);
   border-radius: 50%;
-  width: 2rem;
-  height: 2rem;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 @media (min-width: 768px) {
   .socialList {
     gap: 1.5rem;
+  }
+
+  .socialListFooter {
+    gap: 1.5rem;
+    margin: var(--space-md) var(--space-md) 0 0;
   }
 
   .icon {
