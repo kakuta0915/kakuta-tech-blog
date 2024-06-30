@@ -5,12 +5,24 @@ import Meta from '@/src/components/Meta/Meta'
 import Hero from '@/src/components/Hero/Hero'
 import Container from '@/src/components/Container/Container'
 import Posts from '@/src/components/Posts/Posts'
+import Social from '@/src/components/Social/Social'
 import eyecatch from '/images/index.jpg'
+import Worklist from '@/src/components/Worklist/Worklist'
 import kakuta0915 from 'images/kakuta0915.png'
 import styles from '@/src/styles/index.module.css'
-import Social from '@/src/components/Social/Social'
 
 export default function Home({ posts }) {
+  const worksData = [
+    {
+      id: 1,
+      imageUrl: '/kenshinkai.png',
+      title: '健進会',
+      description:
+        '「尊厳と自立の尊重」を理念に都内各所に介護施設を運営しています。',
+      link: 'https://kenshinkai.vercel.app/',
+    },
+  ]
+
   return (
     <>
       <Meta
@@ -28,7 +40,7 @@ export default function Home({ posts }) {
         contact={true}
       />
       <Container>
-        <div className={styles.aboutContents}>
+        <section className={styles.aboutSection}>
           <h2>About Me</h2>
           <p>
             エンジニア転職を目指し、自主的にプログラミングを学習しています。日々の学びや経験を通じて、技術力の向上と実践的なスキルの構築に注力しています。これまでの学習過程やスキルセットについて、詳しくご紹介いたします。
@@ -47,8 +59,17 @@ export default function Home({ posts }) {
               MORE
             </Link>
           </div>
-        </div>
-        <Posts posts={posts} maxPosts={6} btn />
+        </section>
+
+        <section className={styles.articlesSection}>
+          <h2>Articles</h2>
+          <Posts posts={posts} maxPosts={6} btn />
+        </section>
+
+        <section className={styles.worklistSection}>
+          <h2>Work</h2>
+          <Worklist worksData={worksData} />
+        </section>
       </Container>
     </>
   )

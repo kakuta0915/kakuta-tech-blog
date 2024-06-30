@@ -1,27 +1,4 @@
-/* About */
-.aboutContents {
-  text-align: center;
-  margin: var(--space-md) var(--space-xxs);
-}
-
-.aboutContents > h2 {
-  font-size: clamp(2rem, 1.636rem + 1.82vw, 3rem);
-  margin-bottom: var(--space-xs);
-}
-
-.aboutContents > p {
-  padding-bottom: var(--space-xs);
-}
-
-.aboutContents .profileIcon {
-  display: inline-block;
-  border-radius: 50%;
-  width: 30%;
-  height: 30%;
-  object-fit: cover;
-  margin: var(--space-md) auto var(--space-sm);
-}
-
+/* Common */
 .btnBox {
   padding: var(--space-md) 0 var(--space-md);
 }
@@ -32,6 +9,39 @@
   padding: var(--space-xxs) var(--space-sm);
   color: var(--white);
   transition: 0.3s;
+}
+
+.aboutSection,
+.articlesSection,
+.worklistSection {
+  text-align: center;
+  margin: var(--space-md) var(--space-xxs);
+}
+
+.aboutSection > h2,
+.articlesSection > h2,
+.worklistSection > h2 {
+  font-size: clamp(2rem, 1.636rem + 1.82vw, 3rem);
+  margin-bottom: var(--space-xs);
+}
+
+/* About */
+.aboutSection > p {
+  padding-bottom: var(--space-xs);
+}
+
+.aboutSection .profileIcon {
+  display: inline-block;
+  border-radius: 50%;
+  width: 30%;
+  height: 30%;
+  object-fit: cover;
+  margin: var(--space-md) auto var(--space-sm);
+}
+
+/* WorkList */
+.worklistSection {
+  padding-bottom: var(--space-sm);
 }
 
 @media (min-width: 768px) {
