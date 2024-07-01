@@ -10,60 +10,73 @@ import ConvertDate from '../Convert/ConvertDate'
 import styles from './Posts.module.css'
 import qiitaImg from '@/public/images/qiitaEyecatch.png'
 
-export default function Posts({ btn = false, maxPosts }) {
+export default function Posts({ btn = false, posts = [], maxPosts }) {
   const [articles, setArticles] = useState([])
 
   useEffect(() => {
     const fetchArticles = async () => {
-      const allArticles = await getAllArticles(maxPosts)
-      setArticles(allArticles)
+      if (posts.length === 0) {
+        const allArticles = await getAllArticles(maxPosts)
+        setArticles(allArticles)
+      } else {
+        setArticles(posts.slice(0, maxPosts))
+      }
     }
     fetchArticles()
-  }, [maxPosts])
+  }, [maxPosts, posts])
 
   return (
     <>
       <div className={styles.postsContainer}>
-        {articles.map(
-          ({ title, slug, eyecatch, publishDate = '', categories, source }) => (
-            <article key={slug}>
-              <Link
-                className={styles.link}
-                href={
-                  source === 'qiita'
-                    ? `https://qiita.com/kakuta0915/items/${slug}`
-                    : `/articles/${slug}`
-                }
-              >
-                <figure>
-                  <Image
-                    src={source === 'qiita' ? qiitaImg : eyecatch?.url}
-                    alt=""
-                    fill
-                    style={{ objectFit: 'cover' }}
-                    sizes="(min-width: 1152px) 576px, 50vw"
-                  />
-                </figure>
-                <div className={styles.publishDate}>
-                  <ConvertDate dateISO={publishDate} />
-                </div>
-                <h2>{title}</h2>
-                <ul>
-                  {categories.map(({ name, slug }) => (
-                    <li className={styles.postsCategoriesLi} key={slug}>
-                      <FontAwesomeIcon className={styles.icon} icon={faTag} />
-                      <div className={styles.name}>{name}</div>
-                    </li>
-                  ))}
-                </ul>
-              </Link>
-            </article>
-          ),
-        )}
+        {articles
+          .slice(0, maxPosts)
+          .map(
+            ({
+              title,
+              slug,
+              eyecatch,
+              publishDate = '',
+              categories,
+              source,
+            }) => (
+              <article key={slug}>
+                <Link
+                  className={styles.link}
+                  href={
+                    source === 'qiita'
+                      ? `https://qiita.com/kakuta0915/items/${slug}`
+                      : `/Articles/${slug}`
+                  }
+                >
+                  <figure>
+                    <Image
+                      src={source === 'qiita' ? qiitaImg : eyecatch?.url}
+                      alt=""
+                      fill
+                      style={{ objectFit: 'cover' }}
+                      sizes="(min-width: 1152px) 576px, 50vw"
+                    />
+                  </figure>
+                  <div className={styles.publishDate}>
+                    <ConvertDate dateISO={publishDate} />
+                  </div>
+                  <h2>{title}</h2>
+                  <ul>
+                    {categories.map(({ name, slug }) => (
+                      <li className={styles.postsCategoriesLi} key={slug}>
+                        <FontAwesomeIcon className={styles.icon} icon={faTag} />
+                        <div className={styles.name}>{name}</div>
+                      </li>
+                    ))}
+                  </ul>
+                </Link>
+              </article>
+            ),
+          )}
       </div>
       <div className={styles.btnBox}>
         {btn && (
-          <Link className={styles.btn} href="../articles/articles">
+          <Link className={styles.btn} href="../Articles/articles">
             MORE
           </Link>
         )}
