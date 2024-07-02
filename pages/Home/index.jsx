@@ -6,13 +6,13 @@ import Hero from '@/src/components/Hero/Hero'
 import Container from '@/src/components/Container/Container'
 import Posts from '@/src/components/Posts/Posts'
 import Social from '@/src/components/Social/Social'
-import Worklist from '@/src/components/Worklist/Worklist'
-import styles from '@/src/styles/index.module.css'
+import styles from './index.module.css'
 import eyecatch from '@/public/images/index.jpg'
 import kakuta0915 from '@/public/images/kakuta0915.png'
+import PortfolioList from '@/src/components/PortfolioList/PortfolioList'
 
 export default function Home({ posts }) {
-  const worksData = [
+  const portfolioData = [
     {
       id: 1,
       imageUrl: '/images/kenshinkai.png',
@@ -55,7 +55,7 @@ export default function Home({ posts }) {
           />
           <Social />
           <div className={styles.btnBox}>
-            <Link className={styles.btn} href="./about">
+            <Link className={styles.btn} href="./About/">
               MORE
             </Link>
           </div>
@@ -66,11 +66,11 @@ export default function Home({ posts }) {
           <Posts posts={posts} maxPosts={6} btn />
         </section>
 
-        <section className={styles.worklistSection}>
-          <h2>Works</h2>
-          <Worklist worksData={worksData} />
+        <section className={styles.portfolioSection}>
+          <h2>PORTFOLIO</h2>
+          <PortfolioList portfolioData={portfolioData} />
           <div className={styles.btnBox}>
-            <Link className={styles.btn} href="./about">
+            <Link className={styles.btn} href="./Portfolio/">
               MORE
             </Link>
           </div>

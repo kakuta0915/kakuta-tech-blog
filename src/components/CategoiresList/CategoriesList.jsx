@@ -37,7 +37,7 @@ export default function CategoriesList({ allCategories }) {
             <li className={styles.categoriesList} key={slug}>
               <Link
                 className={styles.categoriesLink}
-                href={`/articles/categories/${slug}`}
+                href={`/Articles/Categories/${slug}`}
               >
                 <Image
                   className={styles.iconImg}

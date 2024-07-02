@@ -74,9 +74,9 @@ export default function Post({
           </TwoColum>
           <Pagination
             prevText={prevPost.title}
-            prevUrl={`/articles/${prevPost.slug}`}
+            prevUrl={`/Articles/${prevPost.slug}`}
             nextText={nextPost.title}
-            nextUrl={`/articles/${nextPost.slug}`}
+            nextUrl={`/Articles/${nextPost.slug}`}
           />
         </article>
       </Container>
@@ -88,7 +88,7 @@ export async function getStaticPaths() {
   const allSlugs = await getAllSlugs()
 
   return {
-    paths: allSlugs.map(({ slug }) => `/articles/${slug}`),
+    paths: allSlugs.map(({ slug }) => `/Articles/${slug}`),
     fallback: false,
   }
 }

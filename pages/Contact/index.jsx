@@ -2,7 +2,7 @@
 import Meta from '@/src/components/Meta/Meta'
 import Hero from '@/src/components/Hero/Hero'
 import Container from '@/src/components/Container/Container'
-import styles from '@/src/styles/contact.module.css'
+import styles from './index.module.css'
 import eyecatch from '@/public/images/contact.jpg'
 
 export default function Contact() {

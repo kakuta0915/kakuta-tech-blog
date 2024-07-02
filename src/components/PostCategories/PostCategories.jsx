@@ -12,7 +12,7 @@ export default function PostCategories({ categories }) {
           <li key={slug}>
             <Link
               className={styles.categoriesLink}
-              href={`/articles/categories/${slug}`}
+              href={`/Articles/Categories/${slug}`}
             >
               <Image
                 className={styles.icon}

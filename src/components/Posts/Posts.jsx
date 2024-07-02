@@ -1,9 +1,7 @@
 // 記事一覧のコンポーネント
-
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { getAllArticles } from '@/libs/api'
 import { faTag } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ConvertDate from '../Convert/ConvertDate'
@@ -66,7 +64,7 @@ export default function Posts({ btn = false, posts = [], maxPosts }) {
       </div>
       <div className={styles.btnBox}>
         {btn && (
-          <Link className={styles.btn} href="../Articles/articles">
+          <Link className={styles.btn} href="../Articles/">
             MORE
           </Link>
         )}
