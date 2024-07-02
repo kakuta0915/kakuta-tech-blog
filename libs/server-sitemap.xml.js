@@ -8,14 +8,14 @@ export async function getServerSideProps(context) {
   const posts = await getAllSlugs()
   const postFields = posts.map((post) => {
     return {
-      loc: `${siteMeta.siteUrl}/pages/articles/categories/${post.slug}`,
+      loc: `${siteMeta.siteUrl}/pages/Articles/Categories/${post.slug}`,
     }
   })
 
   const cats = await getAllCategories()
   const catFields = cats.map((cat) => {
     return {
-      loc: `${siteMeta.siteUrl}/pages/articles/categories/${cat.slug}`,
+      loc: `${siteMeta.siteUrl}/pages/Articles/Categories/${cat.slug}`,
     }
   })
 
