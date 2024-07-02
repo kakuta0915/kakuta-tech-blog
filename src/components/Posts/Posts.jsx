@@ -64,7 +64,7 @@ export default function Posts({ btn = false, posts = [], maxPosts }) {
       </div>
       <div className={styles.btnBox}>
         {btn && (
-          <Link className={styles.btn} href="../Articles/">
+          <Link className={styles.btn} href="/Articles/">
             MORE
           </Link>
         )}
