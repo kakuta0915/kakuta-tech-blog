@@ -1,18 +1,16 @@
 // すべてのカテゴリーをカテゴリー / スラッグページに追加
+import Image from 'next/image'
 import Link from 'next/link'
-import styles from './CategoriesList.module.css'
+import { useState, useRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleDown } from '@fortawesome/free-solid-svg-icons'
-import { useState, useRef } from 'react'
-import Image from 'next/image'
+import styles from './CategoriesList.module.css'
 
 export default function CategoriesList({ allCategories }) {
   const [categoriesOpen, setCategoriesOpen] = useState(false)
-
   const toggleCategories = () => {
     setCategoriesOpen((prev) => !prev)
   }
-
   const refCategories = useRef(null)
 
   return (
@@ -39,7 +37,7 @@ export default function CategoriesList({ allCategories }) {
             <li className={styles.categoriesList} key={slug}>
               <Link
                 className={styles.categoriesLink}
-                href={`/articles/categories/${slug}`}
+                href={`/Articles/Categories/${slug}`}
               >
                 <Image
                   className={styles.iconImg}

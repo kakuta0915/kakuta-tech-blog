@@ -1,9 +1,9 @@
 // 目次コンポーネント
 import { useRef, useState } from 'react'
-import styles from './TableOfContents.module.css'
 import { Link as Scroll } from 'react-scroll'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleDown } from '@fortawesome/free-solid-svg-icons'
+import styles from './TableOfContents.module.css'
 
 export default function TableOfContents({ toc }) {
   const [tocOpen, setTocOpen] = useState(false)

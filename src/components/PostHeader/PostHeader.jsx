@@ -1,10 +1,9 @@
 // 記事のヘッダー部分 (タイトル、サブタイトル、投稿日)
-
-import styles from './PostHeader.module.css'
+import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock } from '@fortawesome/free-regular-svg-icons'
 import ConvertDate from '../Convert/ConvertDate'
-import Image from 'next/image'
+import styles from './PostHeader.module.css'
 
 export default function PostHeader({ icon, title, subtitle, publish = '' }) {
   return (

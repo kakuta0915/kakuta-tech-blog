@@ -23,7 +23,6 @@ export default function Social({ isFooterSocial }) {
           height={30}
         />
       </Link>
-
       <Link
         className={styles.link}
         href="https://github.com/kakuta0915"
@@ -38,7 +37,6 @@ export default function Social({ isFooterSocial }) {
           height={30}
         />
       </Link>
-
       <Link
         className={styles.link}
         href="https://qiita.com/kakuta0915"
@@ -53,7 +51,6 @@ export default function Social({ isFooterSocial }) {
           height={30}
         />
       </Link>
-
       <Link
         className={styles.link}
         href="https://zenn.dev/kakuta0915"

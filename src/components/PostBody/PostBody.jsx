@@ -1,5 +1,4 @@
 // 記事ページのbodyコンポーネント
-
 import styles from './PostBody.module.css'
 
 export default function PostBody({ children }) {

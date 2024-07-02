@@ -19,7 +19,7 @@ export default function Hero({
         {title2 && <h1>{title2}</h1>}
         <p>{description}</p>
         {contact && (
-          <Link href="/contact" className={styles.heroContact}>
+          <Link href="/Contact/" className={styles.heroContact}>
             Contact
           </Link>
         )}

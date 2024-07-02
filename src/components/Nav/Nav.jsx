@@ -1,16 +1,14 @@
 // ナビコンポーネント
 
+import { useState } from 'react'
 import Link from 'next/link'
 import styles from './Nav.module.css'
-import { useState } from 'react'
 
 export default function Nav() {
   const [navIsOpen, setNavIsOpen] = useState(false)
-
   const toggleNav = () => {
     setNavIsOpen((prev) => !prev)
   }
-
   const closeNav = () => {
     setNavIsOpen(false)
   }
@@ -36,27 +34,27 @@ export default function Nav() {
 
       <ul className={styles.headerNav}>
         <li>
-          <Link href="/" onClick={closeNav}>
+          <Link href="/Home/" onClick={closeNav}>
             TOP
           </Link>
         </li>
         <li>
-          <Link href="/about" onClick={closeNav}>
+          <Link href="/About/" onClick={closeNav}>
             ABOUT
           </Link>
         </li>
         <li>
-          <Link href="/works" onClick={closeNav}>
-            WORKS
+          <Link href="/Portfolio/" onClick={closeNav}>
+            PORTFOLIO
           </Link>
         </li>
         <li>
-          <Link href="/articles/articles" onClick={closeNav}>
+          <Link href="/Articles/" onClick={closeNav}>
             ARTICLES
           </Link>
         </li>
         <li>
-          <Link href="/contact" onClick={closeNav}>
+          <Link href="/Contact/" onClick={closeNav}>
             CONTACT
           </Link>
         </li>

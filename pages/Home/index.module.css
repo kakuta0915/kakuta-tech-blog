@@ -13,16 +13,16 @@
 
 .aboutSection,
 .articlesSection,
-.worklistSection {
+.portfolioSection {
   text-align: center;
   margin: var(--space-md) var(--space-xxs);
 }
 
 .aboutSection > h2,
 .articlesSection > h2,
-.worklistSection > h2 {
+.portfolioSection > h2 {
   font-size: clamp(2rem, 1.636rem + 1.82vw, 3rem);
-  margin-bottom: var(--space-xs);
+  margin-bottom: var(--space-md);
 }
 
 /* About */
@@ -39,8 +39,8 @@
   margin: var(--space-md) auto var(--space-sm);
 }
 
-/* WorkList */
-.worklistSection {
+/* Portfolio */
+.portfolioSection {
   padding-bottom: var(--space-sm);
 }
 
