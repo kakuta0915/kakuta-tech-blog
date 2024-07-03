@@ -33,7 +33,7 @@ export default function Posts({ btn = false, posts = [], maxPosts }) {
                 href={
                   source === 'qiita'
                     ? `https://qiita.com/kakuta0915/items/${slug}`
-                    : `/Articles/${slug}`
+                    : `/articles/${slug}`
                 }
               >
                 <figure>
