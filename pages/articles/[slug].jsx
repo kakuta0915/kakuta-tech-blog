@@ -88,7 +88,7 @@ export async function getStaticPaths() {
   const allSlugs = await getAllSlugs()
 
   return {
-    paths: allSlugs.map(({ slug }) => `/articles/${slug}`),
+    paths: allSlugs.map(({ slug }) => `/articles1/${slug}`),
     fallback: false,
   }
 }
