@@ -1,0 +1,67 @@
+.figure {
+  padding: 1rem;
+}
+
+.profile {
+  margin: var(--space-md) var(--space-xs);
+}
+
+.profile figure {
+  text-align: center;
+  margin-bottom: var(--space-xs);
+}
+
+.profile img {
+  display: inline-block;
+  border-radius: 50%;
+  width: 30%;
+  height: 30%;
+  object-fit: cover;
+}
+
+.profileIcon {
+  margin-bottom: var(--space-md);
+  text-align: center;
+}
+
+.profileIcon a{
+  display: inline-block;
+  color: var(--white);
+  font-size: var(--body);
+  margin: calc(var(--space-xxs) * 0.3);
+  padding: calc(var(--space-xxs) * 0.5);
+  border-radius: 7px;
+  border: 2px solid var(--white);
+  background-color: var(--blue-2);
+  transition: background-color 0.5s ease,  border 0.5s ease;
+}
+
+.profileIcon a:hover {
+  color: var(--blue-2);
+  background-color: var(--white);
+  border: 2px solid var(--blue-2);
+}
+
+.profileName {
+  color: var(--blue);
+}
+
+.profileName:hover {
+  color: var(--blue-1);
+}
+
+.profile > h3 {
+  margin-bottom: var(--space-sm);
+  padding: calc(var(--space-xxs) * 0.5) 0 calc(var(--space-xxs) * 0.5)
+    var(--space-xxs);
+  border-bottom: 1px solid var(--gray);
+  border-left: 10px solid var(--blue);
+}
+
+.profile > h4 {
+  padding: var(--space-xxs);
+}
+
+.profile > p {
+  margin: 0 var(--space-xs) var(--space-xs);
+}
