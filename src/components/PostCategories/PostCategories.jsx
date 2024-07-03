@@ -1,8 +1,7 @@
 // 記事に関連する特定のタグをリスト表示する機能
-
-import styles from './PostCategories.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
+import styles from './postCategories.module.css'
 
 export default function PostCategories({ categories }) {
   return (

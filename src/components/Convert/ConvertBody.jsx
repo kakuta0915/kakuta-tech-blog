@@ -1,7 +1,6 @@
 // 変換処理を行うコンポーネント(html-react-parser)
-
-import parse from 'html-react-parser'
 import Image from 'next/image'
+import parse from 'html-react-parser'
 import hljs from 'highlight.js'
 
 export default function ConvertBody({ contentHTML }) {

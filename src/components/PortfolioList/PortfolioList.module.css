@@ -4,7 +4,7 @@
   gap: var(--space-xxs);
 }
 
-.workItem {
+.portfolioItem {
   display: block;
   color: inherit;
   background-color: var(--white);
@@ -14,15 +14,15 @@
   transition: transform 0.3s ease;
 }
 
-.workItem:hover {
+.portfolioItem:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.workDetails {
+.portfolioDetails {
   padding: 0.5rem var(--space-xxs) var(--space-xxs);
 }
 
-.workDetails h3 {
+.portfolioDetails h3 {
   margin-bottom: 0.25rem;
 }

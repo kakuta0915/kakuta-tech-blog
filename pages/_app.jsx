@@ -1,10 +1,10 @@
-import Layout from '@/src/components/layout'
-import Script from 'next/script'
-import * as gtag from 'libs/gtag'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import styles from '@/src/styles/globals.css'
+import Script from 'next/script'
+import * as gtag from 'libs/gtag'
 import '@fortawesome/fontawesome-free/css/all.min.css'
+import Layout from '@/src/components/layouts/layout'
+import styles from '@/src/styles/globals.css'
 
 // Font Awesomeの設定
 import '@fortawesome/fontawesome-svg-core/styles.css'
@@ -31,7 +31,6 @@ export default function App({ Component, pageProps }) {
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_MEASUREMENT_ID}`}
       />
-
       <Script
         id="gtag-init"
         strategy="afterInteractive"
@@ -45,7 +44,6 @@ export default function App({ Component, pageProps }) {
         `,
         }}
       />
-
       <Layout>{getLayout(<Component {...pageProps} />)}</Layout>
     </>
   )

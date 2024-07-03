@@ -1,23 +1,23 @@
 // 記事ページ
 import { getPostBySlug, getAllSlugs, getAllCategories } from '@/libs/api'
-import PostHeader from '@/src/components/PostHeader/PostHeader'
 import Image from 'next/image'
+import 'highlight.js/styles/night-owl.css'
+import { extractText } from '@/libs/extract-text'
+import { prevNextPost } from '@/libs/prev-next-post'
+import { renderToc } from '@/libs/render-toc'
+import Meta from '@/src/components/meta/meta'
+import PostHeader from '@/src/components/postHeader/postHeader'
 import {
   TwoColum,
   TwoColumMain,
   TwoColumSidebar,
-} from '@/src/components/TwoColum/TwoColum'
-import ConvertBody from '@/src/components/Convert/ConvertBody'
-import PostCategories from '@/src/components/PostCategories/PostCategories'
-import { extractText } from '@/libs/extract-text'
-import Meta from '@/src/components/Meta/Meta'
-import { prevNextPost } from '@/libs/prev-next-post'
-import Pagination from '@/src/components/Pagination/Pagination'
-import PostBody from '@/src/components/PostBody/PostBody'
-import { renderToc } from '@/libs/render-toc'
-import TableOfContents from '@/src/components/TableOfContents/TableOfContents'
-import 'highlight.js/styles/night-owl.css'
-import Container from '@/src/components/Container/Container'
+} from '@/src/components/twoColum/twoColum'
+import Container from '@/src/components/container/container'
+import ConvertBody from '@/src/components/convert/convertBody'
+import PostBody from '@/src/components/postBody/postBody'
+import PostCategories from '@/src/components/postCategories/postCategories'
+import Pagination from '@/src/components/pagination/pagination'
+import TableOfContents from '@/src/components/tableOfContents/tableOfContents'
 
 export default function Post({
   icon,
@@ -34,7 +34,7 @@ export default function Post({
   const toc = renderToc(content)
 
   return (
-    <Container>
+    <>
       <Meta
         pageTitle={title}
         pageDesc={description}
@@ -42,47 +42,45 @@ export default function Post({
         pageImgW={eyecatch.width}
         pageImgH={eyecatch.height}
       />
-
-      <article>
-        <PostHeader
-          icon={icon}
-          title={title}
-          subtitle="Blog Article"
-          publish={publish}
-        />
-
-        <TwoColum>
-          <TwoColumMain>
-            <figure>
-              <Image
-                src={eyecatch.url}
-                alt=""
-                layout="responsive"
-                width={eyecatch.width}
-                height={eyecatch.height}
-                sizes="(min-width: 1152px) 1152px, 100vw"
-                priority
-              />
-            </figure>
-
-            <PostBody>
-              <ConvertBody contentHTML={content} id={`#${toc.id}`} />
-            </PostBody>
-          </TwoColumMain>
-          <TwoColumSidebar>
-            <PostCategories categories={categories} />
-            {tocVisible && <TableOfContents toc={toc} />}
-          </TwoColumSidebar>
-        </TwoColum>
-
-        <Pagination
-          prevText={prevPost.title}
-          prevUrl={`/articles/${prevPost.slug}`}
-          nextText={nextPost.title}
-          nextUrl={`/articles/${nextPost.slug}`}
-        />
-      </article>
-    </Container>
+      <Container>
+        <article>
+          <PostHeader
+            icon={icon}
+            title={title}
+            subtitle="Blog Article"
+            publish={publish}
+          />
+          <TwoColum>
+            <TwoColumMain>
+              <figure>
+                <Image
+                  src={eyecatch.url}
+                  alt=""
+                  layout="responsive"
+                  width={eyecatch.width}
+                  height={eyecatch.height}
+                  sizes="(min-width: 1152px) 1152px, 100vw"
+                  priority
+                />
+              </figure>
+              <PostBody>
+                <ConvertBody contentHTML={content} id={`#${toc.id}`} />
+              </PostBody>
+            </TwoColumMain>
+            <TwoColumSidebar>
+              <PostCategories categories={categories} />
+              {tocVisible && <TableOfContents toc={toc} />}
+            </TwoColumSidebar>
+          </TwoColum>
+          <Pagination
+            prevText={prevPost.title}
+            prevUrl={`/articles/${prevPost.slug}`}
+            nextText={nextPost.title}
+            nextUrl={`/articles/${nextPost.slug}`}
+          />
+        </article>
+      </Container>
+    </>
   )
 }
 
@@ -97,17 +95,11 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const slug = context.params.slug
-
   const post = await getPostBySlug(slug)
-
   const description = extractText(post.content)
-
   const allSlugs = await getAllSlugs()
-
   const [prevPost, nextPost] = prevNextPost(allSlugs, slug)
-
   const allCategories = await getAllCategories()
-
   const category = allCategories.find(({ slug }) => slug === post.category)
 
   return {

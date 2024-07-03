@@ -1,25 +1,26 @@
 // 記事一覧のコンポーネント
-
 import React, { useState, useEffect } from 'react'
-import styles from './Posts.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
-import ConvertDate from '../Convert/ConvertDate'
-import { getAllArticles } from '@/libs/api'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTag } from '@fortawesome/free-solid-svg-icons'
-import qiitaImg from '@/images/qiita.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import ConvertDate from '../convert/convertDate'
+import styles from './posts.module.css'
+import qiitaImg from '@/public/images/qiitaEyecatch.png'
 
-export default function Posts({ btn = false, maxPosts }) {
-  const [articles, setArticles] = useState([])
+export default function Posts({ btn = false, posts = [], maxPosts }) {
+  const [articles, setArticles] = useState(posts.slice(0, maxPosts))
 
   useEffect(() => {
     const fetchArticles = async () => {
-      const allArticles = await getAllArticles(maxPosts)
-      setArticles(allArticles)
+      if (posts.length === 0) {
+        setArticles([])
+      } else {
+        setArticles(posts.slice(0, maxPosts))
+      }
     }
     fetchArticles()
-  }, [maxPosts])
+  }, [maxPosts, posts])
 
   return (
     <>
@@ -32,7 +33,7 @@ export default function Posts({ btn = false, maxPosts }) {
                 href={
                   source === 'qiita'
                     ? `https://qiita.com/kakuta0915/items/${slug}`
-                    : `/articles/${slug}`
+                    : `/Articles/${slug}`
                 }
               >
                 <figure>
@@ -63,7 +64,7 @@ export default function Posts({ btn = false, maxPosts }) {
       </div>
       <div className={styles.btnBox}>
         {btn && (
-          <Link className={styles.btn} href="../articles/articles">
+          <Link className={styles.btn} href="/articles/">
             MORE
           </Link>
         )}

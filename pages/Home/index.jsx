@@ -1,21 +1,21 @@
 import { getAllArticles } from '@/libs/api'
 import Image from 'next/image'
 import Link from 'next/link'
-import Meta from '@/src/components/Meta/Meta'
-import Hero from '@/src/components/Hero/Hero'
-import Container from '@/src/components/Container/Container'
-import Posts from '@/src/components/Posts/Posts'
-import Social from '@/src/components/Social/Social'
-import eyecatch from '/images/index.jpg'
-import Worklist from '@/src/components/Worklist/Worklist'
-import kakuta0915 from 'images/kakuta0915.png'
-import styles from '@/src/styles/index.module.css'
+import Meta from '@/src/components/meta/meta'
+import Hero from '@/src/components/hero/hero'
+import Container from '@/src/components/container/container'
+import Posts from '@/src/components/posts/posts'
+import Social from '@/src/components/social/social'
+import styles from './index.module.css'
+import eyecatch from '@/public/images/index.jpg'
+import kakuta0915 from '@/public/images/kakuta0915.png'
+import PortfolioList from '@/src/components/portfolioList/portfolioList'
 
 export default function Home({ posts }) {
-  const worksData = [
+  const portfolioData = [
     {
       id: 1,
-      imageUrl: '/kenshinkai.png',
+      imageUrl: '/images/kenshinkai.png',
       title: '健進会',
       description:
         '「尊厳と自立の尊重」を理念に都内各所に介護施設を運営しています。',
@@ -36,7 +36,7 @@ export default function Home({ posts }) {
         title="KAKUTA"
         title2="TECH BLOG"
         description="このサイトでは、Next.jsとmicroCMSを組み合わせ、プログラミングの技術ブログを制作しました。 開発過程で学習時に躓いた箇所や解決策について、詳細な記事をまとめています。"
-        imageSrc="./images/index.jpg"
+        imageSrc="/images/index.jpg"
         contact={true}
       />
       <Container>
@@ -55,7 +55,7 @@ export default function Home({ posts }) {
           />
           <Social />
           <div className={styles.btnBox}>
-            <Link className={styles.btn} href="./about">
+            <Link className={styles.btn} href="./about/">
               MORE
             </Link>
           </div>
@@ -66,11 +66,11 @@ export default function Home({ posts }) {
           <Posts posts={posts} maxPosts={6} btn />
         </section>
 
-        <section className={styles.worklistSection}>
-          <h2>Works</h2>
-          <Worklist worksData={worksData} />
+        <section className={styles.portfolioSection}>
+          <h2>Portfolio</h2>
+          <PortfolioList portfolioData={portfolioData} />
           <div className={styles.btnBox}>
-            <Link className={styles.btn} href="./about">
+            <Link className={styles.btn} href="./portfolio/">
               MORE
             </Link>
           </div>
