@@ -1,4 +1,3 @@
-// aboutページ
 import Image from 'next/image'
 import Meta from '@/src/components/meta/meta'
 import Hero from '@/src/components/hero/hero'
