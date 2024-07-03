@@ -1,14 +1,14 @@
 // ロゴコンポーネント
 import Link from 'next/link'
 import Image from 'next/image'
-import styles from './Logo.module.css'
+import styles from './logo.module.css'
 import headerLogo from '@/public/images/headerLogo.png'
 import footerLogoImage from '@/public/images/footerLogo.png'
 
 export default function Logo({ isFooterLogo = false }) {
   return (
     <Link
-      href="/Home/"
+      href="/home/"
       className={isFooterLogo ? styles.footerLogo : styles.headerLogo}
     >
       <Image

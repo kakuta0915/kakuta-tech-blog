@@ -1,15 +1,15 @@
 import { getAllArticles } from '@/libs/api'
 import Image from 'next/image'
 import Link from 'next/link'
-import Meta from '@/src/components/Meta/Meta'
-import Hero from '@/src/components/Hero/Hero'
-import Container from '@/src/components/Container/Container'
-import Posts from '@/src/components/Posts/Posts'
-import Social from '@/src/components/Social/Social'
+import Meta from '@/src/components/meta/meta'
+import Hero from '@/src/components/hero/hero'
+import Container from '@/src/components/container/container'
+import Posts from '@/src/components/posts/posts'
+import Social from '@/src/components/social/social'
 import styles from './index.module.css'
 import eyecatch from '@/public/images/index.jpg'
 import kakuta0915 from '@/public/images/kakuta0915.png'
-import PortfolioList from '@/src/components/PortfolioList/PortfolioList'
+import PortfolioList from '@/src/components/portfolioList/portfolioList'
 
 export default function Home({ posts }) {
   const portfolioData = [
@@ -55,7 +55,7 @@ export default function Home({ posts }) {
           />
           <Social />
           <div className={styles.btnBox}>
-            <Link className={styles.btn} href="./About/">
+            <Link className={styles.btn} href="./about/">
               MORE
             </Link>
           </div>
@@ -67,10 +67,10 @@ export default function Home({ posts }) {
         </section>
 
         <section className={styles.portfolioSection}>
-          <h2>PORTFOLIO</h2>
+          <h2>Portfolio</h2>
           <PortfolioList portfolioData={portfolioData} />
           <div className={styles.btnBox}>
-            <Link className={styles.btn} href="./Portfolio/">
+            <Link className={styles.btn} href="./portfolio/">
               MORE
             </Link>
           </div>

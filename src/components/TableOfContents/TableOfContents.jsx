@@ -3,7 +3,7 @@ import { useRef, useState } from 'react'
 import { Link as Scroll } from 'react-scroll'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleDown } from '@fortawesome/free-solid-svg-icons'
-import styles from './TableOfContents.module.css'
+import styles from './tableOfContents.module.css'
 
 export default function TableOfContents({ toc }) {
   const [tocOpen, setTocOpen] = useState(false)

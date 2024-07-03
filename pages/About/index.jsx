@@ -1,8 +1,8 @@
 // aboutページ
 import Image from 'next/image'
-import Meta from '@/src/components/Meta/Meta'
-import Hero from '@/src/components/Hero/Hero'
-import Container from '@/src/components/Container/Container'
+import Meta from '@/src/components/meta/meta'
+import Hero from '@/src/components/hero/hero'
+import Container from '@/src/components/container/container'
 import styles from './index.module.css'
 import eyecatch from '@/public/images/about.jpg'
 import kakuta0915 from '@/public/images/kakuta0915.png'

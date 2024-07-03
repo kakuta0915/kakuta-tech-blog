@@ -1,6 +1,6 @@
 // ヘッダーとフッターをLayoutコンポーネントで管理する
-import Header from './Header/Header'
-import Footer from './Footer/Footer'
+import Header from './header/header'
+import Footer from './footer/footer'
 
 export default function Layout({ children }) {
   return (

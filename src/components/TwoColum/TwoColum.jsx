@@ -1,5 +1,5 @@
 // 2段組みのレイアウト
-import styles from './TwoColum.module.css'
+import styles from './twoColum.module.css'
 
 export function TwoColum({ children }) {
   return <div className={styles.flexContainer}>{children}</div>

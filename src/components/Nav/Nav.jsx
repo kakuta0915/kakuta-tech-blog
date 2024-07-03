@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import styles from './Nav.module.css'
+import styles from './nav.module.css'
 
 export default function Nav() {
   const [navIsOpen, setNavIsOpen] = useState(false)
@@ -34,27 +34,27 @@ export default function Nav() {
 
       <ul className={styles.headerNav}>
         <li>
-          <Link href="/Home/" onClick={closeNav}>
+          <Link href="/home/" onClick={closeNav}>
             TOP
           </Link>
         </li>
         <li>
-          <Link href="/About/" onClick={closeNav}>
+          <Link href="/about/" onClick={closeNav}>
             ABOUT
           </Link>
         </li>
         <li>
-          <Link href="/Portfolio/" onClick={closeNav}>
+          <Link href="/portfolio/" onClick={closeNav}>
             PORTFOLIO
           </Link>
         </li>
         <li>
-          <Link href="/Articles/" onClick={closeNav}>
+          <Link href="/articles/" onClick={closeNav}>
             ARTICLES
           </Link>
         </li>
         <li>
-          <Link href="/Contact/" onClick={closeNav}>
+          <Link href="/contact/" onClick={closeNav}>
             CONTACT
           </Link>
         </li>

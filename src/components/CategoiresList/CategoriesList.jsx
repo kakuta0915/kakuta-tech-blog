@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useState, useRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleDown } from '@fortawesome/free-solid-svg-icons'
-import styles from './CategoriesList.module.css'
+import styles from './categoriesList.module.css'
 
 export default function CategoriesList({ allCategories }) {
   const [categoriesOpen, setCategoriesOpen] = useState(false)
@@ -37,7 +37,7 @@ export default function CategoriesList({ allCategories }) {
             <li className={styles.categoriesList} key={slug}>
               <Link
                 className={styles.categoriesLink}
-                href={`/Articles/Categories/${slug}`}
+                href={`/articles/categories/${slug}`}
               >
                 <Image
                   className={styles.iconImg}

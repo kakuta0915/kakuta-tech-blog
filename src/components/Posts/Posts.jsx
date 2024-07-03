@@ -4,8 +4,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { faTag } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import ConvertDate from '../Convert/ConvertDate'
-import styles from './Posts.module.css'
+import ConvertDate from '../convert/convertDate'
+import styles from './posts.module.css'
 import qiitaImg from '@/public/images/qiitaEyecatch.png'
 
 export default function Posts({ btn = false, posts = [], maxPosts }) {
@@ -64,7 +64,7 @@ export default function Posts({ btn = false, posts = [], maxPosts }) {
       </div>
       <div className={styles.btnBox}>
         {btn && (
-          <Link className={styles.btn} href="/Articles/">
+          <Link className={styles.btn} href="/articles/">
             MORE
           </Link>
         )}
