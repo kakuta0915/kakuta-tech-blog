@@ -34,7 +34,7 @@ export default function Nav() {
 
       <ul className={styles.headerNav}>
         <li>
-          <Link href="/home/" onClick={closeNav}>
+          <Link href="/" onClick={closeNav}>
             TOP
           </Link>
         </li>

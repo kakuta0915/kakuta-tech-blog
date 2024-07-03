@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Meta from '@/src/components/meta/meta'
 import Hero from '@/src/components/hero/hero'
 import Container from '@/src/components/container/container'
+import Social from '@/src/components/social/social'
 import styles from './index.module.css'
 import eyecatch from '@/public/images/about.jpg'
 import kakuta0915 from '@/public/images/kakuta0915.png'
@@ -37,6 +38,7 @@ export default function About() {
           <h3>プロフィール</h3>
           <figure>
             <Image
+              className={styles.profileImage}
               src={kakuta0915}
               alt=""
               objectFit="contain"
@@ -44,12 +46,7 @@ export default function About() {
               placeholder="blur"
             />
           </figure>
-          <div className={styles.profileIcon}>
-            <a href="https://github.com/kakuta0915">Git Hub</a>
-            <a href="https://twitter.com/_kakuta0915_">X</a>
-            <a href="https://qiita.com/kakuta0915">Qiita</a>
-            <a href="https://zenn.dev/kakuta0915">Zenn</a>
-          </div>
+          <Social />
 
           <h4>名前</h4>
           <p>

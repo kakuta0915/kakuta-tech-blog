@@ -8,7 +8,7 @@ import footerLogoImage from '@/public/images/footerLogo.png'
 export default function Logo({ isFooterLogo = false }) {
   return (
     <Link
-      href="/home/"
+      href="/"
       className={isFooterLogo ? styles.footerLogo : styles.headerLogo}
     >
       <Image
