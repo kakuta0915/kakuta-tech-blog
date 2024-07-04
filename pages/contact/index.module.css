@@ -49,8 +49,12 @@
 .button {
   display: block;
   font-size: calc(var(--body) * 1.2);
-  padding: var(--space-xxs) var(--space-lg);
+  color: var(--white);
+  background-color: var(--blue);
+  padding: var(--space-xxs) var(--space-md);
   margin: var(--space-lg) auto;
+  transition: 0.3s;
+  border: none;
 }
 
 @media (min-width: 768px) {
@@ -76,7 +80,9 @@
   }
 
   .button:hover {
-    color: var(--blue);
+    color: var(--white);
+    background-color: var(--blue-1);
     cursor: pointer;
+    transform: scale(1.05);
   }
 }
