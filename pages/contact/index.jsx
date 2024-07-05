@@ -4,6 +4,13 @@ import Hero from '@/src/components/hero/hero'
 import Container from '@/src/components/container/container'
 import styles from './index.module.css'
 import eyecatch from '@/public/images/contact.jpg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faBuilding,
+  faEnvelope,
+  faMessage,
+  faUser,
+} from '@fortawesome/free-solid-svg-icons'
 
 export default function Contact() {
   return (
@@ -26,17 +33,22 @@ export default function Contact() {
             <ul>
               <li>
                 <label for="username">
+                  <FontAwesomeIcon icon={faUser} className={styles.icon} />
                   お名前
                   <span>【必須】</span>
                 </label>
                 <input type="text" id="username" name="username" />
               </li>
               <li>
-                <label for="company">会社名</label>
+                <label for="company">
+                  <FontAwesomeIcon icon={faBuilding} className={styles.icon} />
+                  会社名
+                </label>
                 <input type="text" id="company" name="company" />
               </li>
               <li>
                 <label for="email">
+                  <FontAwesomeIcon icon={faEnvelope} className={styles.icon} />
                   メールアドレス
                   <span>【必須】</span>
                 </label>
@@ -44,6 +56,7 @@ export default function Contact() {
               </li>
               <li>
                 <label for="detail">
+                  <FontAwesomeIcon icon={faMessage} className={styles.icon} />
                   お問い合わせ内容
                   <span>【必須】</span>
                 </label>
