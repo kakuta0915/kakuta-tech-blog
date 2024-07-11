@@ -63,12 +63,21 @@ export default function Home({ posts }) {
 
         <section className={styles.articlesSection}>
           <h2>Articles</h2>
+          <p>
+            プログラミング学習に関する記事をまとめたページです。学習中に躓いた箇所や、開発過程で遭遇した具体的な課題、それに対する解決策を紹介しています。
+          </p>
           <Posts posts={posts} maxPosts={6} btn />
         </section>
 
         <section className={styles.portfolioSection}>
           <h2>Portfolio</h2>
-          <PortfolioList portfolioData={portfolioData} />
+          <p>
+            独学で制作したサイトなどを掲載しており、GitHubからコードもご覧いただけます。
+          </p>
+          <PortfolioList
+            portfolioData={portfolioData}
+            className={styles.portfolioList}
+          />
           <div className={styles.btnBox}>
             <Link className={styles.btn} href="./portfolio/">
               MORE
