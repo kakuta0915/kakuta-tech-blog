@@ -27,7 +27,7 @@ export default function Home({ posts }) {
     <>
       <Meta
         pageTitle="TOP"
-        pageDesc="プログラミン  グ学習記録をまとめたサイト"
+        pageDesc="プログラミング学習記録をまとめたサイト"
         pageImg={eyecatch.src}
         pageImgW={eyecatch.width}
         pageImgH={eyecatch.height}
