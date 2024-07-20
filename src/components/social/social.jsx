@@ -8,7 +8,7 @@ export default function Social({ isFooterSocial }) {
     : styles.socialList
 
   return (
-    <div className={containerClass}>
+    <div className={containerClass} data-testid="social">
       <Link
         className={styles.link}
         href="https://twitter.com/_kakuta0915_"
