@@ -44,7 +44,7 @@ export default function CategoriesList({ allCategories }) {
                   src={icon.url}
                   width={icon.width}
                   height={icon.height}
-                  alt=""
+                  alt={`${name} icon`}
                 />
                 <span className={styles.name}>{name}</span>
               </Link>

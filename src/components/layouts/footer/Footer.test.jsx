@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import Footer from './Footer'
-import '@testing-library/jest-dom' // jest-dom の matchers を使うため
+import '@testing-library/jest-dom'
 
 describe('Footer component', () => {
   // Logoコンポーネントがレンダリングされるかをテスト
