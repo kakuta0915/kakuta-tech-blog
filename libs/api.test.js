@@ -1,3 +1,9 @@
+describe('API Tests', () => {
+  it('sample test', () => {
+    expect(true).toBe(true)
+  })
+})
+
 // import { getPostBySlug } from './api'
 
 // // モッククライアントの作成

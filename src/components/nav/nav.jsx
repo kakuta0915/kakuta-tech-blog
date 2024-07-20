@@ -14,7 +14,7 @@ export default function Nav() {
   }
 
   return (
-    <nav className={navIsOpen ? styles.open : styles.close}>
+    <nav className={navIsOpen ? styles.open : styles.close} data-testid="nav">
       {navIsOpen && (
         <style jsx global>{`
           @media (max-width: 767px) {
