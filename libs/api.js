@@ -1,22 +1,29 @@
 import { createClient } from 'microcms-js-sdk'
 import axios from 'axios'
 
+// サービスドメインとAPIキーを取得するか、テスト用のデフォルト値を設定する
+const serviceDomain = process.env.SERVICE_DOMAIN || 'test-service-domain'
+const apiKey = process.env.API_KEY || 'test-api-key'
+
 export const client = createClient({
-  serviceDomain: process.env.SERVICE_DOMAIN,
-  apiKey: process.env.API_KEY,
+  serviceDomain,
+  apiKey,
 })
 
 // 記事ページに必要なデータを取得する (指定した１つのslugの記事データを返す)
 export async function getPostBySlug(slug) {
   try {
+    console.log('~~ Slugを使用して記事を取得しています~~ :', slug)
     const post = await client.get({
       endpoint: 'blog',
       queries: { filters: `slug[equals]${slug}` },
     })
+    console.log('取得した記事:', post)
     return post.contents[0]
   } catch (err) {
     console.log('~~ getPostBySlug ~~')
-    console.log(err)
+    console.log('エラーが発生しました', err)
+    throw err
   }
 }
 
