@@ -5,8 +5,8 @@ export default {
   moduleNameMapper: {
     '^@/src/(.*)$': '<rootDir>/src/$1',
     '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
-    '\\.(jpg|jpeg|png|gif|webp|svg)$': '<rootDir>/__mocks__/fileMock.js',
-    '^next/image$': '<rootDir>/__mocks__/next/image.js',
+    '\\.(jpg|jpeg|png|gif|webp|svg)$': '<rootDir>/src/__mocks__/fileMock.js',
+    '^next/image$': '<rootDir>/src/__mocks__/next/image.js',
   },
   transform: {
     '^.+\\.jsx?$': 'babel-jest',
