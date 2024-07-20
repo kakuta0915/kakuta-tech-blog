@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import styles from './portfolioList.module.css'
+import styles from './PortfolioList.module.css'
 
 const PortfolioList = ({ portfolioData }) => {
   return (

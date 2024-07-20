@@ -5,19 +5,19 @@ import 'highlight.js/styles/night-owl.css'
 import { extractText } from '@/libs/extract-text'
 import { prevNextPost } from '@/libs/prev-next-post'
 import { renderToc } from '@/libs/render-toc'
-import Meta from '@/src/components/meta/meta'
-import PostHeader from '@/src/components/postHeader/postHeader'
+import Meta from '@/src/components/Meta/Meta'
+import PostHeader from '@/src/components/PostHeader/PostHeader'
 import {
   TwoColum,
   TwoColumMain,
   TwoColumSidebar,
-} from '@/src/components/twoColum/twoColum'
-import Container from '@/src/components/container/container'
-import ConvertBody from '@/src/components/convert/convertBody'
-import PostBody from '@/src/components/postBody/postBody'
-import PostCategories from '@/src/components/postCategories/postCategories'
-import Pagination from '@/src/components/pagination/pagination'
-import TableOfContents from '@/src/components/tableOfContents/tableOfContents'
+} from '@/src/components/TwoColum/TwoColum'
+import Container from '@/src/components/Container/Container'
+import ConvertBody from '@/src/components/Convert/ConvertBody'
+import PostBody from '@/src/components/PostBody/PostBody'
+import PostCategories from '@/src/components/PostCategories/PostCategories'
+import Pagination from '@/src/components/Pagination/pagination'
+import TableOfContents from '@/src/components/TableOfContents/TableOfContents'
 
 export default function Post({
   icon,

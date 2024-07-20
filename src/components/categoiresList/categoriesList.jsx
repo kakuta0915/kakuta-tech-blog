@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useState, useRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleDown } from '@fortawesome/free-solid-svg-icons'
-import styles from './categoriesList.module.css'
+import styles from './CategoriesList.module.css'
 
 export default function CategoriesList({ allCategories }) {
   const [categoriesOpen, setCategoriesOpen] = useState(false)
