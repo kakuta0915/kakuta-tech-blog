@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import Script from 'next/script'
 import * as gtag from 'libs/gtag'
 import '@fortawesome/fontawesome-free/css/all.min.css'
-import Layout from '@/src/components/layouts/Layout'
+import Layout from '@/src/components/layouts/layout'
 import styles from '@/src/styles/globals.css'
 
 // Font Awesomeの設定
