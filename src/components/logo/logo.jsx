@@ -10,12 +10,13 @@ export default function Logo({ isFooterLogo = false }) {
     <Link
       href="/"
       className={isFooterLogo ? styles.footerLogo : styles.headerLogo}
+      data-testid="logo"
     >
       <Image
         className={styles.linkImage}
         src={isFooterLogo ? footerLogoImage : headerLogo}
         alt="Logo Image"
-        priority
+        priority="true"
       />
     </Link>
   )

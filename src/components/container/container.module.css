@@ -1,16 +1,11 @@
-.default {
+.container {
   width: 95%;
   max-width: 1152px;
   margin: 0 auto;
 }
 
-.large {
-  composes: default;
-  max-width: 1280px;
-}
-
 @media (min-width: 768px) {
-  .default {
+  .container {
     width: 85%;
   }
 }
