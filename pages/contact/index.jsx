@@ -1,7 +1,7 @@
 // Contactページ
-import Meta from '@/src/components/meta/meta'
-import Hero from '@/src/components/hero/hero'
-import Container from '@/src/components/container/container'
+import Meta from '@/src/components1/meta/meta'
+import Hero from '@/src/components1/hero/hero'
+import Container from '@/src/components1/container/container'
 import styles from './index.module.css'
 import eyecatch from '@/public/images/contact.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
