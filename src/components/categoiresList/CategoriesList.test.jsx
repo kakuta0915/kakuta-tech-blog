@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react'
-import CategoriesList from './CategoriesList'
+import CategoriesList from './categoriesList'
 
 // モックデータ
 const mockCategories = [

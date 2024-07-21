@@ -5,7 +5,7 @@ import {
   faChevronLeft,
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons'
-import styles from './Pagination.module.css'
+import styles from './pagination.module.css'
 
 export default function Pagination({
   prevText = '',

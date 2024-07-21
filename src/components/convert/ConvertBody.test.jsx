@@ -2,7 +2,7 @@
 /* eslint-disable react/display-name */
 import React from 'react'
 import { render } from '@testing-library/react'
-import ConvertBody from './ConvertBody'
+import ConvertBody from './convertBody'
 
 // モック設定
 jest.mock('next/image', () => ({

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import styles from './Social.module.css'
+import styles from './social.module.css'
 
 export default function Social({ isFooterSocial }) {
   const containerClass = isFooterSocial

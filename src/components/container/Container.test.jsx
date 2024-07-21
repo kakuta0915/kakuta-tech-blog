@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import Container from './Container'
-import styles from './Container.module.css'
+import Container from './container'
+import styles from './container.module.css'
 
 describe('Container component', () => {
   it('applies default styles correctly', () => {
