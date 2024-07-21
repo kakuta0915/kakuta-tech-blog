@@ -1,10 +1,10 @@
 // 記事一覧ページ
 import { getAllArticles, getAllCategories } from '@/libs/api'
-import Meta from '@/src/components1/meta/meta'
-import Hero from '@/src/components1/hero/hero'
-import Container from '@/src/components1/container/container'
-import Posts from '@/src/components1/posts/posts'
-import CategoriesList from '@/src/components1/categoiresList/categoriesList'
+import Meta from '@/src/components/meta/meta'
+import Hero from '@/src/components/hero/hero'
+import Container from '@/src/components/container/container'
+import Posts from '@/src/components/posts/posts'
+import CategoriesList from '@/src/components/categoiresList/categoriesList'
 import eyecatch from '@/public/images/articles.jpg'
 
 export default function Articles({ posts, allCategories }) {
