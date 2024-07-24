@@ -1,7 +1,7 @@
-import Meta from '@/src/components/meta/meta'
-import Hero from '@/src/components/hero/hero'
-import Container from '@/src/components/container/container'
-import PortfolioList from '@/src/components/portfolioList/portfolioList'
+import Meta from '@/src/components1/meta/meta'
+import Hero from '@/src/components1/hero/hero'
+import Container from '@/src/components1/container/container'
+import PortfolioList from '@/src/components1/portfolioList/portfolioList'
 import styles from './index.module.css'
 import eyecatch from '@/public/images/works.jpg'
 
