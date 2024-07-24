@@ -25,6 +25,7 @@ export default function PostHeader({ icon, title, subtitle, publish = '' }) {
               size="lg"
               color="var(--gray)"
               className={styles.icon}
+              data-testid="clock-icon"
             />
             <ConvertDate dateISO={publish} />
           </div>

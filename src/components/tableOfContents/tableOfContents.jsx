@@ -38,6 +38,7 @@ export default function TableOfContents({ toc }) {
               smooth={true}
               offset={-70}
               duration={800}
+              data-testid={`scroll-link-${data.id}`}
             >
               <li className={styles.tocLi} key={data.id}>
                 {data.text}
