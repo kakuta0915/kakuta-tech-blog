@@ -1,0 +1,61 @@
+/* Common */
+.btnBox {
+  padding: var(--space-md) 0 var(--space-md);
+}
+
+.btn {
+  display: inline-block;
+  background-color: var(--blue-1);
+  padding: var(--space-xxs) var(--space-sm);
+  color: var(--white);
+  transition: 0.3s;
+}
+
+.aboutSection,
+.articlesSection,
+.portfolioSection {
+  margin: var(--space-md) var(--space-xxs);
+}
+
+.aboutSection,
+.portfolioSection {
+  text-align: center;
+}
+
+.aboutSection > h2,
+.articlesSection > h2,
+.portfolioSection > h2 {
+  text-align: center;
+  font-size: clamp(2rem, 1.636rem + 1.82vw, 3rem);
+  margin-bottom: var(--space-xxs);
+}
+
+/* About */
+.aboutSection p,
+.articlesSection p,
+.portfolioSection p {
+  text-align: center;
+  padding-bottom: var(--space-xs);
+}
+
+.aboutSection .profileIcon {
+  display: inline-block;
+  border-radius: 50%;
+  width: 30%;
+  height: 30%;
+  object-fit: cover;
+  margin: var(--space-md) auto var(--space-sm);
+}
+
+/* Portfolio */
+.portfolioSection {
+  padding-bottom: var(--space-sm);
+}
+
+@media (min-width: 768px) {
+  .btn:hover {
+    background-color: var(--blue);
+    color: var(--white);
+    transform: scale(1.05);
+  }
+}

@@ -1,0 +1,138 @@
+.stack {
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-xs);
+}
+
+.stack > * + * {
+  margin-top: var(--space-xxs);
+}
+
+.stack h2 + *,
+.stack h3 + *,
+.stack h4 + * {
+  margin-top: 0.8rem;
+}
+
+.stack h2 {
+  margin-top: var(--space-md);
+  padding: var(--space-xxs);
+  background: #eeeeee;
+  border-left: solid 8px var(--blue);
+}
+
+.stack h3 {
+  padding: 0.8rem;
+  border-left: 5px solid var(--blue);
+  border-bottom: 1px solid var(--gray-1);
+}
+
+.stack h4 {
+  padding-top: var(--space-xxs);
+}
+
+.stack p {
+  line-height: 1.7;
+}
+
+.stack strong {
+  color: var(--blue-1);
+}
+
+.stack code {
+  margin-bottom: var(--space-md);
+}
+
+.stack ol,
+.stack ul {
+  padding-left: var(--space-xs);
+  font-weight: 600;
+}
+
+.stack ul {
+  list-style: revert;
+}
+
+.stack ol * li,
+.stack ul * li {
+  font-weight: normal;
+}
+
+.stack li {
+  margin-bottom: 2rem;
+}
+.stack li > p {
+  font-weight: normal;
+}
+
+.stack hr {
+  color: var(--gray-2);
+  border: 3px solid;
+  margin: 0.25rem 0 0;
+}
+
+/* 引用のレイアウト */
+.stack > blockquote {
+  position: relative;
+  padding: var(--space-xxs) var(--space-xxs) var(--space-xxs)
+    calc(var(--space-xs) * 1.2);
+  margin: var(--space-xs);
+  box-sizing: border-box;
+  background: #f3f3f3;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
+}
+
+.stack > blockquote:before {
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  left: -15px;
+  width: 40px;
+  height: 30px;
+  padding-top: 5px;
+  text-align: center;
+  content: '\f10d';
+  font-family: FontAwesome;
+  color: var(--white);
+  font-size: 18px;
+  background: var(--blue);
+  box-shadow: 0 2px 2px rgba(26, 26, 26, 0.14);
+  font-weight: 900;
+}
+
+.stack > blockquote:after {
+  position: absolute;
+  content: '';
+  top: 40px;
+  left: -15px;
+  border: none;
+  border-bottom: solid 8px transparent;
+  border-right: solid 15px var(--blue-2);
+}
+
+.stack > blockquote p {
+  position: relative;
+  padding: 0;
+  margin: 0.3rem 0;
+  z-index: 3;
+}
+
+/* 関連記事のレイアウト */
+.stack h5 {
+  font-size: var(--body);
+  background-color: var(--blue);
+  color: var(--white);
+  display: inline-block;
+  padding: 0.5rem 1rem;
+}
+
+.stack > h5 + p {
+  margin: 0.5rem 0 0;
+}
+
+.stack > h5 + p > a {
+  color: var(--blue);
+}
+
+.stack > h5 + p > a:hover {
+  color: var(--blue-2);
+}

@@ -1,0 +1,44 @@
+.figure {
+  padding: 1rem;
+}
+
+.profile {
+  margin: var(--space-md) var(--space-xs);
+}
+
+.profile figure {
+  text-align: center;
+  margin-bottom: var(--space-xs);
+}
+
+.profileImage {
+  display: inline-block;
+  border-radius: 50%;
+  width: 30%;
+  height: 30%;
+  object-fit: cover;
+}
+
+.profileName {
+  color: var(--blue);
+}
+
+.profileName:hover {
+  color: var(--blue-1);
+}
+
+.profile > h3 {
+  margin-bottom: var(--space-sm);
+  padding: calc(var(--space-xxs) * 0.5) 0 calc(var(--space-xxs) * 0.5)
+    var(--space-xxs);
+  border-bottom: 1px solid var(--gray);
+  border-left: 10px solid var(--blue);
+}
+
+.profile > h4 {
+  padding: var(--space-xxs);
+}
+
+.profile > p {
+  margin: 0 var(--space-xs) var(--space-xs);
+}

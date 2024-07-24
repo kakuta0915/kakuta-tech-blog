@@ -1,0 +1,29 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-xxs);
+  margin: var(--space-sm) auto;
+}
+
+.portfolioItem {
+  display: block;
+  color: inherit;
+  background-color: var(--white);
+  border: 1px solid var(--gray-1);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.portfolioItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.portfolioDetails {
+  padding: 0.5rem var(--space-xxs) var(--space-xxs);
+}
+
+.portfolioDetails h3 {
+  margin-bottom: 0.25rem;
+}
