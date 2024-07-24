@@ -27,6 +27,7 @@ export async function getPostBySlug(slug) {
   }
 }
 
+// 全てのSlugを取得する関数
 export async function getAllSlugs(limit = 100) {
   try {
     const slugs = await client.get({
