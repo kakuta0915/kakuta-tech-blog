@@ -18,7 +18,6 @@ export async function getPostBySlug(slug) {
       endpoint: 'blog',
       queries: { filters: `slug[equals]${slug}` },
     })
-    console.log('取得した記事:', post)
     return post.contents[0]
   } catch (err) {
     console.log('~~ getPostBySlug ~~')
