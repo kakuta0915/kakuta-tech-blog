@@ -1,4 +1,5 @@
 // Contactページ
+import { useState } from 'react'
 import Meta from '@/src/components/meta/meta'
 import Hero from '@/src/components/hero/hero'
 import Container from '@/src/components/container/container'
@@ -13,6 +14,31 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 
 export default function Contact() {
+  const [name, setName] = useState('')
+  const [company, setCompany] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, company, email, message }),
+    })
+    if (res.ok) {
+      alert('送信完了')
+      setName('')
+      setCompany('')
+      setEmail('')
+      setMessage('')
+    } else {
+      alert('エラーが発生しました')
+    }
+  }
+
   return (
     <>
       <Meta
@@ -29,44 +55,70 @@ export default function Contact() {
       />
       <Container>
         <div className={styles.contact}>
-          <form className={styles.form}>
+          <form className={styles.form} onSubmit={handleSubmit}>
             <ul>
               <li>
-                <label for="username">
+                <label htmlFor="name">
                   <FontAwesomeIcon icon={faUser} className={styles.icon} />
                   お名前
                   <span>【必須】</span>
                 </label>
-                <input type="text" id="username" name="username" />
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
               </li>
               <li>
-                <label for="company">
+                <label htmlFor="company">
                   <FontAwesomeIcon icon={faBuilding} className={styles.icon} />
                   会社名
                 </label>
-                <input type="text" id="company" name="company" />
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  value={company}
+                  onChange={(e) => setCompany(e.target.value)}
+                />
               </li>
               <li>
-                <label for="email">
+                <label htmlFor="email">
                   <FontAwesomeIcon icon={faEnvelope} className={styles.icon} />
                   メールアドレス
                   <span>【必須】</span>
                 </label>
-                <input type="email" id="email" name="email" />
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
               </li>
               <li>
-                <label for="detail">
+                <label htmlFor="message">
                   <FontAwesomeIcon icon={faMessage} className={styles.icon} />
                   お問い合わせ内容
                   <span>【必須】</span>
                 </label>
-                <textarea id="detail" name="detail"></textarea>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  required
+                ></textarea>
               </li>
             </ul>
+            <button className={styles.button} type="submit">
+              送信する
+            </button>
           </form>
-          <button className={styles.button} type="submit" value="送信">
-            送信する
-          </button>
         </div>
       </Container>
     </>
