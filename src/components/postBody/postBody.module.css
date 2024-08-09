@@ -21,6 +21,7 @@
 }
 
 .stack h3 {
+  margin-top: var(--space-sm);
   padding: 0.8rem;
   border-left: 5px solid var(--blue);
   border-bottom: 1px solid var(--gray-1);
@@ -31,7 +32,7 @@
 }
 
 .stack p {
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
 .stack strong {
@@ -39,7 +40,7 @@
 }
 
 .stack code {
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-sm);
 }
 
 .stack ol,
