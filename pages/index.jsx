@@ -8,10 +8,18 @@ import Posts from '@/src/components/posts/posts'
 import Social from '@/src/components/social/social'
 import PortfolioList from '@/src/components/portfolioList/portfolioList'
 import styles from '@/src/styles/index.module.css'
+import useScrollAnimation from '@/src/components/useScrollAnimation/useScrollAnimation'
+import useScrollAnimationStyles from '@/src/components/useScrollAnimation/useScrollAnimation.module.css'
 import eyecatch from '@/public/images/index.jpg'
 import kakuta0915 from '@/public/images/kakuta0915.png'
 
 export default function Home({ posts }) {
+  useScrollAnimation([
+    `.${useScrollAnimationStyles.fadeInUp}`,
+    `.${useScrollAnimationStyles.fadeInRight}`,
+    `.${useScrollAnimationStyles.fadeInLeft}`,
+  ])
+
   const portfolioData = [
     {
       id: 1,
@@ -35,18 +43,18 @@ export default function Home({ posts }) {
       <Hero
         title="KAKUTA"
         title2="TECH BLOG"
-        description="このサイトでは、Next.jsとmicroCMSを組み合わせ、プログラミングの技術ブログを制作しました。 開発過程で学習時に躓いた箇所や解決策について、詳細な記事をまとめています。"
+        description="このサイトでは、ReactとNext.jsとmicroCMSを組み合わせ、プログラミングの技術ブログを制作しました。 開発過程で学習時に躓いた箇所や解決策について、詳細な記事をまとめています。"
         imageSrc="/images/index.jpg"
         contact={true}
       />
       <Container>
         <section className={styles.aboutSection}>
-          <h2>About Me</h2>
-          <p>
+          <h2 className={useScrollAnimationStyles.fadeInUp}>About Me</h2>
+          <p className={useScrollAnimationStyles.fadeInUp}>
             エンジニア転職を目指し、自主的にプログラミングを学習しています。日々の学びや経験を通じて、技術力の向上と実践的なスキルの構築に注力しています。これまでの学習過程やスキルセットについて、詳しくご紹介いたします。
           </p>
           <Image
-            className={styles.profileIcon}
+            className={`${styles.profileIcon} ${useScrollAnimationStyles.fadeInUp}`}
             src={kakuta0915}
             alt=""
             objectFit="contain"
