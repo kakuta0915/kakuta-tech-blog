@@ -48,6 +48,8 @@ export default function About() {
 
           <h4>名前</h4>
           <p>
+            閲覧ありがとうございます。
+            <br />
             KAKUTAです。
             <a
               className={styles.profileName}
