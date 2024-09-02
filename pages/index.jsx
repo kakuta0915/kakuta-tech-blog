@@ -43,7 +43,7 @@ export default function Home({ posts }) {
       <Hero
         title="KAKUTA"
         title2="TECH BLOG"
-        description="このサイトでは、ReactとNext.jsとmicroCMSを組み合わせ、プログラミングの技術ブログを制作しました。 開発過程で学習時に躓いた箇所や解決策について、詳細な記事をまとめています。"
+        description="このサイトでは、ReactとNext.jsとmicroCMSを組み合わせ、プログラミングの技術ブログを制作しました。 学習したことをアウトプットしたり、学習時に躓いた箇所や解決策について、詳細な記事をまとめています。"
         imageSrc="/images/index.jpg"
         contact={true}
       />
