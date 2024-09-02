@@ -1,4 +1,4 @@
-<img src='/pages/public/images/ogp.jpg'>
+<img src='/public/images/ogp.jpg'>
  
 ## ブログサイトの紹介・目的
 このサイトでは、ReactとNext.jsとmicroCMSを組み合わせ、プログラミングの技術ブログを制作しました。
