@@ -2,13 +2,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styles from './social.module.css'
 
-export default function Social({ isFooterSocial }) {
+export default function Social({ className, isFooterSocial }) {
   const containerClass = isFooterSocial
     ? styles.socialListFooter
     : styles.socialList
 
   return (
-    <div className={containerClass} data-testid="social">
+    <div className={`${containerClass} ${className}`} data-testid="social">
       <Link
         className={styles.link}
         href="https://twitter.com/_kakuta0915_"
