@@ -2,9 +2,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import styles from './portfolioList.module.css'
 
-const PortfolioList = ({ portfolioData }) => {
+const PortfolioList = ({ className, portfolioData }) => {
   return (
-    <div className={styles.grid}>
+    <div className={`${className} ${styles.grid}`}>
       {portfolioData.map((portfolio) => (
         <Link
           className={styles.portfolioItem}

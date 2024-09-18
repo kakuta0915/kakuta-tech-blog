@@ -8,7 +8,12 @@ import ConvertDate from '../convert/convertDate'
 import styles from './posts.module.css'
 import qiitaImg from '@/public/images/qiitaEyecatch.png'
 
-export default function Posts({ btn = false, posts = [], maxPosts }) {
+export default function Posts({
+  className,
+  btn = false,
+  posts = [],
+  maxPosts,
+}) {
   const [articles, setArticles] = useState(posts.slice(0, maxPosts))
 
   useEffect(() => {
@@ -24,7 +29,7 @@ export default function Posts({ btn = false, posts = [], maxPosts }) {
 
   return (
     <>
-      <div className={styles.postsContainer}>
+      <div className={`${className} ${styles.postsContainer}`}>
         {articles.map(
           ({ title, slug, eyecatch, publishDate = '', categories, source }) => (
             <article key={slug}>
