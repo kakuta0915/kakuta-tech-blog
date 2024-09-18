@@ -3,7 +3,7 @@
 }
 
 .profile {
-  margin: var(--space-md) var(--space-xs);
+  margin: var(--space-md) var(--space-xs) var(--space-lg);
 }
 
 .profile figure {
