@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { useState, useRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleDown } from '@fortawesome/free-solid-svg-icons'
+import useScrollAnimation from '@/src/components/useScrollAnimation/useScrollAnimation'
+import useScrollAnimationStyles from '@/src/components/useScrollAnimation/useScrollAnimation.module.css'
 import styles from './categoriesList.module.css'
 
 export default function CategoriesList({ allCategories }) {
@@ -13,6 +15,12 @@ export default function CategoriesList({ allCategories }) {
   }
   const refCategories = useRef(null)
 
+  useScrollAnimation([
+    `.${useScrollAnimationStyles.fadeInUp}`,
+    `.${useScrollAnimationStyles.fadeInRight}`,
+    `.${useScrollAnimationStyles.fadeInLeft}`,
+  ])
+
   return (
     <div
       className={`${styles.categories} ${
@@ -20,7 +28,7 @@ export default function CategoriesList({ allCategories }) {
       }`}
     >
       <div className={styles.categoriesBtn} onClick={toggleCategories}>
-        <h3>カテゴリ 一覧</h3>
+        <h3 className={useScrollAnimationStyles.fadeInUp}>カテゴリ 一覧</h3>
         <FontAwesomeIcon className={styles.icon} icon={faCircleDown} />
       </div>
       <div
@@ -32,7 +40,7 @@ export default function CategoriesList({ allCategories }) {
             : '0px',
         }}
       >
-        <ul>
+        <ul className={useScrollAnimationStyles.fadeInUp}>
           {allCategories.map(({ name, slug, icon }) => (
             <li className={styles.categoriesList} key={slug}>
               <Link
