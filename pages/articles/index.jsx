@@ -5,9 +5,17 @@ import Hero from '@/src/components/hero/hero'
 import Container from '@/src/components/container/container'
 import Posts from '@/src/components/posts/posts'
 import CategoriesList from '@/src/components/categoiresList/categoriesList'
+import useScrollAnimation from '@/src/components/useScrollAnimation/useScrollAnimation'
+import useScrollAnimationStyles from '@/src/components/useScrollAnimation/useScrollAnimation.module.css'
 import eyecatch from '@/public/images/articles.jpg'
 
 export default function Articles({ posts, allCategories }) {
+  useScrollAnimation([
+    `.${useScrollAnimationStyles.fadeInUp}`,
+    `.${useScrollAnimationStyles.fadeInRight}`,
+    `.${useScrollAnimationStyles.fadeInLeft}`,
+  ])
+
   return (
     <>
       <Meta
@@ -23,8 +31,11 @@ export default function Articles({ posts, allCategories }) {
         imageSrc="/images/articles.jpg"
       />
       <Container>
-        <Posts posts={posts} />
-        <CategoriesList allCategories={allCategories} />
+        <Posts className={useScrollAnimationStyles.fadeInUp} posts={posts} />
+        <CategoriesList
+          className={useScrollAnimationStyles.fadeInUp}
+          allCategories={allCategories}
+        />
       </Container>
     </>
   )
