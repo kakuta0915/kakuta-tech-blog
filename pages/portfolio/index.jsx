@@ -2,6 +2,8 @@ import Meta from '@/src/components/meta/meta'
 import Hero from '@/src/components/hero/hero'
 import Container from '@/src/components/container/container'
 import PortfolioList from '@/src/components/portfolioList/portfolioList'
+import useScrollAnimation from '@/src/components/useScrollAnimation/useScrollAnimation'
+import useScrollAnimationStyles from '@/src/components/useScrollAnimation/useScrollAnimation.module.css'
 import styles from './index.module.css'
 import eyecatch from '@/public/images/works.jpg'
 
@@ -17,6 +19,11 @@ const portfolioData = [
 ]
 
 export default function Portfolio() {
+  useScrollAnimation([
+    `.${useScrollAnimationStyles.fadeInUp}`,
+    `.${useScrollAnimationStyles.fadeInRight}`,
+    `.${useScrollAnimationStyles.fadeInLeft}`,
+  ])
   return (
     <>
       <Meta
@@ -34,7 +41,10 @@ export default function Portfolio() {
       />
       <Container>
         <section className={styles.portfolioList}>
-          <PortfolioList portfolioData={portfolioData} />
+          <PortfolioList
+            className={useScrollAnimationStyles.fadeInUp}
+            portfolioData={portfolioData}
+          />
         </section>
       </Container>
     </>
