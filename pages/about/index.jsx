@@ -60,7 +60,7 @@ export default function About() {
           <p className={useScrollAnimationStyles.fadeInUp}>
             閲覧ありがとうございます。
             <br />
-            KAKUTAです。
+            当サイトの管理をしているかくたです。
             <a
               className={styles.profileName}
               href="https://twitter.com/_kakuta0915_"
@@ -86,7 +86,7 @@ export default function About() {
             <br />
             さらに、介護・医療業界には業務改善や効率化の余地が多く残っており、これらの課題をIT技術で解決することで、現場の負担軽減やサービスの質向上に貢献できるのではないかと考えるようになりました。
             <br />
-            IT技術を駆使して、社会のさまざまな課題に取り組み、解決に導けるエンジニアになりたいと思っています。
+            介護や医療業界に限らず、IT技術を駆使して社会のさまざまな課題に取り組み、解決に導けるエンジニアになりたいと思っています。
           </p>
 
           <h4 className={useScrollAnimationStyles.fadeInUp}>技術スタック</h4>
