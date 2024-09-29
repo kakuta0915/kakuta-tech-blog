@@ -60,7 +60,7 @@ export default function About() {
           <p className={useScrollAnimationStyles.fadeInUp}>
             閲覧ありがとうございます。
             <br />
-            当サイトの管理をしているかくたです。
+            当サイトの管理をしている角田(かくた)です。
             <a
               className={styles.profileName}
               href="https://twitter.com/_kakuta0915_"
