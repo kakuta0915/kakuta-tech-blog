@@ -9,9 +9,13 @@ const nextConfig = {
   },
 
   env: {
-    SERVICE_DOMAIN: process.env.SERVICE_DOMAIN,
-    API_KEY: process.env.API_KEY,
-    QIITA_API_TOKEN: process.env.QIITA_API_TOKEN,
+    SERVICE_DOMAIN: process.env.SERVICE_DOMAIN || '',
+    API_KEY: process.env.API_KEY || '',
+    QIITA_API_TOKEN: process.env.QIITA_API_TOKEN || '',
+  },
+
+  experimental: {
+    optimizeCss: true,
   },
 }
 
