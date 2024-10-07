@@ -1,6 +1,7 @@
 .header {
   display: flex;
   flex-direction: column;
+  align-items: center;
   padding: var(--space-xxs);
   margin: var(--space-xs) 0;
 }
@@ -38,7 +39,7 @@
   }
 
   .headerIcon {
-    margin: 0 2rem 0 0;
+    margin-right: var(--space-xs);
     height: 7rem;
     width: 7rem;
   }
