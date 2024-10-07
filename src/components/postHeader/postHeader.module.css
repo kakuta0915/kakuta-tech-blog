@@ -7,7 +7,7 @@
 }
 
 .headerIcon {
-  margin: 0 auto var(--space-sm);
+  margin: 0 0 var(--space-sm);
   width: 5rem;
   height: 5rem;
 }
@@ -29,13 +29,10 @@
 
 @media (min-width: 768px) {
   .header {
-    padding: 0;
-    margin: var(--space-md) 0 var(--space-lg);
     flex-direction: row;
-  }
-
-  .headerTitle > h1 {
-    font-size: calc(var(--heading1) * 0.85);
+    text-align: left;
+    margin: var(--space-md) 0 var(--space-lg);
+    padding: 0;
   }
 
   .headerIcon {

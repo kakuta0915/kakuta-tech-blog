@@ -54,6 +54,8 @@
 .stack code * {
   display: inline-block;
   margin: 0.25rem 0.5rem;
+  font-style: normal;
+  font-weight: normal;
 }
 
 .stack ol,
