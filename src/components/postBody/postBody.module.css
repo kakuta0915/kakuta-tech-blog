@@ -3,14 +3,14 @@
   margin-bottom: var(--space-xs);
 }
 
-.stack > * + * {
-  margin-top: var(--space-xxs);
+.stack h2 + p,
+.stack h3 + p,
+.stack h4 + p .stack h5 + p {
+  margin-top: 0.75rem;
 }
 
-.stack h2 + *,
-.stack h3 + *,
-.stack h4 + * {
-  margin-top: 0.8rem;
+.stack p:not(h2 + p):not(h3 + p):not(h4 + p)p:not(h5 + p) {
+  margin: var(--space-xxs) 0;
 }
 
 .stack h2 {
@@ -28,6 +28,12 @@
 }
 
 .stack h4 {
+  margin: var(--space-xxs) 0 0.5rem;
+  padding-top: var(--space-xxs);
+}
+
+.stack h5 {
+  margin: var(--space-xxs) 0 0.5rem;
   padding-top: var(--space-xxs);
 }
 
@@ -40,35 +46,60 @@
 }
 
 .stack code {
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-xs);
+  padding: 0.35rem;
+  background-color: #1a1a1a;
+}
+
+.stack code * {
+  display: inline-block;
+  margin: 0.25rem 0.5rem;
 }
 
 .stack ol,
 .stack ul {
+  margin: var(--space-xxs) 0;
   padding-left: var(--space-xs);
-  font-weight: 600;
-}
-
-.stack ul {
+  font-weight: 550;
   list-style: revert;
 }
 
-.stack ol * li,
-.stack ul * li {
-  font-weight: normal;
+.stack li {
+  margin-bottom: var(--space-xxs);
 }
 
-.stack li {
-  margin-bottom: 2rem;
-}
 .stack li > p {
   font-weight: normal;
 }
 
 .stack hr {
   color: var(--gray-2);
-  border: 3px solid;
+  border: 1px solid;
   margin: 0.25rem 0 0;
+}
+
+.stack > table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 18px;
+  text-align: left;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.stack > table th,
+.stack > table td {
+  border: 1px solid var(--gray-2);
+  padding: 0.85rem var(--space-xs);
+}
+
+.stack > table th {
+  background-color: #f4f4f4;
+  border-bottom: 2px solid var(--gray-2);
+}
+
+.stack > table td {
+  border-bottom: 1px solid var(--gray-2);
 }
 
 /* 引用のレイアウト */
@@ -115,25 +146,4 @@
   padding: 0;
   margin: 0.3rem 0;
   z-index: 3;
-}
-
-/* 関連記事のレイアウト */
-.stack h5 {
-  font-size: var(--body);
-  background-color: var(--blue);
-  color: var(--white);
-  display: inline-block;
-  padding: 0.5rem 1rem;
-}
-
-.stack > h5 + p {
-  margin: 0.5rem 0 0;
-}
-
-.stack > h5 + p > a {
-  color: var(--blue);
-}
-
-.stack > h5 + p > a:hover {
-  color: var(--blue-2);
 }
