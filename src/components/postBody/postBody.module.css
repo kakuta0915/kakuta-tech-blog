@@ -47,13 +47,15 @@
 
 .stack code {
   margin-bottom: var(--space-xs);
-  padding: 0.35rem;
-  background-color: #1a1a1a;
+  padding: 0.25rem;
+  /* background-color: #282c34; */
+  font-family: 'Fira Code', monospace;
+  border-radius: 4px;
+  overflow-x: auto;
 }
 
 .stack code * {
-  display: inline-block;
-  margin: 0.25rem 0.5rem;
+  line-height: 1.7;
   font-style: normal;
   font-weight: normal;
 }

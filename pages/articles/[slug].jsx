@@ -1,7 +1,10 @@
 // 記事ページ
 import { getPostBySlug, getAllSlugs, getAllCategories } from '@/libs/api'
 import Image from 'next/image'
-import 'highlight.js/styles/night-owl.css'
+import { useEffect } from 'react'
+import hljs from 'highlight.js'
+import 'highlight.js/styles/monokai.css'
+// import 'highlight.js/styles/night-owl.css'
 import { extractText } from '@/libs/extract-text'
 import { prevNextPost } from '@/libs/prev-next-post'
 import { renderToc } from '@/libs/render-toc'
@@ -32,6 +35,12 @@ export default function Post({
   tocVisible,
 }) {
   const toc = renderToc(content)
+
+  useEffect(() => {
+    document.querySelectorAll('pre code').forEach((block) => {
+      hljs.highlightElement(block)
+    })
+  }, [content])
 
   return (
     <>
