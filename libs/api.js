@@ -13,7 +13,7 @@ export const client = createClient({
 // 記事ページに必要なデータを取得する (指定した１つのslugの記事データを返す)
 export async function getPostBySlug(slug) {
   try {
-    console.log('~~ Slugを使用して記事を取得しています~~ :', slug)
+    // console.log('~~ Slugを使用して記事を取得しています~~ :', slug)
     const post = await client.get({
       endpoint: 'blog',
       queries: { filters: `slug[equals]${slug}` },
