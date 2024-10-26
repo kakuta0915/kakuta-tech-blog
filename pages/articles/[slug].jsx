@@ -1,7 +1,7 @@
 // 記事ページ
 import { getPostBySlug, getAllSlugs, getAllCategories } from '@/libs/api'
 import Image from 'next/image'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/monokai.css'
 import { extractText } from '@/libs/extract-text'
@@ -20,6 +20,7 @@ import PostBody from '@/src/components/postBody/postBody'
 import PostCategories from '@/src/components/postCategories/postCategories'
 import Pagination from '@/src/components/pagination/pagination'
 import TableOfContents from '@/src/components/tableOfContents/tableOfContents'
+import LikeButton from '@/src/components/likeButton/likeButton'
 
 export default function Post({
   icon,
@@ -32,6 +33,7 @@ export default function Post({
   prevPost,
   nextPost,
   tocVisible,
+  postId, // 記事のIDを取得
 }) {
   const toc = renderToc(content)
 
@@ -80,6 +82,8 @@ export default function Post({
               {tocVisible && <TableOfContents toc={toc} />}
             </TwoColumSidebar>
           </TwoColum>
+          {/* いいねボタンを追加 */}
+          <LikeButton postId={postId} />
           <Pagination
             prevText={prevPost.title}
             prevUrl={`/articles/${prevPost.slug}`}
@@ -122,6 +126,7 @@ export async function getStaticProps(context) {
       prevPost: prevPost,
       nextPost: nextPost,
       tocVisible: post.toc_visible,
+      postId: slug, // 記事のIDを追加
     },
   }
 }
