@@ -1,7 +1,7 @@
 // 記事ページ
 import { getPostBySlug, getAllSlugs, getAllCategories } from '@/libs/api'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/monokai.css'
 import { extractText } from '@/libs/extract-text'
