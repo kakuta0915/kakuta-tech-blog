@@ -3,8 +3,14 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     remotePatterns: [
-      'qiita-image-store.s3.ap-northeast-1.amazonaws.com',
-      'images.microcms-assets.io',
+      {
+        protocol: 'https',
+        hostname: 'qiita-image-store.s3.ap-northeast-1.amazonaws.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.microcms-assets.io',
+      },
     ],
   },
 
