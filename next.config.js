@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: [
+    remotePatterns: [
       'qiita-image-store.s3.ap-northeast-1.amazonaws.com',
       'images.microcms-assets.io',
     ],
