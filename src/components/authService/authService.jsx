@@ -1,30 +1,18 @@
-/* eslint-disable @next/next/no-img-element */
+import React, { useState } from 'react'
 import { auth, provider } from '@/firebaseConfig'
 import { signInWithPopup } from 'firebase/auth'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import React from 'react'
 import styles from './authService.module.css'
 
 function AuthService() {
   const [user] = useAuthState(auth)
-
   return (
     <div className={styles.authService}>
-      {user ? (
-        <>
-          <UserInfo user={user} />
-          <SignOutButton />
-        </>
-      ) : (
-        <SignInWithGoogle />
-      )}
+      {user ? <UserInfo user={user} /> : <SignInWithGoogle />}
     </div>
   )
 }
 
-export default AuthService
-
-// Googleアカウントでサインイン
 function SignInWithGoogle() {
   const handleSignIn = () => {
     signInWithPopup(auth, provider).catch((error) => {
@@ -39,20 +27,24 @@ function SignInWithGoogle() {
   )
 }
 
-// Googleアカウントでサインアウト
-function SignOutButton() {
-  return (
-    <button onClick={() => auth.signOut()} className={styles.button}>
-      サインアウト
-    </button>
-  )
-}
+function UserInfo({ user }) {
+  const [isOpen, setIsOpen] = useState(false)
 
-// ユーザー情報
-function UserInfo() {
+  const toggleDropdown = () => {
+    setIsOpen((prevState) => !prevState)
+  }
+
   return (
     <div className={styles.userInfo}>
-      <img src={auth.currentUser.photoURL} alt="" />
+      <img src={user.photoURL} alt="User Profile" onClick={toggleDropdown} />
+      <div className={`${styles.dropdownMenu} ${isOpen ? styles.open : ''}`}>
+        <p>いいねした投稿</p>
+        <button onClick={() => auth.signOut()} className={styles.button}>
+          サインアウト
+        </button>
+      </div>
     </div>
   )
 }
+
+export default AuthService
