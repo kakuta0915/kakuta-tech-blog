@@ -1,6 +1,7 @@
 .header {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
   align-items: center;
   padding: var(--space-xxs);
   margin: 0 auto;
@@ -8,8 +9,20 @@
   background-color: var(--white);
 }
 
+.flex {
+  width: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--gray-1);
+}
+
 @media (min-width: 768px) {
   .header {
-    padding: 0 var(--space-sm);
+    padding: 0 var(--space-sm) var(--space-xxs);
+  }
+
+  .nav {
+    margin-left: auto;
   }
 }
