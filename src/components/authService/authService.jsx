@@ -3,12 +3,13 @@ import { auth, provider } from '@/firebaseConfig'
 import { signInWithPopup } from 'firebase/auth'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import React from 'react'
+import styles from './authService.module.css'
 
 function AuthService() {
   const [user] = useAuthState(auth)
 
   return (
-    <div>
+    <div className={styles.authService}>
       {user ? (
         <>
           <UserInfo user={user} />
@@ -31,20 +32,27 @@ function SignInWithGoogle() {
     })
   }
 
-  return <button onClick={handleSignIn}>サインイン</button>
+  return (
+    <button onClick={handleSignIn} className={styles.button}>
+      Googleアカウントでサインイン
+    </button>
+  )
 }
 
 // Googleアカウントでサインアウト
 function SignOutButton() {
-  return <button onClick={() => auth.signOut()}>サインアウト</button>
+  return (
+    <button onClick={() => auth.signOut()} className={styles.button}>
+      サインアウト
+    </button>
+  )
 }
 
 // ユーザー情報
 function UserInfo() {
   return (
-    <div>
+    <div className={styles.userInfo}>
       <img src={auth.currentUser.photoURL} alt="" />
-      <p>ユーザー名: {auth.currentUser.displayName}</p>
     </div>
   )
 }

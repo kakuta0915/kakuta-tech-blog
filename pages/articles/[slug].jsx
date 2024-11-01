@@ -21,7 +21,6 @@ import PostCategories from '@/src/components/postCategories/postCategories'
 import Pagination from '@/src/components/pagination/pagination'
 import TableOfContents from '@/src/components/tableOfContents/tableOfContents'
 import LikeButton from '@/src/components/likeButton/likeButton'
-import AuthService from '@/src/components/authService/authService'
 
 export default function Post({
   icon,
@@ -61,7 +60,6 @@ export default function Post({
             subtitle="Blog Article"
             publish={publish}
           />
-          <AuthService />
           <TwoColum>
             <TwoColumMain>
               <figure>

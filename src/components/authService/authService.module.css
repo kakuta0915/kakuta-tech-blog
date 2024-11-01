@@ -1,0 +1,13 @@
+.authService {
+  display: flex;
+  align-items: center;
+}
+
+.button {
+  font-size: 0.5rem;
+}
+
+.userInfo img {
+  width: 3rem;
+  border-radius: 50%;
+}
