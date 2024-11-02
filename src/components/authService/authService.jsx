@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { auth, provider } from '@/firebaseConfig'
 import { signInWithPopup } from 'firebase/auth'
 import { useAuthState } from 'react-firebase-hooks/auth'
@@ -29,20 +29,41 @@ function SignInWithGoogle() {
 
 function UserInfo({ user }) {
   const [isOpen, setIsOpen] = useState(false)
+  const dropdownRef = useRef(null)
 
-  const toggleDropdown = () => {
-    setIsOpen((prevState) => !prevState)
-  }
+  const toggleDropdown = useCallback(() => {
+    console.log('あああああああ')
+    setIsOpen((prev) => !prev)
+  }, [])
+
+  const handleClickOutside = useCallback((event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsOpen(false)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isOpen, handleClickOutside])
 
   return (
-    <div className={styles.userInfo}>
-      <img src={user.photoURL} alt="User Profile" onClick={toggleDropdown} />
-      <div className={`${styles.dropdownMenu} ${isOpen ? styles.open : ''}`}>
-        <p>いいねした投稿</p>
-        <button onClick={() => auth.signOut()} className={styles.button}>
-          サインアウト
-        </button>
-      </div>
+    <div className={styles.userInfo} ref={dropdownRef}>
+      <img src={user.photoURL} alt="User Icon" onClick={toggleDropdown} />
+      {isOpen && (
+        <div className={`${styles.dropdownMenu} ${isOpen ? styles.open : ''}`}>
+          <p>いいねした投稿</p>
+          <button onClick={() => auth.signOut()} className={styles.button}>
+            サインアウト
+          </button>
+        </div>
+      )}
     </div>
   )
 }
