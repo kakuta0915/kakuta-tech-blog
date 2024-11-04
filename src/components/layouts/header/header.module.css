@@ -14,12 +14,17 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
+  padding-bottom: calc(var(--space-xxs) * 0.5);
   border-bottom: 1px solid var(--gray-1);
 }
 
 @media (min-width: 768px) {
   .header {
     padding: 0 var(--space-sm) var(--space-xxs);
+  }
+
+  .flex {
+    padding-bottom: 0;
   }
 
   .nav {

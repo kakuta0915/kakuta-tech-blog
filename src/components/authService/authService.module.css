@@ -4,13 +4,68 @@
 }
 
 .button {
-  font-size: 0.5rem;
   color: var(--white);
   padding: calc(var(--space-xxs) * 0.5);
-  background-color: var(--blue);
-  border: 1px solid var(--blue);
+  background-color: var(--blue-1);
+  border: 1px solid var(--blue-1);
   border-radius: 8px;
   transition: all 0.3s ease;
+}
+
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.popupContent {
+  background: var(--white);
+  padding: var(--space-sm) var(--space-xxs);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 70vw;
+}
+
+.popupContent h3 {
+  margin-bottom: calc(var(--space-xxs) * 0.5);
+}
+
+.googleButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: var(--white);
+  margin: var(--space-xxs) auto;
+  padding: calc(var(--space-xxs) * 0.5) var(--space-xxs);
+  font-weight: bold;
+  border: 1px solid var(--gray-1);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.googleButton img {
+  width: var(--body);
+  height: var(--body);
+  margin-right: 0.5rem;
+}
+
+.googleButton:hover {
+  background: var(--gray-3);
+  transform: scale(1.05);
+}
+
+.noAccountText {
+  font-size: calc(var(--body) * 0.75);
+  color: var(--gray);
 }
 
 .userInfo {
@@ -20,6 +75,7 @@
 .userInfo img {
   cursor: pointer;
   width: 3rem;
+  height: 3rem;
   border-radius: 50%;
 }
 
@@ -27,7 +83,7 @@
   position: absolute;
   top: 100%;
   right: 0;
-  width: 10rem;
+  width: 15rem;
   background-color: var(--white);
   border: 1px solid var(--gray);
   border-radius: 8px;
@@ -36,10 +92,31 @@
   z-index: 10;
 }
 
-.dropdownMenu p,
+.dropdownMenu a,
 .dropdownMenu .button {
-  margin: 0;
-  margin-bottom: var(--space-xxs);
+  display: block;
+  padding: calc(var(--space-xxs) * 0.7) 0.6rem;
+}
+
+.dropdownMenu a {
+  transition: background-color 0.3s ease;
+  border-radius: 4px;
+}
+
+.lastLink {
+  border-bottom: 1px solid var(--gray-1);
+}
+
+.dropdownMenu a:hover {
+  background-color: var(--gray-3);
+}
+
+.icon {
+  margin-right: 0.5rem;
+}
+
+.dropdownMenu .button {
+  margin-top: 1.25rem;
 }
 
 @media (min-width: 768px) {
@@ -48,13 +125,13 @@
   }
 
   .button:hover {
-    color: var(--blue);
+    color: var(--blue-1);
     background-color: var(--white);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transform: translateY(-2px);
   }
 
-  .dropdownMenu {
-    width: 15rem;
+  .popupContent {
+    width: 50vw;
   }
 }
