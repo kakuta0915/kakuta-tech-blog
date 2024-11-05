@@ -3,7 +3,7 @@
   align-items: center;
 }
 
-.button {
+.loginButton {
   color: var(--white);
   padding: calc(var(--space-xxs) * 0.5);
   background-color: var(--blue-1);
@@ -26,6 +26,7 @@
 }
 
 .popupContent {
+  position: relative;
   background: var(--white);
   padding: var(--space-sm) var(--space-xxs);
   border-radius: 8px;
@@ -38,18 +39,34 @@
   margin-bottom: calc(var(--space-xxs) * 0.5);
 }
 
+.noAccountText,
+.googleButton {
+  background-color: var(--white);
+  border: 1px solid var(--gray-3);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
 .googleButton {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: var(--white);
   margin: var(--space-xxs) auto;
   padding: calc(var(--space-xxs) * 0.5) var(--space-xxs);
   font-weight: bold;
-  border: 1px solid var(--gray-1);
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.noAccountText {
+  font-size: calc(var(--body) * 0.65);
+  color: var(--gray);
+  padding: calc(var(--space-xxs) * 0.25) var(--space-xxs);
+}
+
+.googleButton:hover,
+.noAccountText:hover {
+  background: var(--gray-3);
+  transform: scale(1.05);
 }
 
 .googleButton img {
@@ -58,14 +75,48 @@
   margin-right: 0.5rem;
 }
 
-.googleButton:hover {
-  background: var(--gray-3);
+.otherOptionsPopup {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 80%;
+}
+
+.otherOptionsPopup * {
+  padding: calc(var(--space-xxs) * 0.5);
+  margin-bottom: calc(var(--space-xxs) * 0.5);
+  border: 1px solid var(--gray-1);
+  border-radius: 4px;
+}
+
+.optionButton {
+  cursor: pointer;
+  background-color: var(--gray-3);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.optionButton:hover {
+  background-color: var(--gray-2);
   transform: scale(1.05);
 }
 
-.noAccountText {
-  font-size: calc(var(--body) * 0.75);
+.closeButton {
+  position: absolute;
   color: var(--gray);
+  font-size: 1.5rem;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  background: none;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  color: var(--black);
+  background-color: var(--gray-3);
 }
 
 .userInfo {
@@ -93,7 +144,7 @@
 }
 
 .dropdownMenu a,
-.dropdownMenu .button {
+.dropdownMenu .loginButton {
   display: block;
   padding: calc(var(--space-xxs) * 0.7) 0.6rem;
 }
@@ -115,16 +166,16 @@
   margin-right: 0.5rem;
 }
 
-.dropdownMenu .button {
+.dropdownMenu .loginButton {
   margin-top: 1.25rem;
 }
 
 @media (min-width: 768px) {
-  .button {
+  .loginButton {
     font-size: var(--body);
   }
 
-  .button:hover {
+  .loginButton:hover {
     color: var(--blue-1);
     background-color: var(--white);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
