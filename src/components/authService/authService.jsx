@@ -45,7 +45,9 @@ function SignInWithGoogle() {
       await signInWithPopup(auth, provider)
       toast.success('ログインしました')
     } catch (error) {
-      setError(`エラーが発生しました: ${error.message}`)
+      setError(
+        `エラーが発生しました。もう一度やり直してください。: ${error.message}`,
+      )
     }
   }
 
