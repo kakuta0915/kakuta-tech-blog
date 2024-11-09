@@ -16,7 +16,7 @@
   /* フォントサイズ */
   --body: clamp(1rem, 0.95rem + 0.2vw, 1.125rem); /* 16-18px */
   --display: clamp(4.5rem, 1.83rem + 11.34vw, 10rem); /* 72-160px */
-  --heading1: clamp(2rem, 1.591rem + 2.05vw, 3.125rem); /* 32-50px */
+  --heading1: clamp(1.75rem, 1.295rem + 2.27vw, 3rem); /* 28-48px */
   --heading2: clamp(1.688rem, 1.574rem + 0.57vw, 2rem); /* 27-32 */
   --heading3: clamp(1.5rem, 1.432rem + 0.34vw, 1.688rem); /* 24-27 */
   --heading4: clamp(1.313rem, 1.267rem + 0.23vw, 1.438rem); /* 21-23 */
