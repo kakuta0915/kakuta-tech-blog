@@ -14,21 +14,33 @@
   margin-bottom: var(--space-xxs);
 }
 
+.socialActions {
+  margin: var(--space-xxs) 0;
+}
+
 @media (min-width: 768px) {
   .flexContainer {
     flex-direction: row;
     justify-content: space-between;
   }
 
-  .main {
-    width: 72%;
-  }
-
-  .sidebar {
+  .sidebar,
+  .socialActions {
     margin: 0;
-    width: 25%;
     position: sticky;
     top: 20px;
     align-self: flex-start;
+  }
+
+  .socialActions {
+    width: 5%;
+  }
+
+  .main {
+    width: 71%;
+  }
+
+  .sidebar {
+    width: 20%;
   }
 }
