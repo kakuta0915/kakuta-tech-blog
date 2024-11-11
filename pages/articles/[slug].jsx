@@ -21,7 +21,6 @@ import PostBody from '@/src/components/postBody/postBody'
 import PostCategories from '@/src/components/postCategories/postCategories'
 import Pagination from '@/src/components/pagination/pagination'
 import TableOfContents from '@/src/components/tableOfContents/tableOfContents'
-import LikeButton from '@/src/components/likeButton/likeButton'
 import SocialActions from '@/src/components/socialActions/socialActions'
 
 export default function Post({
@@ -64,7 +63,7 @@ export default function Post({
           />
           <ThreeColum>
             <ThreeColumSocialActions>
-              <SocialActions />
+              <SocialActions postId={postId} />
             </ThreeColumSocialActions>
             <ThreeColumMain>
               <figure>
@@ -87,8 +86,6 @@ export default function Post({
               {tocVisible && <TableOfContents toc={toc} />}
             </ThreeColumSidebar>
           </ThreeColum>
-          {/* いいねボタンを追加 */}
-          <LikeButton postId={postId} />
           <Pagination
             prevText={prevPost.title}
             prevUrl={`/articles/${prevPost.slug}`}

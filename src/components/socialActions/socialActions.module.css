@@ -1,11 +1,15 @@
 .socialActions {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  align-items: center;
   position: relative;
 }
 
 .actionButton,
 .shareButton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin: 0 calc(var(--space-xxs) * 0.5);
 }
 
@@ -27,18 +31,46 @@
   border: 1px solid var(--blue);
 }
 
+.icon {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.iconAction {
+  color: #ff2929;
+  animation: pop 0.4s ease forwards;
+}
+
+.count {
+  font-size: 0.85rem;
+  margin-bottom: 0.65rem;
+}
+
+/* ボタンを押したときのポップアニメーション */
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 @media (min-width: 768px) {
-  .socialActions {
+  .socialActions .actionButton {
     flex-direction: column;
   }
 
   .actionButton,
   .shareButton {
     position: absolute;
+    top: -0.5rem;
     left: -1rem;
   }
 
   .shareButton {
-    top: 7.75rem;
+    top: 10.5rem;
   }
 }
