@@ -26,7 +26,7 @@ function AuthService() {
       {user ? <UserInfo user={user} /> : <SignInWithGoogle />}
       <ToastContainer
         position="top-center"
-        autoClose={3000}
+        autoClose={1500}
         hideProgressBar
         closeOnClick
         pauseOnHover

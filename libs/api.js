@@ -1,5 +1,7 @@
 import { createClient } from 'microcms-js-sdk'
 import axios from 'axios'
+import { db } from '@/firebaseConfig'
+import { doc, getDoc } from 'firebase/firestore'
 
 // サービスドメインとAPIキーを取得するか、テスト用のデフォルト値を設定する
 const serviceDomain = process.env.SERVICE_DOMAIN || 'test-service-domain'
@@ -129,6 +131,7 @@ export async function getAllArticles(maxArticles = Infinity) {
     getAllPosts(),
   ])
 
+  // Qiita記事とmicroCMS記事を統合し、公開日でソート
   let allArticles = [...qiitaArticles, ...microCMSArticles]
   allArticles.sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate))
 
@@ -136,5 +139,27 @@ export async function getAllArticles(maxArticles = Infinity) {
     allArticles = allArticles.slice(0, maxArticles)
   }
 
-  return allArticles
+  // Firestoreからいいね数を取得
+  const articlesWithLikes = await Promise.all(
+    allArticles.map(async (article) => {
+      try {
+        // Firestoreドキュメントの参照を作成
+        const postRef = doc(db, 'posts', article.slug) // slug を ID として使用
+        const postSnap = await getDoc(postRef)
+
+        // ドキュメントが存在すればいいね数を取得
+        const likesCount = postSnap.exists() ? postSnap.data().likesCount : 0
+
+        return { ...article, likesCount }
+      } catch (error) {
+        console.error(
+          `Error fetching likes for article ${article.slug}:`,
+          error,
+        )
+        return { ...article, likesCount: 0 } // エラー時はいいね数0
+      }
+    }),
+  )
+
+  return articlesWithLikes
 }

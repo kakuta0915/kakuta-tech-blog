@@ -10,17 +10,18 @@ import { renderToc } from '@/libs/render-toc'
 import Meta from '@/src/components/meta/meta'
 import PostHeader from '@/src/components/postHeader/postHeader'
 import {
-  TwoColum,
-  TwoColumMain,
-  TwoColumSidebar,
-} from '@/src/components/twoColum/twoColum'
+  ThreeColum,
+  ThreeColumMain,
+  ThreeColumSidebar,
+  ThreeColumSocialActions,
+} from '@/src/components/threeColum/threeColum'
 import Container from '@/src/components/container/container'
 import ConvertBody from '@/src/components/convert/convertBody'
 import PostBody from '@/src/components/postBody/postBody'
 import PostCategories from '@/src/components/postCategories/postCategories'
 import Pagination from '@/src/components/pagination/pagination'
 import TableOfContents from '@/src/components/tableOfContents/tableOfContents'
-import LikeButton from '@/src/components/likeButton/likeButton'
+import SocialActions from '@/src/components/socialActions/socialActions'
 
 export default function Post({
   icon,
@@ -33,7 +34,7 @@ export default function Post({
   prevPost,
   nextPost,
   tocVisible,
-  postId, // 記事のIDを取得
+  postId,
 }) {
   const toc = renderToc(content)
 
@@ -60,8 +61,11 @@ export default function Post({
             subtitle="Blog Article"
             publish={publish}
           />
-          <TwoColum>
-            <TwoColumMain>
+          <ThreeColum>
+            <ThreeColumSocialActions>
+              <SocialActions postId={postId} />
+            </ThreeColumSocialActions>
+            <ThreeColumMain>
               <figure>
                 <Image
                   src={eyecatch.url}
@@ -76,14 +80,12 @@ export default function Post({
               <PostBody>
                 <ConvertBody contentHTML={content} id={`#${toc.id}`} />
               </PostBody>
-            </TwoColumMain>
-            <TwoColumSidebar>
+            </ThreeColumMain>
+            <ThreeColumSidebar>
               <PostCategories categories={categories} />
               {tocVisible && <TableOfContents toc={toc} />}
-            </TwoColumSidebar>
-          </TwoColum>
-          {/* いいねボタンを追加 */}
-          <LikeButton postId={postId} />
+            </ThreeColumSidebar>
+          </ThreeColum>
           <Pagination
             prevText={prevPost.title}
             prevUrl={`/articles/${prevPost.slug}`}
@@ -126,7 +128,7 @@ export async function getStaticProps(context) {
       prevPost: prevPost,
       nextPost: nextPost,
       tocVisible: post.toc_visible,
-      postId: slug, // 記事のIDを追加
+      postId: slug,
     },
   }
 }
