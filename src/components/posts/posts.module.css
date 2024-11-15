@@ -31,6 +31,19 @@
   margin-bottom: var(--space-xxs);
 }
 
+.socialActions {
+  display: flex;
+  align-items: center;
+  font-size: var(--body);
+  margin: auto 0 0.8rem;
+  color: var(--gray);
+}
+
+.socialActions .icon {
+  color: var(--gray);
+  margin-right: 0.5rem;
+}
+
 .link > ul {
   display: flex;
   flex-wrap: wrap;
@@ -47,7 +60,7 @@
   border-radius: 10px;
 }
 
-.icon {
+.tagIcon {
   font-size: calc(var(--body) * 0.7);
   padding-right: calc(var(--space-xxs) * 0.2);
   color: var(--white);
@@ -89,6 +102,10 @@
   .link:hover {
     box-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
     transform: scale(1.05);
+  }
+
+  .link > h2 {
+    margin-bottom: calc(var(--space-xxs) * 0.5);
   }
 
   .btn:hover {

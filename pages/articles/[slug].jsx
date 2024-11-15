@@ -34,7 +34,7 @@ export default function Post({
   prevPost,
   nextPost,
   tocVisible,
-  postId, // 記事のIDを取得
+  postId,
 }) {
   const toc = renderToc(content)
 
@@ -128,7 +128,7 @@ export async function getStaticProps(context) {
       prevPost: prevPost,
       nextPost: nextPost,
       tocVisible: post.toc_visible,
-      postId: slug, // 記事のIDを追加
+      postId: slug,
     },
   }
 }

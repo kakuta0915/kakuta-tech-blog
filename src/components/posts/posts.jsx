@@ -1,12 +1,11 @@
-// 記事一覧のコンポーネント
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { faTag } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ConvertDate from '../convert/convertDate'
 import styles from './posts.module.css'
 import qiitaImg from '@/public/images/qiitaEyecatch.png'
+import { faHeart, faTag } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default function Posts({
   className,
@@ -17,12 +16,9 @@ export default function Posts({
   const [articles, setArticles] = useState(posts.slice(0, maxPosts))
 
   useEffect(() => {
+    // `posts`や`maxPosts`が更新されたら、表示する記事を更新
     const fetchArticles = async () => {
-      if (posts.length === 0) {
-        setArticles([])
-      } else {
-        setArticles(posts.slice(0, maxPosts))
-      }
+      setArticles(posts.slice(0, maxPosts))
     }
     fetchArticles()
   }, [maxPosts, posts])
@@ -31,7 +27,15 @@ export default function Posts({
     <>
       <div className={`${className} ${styles.postsContainer}`}>
         {articles.map(
-          ({ title, slug, eyecatch, publishDate = '', categories, source }) => (
+          ({
+            title,
+            slug,
+            eyecatch,
+            publishDate = '',
+            categories,
+            source,
+            likesCount = 0,
+          }) => (
             <article key={slug}>
               <Link
                 className={styles.link}
@@ -54,10 +58,17 @@ export default function Posts({
                   <ConvertDate dateISO={publishDate} />
                 </div>
                 <h2>{title}</h2>
+                <div className={styles.socialActions}>
+                  <FontAwesomeIcon icon={faHeart} className={styles.icon} />
+                  <span>{likesCount}</span>
+                </div>
                 <ul>
                   {categories.map(({ name, slug }) => (
                     <li className={styles.postsCategoriesLi} key={slug}>
-                      <FontAwesomeIcon className={styles.icon} icon={faTag} />
+                      <FontAwesomeIcon
+                        className={styles.tagIcon}
+                        icon={faTag}
+                      />
                       <div className={styles.name}>{name}</div>
                     </li>
                   ))}
