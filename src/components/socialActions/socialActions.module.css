@@ -16,7 +16,7 @@
 .socialActions button {
   width: clamp(2.25rem, 2.068rem + 0.91vw, 2.75rem);
   height: clamp(2.25rem, 2.068rem + 0.91vw, 2.75rem);
-  font-size: 1.25rem;
+  font-size: 1rem;
   padding: calc(var(--space-xxs) * 0.5);
   margin: calc(var(--space-xxs) * 0.5);
   border-radius: 50%;
@@ -35,14 +35,19 @@
   transition: transform 0.2s ease, color 0.2s ease;
 }
 
-.iconAction {
-  color: #ff2929;
+.likeIconAction {
+  color: #ef4123;
+  animation: pop 0.4s ease forwards;
+}
+
+.bookmarkIconAction {
+  color: #ffcc33;
   animation: pop 0.4s ease forwards;
 }
 
 .count {
-  font-size: 0.85rem;
-  margin-bottom: 0.65rem;
+  font-size: 1.2rem;
+  margin-right: 0.75rem;
 }
 
 /* ボタンを押したときのポップアニメーション */
@@ -63,6 +68,10 @@
     flex-direction: column;
   }
 
+  .socialActions button {
+    font-size: 1.25rem;
+  }
+
   .actionButton,
   .shareButton {
     position: absolute;
@@ -72,5 +81,10 @@
 
   .shareButton {
     top: 10.5rem;
+  }
+
+  .count {
+    font-size: 0.85rem;
+    margin: 0 auto 0.65rem;
   }
 }

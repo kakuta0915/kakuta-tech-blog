@@ -20,6 +20,8 @@ export default function SocialActions({ postId }) {
   const [user] = useAuthState(auth)
   const [liked, setLiked] = useState(false)
   const [likeCount, setLikeCount] = useState(0)
+  const [bookmarked, setBookmarked] = useState(false)
+  const [bookmarkCount, setBookmarkCount] = useState(0)
 
   useEffect(() => {
     if (postId) {
@@ -29,12 +31,17 @@ export default function SocialActions({ postId }) {
 
         if (postSnap.exists()) {
           setLikeCount(postSnap.data().likesCount || 0)
+          setBookmarkCount(postSnap.data().bookmarksCount || 0)
         }
 
         if (user) {
           const likeRef = doc(db, 'likes', `${user.uid}_${postId}`)
           const likeSnap = await getDoc(likeRef)
           setLiked(likeSnap.exists())
+
+          const bookmarkRef = doc(db, 'bookmarks', `${user.uid}_${postId}`)
+          const bookmarkSnap = await getDoc(bookmarkRef)
+          setBookmarked(bookmarkSnap.exists())
         }
       }
       fetchLikeData()
@@ -103,6 +110,55 @@ export default function SocialActions({ postId }) {
     }
   }
 
+  const handleBookmark = async () => {
+    if (!user) {
+      toast.error('ログインしてください', {
+        position: 'top-center',
+        autoClose: 1500,
+      })
+      return
+    }
+
+    if (!postId) {
+      console.error('postIdが無効です')
+      return
+    }
+
+    const postRef = doc(db, 'posts', postId)
+    const bookmarkRef = doc(db, 'bookmarks', `${user.uid}_${postId}`)
+
+    try {
+      if (bookmarked) {
+        await deleteDoc(bookmarkRef)
+        await updateDoc(postRef, { bookmarksCount: increment(-1) })
+        setBookmarkCount((prevCount) => prevCount - 1)
+        setBookmarked(false)
+        toast.info('ブックマークを解除しました', {
+          position: 'top-center',
+          autoClose: 1500,
+        })
+      } else {
+        await setDoc(bookmarkRef, {
+          userId: user.uid,
+          postId: postId,
+        })
+        await updateDoc(postRef, { bookmarksCount: increment(1) })
+        setBookmarkCount((prevCount) => prevCount + 1)
+        setBookmarked(true)
+        toast.success('ブックマークしました', {
+          position: 'top-center',
+          autoClose: 1500,
+        })
+      }
+    } catch (error) {
+      console.error('Error updating bookmark status:', error)
+      toast.error('エラーが発生しました', {
+        position: 'top-center',
+        autoClose: 1500,
+      })
+    }
+  }
+
   return (
     <div className={styles.socialActions}>
       <ToastContainer />
@@ -110,15 +166,20 @@ export default function SocialActions({ postId }) {
         <button onClick={handleLike}>
           <FontAwesomeIcon
             icon={faHeart}
-            className={liked ? styles.iconAction : styles.icon}
+            className={liked ? styles.likeIconAction : styles.icon}
           />
         </button>
         <span className={styles.count}>{likeCount}</span>
-        <button>
-          <FontAwesomeIcon icon={faBookmark} />
+
+        <button onClick={handleBookmark}>
+          <FontAwesomeIcon
+            icon={faBookmark}
+            className={bookmarked ? styles.bookmarkIconAction : styles.icon}
+          />
         </button>
-        <span className={styles.count}>0</span>
+        <span className={styles.count}>{bookmarkCount}</span>
       </div>
+
       <div className={styles.shareButton}>
         <button>
           <FontAwesomeIcon icon={faXTwitter} />
