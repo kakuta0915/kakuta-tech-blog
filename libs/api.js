@@ -1,7 +1,15 @@
 import { createClient } from 'microcms-js-sdk'
 import axios from 'axios'
 import { db } from '@/firebaseConfig'
-import { doc, getDoc } from 'firebase/firestore'
+import {
+  collection,
+  doc,
+  setDoc,
+  getDoc,
+  getDocs,
+  query,
+  where,
+} from 'firebase/firestore'
 
 // サービスドメインとAPIキーを取得するか、テスト用のデフォルト値を設定する
 const serviceDomain = process.env.SERVICE_DOMAIN || 'test-service-domain'
@@ -124,7 +132,44 @@ export async function getAllQiitaArticles() {
   }
 }
 
-// 全ての記事を統合する関数
+// Firebaseに記事が登録されていない時にドキュメントを自動生成する関数
+const initializePostDocument = async (postId) => {
+  const postRef = doc(db, 'posts', postId)
+  try {
+    await setDoc(postRef, { likesCount: 0, bookmarksCount: 0 }, { merge: true })
+    console.log(`Initialized post document for ${postId}`)
+  } catch (error) {
+    console.error(`Error initializing post document for ${postId}:`, error)
+  }
+}
+
+// ブックマーク数を取得する関数
+const getBookmarkCount = async (postId) => {
+  try {
+    const bookmarksRef = collection(db, 'bookmarks')
+    const q = query(bookmarksRef, where('postId', '==', postId))
+    const querySnapshot = await getDocs(q)
+    return querySnapshot.size
+  } catch (error) {
+    console.error(`Error fetching bookmarks for post ${postId}:`, error)
+    return 0
+  }
+}
+
+// いいね数を取得する関数
+const getLikesCount = async (postId) => {
+  try {
+    const likesRef = collection(db, 'likes')
+    const q = query(likesRef, where('postId', '==', postId))
+    const querySnapshot = await getDocs(q)
+    return querySnapshot.size
+  } catch (error) {
+    console.error(`Error fetching likes for post ${postId}:`, error)
+    return 0
+  }
+}
+
+// 全ての記事を統合する関数・いいね数とブックマーク数を取得する関数
 export async function getAllArticles(maxArticles = Infinity) {
   const [qiitaArticles, microCMSArticles] = await Promise.all([
     getAllQiitaArticles(),
@@ -139,27 +184,36 @@ export async function getAllArticles(maxArticles = Infinity) {
     allArticles = allArticles.slice(0, maxArticles)
   }
 
-  // Firestoreからいいね数を取得
-  const articlesWithLikes = await Promise.all(
+  // Firestoreからいいね数とブックマーク数を取得
+  const articlesWithStats = await Promise.all(
     allArticles.map(async (article) => {
       try {
-        // Firestoreドキュメントの参照を作成
-        const postRef = doc(db, 'posts', article.slug) // slug を ID として使用
-        const postSnap = await getDoc(postRef)
+        const postRef = doc(db, 'posts', article.slug)
+        let postSnap = await getDoc(postRef)
 
-        // ドキュメントが存在すればいいね数を取得
-        const likesCount = postSnap.exists() ? postSnap.data().likesCount : 0
+        // ドキュメントが存在しない場合は初期化
+        if (!postSnap.exists()) {
+          await initializePostDocument(article.slug)
+          postSnap = await getDoc(postRef) // 再取得
+        }
 
-        return { ...article, likesCount }
+        const data = postSnap.data() || {}
+        const likesCount =
+          data.likesCount || (await getLikesCount(article.slug))
+        const bookmarksCount =
+          data.bookmarksCount || (await getBookmarkCount(article.slug))
+
+        // 記事にいいね数とブックマーク数を追加
+        return { ...article, likesCount, bookmarksCount }
       } catch (error) {
         console.error(
-          `Error fetching likes for article ${article.slug}:`,
+          `Error fetching stats for article ${article.slug}:`,
           error,
         )
-        return { ...article, likesCount: 0 } // エラー時はいいね数0
+        return { ...article, likesCount: 0, bookmarksCount: 0 }
       }
     }),
   )
 
-  return articlesWithLikes
+  return articlesWithStats
 }
