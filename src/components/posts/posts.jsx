@@ -4,7 +4,7 @@ import Image from 'next/image'
 import ConvertDate from '../convert/convertDate'
 import styles from './posts.module.css'
 import qiitaImg from '@/public/images/qiitaEyecatch.png'
-import { faHeart, faTag } from '@fortawesome/free-solid-svg-icons'
+import { faBookmark, faHeart, faTag } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default function Posts({
@@ -35,6 +35,7 @@ export default function Posts({
             categories,
             source,
             likesCount = 0,
+            bookmarksCount = 0,
           }) => (
             <article key={slug}>
               <Link
@@ -58,9 +59,18 @@ export default function Posts({
                   <ConvertDate dateISO={publishDate} />
                 </div>
                 <h2>{title}</h2>
-                <div className={styles.socialActions}>
-                  <FontAwesomeIcon icon={faHeart} className={styles.icon} />
-                  <span>{likesCount}</span>
+                <div className={styles.flexSocialActions}>
+                  <div className={styles.socialActions}>
+                    <FontAwesomeIcon icon={faHeart} className={styles.icon} />
+                    <span>{likesCount}</span>
+                  </div>
+                  <div className={styles.socialActions}>
+                    <FontAwesomeIcon
+                      icon={faBookmark}
+                      className={styles.icon}
+                    />
+                    <span>{bookmarksCount}</span>
+                  </div>
                 </div>
                 <ul>
                   {categories.map(({ name, slug }) => (

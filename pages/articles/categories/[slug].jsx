@@ -37,6 +37,8 @@ export async function getStaticProps(context) {
   const category = allCategories.find(({ slug }) => slug === categorySlug)
   const posts = await getAllPostByCategory(category.id)
 
+  console.log(posts)
+
   return {
     props: {
       icon: category.icon,
