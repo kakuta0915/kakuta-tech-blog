@@ -80,10 +80,34 @@ export async function getAllPostByCategory(categoryID, limit = 100) {
         limit: limit,
       },
     })
-    return posts.contents
+
+    // Firestoreからいいね数とブックマーク数を取得
+    const postsWithStats = await Promise.all(
+      posts.contents.map(async (post) => {
+        const docRef = doc(db, 'posts', post.slug)
+        const docSnap = await getDoc(docRef)
+
+        if (docSnap.exists()) {
+          const stats = docSnap.data()
+          return {
+            ...post,
+            likesCount: stats.likesCount ?? 0,
+            bookmarksCount: stats.bookmarksCount ?? 0,
+          }
+        } else {
+          return {
+            ...post,
+            likesCount: 0,
+            bookmarksCount: 0,
+          }
+        }
+      }),
+    )
+
+    return postsWithStats
   } catch (err) {
-    console.log('~~ getAllPostByCategory ~~')
-    console.log(err)
+    console.error('~~ getAllPostByCategory ~~')
+    console.error(err)
   }
 }
 
