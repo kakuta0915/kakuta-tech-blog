@@ -9,6 +9,7 @@ import {
   getDocs,
   query,
   where,
+  onSnapshot,
 } from 'firebase/firestore'
 
 // サービスドメインとAPIキーを取得するか、テスト用のデフォルト値を設定する
@@ -23,7 +24,6 @@ export const client = createClient({
 // 記事ページに必要なデータを取得する (指定した１つのslugの記事データを返す)
 export async function getPostBySlug(slug) {
   try {
-    // console.log('~~ Slugを使用して記事を取得しています~~ :', slug)
     const post = await client.get({
       endpoint: 'blog',
       queries: { filters: `slug[equals]${slug}` },
@@ -167,34 +167,34 @@ const initializePostDocument = async (postId) => {
   }
 }
 
-// ブックマーク数を取得する関数
-const getBookmarkCount = async (postId) => {
-  try {
-    const bookmarksRef = collection(db, 'bookmarks')
-    const q = query(bookmarksRef, where('postId', '==', postId))
-    const querySnapshot = await getDocs(q)
-    return querySnapshot.size
-  } catch (error) {
-    console.error(`Error fetching bookmarks for post ${postId}:`, error)
-    return 0
-  }
-}
-
-// いいね数を取得する関数
-const getLikesCount = async (postId) => {
-  try {
+// いいね数をリアルタイムで取得する関数
+export const getLikesCount = (postId) => {
+  return new Promise((resolve) => {
     const likesRef = collection(db, 'likes')
     const q = query(likesRef, where('postId', '==', postId))
-    const querySnapshot = await getDocs(q)
-    return querySnapshot.size
-  } catch (error) {
-    console.error(`Error fetching likes for post ${postId}:`, error)
-    return 0
-  }
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      resolve(querySnapshot.size)
+    })
+
+    return unsubscribe
+  })
+}
+
+// ブックマーク数をリアルタイムで取得する関数
+export const getBookmarkCount = (postId) => {
+  return new Promise((resolve) => {
+    const bookmarksRef = collection(db, 'bookmarks')
+    const q = query(bookmarksRef, where('postId', '==', postId))
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      resolve(querySnapshot.size)
+    })
+
+    return unsubscribe
+  })
 }
 
 // 全ての記事を統合する関数・いいね数とブックマーク数を取得する関数
-export async function getAllArticles(maxArticles = Infinity) {
+export async function getAllArticles(maxArticles = Infinity, callback) {
   const [qiitaArticles, microCMSArticles] = await Promise.all([
     getAllQiitaArticles(),
     getAllPosts(),
@@ -208,36 +208,42 @@ export async function getAllArticles(maxArticles = Infinity) {
     allArticles = allArticles.slice(0, maxArticles)
   }
 
-  // Firestoreからいいね数とブックマーク数を取得
-  const articlesWithStats = await Promise.all(
+  // 各記事に対していいね数とブックマーク数を非同期で取得
+  const updatedArticles = await Promise.all(
     allArticles.map(async (article) => {
       try {
         const postRef = doc(db, 'posts', article.slug)
         let postSnap = await getDoc(postRef)
 
-        // ドキュメントが存在しない場合は初期化
         if (!postSnap.exists()) {
           await initializePostDocument(article.slug)
-          postSnap = await getDoc(postRef) // 再取得
+          postSnap = await getDoc(postRef)
         }
 
         const data = postSnap.data() || {}
-        const likesCount =
-          data.likesCount || (await getLikesCount(article.slug))
-        const bookmarksCount =
-          data.bookmarksCount || (await getBookmarkCount(article.slug))
+        const [likesCount, bookmarksCount] = await Promise.all([
+          getLikesCount(article.slug),
+          getBookmarkCount(article.slug),
+        ])
 
-        // 記事にいいね数とブックマーク数を追加
-        return { ...article, likesCount, bookmarksCount }
+        return {
+          ...article,
+          likesCount,
+          bookmarksCount,
+        }
       } catch (error) {
         console.error(
           `Error fetching stats for article ${article.slug}:`,
           error,
         )
-        return { ...article, likesCount: 0, bookmarksCount: 0 }
+        return article
       }
     }),
   )
 
-  return articlesWithStats
+  if (typeof callback === 'function') {
+    callback(updatedArticles)
+  }
+
+  return updatedArticles
 }

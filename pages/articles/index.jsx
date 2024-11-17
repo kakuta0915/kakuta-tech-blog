@@ -42,7 +42,11 @@ export default function Articles({ posts, allCategories }) {
 }
 
 export async function getStaticProps() {
-  const posts = await getAllArticles()
+  const callback = (updatedArticles) => {
+    console.log('Updated articles:', updatedArticles)
+  }
+
+  const posts = await getAllArticles(10000, callback)
   const allCategories = await getAllCategories()
 
   return {
