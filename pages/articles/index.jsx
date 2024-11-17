@@ -41,7 +41,7 @@ export default function Articles({ posts, allCategories }) {
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const callback = (updatedArticles) => {
     console.log('Updated articles:', updatedArticles)
   }
