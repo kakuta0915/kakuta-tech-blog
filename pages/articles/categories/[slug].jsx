@@ -23,21 +23,18 @@ export default function Category({ icon, name, posts, allCategories }) {
   )
 }
 
-export async function getStaticPaths() {
-  const allCategories = await getAllCategories()
-  return {
-    paths: allCategories.map(({ slug }) => `/articles/categories/${slug}`),
-    fallback: false,
-  }
-}
-
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const categorySlug = context.params.slug
   const allCategories = await getAllCategories()
   const category = allCategories.find(({ slug }) => slug === categorySlug)
-  const posts = await getAllPostByCategory(category.id)
 
-  console.log(posts)
+  if (!category) {
+    return {
+      notFound: true,
+    }
+  }
+
+  const posts = await getAllPostByCategory(category.id)
 
   return {
     props: {
