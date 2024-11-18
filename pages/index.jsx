@@ -107,11 +107,11 @@ export default function Home({ posts }) {
 }
 
 export async function getServerSideProps() {
-  const posts = await getAllArticles()
+  const { articles } = await getAllArticles()
 
   return {
     props: {
-      posts: posts,
+      posts: articles,
     },
   }
 }

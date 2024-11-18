@@ -225,14 +225,14 @@ export async function getAllArticles(maxArticles = Infinity, onArticlesUpdate) {
         // リアルタイム監視
         const unsubscribeLikes = getLikesCount(article.slug, (likesCount) => {
           article.likesCount = likesCount
-          onArticlesUpdate?.([...allArticles]) // 更新通知
+          onArticlesUpdate?.([...allArticles])
         })
 
         const unsubscribeBookmarks = getBookmarkCount(
           article.slug,
           (bookmarksCount) => {
             article.bookmarksCount = bookmarksCount
-            onArticlesUpdate?.([...allArticles]) // 更新通知
+            onArticlesUpdate?.([...allArticles])
           },
         )
 
@@ -253,6 +253,7 @@ export async function getAllArticles(maxArticles = Infinity, onArticlesUpdate) {
     }),
   )
 
+  // サーバーサイドでは関数を返さないようにする
   return {
     articles: updatedArticles,
     unsubscribe: () => {

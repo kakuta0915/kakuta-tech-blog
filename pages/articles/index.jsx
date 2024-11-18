@@ -42,7 +42,7 @@ export default function Articles({ posts, allCategories }) {
 }
 
 export async function getServerSideProps() {
-  const { articles: posts, unsubscribe } = await getAllArticles(10000)
+  const { articles: posts } = await getAllArticles()
   const allCategories = await getAllCategories()
 
   return {
