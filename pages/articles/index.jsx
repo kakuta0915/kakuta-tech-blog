@@ -42,17 +42,13 @@ export default function Articles({ posts, allCategories }) {
 }
 
 export async function getServerSideProps() {
-  const callback = (updatedArticles) => {
-    console.log('Updated articles:', updatedArticles)
-  }
-
-  const posts = await getAllArticles(10000, callback)
+  const { articles: posts, unsubscribe } = await getAllArticles(10000)
   const allCategories = await getAllCategories()
 
   return {
     props: {
-      posts: posts,
-      allCategories: allCategories,
+      posts,
+      allCategories,
     },
   }
 }
