@@ -63,7 +63,7 @@ export default function Post({
           />
           <ThreeColum>
             <ThreeColumSocialActions>
-              <SocialActions postId={postId} />
+              <SocialActions postId={postId} title={title} />
             </ThreeColumSocialActions>
             <ThreeColumMain>
               <figure>

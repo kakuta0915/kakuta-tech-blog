@@ -16,12 +16,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark, faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faXTwitter } from '@fortawesome/free-brands-svg-icons'
 
-export default function SocialActions({ postId }) {
+export default function SocialActions({ postId, title }) {
   const [user] = useAuthState(auth)
   const [liked, setLiked] = useState(false)
   const [likeCount, setLikeCount] = useState(0)
   const [bookmarked, setBookmarked] = useState(false)
   const [bookmarkCount, setBookmarkCount] = useState(0)
+  const baseUrl = typeof window !== 'undefined' ? window.location.origin : ''
+  const postUrl = `${baseUrl}/posts/${postId}`
 
   useEffect(() => {
     if (postId) {
@@ -120,6 +122,13 @@ export default function SocialActions({ postId }) {
     }
   }
 
+  const handleShare = () => {
+    const twitterUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
+      postUrl,
+    )}&text=${encodeURIComponent(`「${title}」`)}`
+    window.open(twitterUrl, '_blank', 'noopener,noreferrer')
+  }
+
   return (
     <div className={styles.socialActions}>
       <ToastContainer />
@@ -142,7 +151,7 @@ export default function SocialActions({ postId }) {
       </div>
 
       <div className={styles.shareButton}>
-        <button>
+        <button onClick={handleShare}>
           <FontAwesomeIcon icon={faXTwitter} />
         </button>
       </div>
