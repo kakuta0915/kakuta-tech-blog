@@ -9,8 +9,7 @@ import {
   increment,
 } from 'firebase/firestore'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import { toast } from 'react-toastify'
 import styles from './socialActions.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark, faHeart } from '@fortawesome/free-solid-svg-icons'
@@ -131,7 +130,6 @@ export default function SocialActions({ postId, title }) {
 
   return (
     <div className={styles.socialActions}>
-      <ToastContainer />
       <div className={styles.actionButton}>
         <button onClick={() => handleAction('likes')}>
           <FontAwesomeIcon

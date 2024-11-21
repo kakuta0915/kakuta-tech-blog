@@ -2,6 +2,8 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Script from 'next/script'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import * as gtag from 'libs/gtag'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import Layout from '@/src/components/layouts/layout'
@@ -45,6 +47,7 @@ export default function App({ Component, pageProps }) {
         `,
         }}
       />
+      <ToastContainer />
       <Layout>{getLayout(<Component {...pageProps} />)}</Layout>
     </>
   )
