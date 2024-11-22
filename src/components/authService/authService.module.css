@@ -20,10 +20,6 @@
   margin: var(--space-xxs) auto;
   padding: calc(var(--space-xxs) * 0.5) var(--space-xxs);
   font-weight: bold;
-}
-
-.googleButton,
-.newRegistrationButton {
   background-color: var(--white);
   border: 1px solid var(--gray-3);
   border-radius: 8px;
@@ -31,15 +27,7 @@
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.newRegistrationButton {
-  font-size: calc(var(--body) * 0.65);
-  color: var(--black);
-  margin: 0 0.25rem;
-  border-radius: 3px;
-}
-
-.googleButton:hover,
-.newRegistrationButton:hover {
+.googleButton:hover {
   background: var(--gray-3);
   transform: scale(1.05);
 }
@@ -97,11 +85,6 @@
   width: var(--body);
   height: var(--body);
   margin-right: 0.5rem;
-}
-
-/* ===== 新規登録 ===== */
-.newRegistrationText {
-  font-size: calc(var(--body) * 0.65);
 }
 
 .errorMessage {

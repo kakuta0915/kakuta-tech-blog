@@ -1,6 +1,9 @@
 .stack {
-  margin-top: var(--space-md);
   margin-bottom: var(--space-xs);
+  padding: var(--space-xxs);
+  background-color: var(--white);
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
 }
 
 .stack h2 + p,
