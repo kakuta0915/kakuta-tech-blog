@@ -47,7 +47,13 @@ export default function App({ Component, pageProps }) {
         `,
         }}
       />
-      <ToastContainer />
+      <ToastContainer
+        position="top-center"
+        autoClose={1500}
+        hideProgressBar
+        closeOnClick
+        pauseOnHover
+      />
       <Layout>{getLayout(<Component {...pageProps} />)}</Layout>
     </>
   )
