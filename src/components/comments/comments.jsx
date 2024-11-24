@@ -36,7 +36,9 @@ function timeAgo(date) {
 export default function Comments({ postId }) {
   const [comment, setComment] = useState('') // 入力されたコメント
   const [comments, setComments] = useState([]) // 取得したコメント
+  const [replyContent, setReplyContent] = useState('') // 返信内容
   const [user, setUser] = useState(null) // ログインユーザー情報
+  const [activeReply, setActiveReply] = useState(null) // コメントごとに個別の返信フォームを管理
 
   // Firebase Authの状態を監視
   useEffect(() => {
@@ -78,7 +80,6 @@ export default function Comments({ postId }) {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    // コメントが空白の場合のエラーチェック
     if (!comment.trim()) {
       toast.error('コメントを入力してください。')
       return
@@ -93,6 +94,7 @@ export default function Comments({ postId }) {
         userId: user.uid,
         displayName: user.displayName,
         photoURL: user.photoURL,
+        parentId: null,
       })
 
       setComment('')
@@ -100,6 +102,32 @@ export default function Comments({ postId }) {
     } catch (error) {
       console.error('Firestore保存エラー:', error)
       toast.error('コメントの投稿に失敗しました。')
+    }
+  }
+
+  // 返信を送信する関数
+  const handleReplySubmit = async (e, parentId) => {
+    e.preventDefault()
+    if (!replyContent.trim()) {
+      toast.error('返信を入力してください。')
+      return
+    }
+    try {
+      await addDoc(collection(db, 'comments'), {
+        postId,
+        text: replyContent,
+        createdAt: serverTimestamp(),
+        userId: user.uid,
+        displayName: user.displayName,
+        photoURL: user.photoURL,
+        parentId,
+      })
+      setReplyContent('')
+      setActiveReply(null)
+      toast.success('返信が投稿されました。')
+    } catch {
+      console.error('Firestore保存エラー', error)
+      toast.error('返信の投稿に失敗しました。')
     }
   }
 
@@ -124,37 +152,100 @@ export default function Comments({ postId }) {
             <textarea
               value={comment}
               onChange={(e) => setComment(e.target.value)}
-              placeholder="コメントを入力してください"
+              placeholder="記事についてコメントする"
             />
-            <button type="submit">投稿</button>
+            <button type="submit" className={styles.commentButton}>
+              投稿
+            </button>
           </form>
         </>
       ) : (
         <p>ログインするとコメントを投稿できます。</p>
       )}
       <ul>
-        {comments.map(({ id, text, createdAt, displayName, photoURL }) => (
-          <li key={id}>
-            <div className={styles.commentHeader}>
-              <Image
-                src={photoURL}
-                alt={displayName || '匿名ユーザー'}
-                width={50}
-                height={50}
-                className={styles.commentIcon}
-              />
-              <span className={styles.userName}>
-                {displayName || '匿名ユーザー'}
-              </span>
-              <small className={styles.time}>
-                {createdAt?.seconds
-                  ? timeAgo(new Date(createdAt.seconds * 1000))
-                  : '日時情報なし'}
-              </small>
-            </div>
-            <p>{text}</p>
-          </li>
-        ))}
+        {comments
+          .filter((c) => !c.parentId)
+          .map(({ id, text, createdAt, displayName, photoURL }) => (
+            <li key={id}>
+              <div className={styles.commentHeader}>
+                <Image
+                  src={photoURL}
+                  alt={displayName || '匿名ユーザー'}
+                  width={50}
+                  height={50}
+                  className={styles.commentIcon}
+                />
+                <span className={styles.userName}>
+                  {displayName || '匿名ユーザー'}
+                </span>
+                <small className={styles.time}>
+                  {createdAt?.seconds
+                    ? timeAgo(new Date(createdAt.seconds * 1000))
+                    : '日時情報なし'}
+                </small>
+              </div>
+              <p>{text}</p>
+
+              <div className={styles.replyContainer}>
+                {activeReply === id && (
+                  <form
+                    onSubmit={(e) => handleReplySubmit(e, id)}
+                    className={styles.replyform}
+                  >
+                    <textarea
+                      value={replyContent}
+                      onChange={(e) => setReplyContent(e.target.value)}
+                      placeholder="投稿に対してコメントする"
+                    ></textarea>
+                    <button type="submit" className={styles.replyButton}>
+                      返信する
+                    </button>
+                    <button
+                      type="submit"
+                      onClick={() => setActiveReply(null)}
+                      className={styles.cancelButton}
+                    >
+                      キャンセル
+                    </button>
+                  </form>
+                )}
+                <ul>
+                  {comments
+                    .filter((c) => c.parentId === id)
+                    .map(({ id, text, displayName, photoURL, createdAt }) => (
+                      <li key={id} className={styles.reply}>
+                        <div className={styles.replyCommentHeader}>
+                          <Image
+                            src={photoURL}
+                            alt={displayName || '匿名ユーザー'}
+                            width={50}
+                            height={50}
+                            className={styles.commentIcon}
+                          />
+                          <span className={styles.userName}>
+                            {displayName || '匿名ユーザー'}
+                          </span>
+                          <small className={styles.time}>
+                            {createdAt?.seconds
+                              ? timeAgo(new Date(createdAt.seconds * 1000))
+                              : '日時情報なし'}
+                          </small>
+                        </div>
+                        <p>{text}</p>
+                      </li>
+                    ))}
+                </ul>
+              </div>
+              {activeReply !== id && (
+                <button
+                  onClick={() => setActiveReply(id)}
+                  className={styles.addReplyButton}
+                >
+                  返信を追加
+                </button>
+              )}
+            </li>
+          ))}
       </ul>
     </div>
   )
