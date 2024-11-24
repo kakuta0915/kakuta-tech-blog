@@ -82,8 +82,8 @@ export default function Post({
               <Comments postId={postId} />
             </ThreeColumMain>
             <ThreeColumSidebar>
-              <PostCategories categories={categories} />
               {tocVisible && <TableOfContents toc={toc} />}
+              <PostCategories categories={categories} />
             </ThreeColumSidebar>
           </ThreeColum>
           <Pagination

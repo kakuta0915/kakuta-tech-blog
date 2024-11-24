@@ -1,13 +1,19 @@
 .flexContainer {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
 }
 
 .sidebar {
+  order: 1;
   margin-bottom: var(--space-xxs);
 }
 
+.main {
+  order: 3;
+}
+
 .socialActions {
+  order: 2;
   margin: var(--space-xxs) 0;
 }
 
@@ -26,14 +32,17 @@
   }
 
   .socialActions {
+    order: 1;
     width: 5%;
   }
 
   .main {
+    order: 2;
     width: 71%;
   }
 
   .sidebar {
+    order: 3;
     width: 20%;
   }
 }

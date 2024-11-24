@@ -4,6 +4,7 @@
   border-top: 5px solid var(--blue);
   border-radius: 5px;
   padding: var(--space-xs);
+  margin-bottom: var(--space-xs);
 }
 
 .tocBtn {
@@ -45,15 +46,15 @@
 
 .tocLi {
   position: relative;
-  line-height: 2;
+  line-height: 1.7;
   cursor: pointer;
-  padding: var(--space-xxs) var(--space-xxs) 0.5rem;
+  padding: var(--space-xxs) var(--space-xxs) 0.25rem;
   border-bottom: 1px dashed var(--gray-1);
 }
 
 .tocLi::before {
   position: absolute;
-  top: 26px;
+  top: 24px;
   left: -10px;
   display: inline-block;
   content: '';
