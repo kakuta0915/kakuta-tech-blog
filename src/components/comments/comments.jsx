@@ -131,6 +131,15 @@ export default function Comments({ postId }) {
     }
   }
 
+  // 返信フォームを表示する関数
+  const handleReplyClick = (id) => {
+    if (!user) {
+      toast.error('ログインしてください。')
+      return
+    }
+    setActiveReply(id)
+  }
+
   return (
     <div className={styles.commentsContainer}>
       <h2>コメント</h2>
@@ -238,7 +247,7 @@ export default function Comments({ postId }) {
               </div>
               {activeReply !== id && (
                 <button
-                  onClick={() => setActiveReply(id)}
+                  onClick={() => handleReplyClick(id)}
                   className={styles.addReplyButton}
                 >
                   返信を追加
