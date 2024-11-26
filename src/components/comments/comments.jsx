@@ -140,6 +140,18 @@ export default function Comments({ postId }) {
     setActiveReply(id)
   }
 
+  // 返信のキャンセルを表示
+  const handleCancelReply = () => {
+    if (!replyContent.trim()) {
+      setActiveReply(null)
+      return
+    }
+    if (window.confirm('返信をキャンセルしますか？')) {
+      setActiveReply(null)
+      setReplyContent('')
+    }
+  }
+
   return (
     <div className={styles.commentsContainer}>
       <h2>コメント</h2>
@@ -169,7 +181,7 @@ export default function Comments({ postId }) {
           </form>
         </>
       ) : (
-        <p>ログインするとコメントを投稿できます。</p>
+        <p>ログインしてコメントしましょう。</p>
       )}
       <ul>
         {comments
@@ -210,8 +222,8 @@ export default function Comments({ postId }) {
                       返信する
                     </button>
                     <button
-                      type="submit"
-                      onClick={() => setActiveReply(null)}
+                      type="button"
+                      onClick={handleCancelReply}
                       className={styles.cancelButton}
                     >
                       キャンセル
