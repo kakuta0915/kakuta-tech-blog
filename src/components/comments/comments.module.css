@@ -109,8 +109,16 @@
 .addReplyButton,
 .replyButton {
   right: 0;
-  background-color: var(--blue);
   color: var(--white);
+}
+
+.commentButton {
+  background-color: var(--blue);
+}
+
+.addReplyButton,
+.replyButton {
+  background-color: #00aeef;
 }
 
 .addReplyButton {
@@ -134,11 +142,13 @@
   transform: scale(1.05);
 }
 
-.commentButton:hover,
+.commentButton:hover {
+  background-color: var(--blue-1);
+}
+
 .addReplyButton:hover,
 .replyButton:hover {
-  color: var(--white);
-  background-color: var(--blue-1);
+  background-color: #72c6ef;
 }
 
 .cancelButton:hover {
