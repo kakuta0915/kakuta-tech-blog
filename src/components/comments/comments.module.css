@@ -62,14 +62,38 @@
   color: #999;
 }
 
+.viewToggleButtons {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.viewButton {
+  padding: 0.25rem 1rem;
+  margin-right: 0.25rem;
+  background-color: var(--gray-3);
+  border: 1px solid var(--gray-2);
+  cursor: pointer;
+}
+
+.viewButton.active {
+  background-color: #00aeef;
+  color: var(--white);
+}
+
 .form,
-.replyform {
-  position: relative;
+.replyForm {
+  padding-bottom: var(--space-xs);
   border-bottom: 1px solid var(--gray-2);
 }
 
-.form textarea,
-.replyform textarea {
+.inputAndPreview {
+  margin-bottom: var(--space-xxs);
+  width: 100%;
+  height: 10rem;
+}
+
+.textarea {
   font-size: var(--body);
   width: 100%;
   height: 10rem;
@@ -82,9 +106,17 @@
   outline: none;
 }
 
-.form textarea::placeholder,
-.replyform textarea::placeholder {
+.textarea::placeholder {
   color: var(--gray-1);
+}
+
+.preview {
+  width: 100%;
+  height: 10rem;
+  padding: 0.5rem;
+  border: 1px solid var(--gray-1);
+  border-radius: 8px;
+  background-color: var(--body);
 }
 
 .commentButton,
@@ -100,15 +132,8 @@
 }
 
 .commentButton,
-.replyButton,
-.cancelButton {
-  position: absolute;
-}
-
-.commentButton,
 .addReplyButton,
 .replyButton {
-  right: 0;
   color: var(--white);
 }
 
@@ -122,15 +147,11 @@
 }
 
 .addReplyButton {
-  margin-top: 0.85rem;
-}
-
-.replyButton {
-  right: 0rem;
+  margin-top: var(--space-xxs);
 }
 
 .cancelButton {
-  right: 5.5rem;
+  margin-left: 0.5rem;
   color: var(--black);
   background-color: var(--gray-3);
 }

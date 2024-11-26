@@ -11,6 +11,8 @@ import {
 } from 'firebase/firestore'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { toast } from 'react-toastify'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import styles from './comments.module.css'
 
 // 「何日前」「何時間前」などの形式に変換
@@ -39,6 +41,7 @@ export default function Comments({ postId }) {
   const [replyContent, setReplyContent] = useState('') // 返信内容
   const [user, setUser] = useState(null) // ログインユーザー情報
   const [activeReply, setActiveReply] = useState(null) // コメントごとに個別の返信フォームを管理
+  const [selectedView, setSelectedView] = useState('markdown') // 'markdown' または 'preview' を選択
 
   // Firebase Authの状態を監視
   useEffect(() => {
@@ -170,11 +173,44 @@ export default function Comments({ postId }) {
             </span>
           </div>
           <form onSubmit={handleSubmit} className={styles.form}>
-            <textarea
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-              placeholder="記事についてコメントする"
-            />
+            <div className={styles.viewToggleButtons}>
+              <button
+                type="button"
+                onClick={() => setSelectedView('markdown')}
+                className={`${styles.viewButton} ${
+                  selectedView === 'markdown' ? styles.active : ''
+                }`}
+              >
+                Markdown
+              </button>
+              <button
+                type="button"
+                onClick={() => setSelectedView('preview')}
+                className={`${styles.viewButton} ${
+                  selectedView === 'preview' ? styles.active : ''
+                }`}
+              >
+                プレビュー
+              </button>
+            </div>
+            <div className={styles.inputAndPreview}>
+              {selectedView === 'markdown' && (
+                <textarea
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                  placeholder="記事についてコメントする (マークダウン記法が使えます)"
+                  className={styles.textarea}
+                />
+              )}
+              {selectedView === 'preview' && (
+                <div className={styles.preview}>
+                  <h3>プレビュー</h3>
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    {comment}
+                  </ReactMarkdown>
+                </div>
+              )}
+            </div>
             <button type="submit" className={styles.commentButton}>
               投稿
             </button>
@@ -205,19 +241,60 @@ export default function Comments({ postId }) {
                     : '日時情報なし'}
                 </small>
               </div>
-              <p>{text}</p>
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>{text}</ReactMarkdown>
 
+              {activeReply !== id && (
+                <button
+                  onClick={() => handleReplyClick(id)}
+                  className={styles.addReplyButton}
+                >
+                  返信を追加
+                </button>
+              )}
               <div className={styles.replyContainer}>
                 {activeReply === id && (
                   <form
                     onSubmit={(e) => handleReplySubmit(e, id)}
-                    className={styles.replyform}
+                    className={styles.replyForm}
                   >
-                    <textarea
-                      value={replyContent}
-                      onChange={(e) => setReplyContent(e.target.value)}
-                      placeholder="投稿に対してコメントする"
-                    ></textarea>
+                    <div className={styles.viewToggleButtons}>
+                      <button
+                        type="button"
+                        onClick={() => setSelectedView('markdown')}
+                        className={`${styles.viewButton} ${
+                          selectedView === 'markdown' ? styles.active : ''
+                        }`}
+                      >
+                        Markdown
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setSelectedView('preview')}
+                        className={`${styles.viewButton} ${
+                          selectedView === 'preview' ? styles.active : ''
+                        }`}
+                      >
+                        プレビュー
+                      </button>
+                    </div>
+                    <div className={styles.inputAndPreview}>
+                      {selectedView === 'markdown' && (
+                        <textarea
+                          value={replyContent}
+                          onChange={(e) => setReplyContent(e.target.value)}
+                          placeholder="投稿に対してコメントする (マークダウン記法が使えます)"
+                          className={styles.textarea}
+                        />
+                      )}
+                      {selectedView === 'preview' && (
+                        <div className={styles.preview}>
+                          <h3>プレビュー</h3>
+                          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                            {replyContent}
+                          </ReactMarkdown>
+                        </div>
+                      )}
+                    </div>
                     <button type="submit" className={styles.replyButton}>
                       返信する
                     </button>
@@ -252,19 +329,13 @@ export default function Comments({ postId }) {
                               : '日時情報なし'}
                           </small>
                         </div>
-                        <p>{text}</p>
+                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                          {text}
+                        </ReactMarkdown>
                       </li>
                     ))}
                 </ul>
               </div>
-              {activeReply !== id && (
-                <button
-                  onClick={() => handleReplyClick(id)}
-                  className={styles.addReplyButton}
-                >
-                  返信を追加
-                </button>
-              )}
             </li>
           ))}
       </ul>
