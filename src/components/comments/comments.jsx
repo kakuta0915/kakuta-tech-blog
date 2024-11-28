@@ -8,6 +8,9 @@ import {
   orderBy,
   onSnapshot,
   serverTimestamp,
+  updateDoc,
+  deleteDoc,
+  doc,
 } from 'firebase/firestore'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { toast } from 'react-toastify'
@@ -36,10 +39,12 @@ function timeAgo(date) {
 }
 
 export default function Comments({ postId }) {
+  const [user, setUser] = useState(null) // ログインユーザー情報
   const [comment, setComment] = useState('') // 入力されたコメント
   const [comments, setComments] = useState([]) // 取得したコメント
   const [replyContent, setReplyContent] = useState('') // 返信内容
-  const [user, setUser] = useState(null) // ログインユーザー情報
+  const [activeEdit, setActiveEdit] = useState(null) // 編集モードのコメントID
+  const [editContent, setEditContent] = useState('') // 編集内容
   const [activeReply, setActiveReply] = useState(null) // コメントごとに個別の返信フォームを管理
   const [selectedView, setSelectedView] = useState('markdown') // 'markdown' または 'preview' を選択
 
@@ -155,6 +160,61 @@ export default function Comments({ postId }) {
     }
   }
 
+  // コメントを編集してFirebaseに保存する関数
+  const handleEditSubmit = async (e, id, editContent, closeEditMode) => {
+    e.preventDefault()
+
+    try {
+      await updateDoc(doc(db, 'comments', id), { text: editContent })
+      closeEditMode()
+      toast.success('コメントを更新しました。')
+    } catch (error) {
+      console.error('コメント更新エラー:', error)
+
+      toast.error('コメントの更新に失敗しました。')
+    }
+  }
+
+  // コメントを編集するボタンをクリックしたときの処理
+  const handleEditClick = (id, text) => {
+    setActiveEdit(id)
+    setEditContent(text)
+  }
+
+  // 編集をキャンセルする関数
+  const handleCancelEdit = (text) => {
+    if (editContent !== text) {
+      const confirmCancel = window.confirm(
+        '変更内容が保存されていません。編集をキャンセルしますか?',
+      )
+      if (!confirmCancel) {
+        return
+      }
+    } else {
+      const confirmDiscard = toast.info('編集をキャンセルしました')
+      if (!confirmDiscard) {
+        return
+      }
+    }
+
+    // キャンセル処理
+    setActiveEdit(null)
+    setEditContent('')
+  }
+
+  // コメントや返信を削除する関数
+  const handleDelete = async (id) => {
+    if (window.confirm('本当に削除しますか？')) {
+      try {
+        await deleteDoc(doc(db, 'comments', id))
+        toast.success('コメントを削除しました。')
+      } catch (error) {
+        console.log('コメント削除エラー:', error)
+        toast.error('コメントの削除に失敗しました。')
+      }
+    }
+  }
+
   return (
     <div className={styles.commentsContainer}>
       <h2>コメント</h2>
@@ -221,7 +281,7 @@ export default function Comments({ postId }) {
       <ul>
         {comments
           .filter((c) => !c.parentId)
-          .map(({ id, text, createdAt, displayName, photoURL }) => (
+          .map(({ id, text, createdAt, displayName, photoURL, userId }) => (
             <li key={id}>
               <div className={styles.commentHeader}>
                 <Image
@@ -240,7 +300,94 @@ export default function Comments({ postId }) {
                     : '日時情報なし'}
                 </small>
               </div>
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>{text}</ReactMarkdown>
+
+              {/* =================================================== */}
+              {/* 編集中でない場合は元のコメントを表示 */}
+              {activeEdit !== id && (
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {text}
+                </ReactMarkdown>
+              )}
+
+              {user?.uid === userId && (
+                <div className={styles.commentsActions}>
+                  <button
+                    onClick={() => handleEditClick(id, text)}
+                    className={styles.editButton}
+                  >
+                    編集
+                  </button>
+                  <button
+                    onClick={() => handleDelete(id)}
+                    className={styles.deleteButton}
+                  >
+                    削除
+                  </button>
+                </div>
+              )}
+
+              {/* 編集フォームの表示 */}
+              {activeEdit === id && (
+                <form
+                  onSubmit={(e) =>
+                    handleEditSubmit(e, id, editContent, () =>
+                      setActiveEdit(null),
+                    )
+                  }
+                  className={styles.editForm}
+                >
+                  <div className={styles.viewToggleButtons}>
+                    <button
+                      type="button"
+                      onClick={() => setSelectedView('markdown')}
+                      className={`${styles.viewButton} ${
+                        selectedView === 'markdown' ? styles.active : ''
+                      }`}
+                    >
+                      Markdown
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setSelectedView('preview')}
+                      className={`${styles.viewButton} ${
+                        selectedView === 'preview' ? styles.active : ''
+                      }`}
+                    >
+                      プレビュー
+                    </button>
+                  </div>
+
+                  <div className={styles.inputAndPreview}>
+                    {selectedView === 'markdown' && (
+                      <textarea
+                        value={editContent}
+                        onChange={(e) => setEditContent(e.target.value)}
+                        placeholder="編集内容を入力してください"
+                        className={styles.textarea}
+                      />
+                    )}
+                    {selectedView === 'preview' && (
+                      <div className={styles.preview}>
+                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                          {editContent}
+                        </ReactMarkdown>
+                      </div>
+                    )}
+                  </div>
+
+                  <button type="submit" className={styles.savaButton}>
+                    保存
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleCancelEdit(text)}
+                    className={styles.cancelButton}
+                  >
+                    キャンセル
+                  </button>
+                </form>
+              )}
+              {/* =================================================== */}
 
               {activeReply !== id && (
                 <button
