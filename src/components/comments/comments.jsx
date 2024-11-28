@@ -204,7 +204,6 @@ export default function Comments({ postId }) {
               )}
               {selectedView === 'preview' && (
                 <div className={styles.preview}>
-                  <h3>プレビュー</h3>
                   <ReactMarkdown remarkPlugins={[remarkGfm]}>
                     {comment}
                   </ReactMarkdown>
@@ -288,7 +287,6 @@ export default function Comments({ postId }) {
                       )}
                       {selectedView === 'preview' && (
                         <div className={styles.preview}>
-                          <h3>プレビュー</h3>
                           <ReactMarkdown remarkPlugins={[remarkGfm]}>
                             {replyContent}
                           </ReactMarkdown>
