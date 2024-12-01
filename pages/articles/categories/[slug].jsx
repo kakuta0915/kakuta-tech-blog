@@ -29,18 +29,21 @@ export async function getServerSideProps(context) {
   const category = allCategories.find(({ slug }) => slug === categorySlug)
 
   if (!category) {
-    return {
-      notFound: true,
-    }
+    return { notFound: true }
   }
 
-  const posts = await getAllPostByCategory(category.id)
+  let posts = []
+  try {
+    posts = await getAllPostByCategory(category.id)
+  } catch (error) {
+    console.error('Error fetching posts:', error)
+  }
 
   return {
     props: {
       icon: category.icon,
       name: category.name,
-      posts: posts,
+      posts: posts || [],
       allCategories: allCategories,
     },
   }

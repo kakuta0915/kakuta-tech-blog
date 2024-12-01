@@ -1,0 +1,258 @@
+.commentsContainer {
+  padding: var(--space-xxs) var(--space-xxs) var(--space-md);
+  background-color: var(--white);
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.commentsContainer h2 {
+  text-align: center;
+  border-bottom: 1px solid var(--gray-1);
+  padding-bottom: 0.5rem;
+  margin-bottom: var(--space-xs);
+}
+
+.replyContainer {
+  margin-left: var(--space-xxs);
+  padding-left: var(--space-xxs);
+  border-left: 3px solid var(--gray-2);
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--space-xxs);
+}
+
+.userIcon {
+  width: clamp(2.375rem, 2.148rem + 1.14vw, 3rem);
+  height: clamp(2.375rem, 2.148rem + 1.14vw, 3rem);
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+.commentHeader,
+.replyCommentHeader {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.commentHeader {
+  margin: 2rem 0 0.5rem;
+}
+
+.replyCommentHeader {
+  margin: 1.5rem 0 0.5rem;
+}
+
+.commentIcon {
+  width: clamp(1.875rem, 1.648rem + 1.14vw, 2.5rem);
+  height: clamp(1.875rem, 1.648rem + 1.14vw, 2.5rem);
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+.userName {
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.time {
+  font-size: 0.85rem;
+  color: #999;
+}
+
+.commentsActions {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.commentsActions.hiddenIcon {
+  display: none;
+}
+
+.toggleButton {
+  background-color: var(--gray-3);
+  padding: 0.5rem;
+  border-radius: 50%;
+  color: var(--gra-3);
+  border: none;
+  cursor: pointer;
+}
+
+.toggleButton:hover {
+  color: var(--blue-3);
+  background-color: var(--gray-2);
+}
+
+.toggleButton .icon {
+  font-size: var(--body);
+}
+
+.actionButtons {
+  position: absolute;
+  right: 0;
+  top: 2.5rem;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: max-height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  z-index: 100;
+}
+
+.visible {
+  max-height: 200px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hidden {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.editButton,
+.deleteButton {
+  background-color: #f8f9fa;
+  border: none;
+  width: 5rem;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  border: 1px solid var(--gray-3);
+}
+
+.editButton:hover {
+  background-color: #e0e0e0;
+}
+
+.deleteButton:hover {
+  background-color: #f5c6cb;
+  color: #721c24;
+}
+
+.viewToggleButtons {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.viewButton {
+  padding: 0.25rem 1rem;
+  margin-right: 0.25rem;
+  background-color: var(--gray-3);
+  border: 1px solid var(--gray-2);
+  cursor: pointer;
+}
+
+.viewButton.active {
+  background-color: var(--blue-3);
+  color: var(--white);
+}
+
+.form,
+.replyForm {
+  padding-bottom: var(--space-xs);
+  border-bottom: 1px solid var(--gray-2);
+}
+
+.inputAndPreview {
+  margin-bottom: var(--space-xxs);
+  width: 100%;
+  height: 10rem;
+}
+
+.textarea {
+  font-size: var(--body);
+  width: 100%;
+  height: 10rem;
+  padding: 0.5rem;
+  margin-bottom: var(--space-lg);
+  box-sizing: border-box;
+  resize: vertical;
+  border: 1px solid var(--gray-1);
+  border-radius: 8px;
+  outline: none;
+}
+
+.textarea::placeholder {
+  color: var(--gray-1);
+}
+
+.preview {
+  width: 100%;
+  height: 10rem;
+  padding: 0.5rem;
+  border: 1px solid var(--gray-1);
+  border-radius: 8px;
+  background-color: var(--body);
+}
+
+.commentButton,
+.addReplyButton,
+.replyButton,
+.savaButton,
+.cancelButton {
+  bottom: clamp(1.125rem, 0.852rem + 1.36vw, 1.875rem);
+  padding: calc(var(--body) * 0.5) calc(var(--body) * 0.75);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.commentButton,
+.addReplyButton,
+.replyButton {
+  color: var(--white);
+}
+
+.commentButton {
+  background-color: var(--blue);
+}
+
+.addReplyButton,
+.savaButton,
+.replyButton {
+  background-color: var(--white);
+  border: 1px solid var(--blue-3);
+  color: var(--blue-3);
+}
+
+.addReplyButton {
+  margin-top: var(--space-xxs);
+}
+
+.cancelButton {
+  margin-left: 0.5rem;
+  color: var(--gray);
+  background-color: var(--white);
+  border: 1px solid var(--gray);
+}
+
+.commentButton:hover,
+.addReplyButton:hover,
+.replyButton:hover,
+.savaButton:hover,
+.cancelButton:hover {
+  transform: scale(1.1);
+}
+
+.commentButton:hover {
+  background-color: var(--blue-1);
+}
+
+.addReplyButton:hover,
+.replyButton:hover {
+  color: var(--white);
+  background-color: var(--blue-3);
+  border: 1px solid var(--white);
+}
+
+.cancelButton:hover {
+  color: var(--white);
+  background-color: var(--gray-2);
+}

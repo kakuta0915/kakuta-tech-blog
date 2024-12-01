@@ -18,10 +18,11 @@ import {
 import Container from '@/src/components/container/container'
 import ConvertBody from '@/src/components/convert/convertBody'
 import PostBody from '@/src/components/postBody/postBody'
+import Comments from '@/src/components/comments/comments'
+import SocialActions from '@/src/components/socialActions/socialActions'
 import PostCategories from '@/src/components/postCategories/postCategories'
 import Pagination from '@/src/components/pagination/pagination'
 import TableOfContents from '@/src/components/tableOfContents/tableOfContents'
-import SocialActions from '@/src/components/socialActions/socialActions'
 
 export default function Post({
   icon,
@@ -66,7 +67,7 @@ export default function Post({
               <SocialActions postId={postId} title={title} />
             </ThreeColumSocialActions>
             <ThreeColumMain>
-              <figure>
+              <PostBody>
                 <Image
                   src={eyecatch.url}
                   alt=""
@@ -76,14 +77,13 @@ export default function Post({
                   sizes="(min-width: 1152px) 1152px, 100vw"
                   priority
                 />
-              </figure>
-              <PostBody>
                 <ConvertBody contentHTML={content} id={`#${toc.id}`} />
               </PostBody>
+              <Comments postId={postId} />
             </ThreeColumMain>
             <ThreeColumSidebar>
-              <PostCategories categories={categories} />
               {tocVisible && <TableOfContents toc={toc} />}
+              <PostCategories categories={categories} />
             </ThreeColumSidebar>
           </ThreeColum>
           <Pagination

@@ -2,7 +2,6 @@
   background-color: var(--white);
   border-radius: 5px;
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
-  margin-bottom: var(--space-sm);
   padding: var(--space-xxs);
 }
 

@@ -48,6 +48,7 @@ function SignInWithGoogle() {
       setError(
         `エラーが発生しました。もう一度やり直してください。: ${error.message}`,
       )
+      toast.error('ログインに失敗しました')
     }
   }
 

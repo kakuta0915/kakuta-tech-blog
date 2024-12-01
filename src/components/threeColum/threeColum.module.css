@@ -1,20 +1,19 @@
 .flexContainer {
   display: flex;
-  flex-direction: column-reverse;
-}
-
-.main {
-  padding: var(--space-xxs);
-  background-color: var(--white);
-  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
+  flex-direction: column;
 }
 
 .sidebar {
+  order: 1;
   margin-bottom: var(--space-xxs);
 }
 
+.main {
+  order: 3;
+}
+
 .socialActions {
+  order: 2;
   margin: var(--space-xxs) 0;
 }
 
@@ -33,14 +32,17 @@
   }
 
   .socialActions {
+    order: 1;
     width: 5%;
   }
 
   .main {
+    order: 2;
     width: 71%;
   }
 
   .sidebar {
+    order: 3;
     width: 20%;
   }
 }
