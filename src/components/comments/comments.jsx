@@ -17,6 +17,8 @@ import { toast } from 'react-toastify'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import styles from './comments.module.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
 // 「何日前」「何時間前」などの形式に変換
 function timeAgo(date) {
@@ -38,7 +40,7 @@ function timeAgo(date) {
   return `${diffInSeconds}秒前`
 }
 
-export default function Comments({ postId }) {
+export default function Comments({ postId, id }) {
   const [user, setUser] = useState(null) // ログインユーザー情報
   const [comment, setComment] = useState('') // 入力されたコメント
   const [comments, setComments] = useState([]) // 取得したコメント
@@ -46,7 +48,8 @@ export default function Comments({ postId }) {
   const [activeEdit, setActiveEdit] = useState(null) // 編集モードのコメントID
   const [editContent, setEditContent] = useState('') // 編集内容
   const [activeReply, setActiveReply] = useState(null) // コメントごとに個別の返信フォームを管理
-  const [selectedView, setSelectedView] = useState('markdown') // 'markdown' または 'preview' を選択
+  const [selectedView, setSelectedView] = useState({}) // 'markdown' または 'preview' を選択
+  const [isVisible, setIsVisible] = useState(false) // 編集・削除ボタン
 
   // Firebase Authの状態を監視
   useEffect(() => {
@@ -157,7 +160,16 @@ export default function Comments({ postId }) {
     if (window.confirm('返信をキャンセルしますか？')) {
       setActiveReply(null)
       setReplyContent('')
+      setSelectedView((prevState) => ({
+        ...prevState,
+        [id]: { ...prevState[id], reply: 'markdown' },
+      }))
     }
+  }
+
+  // 編集・削除ボタンをトグルで表示・非表示にする関数
+  const toggleVisibility = () => {
+    setIsVisible((prevState) => !prevState)
   }
 
   // コメントを編集してFirebaseに保存する関数
@@ -181,6 +193,15 @@ export default function Comments({ postId }) {
     setEditContent(text)
   }
 
+  // コメント取得後は 'markdown' 表示に設定
+  useEffect(() => {
+    const defaultViews = comments.reduce((views, comment) => {
+      views[comment.id] = { edit: 'markdown', reply: 'markdown' }
+      return views
+    }, {})
+    setSelectedView(defaultViews)
+  }, [comments])
+
   // 編集をキャンセルする関数
   const handleCancelEdit = (text) => {
     if (editContent !== text) {
@@ -197,9 +218,12 @@ export default function Comments({ postId }) {
       }
     }
 
-    // キャンセル処理
     setActiveEdit(null)
     setEditContent('')
+    setSelectedView((prevState) => ({
+      ...prevState,
+      [id]: { ...prevState[id], edit: 'markdown' },
+    }))
   }
 
   // コメントや返信を削除する関数
@@ -213,6 +237,17 @@ export default function Comments({ postId }) {
         toast.error('コメントの削除に失敗しました。')
       }
     }
+  }
+
+  // 各コメントのビュー状態を保持する関数
+  const handleViewToggle = (commentId, mode, view) => {
+    setSelectedView((prevState) => ({
+      ...prevState,
+      [commentId]: {
+        ...(prevState[commentId] || {}),
+        [mode]: view,
+      },
+    }))
   }
 
   return (
@@ -236,25 +271,25 @@ export default function Comments({ postId }) {
             <div className={styles.viewToggleButtons}>
               <button
                 type="button"
-                onClick={() => setSelectedView('markdown')}
+                onClick={() => handleViewToggle(id, 'edit', 'markdown')}
                 className={`${styles.viewButton} ${
-                  selectedView === 'markdown' ? styles.active : ''
+                  selectedView[id]?.edit === 'markdown' ? styles.active : ''
                 }`}
               >
                 Markdown
               </button>
               <button
                 type="button"
-                onClick={() => setSelectedView('preview')}
+                onClick={() => handleViewToggle(id, 'edit', 'preview')}
                 className={`${styles.viewButton} ${
-                  selectedView === 'preview' ? styles.active : ''
+                  selectedView[id]?.edit === 'preview' ? styles.active : ''
                 }`}
               >
                 プレビュー
               </button>
             </div>
             <div className={styles.inputAndPreview}>
-              {selectedView === 'markdown' && (
+              {selectedView[id]?.edit === 'markdown' && (
                 <textarea
                   value={comment}
                   onChange={(e) => setComment(e.target.value)}
@@ -262,7 +297,7 @@ export default function Comments({ postId }) {
                   className={styles.textarea}
                 />
               )}
-              {selectedView === 'preview' && (
+              {selectedView[id]?.edit === 'preview' && (
                 <div className={styles.preview}>
                   <ReactMarkdown remarkPlugins={[remarkGfm]}>
                     {comment}
@@ -299,31 +334,55 @@ export default function Comments({ postId }) {
                     ? timeAgo(new Date(createdAt.seconds * 1000))
                     : '日時情報なし'}
                 </small>
+
+                {user?.uid === userId && (
+                  <div className={styles.commentsActions}>
+                    <button
+                      onClick={toggleVisibility}
+                      className={styles.toggleButton}
+                    >
+                      {isVisible ? (
+                        <FontAwesomeIcon
+                          icon={faChevronDown}
+                          className={styles.icon}
+                        />
+                      ) : (
+                        <FontAwesomeIcon
+                          icon={faChevronDown}
+                          className={styles.icon}
+                        />
+                      )}
+                    </button>
+
+                    <div
+                      className={`${styles.actionButtons} ${
+                        isVisible ? styles.visible : styles.hidden
+                      }`}
+                    >
+                      <button
+                        onClick={() => handleEditClick(id, text)}
+                        className={styles.editButton}
+                      >
+                        編集
+                      </button>
+                      <button
+                        onClick={() => handleDelete(id)}
+                        className={styles.deleteButton}
+                      >
+                        削除
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* =================================================== */}
+
               {/* 編集中でない場合は元のコメントを表示 */}
               {activeEdit !== id && (
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
                   {text}
                 </ReactMarkdown>
-              )}
-
-              {user?.uid === userId && (
-                <div className={styles.commentsActions}>
-                  <button
-                    onClick={() => handleEditClick(id, text)}
-                    className={styles.editButton}
-                  >
-                    編集
-                  </button>
-                  <button
-                    onClick={() => handleDelete(id)}
-                    className={styles.deleteButton}
-                  >
-                    削除
-                  </button>
-                </div>
               )}
 
               {/* 編集フォームの表示 */}
@@ -339,18 +398,22 @@ export default function Comments({ postId }) {
                   <div className={styles.viewToggleButtons}>
                     <button
                       type="button"
-                      onClick={() => setSelectedView('markdown')}
+                      onClick={() => handleViewToggle(id, 'edit', 'markdown')}
                       className={`${styles.viewButton} ${
-                        selectedView === 'markdown' ? styles.active : ''
+                        selectedView[id]?.edit === 'markdown'
+                          ? styles.active
+                          : ''
                       }`}
                     >
                       Markdown
                     </button>
                     <button
                       type="button"
-                      onClick={() => setSelectedView('preview')}
+                      onClick={() => handleViewToggle(id, 'edit', 'preview')}
                       className={`${styles.viewButton} ${
-                        selectedView === 'preview' ? styles.active : ''
+                        selectedView[id]?.edit === 'preview'
+                          ? styles.active
+                          : ''
                       }`}
                     >
                       プレビュー
@@ -358,7 +421,7 @@ export default function Comments({ postId }) {
                   </div>
 
                   <div className={styles.inputAndPreview}>
-                    {selectedView === 'markdown' && (
+                    {selectedView[id]?.edit === 'markdown' && (
                       <textarea
                         value={editContent}
                         onChange={(e) => setEditContent(e.target.value)}
@@ -366,7 +429,7 @@ export default function Comments({ postId }) {
                         className={styles.textarea}
                       />
                     )}
-                    {selectedView === 'preview' && (
+                    {selectedView[id]?.edit === 'preview' && (
                       <div className={styles.preview}>
                         <ReactMarkdown remarkPlugins={[remarkGfm]}>
                           {editContent}
@@ -406,25 +469,31 @@ export default function Comments({ postId }) {
                     <div className={styles.viewToggleButtons}>
                       <button
                         type="button"
-                        onClick={() => setSelectedView('markdown')}
+                        onClick={() =>
+                          handleViewToggle(id, 'reply', 'markdown')
+                        }
                         className={`${styles.viewButton} ${
-                          selectedView === 'markdown' ? styles.active : ''
+                          selectedView[id]?.reply === 'markdown'
+                            ? styles.active
+                            : ''
                         }`}
                       >
                         Markdown
                       </button>
                       <button
                         type="button"
-                        onClick={() => setSelectedView('preview')}
+                        onClick={() => handleViewToggle(id, 'reply', 'preview')}
                         className={`${styles.viewButton} ${
-                          selectedView === 'preview' ? styles.active : ''
+                          selectedView[id]?.reply === 'preview'
+                            ? styles.active
+                            : ''
                         }`}
                       >
                         プレビュー
                       </button>
                     </div>
                     <div className={styles.inputAndPreview}>
-                      {selectedView === 'markdown' && (
+                      {selectedView[id]?.reply === 'markdown' && (
                         <textarea
                           value={replyContent}
                           onChange={(e) => setReplyContent(e.target.value)}
@@ -432,7 +501,7 @@ export default function Comments({ postId }) {
                           className={styles.textarea}
                         />
                       )}
-                      {selectedView === 'preview' && (
+                      {selectedView[id]?.reply === 'preview' && (
                         <div className={styles.preview}>
                           <ReactMarkdown remarkPlugins={[remarkGfm]}>
                             {replyContent}
