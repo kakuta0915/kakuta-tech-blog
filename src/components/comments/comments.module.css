@@ -69,6 +69,10 @@
   top: 0;
 }
 
+.commentsActions.hiddenIcon {
+  display: none;
+}
+
 .toggleButton {
   background-color: var(--gray-3);
   padding: 0.5rem;
@@ -96,6 +100,7 @@
   opacity: 0;
   transform: translateY(-10px);
   transition: max-height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  z-index: 100;
 }
 
 .visible {
@@ -189,6 +194,7 @@
 .commentButton,
 .addReplyButton,
 .replyButton,
+.savaButton,
 .cancelButton {
   bottom: clamp(1.125rem, 0.852rem + 1.36vw, 1.875rem);
   padding: calc(var(--body) * 0.5) calc(var(--body) * 0.75);
@@ -209,6 +215,7 @@
 }
 
 .addReplyButton,
+.savaButton,
 .replyButton {
   background-color: var(--white);
   border: 1px solid var(--blue-3);
@@ -229,6 +236,7 @@
 .commentButton:hover,
 .addReplyButton:hover,
 .replyButton:hover,
+.savaButton:hover,
 .cancelButton:hover {
   transform: scale(1.1);
 }

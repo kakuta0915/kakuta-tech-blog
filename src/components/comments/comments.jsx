@@ -50,6 +50,7 @@ export default function Comments({ postId, id }) {
   const [activeReply, setActiveReply] = useState(null) // コメントごとに個別の返信フォームを管理
   const [selectedView, setSelectedView] = useState({}) // 'markdown' または 'preview' を選択
   const [visibilityState, setVisibilityState] = useState({}) // 各コメントの可視状態を管理
+  const [commentsActionsVisible, setCommentsActionsVisible] = useState(true)
   const actionsRef = useRef(null)
 
   // Firebase Authの状態を監視
@@ -89,6 +90,7 @@ export default function Comments({ postId, id }) {
     return () => unsubscribe()
   }, [postId])
 
+  // コメントを投稿する関数
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -120,6 +122,7 @@ export default function Comments({ postId, id }) {
   // 返信を送信する関数
   const handleReplySubmit = async (e, parentId) => {
     e.preventDefault()
+
     if (!replyContent.trim()) {
       toast.error('返信を入力してください。')
       return
@@ -136,6 +139,7 @@ export default function Comments({ postId, id }) {
       })
       setReplyContent('')
       setActiveReply(null)
+      setCommentsActionsVisible(true)
       toast.success('返信が投稿されました。')
     } catch {
       console.error('Firestore保存エラー', error)
@@ -145,6 +149,8 @@ export default function Comments({ postId, id }) {
 
   // 返信フォームを表示する関数
   const handleReplyClick = (id) => {
+    setCommentsActionsVisible(false)
+
     if (!user) {
       toast.error('ログインしてください。')
       return
@@ -155,12 +161,14 @@ export default function Comments({ postId, id }) {
   // 返信のキャンセルを表示
   const handleCancelReply = () => {
     if (!replyContent.trim()) {
+      setCommentsActionsVisible(true)
       setActiveReply(null)
       return
     }
     if (window.confirm('返信をキャンセルしますか？')) {
       setActiveReply(null)
       setReplyContent('')
+      setCommentsActionsVisible(true)
       setSelectedView((prevState) => ({
         ...prevState,
         [id]: { ...prevState[id], reply: 'markdown' },
@@ -185,6 +193,7 @@ export default function Comments({ postId, id }) {
     try {
       await updateDoc(doc(db, 'comments', id), { text: editContent })
       closeEditMode()
+      setCommentsActionsVisible(true)
       toast.success('コメントを更新しました。')
     } catch (error) {
       console.error('コメント更新エラー:', error)
@@ -197,6 +206,7 @@ export default function Comments({ postId, id }) {
   const handleEditClick = (id, text) => {
     setActiveEdit(id)
     setEditContent(text)
+    setCommentsActionsVisible(false)
     setVisibilityState((prevState) => ({
       ...prevState,
       [id]: false,
@@ -223,6 +233,7 @@ export default function Comments({ postId, id }) {
       }
     } else {
       const confirmDiscard = toast.info('編集をキャンセルしました')
+      setCommentsActionsVisible(true)
       if (!confirmDiscard) {
         return
       }
@@ -241,6 +252,7 @@ export default function Comments({ postId, id }) {
     if (window.confirm('本当に削除しますか？')) {
       try {
         await deleteDoc(doc(db, 'comments', id))
+        setCommentsActionsVisible(true)
         toast.success('コメントを削除しました。')
         setVisibilityState((prevState) => ({
           ...prevState,
@@ -353,7 +365,12 @@ export default function Comments({ postId, id }) {
                 </small>
 
                 {user?.uid === userId && (
-                  <div className={styles.commentsActions} ref={actionsRef}>
+                  <div
+                    className={`${styles.commentsActions} ${
+                      !commentsActionsVisible ? styles.hiddenIcon : ''
+                    }`}
+                    ref={actionsRef}
+                  >
                     <button
                       onClick={() => toggleVisibility(id)}
                       className={styles.toggleButton}
@@ -567,7 +584,11 @@ export default function Comments({ postId, id }) {
 
                             {user?.uid === userId && (
                               <div
-                                className={styles.commentsActions}
+                                className={`${styles.commentsActions} ${
+                                  !commentsActionsVisible
+                                    ? styles.hiddenIcon
+                                    : ''
+                                }`}
                                 ref={actionsRef}
                               >
                                 <button
@@ -610,6 +631,7 @@ export default function Comments({ postId, id }) {
                               </div>
                             )}
                           </div>
+
                           {activeEdit !== id && (
                             <ReactMarkdown remarkPlugins={[remarkGfm]}>
                               {text}
