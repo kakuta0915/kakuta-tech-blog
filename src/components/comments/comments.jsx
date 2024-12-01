@@ -49,7 +49,8 @@ export default function Comments({ postId, id }) {
   const [editContent, setEditContent] = useState('') // 編集内容
   const [activeReply, setActiveReply] = useState(null) // コメントごとに個別の返信フォームを管理
   const [selectedView, setSelectedView] = useState({}) // 'markdown' または 'preview' を選択
-  const [visibilityState, setVisibilityState] = useState({}) // 各コメントの可視状態を管理
+  const [visibilityState, setVisibilityState] = useState({}) // 編集・削除ボタンの表示・非表示
+  const [replyState, setReplyState] = useState(true) // 【返信を追加】の表示・非表示
   const [commentsActionsVisible, setCommentsActionsVisible] = useState(true)
   const actionsRef = useRef(null)
 
@@ -155,6 +156,7 @@ export default function Comments({ postId, id }) {
       toast.error('ログインしてください。')
       return
     }
+    setReplyState(false)
     setActiveReply(id)
   }
 
@@ -162,6 +164,7 @@ export default function Comments({ postId, id }) {
   const handleCancelReply = () => {
     if (!replyContent.trim()) {
       setCommentsActionsVisible(true)
+      setReplyState(true)
       setActiveReply(null)
       return
     }
@@ -169,6 +172,7 @@ export default function Comments({ postId, id }) {
       setActiveReply(null)
       setReplyContent('')
       setCommentsActionsVisible(true)
+      setReplyState(true)
       setSelectedView((prevState) => ({
         ...prevState,
         [id]: { ...prevState[id], reply: 'markdown' },
@@ -194,6 +198,7 @@ export default function Comments({ postId, id }) {
       await updateDoc(doc(db, 'comments', id), { text: editContent })
       closeEditMode()
       setCommentsActionsVisible(true)
+      setReplyState(true)
       toast.success('コメントを更新しました。')
     } catch (error) {
       console.error('コメント更新エラー:', error)
@@ -207,6 +212,7 @@ export default function Comments({ postId, id }) {
     setActiveEdit(id)
     setEditContent(text)
     setCommentsActionsVisible(false)
+    setReplyState(false)
     setVisibilityState((prevState) => ({
       ...prevState,
       [id]: false,
@@ -234,6 +240,7 @@ export default function Comments({ postId, id }) {
     } else {
       const confirmDiscard = toast.info('編集をキャンセルしました')
       setCommentsActionsVisible(true)
+      setReplyState(true)
       if (!confirmDiscard) {
         return
       }
@@ -409,13 +416,11 @@ export default function Comments({ postId, id }) {
                   </div>
                 )}
               </div>
-
               {activeEdit !== id && (
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
                   {text}
                 </ReactMarkdown>
               )}
-
               {activeEdit === id && (
                 <form
                   onSubmit={(e) =>
@@ -484,7 +489,9 @@ export default function Comments({ postId, id }) {
               {activeReply !== id && (
                 <button
                   onClick={() => handleReplyClick(id)}
-                  className={styles.addReplyButton}
+                  className={`${styles.addReplyButton} ${
+                    !replyState ? styles.hiddenReplyButton : ''
+                  }`}
                 >
                   返信を追加
                 </button>

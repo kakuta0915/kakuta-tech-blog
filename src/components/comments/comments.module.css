@@ -191,6 +191,11 @@
   background-color: var(--body);
 }
 
+.hiddenReplyButton {
+  display: none;
+  background-color: #721c24;
+}
+
 .commentButton,
 .addReplyButton,
 .replyButton,
