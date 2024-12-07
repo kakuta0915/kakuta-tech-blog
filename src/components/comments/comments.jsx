@@ -286,6 +286,8 @@ export default function Comments({ postId, id }) {
   return (
     <div className={styles.commentsContainer}>
       <h2>コメント</h2>
+
+      {/* コメント投稿 */}
       {user ? (
         <>
           <div className={styles.userInfo}>
@@ -340,6 +342,7 @@ export default function Comments({ postId, id }) {
                 </div>
               )}
             </div>
+
             <button type="submit" className={styles.commentButton}>
               投稿
             </button>
@@ -349,6 +352,7 @@ export default function Comments({ postId, id }) {
         <p>ログインしてコメントしましょう。</p>
       )}
 
+      {/* 親コメント */}
       <ul>
         {comments
           .filter((c) => !c.parentId)
@@ -406,21 +410,17 @@ export default function Comments({ postId, id }) {
                       >
                         編集
                       </button>
-                      <button
-                        onClick={() => handleDelete(id)}
-                        className={styles.deleteButton}
-                      >
-                        削除
-                      </button>
                     </div>
                   </div>
                 )}
               </div>
+
               {activeEdit !== id && (
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
                   {text}
                 </ReactMarkdown>
               )}
+
               {activeEdit === id && (
                 <form
                   onSubmit={(e) =>
@@ -496,6 +496,7 @@ export default function Comments({ postId, id }) {
                   返信を追加
                 </button>
               )}
+
               <div className={styles.replyContainer}>
                 {activeReply === id && (
                   <form
@@ -559,6 +560,7 @@ export default function Comments({ postId, id }) {
                   </form>
                 )}
 
+                {/* 子コメント */}
                 <ul>
                   {comments
                     .filter((c) => c.parentId === id)
