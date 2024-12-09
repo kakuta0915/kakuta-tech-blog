@@ -1,7 +1,7 @@
 import Logo from '@/src/components/logo/logo'
 import Nav from '@/src/components/nav/nav'
 import styles from './header.module.css'
-import AuthService from '@/src/components/AuthService/AuthService1'
+import AuthService from '@/src/components/AuthService/AuthService'
 
 export default function Header() {
   return (
