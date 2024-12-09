@@ -1,0 +1,90 @@
+.socialActions {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+}
+
+.actionButton,
+.shareButton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 calc(var(--space-xxs) * 0.5);
+}
+
+.socialActions button {
+  width: clamp(2.25rem, 2.068rem + 0.91vw, 2.75rem);
+  height: clamp(2.25rem, 2.068rem + 0.91vw, 2.75rem);
+  font-size: 1rem;
+  padding: calc(var(--space-xxs) * 0.5);
+  margin: calc(var(--space-xxs) * 0.5);
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  background-color: var(--white);
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.actionButton button:hover,
+.shareButton button:hover {
+  color: var(--blue);
+  border: 1px solid var(--blue);
+}
+
+.icon {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.likeIconAction {
+  color: #ef4123;
+  animation: pop 0.4s ease forwards;
+}
+
+.bookmarkIconAction {
+  color: #ffcc33;
+  animation: pop 0.4s ease forwards;
+}
+
+.count {
+  font-size: 1.2rem;
+  margin-right: 0.75rem;
+}
+
+/* ボタンを押したときのポップアニメーション */
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (min-width: 768px) {
+  .socialActions .actionButton {
+    flex-direction: column;
+  }
+
+  .socialActions button {
+    font-size: 1.25rem;
+  }
+
+  .actionButton,
+  .shareButton {
+    position: absolute;
+    top: -0.5rem;
+    left: -1rem;
+  }
+
+  .shareButton {
+    top: 10.5rem;
+  }
+
+  .count {
+    font-size: 0.85rem;
+    margin: 0 auto 0.65rem;
+  }
+}

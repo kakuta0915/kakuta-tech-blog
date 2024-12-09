@@ -1,0 +1,14 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--blue);
+  padding: var(--space-md) 0;
+}
+
+/* デスクトップサイズ */
+@media (min-width: 768px) {
+  .footer {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

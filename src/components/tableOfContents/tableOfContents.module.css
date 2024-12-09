@@ -1,0 +1,93 @@
+.toc {
+  background-color: var(--white);
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
+  border-top: 5px solid var(--blue);
+  border-radius: 5px;
+  padding: var(--space-xs);
+  margin-bottom: var(--space-xs);
+}
+
+.tocBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tocBtn > h3 {
+  text-align: center;
+  margin-right: var(--space-xs);
+  color: var(--blue);
+}
+
+.icon {
+  font-size: var(--space-sm);
+  padding: var(--space-xxs);
+  color: var(--gray-1);
+  transition: 0.4s;
+}
+
+.open .icon {
+  transform: rotate(180deg);
+}
+
+.accordion {
+  overflow: hidden;
+  height: 0px;
+  transition: height 0.4s;
+}
+
+.open .accordion {
+  height: var(--toc-height);
+}
+
+.accordion > ul {
+  margin: 0 0 var(--space-xxs) var(--space-sm);
+}
+
+.tocLi {
+  position: relative;
+  line-height: 1.7;
+  cursor: pointer;
+  padding: var(--space-xxs) var(--space-xxs) 0.25rem;
+  border-bottom: 1px dashed var(--gray-1);
+}
+
+.tocLi::before {
+  position: absolute;
+  top: 24px;
+  left: -10px;
+  display: inline-block;
+  content: '';
+  background-color: var(--blue);
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+}
+
+@media (min-width: 768px) {
+  .toc {
+    position: sticky;
+    height: 400px;
+    overflow-y: scroll;
+  }
+
+  .tocBtn > h3 {
+    margin: 0 auto var(--space-xxs);
+  }
+
+  .icon {
+    display: none;
+  }
+
+  .accordion {
+    height: auto;
+  }
+
+  .accordion > ul {
+    margin-left: var(--space-xxs);
+  }
+
+  .tocLi:hover {
+    color: var(--blue);
+  }
+}
