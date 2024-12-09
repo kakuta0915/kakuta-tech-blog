@@ -1,0 +1,164 @@
+.authService {
+  display: flex;
+  align-items: center;
+}
+
+/* ===== Button ===== */
+.loginButton {
+  color: var(--white);
+  padding: calc(var(--space-xxs) * 0.5);
+  background-color: var(--blue-1);
+  border: 1px solid var(--blue-1);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.googleButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: var(--space-xxs) auto;
+  padding: calc(var(--space-xxs) * 0.5) var(--space-xxs);
+  font-weight: bold;
+  background-color: var(--white);
+  border: 1px solid var(--gray-3);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.googleButton:hover {
+  background: var(--gray-3);
+  transform: scale(1.05);
+}
+
+/* 閉じるボタン */
+.closeButton {
+  position: absolute;
+  color: var(--gray);
+  font-size: 1.5rem;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  background: none;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  color: var(--black);
+  background-color: var(--gray-3);
+}
+
+/* ===== ポップアップ ===== */
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.popupContent {
+  position: relative;
+  background: var(--white);
+  padding: var(--space-sm) var(--space-xxs);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 70vw;
+}
+
+.popupContent h3 {
+  margin-bottom: calc(var(--space-xxs) * 0.5);
+}
+
+/* ===== Googleでログイン / Googleアカウントをお持ちでない方 ===== */
+.googleButton img {
+  width: var(--body);
+  height: var(--body);
+  margin-right: 0.5rem;
+}
+
+.errorMessage {
+  color: red;
+  margin-bottom: 0.5rem;
+  font-size: calc(var(--body) * 0.75);
+  text-align: center;
+}
+
+/* ===== ログイン後のドロップダウンメニュー ===== */
+.userInfo {
+  position: relative;
+}
+
+.userInfo img {
+  cursor: pointer;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 15rem;
+  background-color: var(--white);
+  border: 1px solid var(--gray);
+  border-radius: 8px;
+  padding: calc(var(--space-xxs) * 0.75);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.dropdownMenu a,
+.dropdownMenu .loginButton {
+  display: block;
+  padding: calc(var(--space-xxs) * 0.7) 0.6rem;
+}
+
+.dropdownMenu a {
+  transition: background-color 0.3s ease;
+  border-radius: 4px;
+}
+
+.lastLink {
+  border-bottom: 1px solid var(--gray-1);
+}
+
+.dropdownMenu a:hover {
+  background-color: var(--gray-3);
+}
+
+.icon {
+  margin-right: 0.5rem;
+}
+
+.dropdownMenu .loginButton {
+  margin-top: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .loginButton {
+    font-size: var(--body);
+  }
+
+  .loginButton:hover {
+    color: var(--blue-1);
+    background-color: var(--white);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .popupContent {
+    width: 50vw;
+  }
+}
