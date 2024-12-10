@@ -106,7 +106,7 @@ export default function SocialActions({ postId, title }) {
           'info',
         )
       } else {
-        await setDoc(actionRef, { userId: user.uid, postId })
+        await setDoc(actionRef, { userId: user.uid, postId, title })
         await updatePostCounter(postRef, counterField, 1)
         setCount((prev) => prev + 1)
         setState(true)

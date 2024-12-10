@@ -29,7 +29,7 @@
     "html-react-parser": "^5.1.18",
     "html-to-text": "^9.0.4",
     "microcms-js-sdk": "^3.1.2",
-    "next": "^15.0.2",
+    "next": "^15.0.4",
     "next-sitemap": "^4.0.9",
     "nodemailer": "^6.9.14",
     "object-inspect": "^1.13.2",
