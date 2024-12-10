@@ -6,7 +6,6 @@ import {
   doc,
   setDoc,
   getDoc,
-  getDocs,
   query,
   where,
   onSnapshot,
@@ -157,11 +156,15 @@ export async function getAllQiitaArticles() {
 }
 
 // Firebaseに記事が登録されていない時にドキュメントを自動生成する関数
-const initializePostDocument = async (postId) => {
+const initializePostDocument = async (postId, title = '') => {
   const postRef = doc(db, 'posts', postId)
   try {
-    await setDoc(postRef, { likesCount: 0, bookmarksCount: 0 }, { merge: true })
-    console.log(`Initialized post document for ${postId}`)
+    await setDoc(
+      postRef,
+      { title, likesCount: 0, bookmarksCount: 0 },
+      { merge: true },
+    )
+    console.log(`Initialized post document for  ${postId}`)
   } catch (error) {
     console.error(`Error initializing post document for ${postId}:`, error)
   }
@@ -216,7 +219,7 @@ export async function getAllArticles(maxArticles = Infinity, onArticlesUpdate) {
         let postSnap = await getDoc(postRef)
 
         if (!postSnap.exists()) {
-          await initializePostDocument(article.slug)
+          await initializePostDocument(article.slug, article.title || '')
           postSnap = await getDoc(postRef)
         }
 
@@ -257,7 +260,9 @@ export async function getAllArticles(maxArticles = Infinity, onArticlesUpdate) {
   return {
     articles: updatedArticles,
     unsubscribe: () => {
-      unsubscribeFunctions.forEach((fn) => fn())
+      unsubscribeFunctions.forEach((fn) => {
+        if (typeof fn === 'function') fn()
+      })
     },
   }
 }

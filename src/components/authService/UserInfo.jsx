@@ -5,12 +5,7 @@ import { auth } from '@/firebaseConfig'
 import 'react-toastify/dist/ReactToastify.css'
 import styles from './authService.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faBookmark,
-  faGear,
-  faHeart,
-  faUser,
-} from '@fortawesome/free-solid-svg-icons'
+import { faGear, faUser } from '@fortawesome/free-solid-svg-icons'
 
 export default function UserInfo({ user }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -48,17 +43,9 @@ export default function UserInfo({ user }) {
       />
       {isOpen && (
         <div className={`${styles.dropdownMenu} ${isOpen ? styles.open : ''}`}>
-          <Link href="/">
+          <Link href="/my-page/">
             <FontAwesomeIcon icon={faUser} className={styles.icon} />
             マイページ
-          </Link>
-          <Link href="/">
-            <FontAwesomeIcon icon={faHeart} className={styles.icon} />
-            いいねした投稿
-          </Link>
-          <Link href="/">
-            <FontAwesomeIcon icon={faBookmark} className={styles.icon} />
-            ブックマーク
           </Link>
           <Link href="/" className={styles.lastLink}>
             <FontAwesomeIcon icon={faGear} className={styles.icon} />
