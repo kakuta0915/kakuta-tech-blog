@@ -32,6 +32,10 @@ export default function UserInfo({ user }) {
     }
   }, [isOpen, handleClickOutside])
 
+  const closeDropdown = useCallback(() => {
+    setIsOpen(false)
+  }, [])
+
   return (
     <div className={styles.userInfo} ref={dropdownRef}>
       <Image
@@ -43,11 +47,11 @@ export default function UserInfo({ user }) {
       />
       {isOpen && (
         <div className={`${styles.dropdownMenu} ${isOpen ? styles.open : ''}`}>
-          <Link href="/my-page/">
+          <Link href="/my-page/" onClick={closeDropdown}>
             <FontAwesomeIcon icon={faUser} className={styles.icon} />
             マイページ
           </Link>
-          <Link href="/" className={styles.lastLink}>
+          <Link href="/" onClick={closeDropdown} className={styles.lastLink}>
             <FontAwesomeIcon icon={faGear} className={styles.icon} />
             アカウント設定
           </Link>

@@ -1,16 +1,10 @@
 // マイページ
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import Image from 'next/image'
 import Link from 'next/link'
 import { auth, db } from '@/firebaseConfig'
-import {
-  collection,
-  getDocs,
-  query,
-  where,
-  doc,
-  getDoc,
-} from 'firebase/firestore'
+import { collection, getDocs, query, where } from 'firebase/firestore'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import Meta from '@/src/components/meta/meta'
 import Container from '@/src/components/container/container'
@@ -22,6 +16,13 @@ export default function MyPage() {
   const [likedPosts, setLikedPosts] = useState([]) // いいねした記事
   const [bookmarkedPosts, setBookmarkedPosts] = useState([]) // ブックマークした記事
   const [activeTab, setActiveTab] = useState('liked') // タブの切り替え
+  const router = useRouter()
+
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push('/')
+    }
+  }, [loading, user, router])
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -58,12 +59,17 @@ export default function MyPage() {
         console.error('Error fetching user data', error)
       }
     }
-
-    fetchUserData()
+    if (user) {
+      fetchUserData()
+    }
   }, [user])
 
   if (loading) {
     return <p>Loading...</p>
+  }
+
+  if (!user) {
+    return null
   }
 
   const postsToShow = activeTab === 'liked' ? likedPosts : bookmarkedPosts
