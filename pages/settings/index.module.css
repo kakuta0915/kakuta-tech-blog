@@ -27,7 +27,7 @@
 }
 
 .formSection {
-  padding: 2rem 1.5rem;
+  padding: var(--space-md) var(--space-md) var(--space-xxs);
   background-color: var(--white);
 }
 
@@ -61,13 +61,13 @@
   border: 1px solid var(--blue-3);
   border-radius: 10px;
   padding: 0.75rem 1rem;
-  margin: 1.5rem auto;
+  margin: 1rem auto;
   transition: 0.3s;
 }
 
 .deleteSection {
   background-color: var(--white);
-  padding: 2rem 1.5rem 4rem;
+  padding: var(--space-xs) var(--space-md) 4rem;
 }
 
 .deleteSection p {
