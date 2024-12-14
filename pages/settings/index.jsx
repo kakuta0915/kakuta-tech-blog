@@ -1,5 +1,6 @@
 // 設定ページ
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useAuthState } from 'react-firebase-hooks/auth'
@@ -98,6 +99,7 @@ export default function Settings() {
           <p>{displayName}</p>
         </div>
         <div className={styles.formSection}>
+          <h3 className={styles.sectionTitle}>プロフィール設定</h3>
           <div className={styles.formGroup}>
             <label>表示名</label>
             <input
@@ -116,6 +118,13 @@ export default function Settings() {
             更新する
           </button>
         </div>
+      </div>
+      <div className={styles.deleteSection}>
+        <h3 className={styles.sectionTitle}>プロフィール設定</h3>
+        <p>一度アカウントを削除すると、二度ともとに戻すことが出来ません。</p>
+        <Link href="/settings/delete" className={styles.deleteButton}>
+          アカウントを削除する
+        </Link>
       </div>
     </>
   )

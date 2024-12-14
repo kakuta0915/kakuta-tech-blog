@@ -36,10 +36,18 @@ export default function UserInfo({ user }) {
     setIsOpen(false)
   }, [])
 
+  if (!user) {
+    return (
+      <div className={styles.userInfo}>
+        <p>ログインしてください。</p>
+      </div>
+    )
+  }
+
   return (
     <div className={styles.userInfo} ref={dropdownRef}>
       <Image
-        src={user.photoURL}
+        src={user?.photoURL}
         alt="User Icon"
         onClick={toggleDropdown}
         width={18}
