@@ -16,6 +16,7 @@ import eyecatch from '@/public/images/index.jpg'
 export default function DeleteAccount() {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [isDeleting, setIsDeleting] = useState(false) // 削除処理中の状態
   const router = useRouter()
 
   // ユーザー情報を取得
@@ -42,6 +43,9 @@ export default function DeleteAccount() {
     )
     if (!confirmDelete) return
 
+    // 削除処理中の状態に変更
+    setIsDeleting(true)
+
     try {
       // Googleアカウントで再認証
       const provider = new GoogleAuthProvider()
@@ -49,7 +53,9 @@ export default function DeleteAccount() {
 
       // アカウント削除処理
       await deleteUser(user)
-      toast.success('アカウントを削除しました。')
+
+      // 削除成功後に表示
+      alert('アカウントを削除しました。')
       setUser(null)
       router.push('/')
     } catch (error) {
@@ -59,6 +65,9 @@ export default function DeleteAccount() {
         console.error('アカウント削除エラー:', error)
         toast.error('アカウントの削除に失敗しました。')
       }
+    } finally {
+      // 削除処理終了
+      setIsDeleting(false)
     }
   }
 
@@ -96,8 +105,12 @@ export default function DeleteAccount() {
         </div>
 
         <div className={styles.deleteButtonSection}>
-          <button onClick={handleDeleteAccount} className={styles.deleteButton}>
-            アカウントを削除する
+          <button
+            onClick={handleDeleteAccount}
+            className={styles.deleteButton}
+            disabled={isDeleting} // 削除中はボタンを無効化
+          >
+            {isDeleting ? '削除中...' : 'アカウントを削除する'}
           </button>
         </div>
       </div>

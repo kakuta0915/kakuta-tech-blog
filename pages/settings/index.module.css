@@ -86,7 +86,7 @@
 
 @media (min-width: 768px) {
   .formSection {
-    padding: var(--space-md) var(--space-xl);
+    padding: var(--space-md) calc(var(--space-xl) * 3) var(--space-xs);
   }
 
   .updateButton:hover {
@@ -97,7 +97,7 @@
   }
 
   .deleteSection {
-    padding: var(--space-md) var(--space-xl);
+    padding: var(--space-xs) calc(var(--space-xl) * 3) var(--space-xl);
   }
 
   .deleteButton:hover {
