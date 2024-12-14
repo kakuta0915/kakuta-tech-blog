@@ -87,7 +87,7 @@ export default function MyPage() {
         <div className={styles.userInfo}>
           <Image src={user.photoURL} alt="User Icon" width={80} height={80} />
           <p>{user.displayName}</p>
-          <Link href="/" className={styles.edit}>
+          <Link href="/settings/" className={styles.edit}>
             編集
           </Link>
         </div>

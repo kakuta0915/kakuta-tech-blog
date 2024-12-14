@@ -51,7 +51,11 @@ export default function UserInfo({ user }) {
             <FontAwesomeIcon icon={faUser} className={styles.icon} />
             マイページ
           </Link>
-          <Link href="/" onClick={closeDropdown} className={styles.lastLink}>
+          <Link
+            href="/settings/"
+            onClick={closeDropdown}
+            className={styles.lastLink}
+          >
             <FontAwesomeIcon icon={faGear} className={styles.icon} />
             アカウント設定
           </Link>
