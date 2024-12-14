@@ -122,7 +122,7 @@ export default function Settings() {
       <div className={styles.deleteSection}>
         <h3 className={styles.sectionTitle}>プロフィール設定</h3>
         <p>一度アカウントを削除すると、二度ともとに戻すことが出来ません。</p>
-        <Link href="/setting/delete" className={styles.deleteButton}>
+        <Link href="/settings/delete" className={styles.deleteButton}>
           アカウントを削除する
         </Link>
       </div>
