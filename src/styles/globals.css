@@ -21,7 +21,7 @@
   --heading2: clamp(1.688rem, 1.574rem + 0.57vw, 2rem); /* 27-32 */
   --heading3: clamp(1.5rem, 1.432rem + 0.34vw, 1.688rem); /* 24-27 */
   --heading4: clamp(1.313rem, 1.267rem + 0.23vw, 1.438rem); /* 21-23 */
-  --heading5: clamp(1.188rem, 1.165rem + 0.11vw, 1.25rem); /* 19-20*/
+  --heading5: clamp(1.094rem, 1.071rem + 0.11vw, 1.156rem); /* 17.5-18.5*/
 
   /* スペース */
   --space-xxs: clamp(1rem, 0.95rem + 0.2vw, 1.125rem); /* 16-18px */
