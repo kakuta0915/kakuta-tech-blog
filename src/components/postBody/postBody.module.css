@@ -40,6 +40,10 @@
   padding-top: var(--space-xxs);
 }
 
+.stack figure img {
+  margin: 1rem 0 3rem;
+}
+
 .stack p {
   line-height: 2;
 }
