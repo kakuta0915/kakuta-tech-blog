@@ -24,7 +24,7 @@
     "date-fns": "^4.1.0",
     "eslint": "^8.57.1",
     "eslint-config-next": "13.1.6",
-    "firebase": "^11.0.1",
+    "firebase": "^11.1.0",
     "highlight.js": "^11.10.0",
     "html-react-parser": "^5.1.18",
     "html-to-text": "^9.0.4",
@@ -42,9 +42,11 @@
     "styled-jsx": "^5.1.6"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.25.8",
-    "@babel/preset-react": "^7.24.7",
-    "@testing-library/jest-dom": "^6.4.6",
+    "@babel/core": "^7.26.0",
+    "@babel/plugin-transform-runtime": "^7.25.9",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.26.3",
+    "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.0",
     "babel-jest": "^29.7.0",
     "dotenv": "^16.4.5",
