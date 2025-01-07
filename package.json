@@ -42,9 +42,11 @@
     "styled-jsx": "^5.1.6"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.25.8",
-    "@babel/preset-react": "^7.24.7",
-    "@testing-library/jest-dom": "^6.4.6",
+    "@babel/core": "^7.26.0",
+    "@babel/plugin-transform-runtime": "^7.25.9",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.26.3",
+    "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.0",
     "babel-jest": "^29.7.0",
     "dotenv": "^16.4.5",
