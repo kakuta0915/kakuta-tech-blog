@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { signInWithPopup } from 'firebase/auth'
 import { auth, provider } from '@/firebaseConfig'
 import { toast } from 'react-toastify'
-import googleIcon from '@/public/images/googleIcon.png'
+import googleIcon from '/public/images/googleIcon.png'
 import styles from './authService.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRightToBracket, faTimes } from '@fortawesome/free-solid-svg-icons'
@@ -43,7 +43,11 @@ export default function SignInWithGoogle() {
             className={styles.popupContent}
             onClick={(e) => e.stopPropagation()}
           >
-            <button className={styles.closeButton} onClick={togglePopup}>
+            <button
+              className={styles.closeButton}
+              onClick={togglePopup}
+              aria-label="close"
+            >
               <FontAwesomeIcon icon={faTimes} />
             </button>
             <h3>KAKUTA TECH BLOG</h3>
