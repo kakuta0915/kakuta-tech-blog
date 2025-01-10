@@ -29,7 +29,7 @@ jest.mock('html-react-parser', () => (html) => {
   return html
 })
 
-describe('ConvertBody component', () => {
+describe('ConvertBody Component', () => {
   // contentHTMLに渡されたimgタグが正しくレンダリングされるかをテスト
   it('renders an image tag correctly', () => {
     const contentHTML =
