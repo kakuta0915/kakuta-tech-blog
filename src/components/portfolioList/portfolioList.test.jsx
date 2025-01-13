@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import PortfolioList from './portfolioList'
-import { portfolioData } from '@/src/__mocks__/portfolioDataMock' // モックデータをインポート
+import { portfolioData } from '@/src/__mocks__/portfolioDataMock'
 
-test('renders portfolio items correctly', () => {
+test('portfolioDataが正しく表示される', () => {
   render(<PortfolioList portfolioData={portfolioData} />)
 
   portfolioData.forEach((portfolio) => {
