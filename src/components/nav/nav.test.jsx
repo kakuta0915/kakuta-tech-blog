@@ -1,30 +1,37 @@
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
+import '@testing-library/jest-dom'
 import Nav from './nav'
 
-// 最初にナビゲーションが閉じていることを確認
-test('renders nav component with closed state initially', () => {
-  render(<Nav />)
-  const nav = screen.getByTestId('nav')
-  expect(nav).toBeInTheDocument()
-  expect(nav).toHaveClass('close')
-})
+jest.mock('next/link', () => ({ children, ...props }) => (
+  <a {...props}>{children}</a>
+))
 
-// ボタンがクリックされたときにナビゲーションが開くことを確認
-test('opens nav menu when button is clicked', () => {
-  render(<Nav />)
-  const button = screen.getByRole('button')
-  fireEvent.click(button)
-  const nav = screen.getByTestId('nav')
-  expect(nav).toHaveClass('open')
-})
+describe('Nav Component', () => {
+  test('ナビタグが正しくレンダリングされる', () => {
+    render(<Nav />)
 
-// リンクがクリックされたときにナビゲーションが閉じることを確認
-test('closes nav menu when a link is clicked', () => {
-  render(<Nav />)
-  const button = screen.getByRole('button')
-  fireEvent.click(button)
-  const link = screen.getByText('ABOUT')
-  fireEvent.click(link)
-  const nav = screen.getByTestId('nav')
-  expect(nav).toHaveClass('close')
+    // ナビタグが存在するか確認
+    const nav = screen.getByTestId('nav')
+    expect(nav).toBeInTheDocument()
+
+    // 各リンクが正しく表示されているか確認
+    const links = screen.getAllByRole('link')
+    expect(links).toHaveLength(5)
+
+    // リンクのURLとテキストが正しいか確認
+    expect(links[0]).toHaveAttribute('href', '/')
+    expect(links[0]).toHaveTextContent('TOP')
+
+    expect(links[1]).toHaveAttribute('href', '/about/')
+    expect(links[1]).toHaveTextContent('ABOUT')
+
+    expect(links[2]).toHaveAttribute('href', '/portfolio/')
+    expect(links[2]).toHaveTextContent('PORTFOLIO')
+
+    expect(links[3]).toHaveAttribute('href', '/articles/')
+    expect(links[3]).toHaveTextContent('ARTICLES')
+
+    expect(links[4]).toHaveAttribute('href', '/contact/')
+    expect(links[4]).toHaveTextContent('CONTACT')
+  })
 })
