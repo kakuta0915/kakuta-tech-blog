@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import Footer from './footer'
 import '@testing-library/jest-dom'
 
-describe('Footer component', () => {
+describe('Footer Component', () => {
   it('Logoコンポーネントがレンダリングされるか', () => {
     render(<Footer />)
 
