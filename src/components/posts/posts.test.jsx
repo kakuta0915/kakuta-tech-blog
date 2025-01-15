@@ -12,12 +12,11 @@ jest.mock('../convert/convertDate', () => ({
 jest.mock('next/image', () => ({
   __esModule: true,
   default: ({ fill, ...props }) => (
-    // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
     <img {...props} style={{ objectFit: fill ? 'cover' : undefined }} />
   ),
 }))
 
-describe('Posts', () => {
+describe('Posts Component', () => {
   const defaultProps = {
     btn: false,
     posts: [
@@ -41,8 +40,7 @@ describe('Posts', () => {
     maxPosts: 2,
   }
 
-  // 投稿のタイトル、公開日、カテゴリーを確認
-  test('renders posts correctly', () => {
+  test('投稿のタイトル、公開日、カテゴリーを確認', () => {
     render(<Posts {...defaultProps} />)
 
     expect(screen.getByText('Post Title 1')).toBeInTheDocument()
@@ -57,18 +55,16 @@ describe('Posts', () => {
     expect(screen.queryByText('MORE')).toBeNull()
   })
 
-  // btnプロパティがtrueのときに「MORE」ボタンが表示されるか確認
-  test('renders MORE button when btn prop is true', () => {
+  test('btnプロパティがtrueのときに「MORE」ボタンが表示されるか確認', () => {
     render(<Posts {...defaultProps} btn={true} />)
 
     expect(screen.getByText('MORE')).toBeInTheDocument()
   })
 
-  // 外部リンクのURLを正しく設定しているか確認
-  test('handles click on link with external source', () => {
+  test('外部リンクのURLを正しく設定しているか確認', () => {
     render(<Posts {...defaultProps} />)
-    const link = screen.getByText('Post Title 2').closest('a')
 
+    const link = screen.getByText('Post Title 2').closest('a')
     expect(link).toHaveAttribute(
       'href',
       'https://qiita.com/kakuta0915/items/post-title-2',
