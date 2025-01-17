@@ -1,65 +1,78 @@
 import { render, screen } from '@testing-library/react'
+import '@testing-library/jest-dom'
 import {
   ThreeColum,
   ThreeColumMain,
-  ThreeColumSlugMain,
   ThreeColumSidebar,
+  ThreeColumSocialActions,
 } from './threeColum'
 
-// モックスタイル
-jest.mock('./ThreeColum.module.css', () => ({
+// CSSモジュールをモック
+jest.mock('./threeColum.module.css', () => ({
   flexContainer: 'flexContainer',
   main: 'main',
-  slug: 'slug',
   sidebar: 'sidebar',
+  socialActions: 'socialActions',
 }))
 
-describe('ThreeColum layout components', () => {
-  // ThreeColumコンポーネントが正しくレンダリングされ、子要素を含むかどうかをテスト
-  test('renders ThreeColum with children', () => {
+describe('ThreeColum Components', () => {
+  test('ThreeColumと子要素がレンダリングされているか', () => {
     render(
       <ThreeColum>
-        <div>Test Content</div>
+        <div>Test</div>
       </ThreeColum>,
     )
-    const container = screen.getByText('Test Content')
-    expect(container).toBeInTheDocument()
-    expect(container.parentElement).toHaveClass('flexContainer')
+
+    // childrenがレンダリングされているか確認
+    expect(screen.getByText('Test')).toBeInTheDocument()
+
+    // クラス名が適用されていることを確認
+    expect(screen.getByText('Test').parentElement).toHaveClass('flexContainer')
   })
 
-  // ThreeColumMainコンポーネントが正しくレンダリングされ、子要素を含むかどうかをテスト
-  test('renders ThreeColumMain with children', () => {
+  test('ThreeColumMainと子要素がレンダリングされているか', () => {
     render(
       <ThreeColumMain>
-        <div>Main Content</div>
+        <div>Test Main</div>
       </ThreeColumMain>,
     )
-    const main = screen.getByText('Main Content')
-    expect(main).toBeInTheDocument()
-    expect(main.parentElement).toHaveClass('main')
+
+    // childrenがレンダリングされているか確認
+    expect(screen.getByText('Test Main')).toBeInTheDocument()
+
+    // クラス名が適用されていることを確認
+    expect(screen.getByText('Test Main').parentElement).toHaveClass('main')
   })
 
-  // ThreeColumSlugMainコンポーネントが正しくレンダリングされ、子要素を含むかどうかをテスト
-  test('renders ThreeColumSlugMain with children', () => {
-    render(
-      <ThreeColumSlugMain>
-        <div>Slug Content</div>
-      </ThreeColumSlugMain>,
-    )
-    const slug = screen.getByText('Slug Content')
-    expect(slug).toBeInTheDocument()
-    expect(slug.parentElement).toHaveClass('slug')
-  })
-
-  // ThreeColumSidebarコンポーネントが正しくレンダリングされ、子要素を含むかどうかをテスト
-  test('renders ThreeColumSidebar with children', () => {
+  test('ThreeColumSidebarと子要素がレンダリングされているか', () => {
     render(
       <ThreeColumSidebar>
-        <div>Sidebar Content</div>
+        <div>Test Sidebar</div>
       </ThreeColumSidebar>,
     )
-    const sidebar = screen.getByText('Sidebar Content')
-    expect(sidebar).toBeInTheDocument()
-    expect(sidebar.parentElement).toHaveClass('sidebar')
+
+    // childrenがレンダリングされているか確認
+    expect(screen.getByText('Test Sidebar')).toBeInTheDocument()
+
+    // クラス名が適用されていることを確認
+    expect(screen.getByText('Test Sidebar').parentElement).toHaveClass(
+      'sidebar',
+    )
+  })
+
+  test('ThreeColumSocialActionsと子要素がレンダリングされているか', () => {
+    render(
+      <ThreeColumSocialActions>
+        <div>Test Social Actions</div>
+      </ThreeColumSocialActions>,
+    )
+
+    // childrenがレンダリングされているか確認
+    expect(screen.getByText('Test Social Actions')).toBeInTheDocument()
+
+    // クラス名が適用されていることを確認
+    expect(screen.getByText('Test Social Actions').parentElement).toHaveClass(
+      'socialActions',
+    )
   })
 })
