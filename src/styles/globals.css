@@ -149,7 +149,7 @@ code {
 
 /* コード内のspanタグ */
 code * {
-  padding: 0.2rem;
+  padding: 0.25rem;
   color: #c9d1d9;
 }
 
