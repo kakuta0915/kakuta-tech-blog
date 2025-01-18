@@ -12,7 +12,6 @@ jest.mock('../convert/convertDate', () => ({
 jest.mock('next/image', () => ({
   __esModule: true,
   default: ({ fill, ...props }) => (
-    // eslint-disable-next-line jsx-a11y/alt-text, @next/next/no-img-element
     <img {...props} style={{ objectFit: fill ? 'cover' : undefined }} />
   ),
 }))

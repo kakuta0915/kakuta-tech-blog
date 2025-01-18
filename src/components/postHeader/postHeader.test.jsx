@@ -6,7 +6,6 @@ import styles from './postHeader.module.css'
 // next/imageのモック
 jest.mock('next/image', () => ({
   __esModule: true,
-  // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
   default: (props) => <img {...props} />,
 }))
 
