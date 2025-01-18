@@ -1,4 +1,3 @@
-// 2段組みのレイアウト
 import styles from './threeColum.module.css'
 
 export function ThreeColum({ children }) {

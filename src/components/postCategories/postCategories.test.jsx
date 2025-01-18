@@ -1,9 +1,8 @@
-// PostCategories.test.jsx
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import PostCategories from './postCategories'
 
-// Image コンポーネントのモック
+// next/imageのモック
 jest.mock('next/image', () => ({
   __esModule: true,
   // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
@@ -24,8 +23,7 @@ describe('PostCategories', () => {
     },
   ]
 
-  // categoriesプロパティで渡したデータが正しく表示されるかを確認
-  it('renders categories list correctly', () => {
+  it(' categoriesプロパティで渡したデータが正しく表示されるかを確認', () => {
     render(<PostCategories categories={categories} />)
 
     expect(screen.getByText('カテゴリ')).toBeInTheDocument()
@@ -35,8 +33,7 @@ describe('PostCategories', () => {
     })
   })
 
-  // 各カテゴリリンクが正しいパスに設定されているかを確認
-  it('renders links with correct hrefs', () => {
+  it('各カテゴリリンクが正しいパスに設定されているかを確認', () => {
     render(<PostCategories categories={categories} />)
 
     categories.forEach(({ slug }) => {
@@ -45,8 +42,7 @@ describe('PostCategories', () => {
     })
   })
 
-  // 各画像が正しい src、width、height、および alt 属性を持っているかを確認
-  it('renders images with correct src and alt attributes', () => {
+  it('各画像が正しい src、width、height、および alt 属性を持っているかを確認', () => {
     render(<PostCategories categories={categories} />)
 
     const images = screen.getAllByAltText('画像')

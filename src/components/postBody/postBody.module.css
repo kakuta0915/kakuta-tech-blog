@@ -42,10 +42,11 @@
 
 .stack figure img {
   margin: 1rem 0 3rem;
+  border: 1px solid var(--gray-1);
 }
 
 .stack p {
-  line-height: 2;
+  line-height: 1.7;
 }
 
 .stack a {
@@ -61,17 +62,25 @@
 }
 
 .stack code {
-  margin-bottom: var(--space-xs);
+  font-family: 'Fira Code', 'Courier New', monospace;
   padding: 0.25rem;
-  font-family: 'Fira Code', monospace;
+  border-radius: 4px;
+}
+
+.stack pre * {
+  font-size: var(--body);
+  line-height: 1.5;
+  background-color: #1e1e1e;
+  padding: 0.25rem;
+  margin-bottom: var(--space-xs);
   border-radius: 4px;
   overflow-x: auto;
 }
 
-.stack code * {
-  line-height: 1.7;
-  font-style: normal;
-  font-weight: normal;
+.stack pre code {
+  display: block;
+  font-family: 'Fira Code', 'Courier New', monospace;
+  color: #dcdcdc;
 }
 
 .stack ol,
@@ -82,8 +91,7 @@
 }
 
 .stack li {
-  line-height: 2;
-  margin-bottom: 0.5rem;
+  line-height: 1.7;
 }
 
 .stack li > p {

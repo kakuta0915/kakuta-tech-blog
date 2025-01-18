@@ -6,7 +6,7 @@ const mockToc = [
   { id: 'section2', text: 'Section 2' },
 ]
 
-test('renders table of contents correctly', () => {
+test('目次が正しく表示されるか確認', () => {
   render(<TableOfContents toc={mockToc} />)
 
   // 目次のタイトルが表示されているか確認

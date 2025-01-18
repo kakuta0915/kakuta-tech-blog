@@ -2,8 +2,7 @@ import { render, screen } from '@testing-library/react'
 import Social from './social'
 
 describe('Social Component', () => {
-  // ソーシャルリンクが正しくレンダリングされるか確認
-  test('renders social links correctly', () => {
+  test('ソーシャルリンクが正しくレンダリングされるか確認', () => {
     render(<Social isFooterSocial={false} />)
 
     expect(screen.getByAltText('Twitter')).toBeInTheDocument()
@@ -12,8 +11,7 @@ describe('Social Component', () => {
     expect(screen.getByAltText('Zenn')).toBeInTheDocument()
   })
 
-  // isFooterSocial プロパティに基づくクラスの適用確認
-  test('applies correct class based on isFooterSocial prop', () => {
+  test('isFooterSocialプロパティに基づくクラスの適用確認', () => {
     const { rerender } = render(<Social isFooterSocial={true} />)
     expect(screen.getByTestId('social')).toHaveClass('socialListFooter')
 
