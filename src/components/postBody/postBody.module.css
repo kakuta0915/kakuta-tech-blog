@@ -61,26 +61,9 @@
   font-weight: 600;
 }
 
-.stack code {
-  font-family: 'Fira Code', 'Courier New', monospace;
-  padding: 0.25rem;
-  border-radius: 4px;
-}
-
+/* コードブロックのスタイル */
 .stack pre * {
-  font-size: var(--body);
-  line-height: 1.5;
   background-color: #1e1e1e;
-  padding: 0.25rem;
-  margin-bottom: var(--space-xs);
-  border-radius: 4px;
-  overflow-x: auto;
-}
-
-.stack pre code {
-  display: block;
-  font-family: 'Fira Code', 'Courier New', monospace;
-  color: #dcdcdc;
 }
 
 .stack ol,

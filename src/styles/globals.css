@@ -131,3 +131,94 @@ a {
 .marginBottom1 {
   margin-bottom: 1rem;
 }
+
+/* コードブロック内の単語1つ1つのスタイル */
+pre * {
+  margin-bottom: var(--space-xs);
+  overflow-x: auto;
+}
+
+/* コード単語のスタイル */
+code {
+  font-size: var(--body);
+  font-family: 'Fira Code', 'Courier New', monospace;
+  border-radius: 4px;
+  line-height: 1.5;
+  overflow-x: auto;
+}
+
+/* コード内のspanタグ */
+code * {
+  padding: 0.25rem;
+  color: #c9d1d9;
+}
+
+/* highlight.js カラーコード */
+code.hljs * {
+  color: #c9d1d9;
+}
+
+/* コードブロック内のカラー */
+pre .hljs.language-dsconfig *,
+pre .hljs.language-routeros *,
+pre .hljs.language-cmake *,
+pre .hljs.language-ini *,
+pre .hljs.language-bash * {
+  color: #c9d1d9;
+}
+
+pre .hljs-keyword {
+  color: #d283e8;
+}
+
+pre .hljs-string {
+  color: #ed9b2d;
+}
+
+pre .hljs-title.function_ {
+  color: #f3e142;
+}
+
+pre .hljs-title.class_ {
+  color: #85d2ff;
+}
+
+pre .hljs-variable.constant_ {
+  color: #85d2ff;
+}
+
+pre .hljs-comment {
+  color: #7abd74;
+}
+
+pre .hljs-attr {
+  color: #18aaff;
+}
+
+pre .hljs-params {
+  color: #4db2ed;
+}
+
+pre .hljs-built_in {
+  color: #50bfff;
+}
+
+pre .hljs-literal {
+  color: #50bfff;
+}
+
+pre .hljs-property {
+  color: #50bfff;
+}
+
+pre .hljs-symbol {
+  color: #f3e142;
+}
+
+pre .hljs-tag {
+  color: #9f9f9f;
+}
+
+pre .hljs-name {
+  color: #04c568;
+}
