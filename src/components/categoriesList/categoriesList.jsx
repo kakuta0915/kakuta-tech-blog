@@ -29,7 +29,7 @@ export default function CategoriesList({ allCategories }) {
     >
       <div className={styles.categoriesBtn} onClick={toggleCategories}>
         <h3 className={useScrollAnimationStyles.fadeInUp}>カテゴリ 一覧</h3>
-        <FontAwesomeIcon className={styles.icon} icon={faCircleDown} />
+        <FontAwesomeIcon className={styles.icon} />
       </div>
       <div
         className={styles.accordion}
@@ -53,6 +53,7 @@ export default function CategoriesList({ allCategories }) {
                   width={icon.width}
                   height={icon.height}
                   alt={`${name} icon`}
+                  data-testid={`icon-${slug}`}
                 />
                 <span className={styles.name}>{name}</span>
               </Link>

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import ConvertDate from '../convert/convertDate'
 import styles from './posts.module.css'
-import qiitaImg from '@/public/images/qiitaEyecatch.png'
+import qiitaImg from '/public/images/qiitaEyecatch.png'
 import { faBookmark, faHeart, faTag } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 

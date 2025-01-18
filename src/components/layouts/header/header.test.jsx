@@ -1,16 +1,14 @@
 import { render, screen } from '@testing-library/react'
 import Header from './header'
 
-describe('Header component', () => {
-  // Logoコンポーネントを含んでいるかをテスト
-  it('renders the Logo component', () => {
+describe('Header Component', () => {
+  it('Logoコンポーネントを含んでいるか', () => {
     render(<Header />)
     const logoElement = screen.getByTestId('logo')
     expect(logoElement).toBeInTheDocument()
   })
 
-  // Navコンポーネントを含んでいるかをテスト
-  it('renders the Nav component', () => {
+  it('Navコンポーネントを含んでいるか', () => {
     render(<Header />)
     const navElement = screen.getByTestId('nav')
     expect(navElement).toBeInTheDocument()

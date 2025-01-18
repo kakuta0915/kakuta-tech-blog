@@ -6,9 +6,8 @@ import Layout from './layout'
 jest.mock('./Header/Header', () => () => <div data-testid="header">Header</div>)
 jest.mock('./Footer/Footer', () => () => <div data-testid="footer">Footer</div>)
 
-describe('Layout component', () => {
-  // Headerコンポーネントがレンダリングされているかテスト
-  it('renders Header component', () => {
+describe('Layout Component', () => {
+  it('Headerコンポーネントがレンダリングされているか', () => {
     render(
       <Layout>
         <div>Test Content</div>
@@ -19,8 +18,7 @@ describe('Layout component', () => {
     expect(headerElement).toBeInTheDocument()
   })
 
-  // Footerコンポーネントがレンダリングされているかテスト
-  it('renders Footer component', () => {
+  it('Footerコンポーネントがレンダリングされているか', () => {
     render(
       <Layout>
         <div>Test Content</div>
@@ -31,8 +29,7 @@ describe('Layout component', () => {
     expect(footerElement).toBeInTheDocument()
   })
 
-  // childrenがmainタグ内に正しく表示されているかテスト
-  it('renders children inside main tag', () => {
+  it('childrenがmainタグ内に正しく表示されているか', () => {
     render(
       <Layout>
         <div>Test Content</div>
