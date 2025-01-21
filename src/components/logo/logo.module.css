@@ -1,0 +1,24 @@
+.headerLogo {
+  width: 50%;
+}
+
+.linkImage {
+  width: 100%;
+  height: 100%;
+}
+
+.footerLogo {
+  width: 50%;
+  margin-left: var(--space-xs);
+}
+
+/* デスクトップサイズ */
+@media (min-width: 768px) {
+  .headerLogo {
+    width: 32%;
+  }
+
+  .footerLogo {
+    width: 40%;
+  }
+}
