@@ -15,7 +15,7 @@
   --base-color: #f5f5f5;
 
   /* フォントサイズ */
-  --body: clamp(1rem, 0.989rem + 0.06vw, 1.031rem); /* 16-16.5px */
+  --body: clamp(1.031rem, 1.009rem + 0.11vw, 1.094rem); /* 16.5-17.5px */
   --display: clamp(4.5rem, 1.83rem + 11.34vw, 10rem); /* 72-160px */
   --heading1: clamp(1.75rem, 1.295rem + 2.27vw, 3rem); /* 28-48px */
   --heading2: clamp(1.688rem, 1.574rem + 0.57vw, 2rem); /* 27-32 */
@@ -63,7 +63,7 @@ h5 {
 }
 
 p {
-  line-height: 1.7;
+  line-height: 1.8;
 }
 
 /* next/image */
@@ -151,11 +151,13 @@ code {
 code * {
   padding: 0.2rem;
   color: #c9d1d9;
+  font-weight: normal;
 }
 
 /* highlight.js カラーコード */
 code.hljs * {
   color: #c9d1d9;
+  font-weight: normal;
 }
 
 /* コードブロック内のカラー */

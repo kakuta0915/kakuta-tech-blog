@@ -18,7 +18,7 @@
 
 .stack h2 {
   margin-top: var(--space-md);
-  padding: var(--space-xxs);
+  padding: 0.5rem var(--space-xxs);
   background: #eeeeee;
   border-left: solid 8px var(--blue);
 }
@@ -46,7 +46,7 @@
 }
 
 .stack p {
-  line-height: 1.7;
+  line-height: 1.8;
 }
 
 .stack a {
