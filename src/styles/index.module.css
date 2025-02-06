@@ -58,4 +58,9 @@
     color: var(--white);
     transform: scale(1.05);
   }
+
+  .text {
+    width: 70%;
+    margin: 0 auto;
+  }
 }

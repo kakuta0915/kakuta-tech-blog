@@ -50,8 +50,9 @@ export default function Home({ posts }) {
       <Container>
         <section className={styles.aboutSection}>
           <h2 className={useScrollAnimationStyles.fadeInUp}>About Me</h2>
-          <p className={useScrollAnimationStyles.fadeInUp}>
-            エンジニア転職を目指し、自主的にプログラミングを学習しています。日々の学びや経験を通じて、技術力の向上と実践的なスキルの構築に注力しています。これまでの学習過程やスキルセットについて、詳しくご紹介いたします。
+          <p className={`${styles.text} ${useScrollAnimationStyles.fadeInUp}`}>
+            技術力の向上と実践的なスキル構築を目指し、自主的にプログラミングを学習しています。
+            これまでの学習過程やスキルセットなど、私のプロフィールについてご紹介いたします。
           </p>
           <Image
             className={`${styles.profileIcon} ${useScrollAnimationStyles.fadeInUp}`}
@@ -73,7 +74,7 @@ export default function Home({ posts }) {
 
         <section className={styles.articlesSection}>
           <h2 className={useScrollAnimationStyles.fadeInUp}>Articles</h2>
-          <p className={useScrollAnimationStyles.fadeInUp}>
+          <p className={`${styles.text} ${useScrollAnimationStyles.fadeInUp}`}>
             プログラミング学習に関する記事をまとめたページです。学習中に躓いた箇所や、開発過程で遭遇した具体的な課題、それに対する解決策を紹介しています。
           </p>
           <Posts
@@ -86,7 +87,7 @@ export default function Home({ posts }) {
 
         <section className={styles.portfolioSection}>
           <h2 className={useScrollAnimationStyles.fadeInUp}>Portfolio</h2>
-          <p className={useScrollAnimationStyles.fadeInUp}>
+          <p className={`${styles.text} ${useScrollAnimationStyles.fadeInUp}`}>
             独学で制作したサイトなどを掲載しており、GitHubからコードもご覧いただけます。
           </p>
           <PortfolioList
