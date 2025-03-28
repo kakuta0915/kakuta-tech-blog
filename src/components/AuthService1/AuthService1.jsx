@@ -3,8 +3,8 @@ import { auth } from '@/firebaseConfig'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import UserInfo from './userInfo'
-import SignInWithGoogle from './SignInWithGoogle'
+import UserInfo from './UserInfo1'
+import SignInWithGoogle from './SignInWithGoogle1'
 import styles from './authService.module.css'
 
 export default function AuthService() {

@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
-import SignInWithGoogle from './SignInWithGoogle'
+import SignInWithGoogle from './SignInWithGoogle1'
 import { signInWithPopup } from 'firebase/auth'
 import { toast } from 'react-toastify'
 
