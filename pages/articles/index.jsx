@@ -1,12 +1,12 @@
 // 記事一覧ページ
 import { getAllArticles, getAllCategories } from '@/libs/api'
-import Meta from '@/src/components/Meta1'
-import Hero from '@/src/components/Hero1'
-import Container from '@/src/components/Container1'
-import Posts from '@/src/components/Posts1'
-import CategoriesList from '@/src/components/CategoriesList1'
-import useScrollAnimation from '@/src/components/UseScrollAnimation1'
-import useScrollAnimationStyles from '@/src/components/UseScrollAnimation1/index.module.css'
+import Meta from '@/src/components/Meta'
+import Hero from '@/src/components/Hero'
+import Container from '@/src/components/Container'
+import Posts from '@/src/components/Posts'
+import CategoriesList from '@/src/components/CategoriesList'
+import useScrollAnimation from '@/src/components/UseScrollAnimation'
+import useScrollAnimationStyles from '@/src/components/UseScrollAnimation/index.module.css'
 import eyecatch from '@/public/images/articles.jpg'
 
 export default function Articles({ posts, allCategories }) {

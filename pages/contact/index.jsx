@@ -1,8 +1,8 @@
 // Contactページ
 import { useState } from 'react'
-import Meta from '@/src/components/Meta1'
-import Hero from '@/src/components/Hero1'
-import Container from '@/src/components/Container1'
+import Meta from '@/src/components/Meta'
+import Hero from '@/src/components/Hero'
+import Container from '@/src/components/Container'
 import styles from './index.module.css'
 import eyecatch from '@/public/images/contact.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
