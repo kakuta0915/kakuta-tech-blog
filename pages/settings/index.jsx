@@ -7,7 +7,7 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth } from '@/firebaseConfig'
 import { updateProfile } from 'firebase/auth'
 import { toast } from 'react-toastify'
-import Meta from '@/src/components/meta/meta'
+import Meta from '@/src/components/Meta1'
 import styles from './index.module.css'
 import eyecatch from '@/public/images/index.jpg'
 
