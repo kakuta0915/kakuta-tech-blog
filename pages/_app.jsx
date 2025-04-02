@@ -6,7 +6,7 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import * as gtag from 'libs/gtag'
 import '@fortawesome/fontawesome-free/css/all.min.css'
-import Layout from '@/src/components/layouts/layout'
+import Layout from '@/src/components/Layouts1'
 import styles from '@/src/styles/globals.css'
 
 // Font Awesomeの設定

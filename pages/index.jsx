@@ -1,15 +1,15 @@
 import { getAllArticles } from '@/libs/api'
 import Image from 'next/image'
 import Link from 'next/link'
-import Meta from '@/src/components/meta/meta'
-import Hero from '@/src/components/hero/hero'
-import Container from '@/src/components/container/container'
-import Posts from '@/src/components/posts/posts'
-import Social from '@/src/components/social/social'
-import PortfolioList from '@/src/components/portfolioList/portfolioList'
+import Meta from '@/src/components/Meta1'
+import Hero from '@/src/components/Hero1'
+import Container from '@/src/components/Container1'
+import Posts from '@/src/components/Posts1'
+import Social from '@/src/components/Social1'
+import PortfolioList from '@/src/components/PortfolioList1'
 import styles from '@/src/styles/index.module.css'
-import useScrollAnimation from '@/src/components/useScrollAnimation/useScrollAnimation'
-import useScrollAnimationStyles from '@/src/components/useScrollAnimation/useScrollAnimation.module.css'
+import useScrollAnimation from '@/src/components/UseScrollAnimation1'
+import useScrollAnimationStyles from '@/src/components/UseScrollAnimation1/index.module.css'
 import eyecatch from '@/public/images/index.jpg'
 import kakuta0915 from '@/public/images/kakuta0915.png'
 
@@ -71,7 +71,6 @@ export default function Home({ posts }) {
             </Link>
           </div>
         </section>
-
         <section className={styles.articlesSection}>
           <h2 className={useScrollAnimationStyles.fadeInUp}>Articles</h2>
           <p className={`${styles.text} ${useScrollAnimationStyles.fadeInUp}`}>
@@ -84,7 +83,6 @@ export default function Home({ posts }) {
             btn
           />
         </section>
-
         <section className={styles.portfolioSection}>
           <h2 className={useScrollAnimationStyles.fadeInUp}>Portfolio</h2>
           <p className={`${styles.text} ${useScrollAnimationStyles.fadeInUp}`}>

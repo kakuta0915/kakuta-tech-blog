@@ -1,7 +1,8 @@
 import React from 'react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { siteMeta } from '@/libs/constants'
-const { siteLang } = siteMeta
+const { siteLang } = siteMeta || {}
+
 export default class MyDocument extends Document {
   render() {
     return (

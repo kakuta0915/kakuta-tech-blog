@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { auth } from '@/firebaseConfig'
 import 'react-toastify/dist/ReactToastify.css'
-import styles from './authService.module.css'
+import styles from './AuthService1.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGear, faUser } from '@fortawesome/free-solid-svg-icons'
 

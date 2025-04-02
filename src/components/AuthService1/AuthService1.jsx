@@ -5,7 +5,7 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import UserInfo from './UserInfo1'
 import SignInWithGoogle from './SignInWithGoogle1'
-import styles from './authService.module.css'
+import styles from './AuthService1.module.css'
 
 export default function AuthService() {
   const [user] = useAuthState(auth)
