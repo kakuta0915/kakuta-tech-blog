@@ -7,22 +7,22 @@ import 'highlight.js/styles/github-dark.css'
 import { extractText } from '@/libs/extract-text'
 import { prevNextPost } from '@/libs/prev-next-post'
 import { renderToc } from '@/libs/render-toc'
-import Meta from '@/src/components/meta/meta'
-import PostHeader from '@/src/components/postHeader/postHeader'
+import Meta from '@/src/components/Meta1'
+import PostHeader from '@/src/components/PostHeader1'
 import {
   ThreeColum,
   ThreeColumMain,
   ThreeColumSidebar,
   ThreeColumSocialActions,
-} from '@/src/components/threeColum/threeColum'
-import Container from '@/src/components/container/container'
-import ConvertBody from '@/src/components/convert/convertBody'
-import PostBody from '@/src/components/postBody/postBody'
-import Comments from '@/src/components/comments/comments'
-import SocialActions from '@/src/components/socialActions/socialActions'
-import PostCategories from '@/src/components/postCategories/postCategories'
-import Pagination from '@/src/components/pagination/pagination'
-import TableOfContents from '@/src/components/tableOfContents/tableOfContents'
+} from '@/src/components/ThreeColum1'
+import Container from '@/src/components/Container1'
+import ConvertBody from '@/src/components/Convert1'
+import PostBody from '@/src/components/PostBody1'
+import Comments from '@/src/components/Comments1'
+import SocialActions from '@/src/components/SocialActions1'
+import PostCategories from '@/src/components/PostCategories1'
+import Pagination from '@/src/components/Pagination1'
+import TableOfContents from '@/src/components/TableOfContents1'
 
 export default function Post({
   icon,

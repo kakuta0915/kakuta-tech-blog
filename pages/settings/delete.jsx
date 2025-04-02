@@ -9,7 +9,7 @@ import {
   reauthenticateWithPopup,
 } from 'firebase/auth'
 import { toast } from 'react-toastify'
-import Meta from '@/src/components/meta/meta'
+import Meta from '@/src/components/Meta1'
 import styles from './delete.module.css'
 import eyecatch from '@/public/images/index.jpg'
 
