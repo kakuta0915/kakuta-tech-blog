@@ -7,7 +7,7 @@ import { auth, db } from '@/firebaseConfig'
 import { collection, getDocs, query, where } from 'firebase/firestore'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import Meta from '@/src/components/Meta1'
-import Container from '@/src/components/Container1'
+import Container from '@/src/components/Container'
 import styles from './index.module.css'
 import eyecatch from '@/public/images/index.jpg'
 
