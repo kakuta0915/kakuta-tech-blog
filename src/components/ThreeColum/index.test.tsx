@@ -7,7 +7,6 @@ import {
   ThreeColumSocialActions,
 } from '.'
 
-// CSSモジュールをモック
 jest.mock('./threeColum.module.css', () => ({
   flexContainer: 'flexContainer',
   main: 'main',
@@ -23,10 +22,7 @@ describe('ThreeColum Components', () => {
       </ThreeColum>,
     )
 
-    // childrenがレンダリングされているか確認
     expect(screen.getByText('Test')).toBeInTheDocument()
-
-    // クラス名が適用されていることを確認
     expect(screen.getByText('Test').parentElement).toHaveClass('flexContainer')
   })
 
@@ -37,10 +33,7 @@ describe('ThreeColum Components', () => {
       </ThreeColumMain>,
     )
 
-    // childrenがレンダリングされているか確認
     expect(screen.getByText('Test Main')).toBeInTheDocument()
-
-    // クラス名が適用されていることを確認
     expect(screen.getByText('Test Main').parentElement).toHaveClass('main')
   })
 
@@ -51,10 +44,7 @@ describe('ThreeColum Components', () => {
       </ThreeColumSidebar>,
     )
 
-    // childrenがレンダリングされているか確認
     expect(screen.getByText('Test Sidebar')).toBeInTheDocument()
-
-    // クラス名が適用されていることを確認
     expect(screen.getByText('Test Sidebar').parentElement).toHaveClass(
       'sidebar',
     )
@@ -67,10 +57,7 @@ describe('ThreeColum Components', () => {
       </ThreeColumSocialActions>,
     )
 
-    // childrenがレンダリングされているか確認
     expect(screen.getByText('Test Social Actions')).toBeInTheDocument()
-
-    // クラス名が適用されていることを確認
     expect(screen.getByText('Test Social Actions').parentElement).toHaveClass(
       'socialActions',
     )
