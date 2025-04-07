@@ -8,6 +8,7 @@ import {
   updateDoc,
   increment,
 } from 'firebase/firestore'
+import { DocumentReference } from 'firebase/firestore'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { toast } from 'react-toastify'
 import styles from './index.module.css'
@@ -15,12 +16,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark, faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faXTwitter } from '@fortawesome/free-brands-svg-icons'
 
-export default function SocialActions({ postId, title }) {
+interface SocialActionsProps {
+  postId: string
+  title: string
+}
+
+const SocialActions: React.FC<SocialActionsProps> = ({ postId, title }) => {
   const [user] = useAuthState(auth)
-  const [liked, setLiked] = useState(false)
-  const [likeCount, setLikeCount] = useState(0)
-  const [bookmarked, setBookmarked] = useState(false)
-  const [bookmarkCount, setBookmarkCount] = useState(0)
+  const [liked, setLiked] = useState<boolean>(false)
+  const [likeCount, setLikeCount] = useState<number>(0)
+  const [bookmarked, setBookmarked] = useState<boolean>(false)
+  const [bookmarkCount, setBookmarkCount] = useState<number>(0)
   const baseUrl = typeof window !== 'undefined' ? window.location.origin : ''
   const postUrl = `${baseUrl}/posts/${postId}`
 
@@ -32,8 +38,8 @@ export default function SocialActions({ postId, title }) {
           const postSnap = await getDoc(postRef)
 
           if (postSnap.exists()) {
-            setLikeCount(postSnap.data().likesCount || 0)
-            setBookmarkCount(postSnap.data().bookmarksCount || 0)
+            setLikeCount(postSnap.data()['likesCount'] || 0)
+            setBookmarkCount(postSnap.data()['bookmarksCount'] || 0)
           }
 
           if (user) {
@@ -52,14 +58,18 @@ export default function SocialActions({ postId, title }) {
     }
   }, [user, postId])
 
-  const showToast = (message, type) => {
+  const showToast = (message: string, type: 'success' | 'error' | 'info') => {
     toast[type](message, {
       position: 'top-center',
       autoClose: 1500,
     })
   }
 
-  const updatePostCounter = async (postRef, field, value) => {
+  const updatePostCounter = async (
+    postRef: DocumentReference,
+    field: 'likesCount' | 'bookmarksCount',
+    value: number,
+  ) => {
     try {
       const postSnap = await getDoc(postRef)
       if (!postSnap.exists()) {
@@ -73,7 +83,7 @@ export default function SocialActions({ postId, title }) {
     }
   }
 
-  const handleAction = async (type) => {
+  const handleAction = async (type: 'likes' | 'bookmarks') => {
     if (!user) {
       showToast('ログインしてください', 'error')
       return
@@ -129,26 +139,28 @@ export default function SocialActions({ postId, title }) {
   }
 
   return (
-    <div className={styles.socialActions}>
-      <div className={styles.actionButton}>
+    <div className={styles['socialActions']}>
+      <div className={styles['actionButton']}>
         <button onClick={() => handleAction('likes')}>
           <FontAwesomeIcon
             icon={faHeart}
-            className={liked ? styles.likeIconAction : styles.icon}
+            className={liked ? styles['likeIconAction'] : styles['icon']}
           />
         </button>
-        <span className={styles.count}>{likeCount}</span>
+        <span className={styles['count']}>{likeCount}</span>
 
         <button onClick={() => handleAction('bookmarks')}>
           <FontAwesomeIcon
             icon={faBookmark}
-            className={bookmarked ? styles.bookmarkIconAction : styles.icon}
+            className={
+              bookmarked ? styles['bookmarkIconAction'] : styles['icon']
+            }
           />
         </button>
-        <span className={styles.count}>{bookmarkCount}</span>
+        <span className={styles['count']}>{bookmarkCount}</span>
       </div>
 
-      <div className={styles.shareButton}>
+      <div className={styles['shareButton']}>
         <button onClick={handleShare}>
           <FontAwesomeIcon icon={faXTwitter} />
         </button>
@@ -156,3 +168,5 @@ export default function SocialActions({ postId, title }) {
     </div>
   )
 }
+
+export default SocialActions
