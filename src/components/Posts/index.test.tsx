@@ -1,17 +1,18 @@
-import React from 'react'
+import type { ImgHTMLAttributes } from 'react'
 import { render, screen } from '@testing-library/react'
 import Posts from '.'
 
-// ConvertDateコンポーネントをモック
 jest.mock('../convert/convertDate', () => ({
   __esModule: true,
-  default: ({ dateISO }) => <span>{dateISO}</span>,
+  default: ({ dateISO }: { dateISO: string }) => <span>{dateISO}</span>,
 }))
 
-// next/imageコンポーネントをモック
 jest.mock('next/image', () => ({
   __esModule: true,
-  default: ({ fill, ...props }) => (
+  default: ({
+    fill,
+    ...props
+  }: { fill?: boolean } & ImgHTMLAttributes<HTMLImageElement>) => (
     <img {...props} style={{ objectFit: fill ? 'cover' : undefined }} />
   ),
 }))
@@ -27,6 +28,8 @@ describe('Posts Component', () => {
         publishDate: '2024-07-23T00:00:00Z',
         categories: [{ name: 'Category 1', slug: 'category-1' }],
         source: 'local',
+        likesCount: 10,
+        bookmarksCount: 5,
       },
       {
         title: 'Post Title 2',
@@ -35,6 +38,8 @@ describe('Posts Component', () => {
         publishDate: '2024-07-24T00:00:00Z',
         categories: [{ name: 'Category 2', slug: 'category-2' }],
         source: 'qiita',
+        likesCount: 20,
+        bookmarksCount: 15,
       },
     ],
     maxPosts: 2,
