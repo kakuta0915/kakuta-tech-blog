@@ -1,22 +1,23 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import PostHeader from '.'
+import type { PostHeaderProps } from '.'
 import styles from './index.module.css'
 
-// next/imageのモック
 jest.mock('next/image', () => ({
   __esModule: true,
-  default: (props) => <img {...props} />,
+  default: (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
+    <img {...props} />
+  ),
 }))
 
-// ConvertDateコンポーネントのモック
 jest.mock('../convert/convertDate', () => ({
   __esModule: true,
-  default: ({ dateISO }) => <span>{dateISO}</span>,
+  default: ({ dateISO }: { dateISO: string }) => <span>{dateISO}</span>,
 }))
 
 describe('PostHeader Component', () => {
-  const defaultProps = {
+  const defaultProps: PostHeaderProps = {
     icon: { url: '/icons/icon.png', width: 50, height: 50 },
     title: 'Post Title',
     subtitle: 'Post Subtitle',
@@ -42,8 +43,10 @@ describe('PostHeader Component', () => {
   it('公開日が正しく表示されるか', () => {
     render(<PostHeader {...defaultProps} />)
 
-    const publishDate = screen.getByText(defaultProps.publish)
-    expect(publishDate).toBeInTheDocument()
+    if (defaultProps.publish) {
+      const publishDate = screen.getByText(defaultProps.publish)
+      expect(publishDate).toBeInTheDocument()
+    }
 
     const clockIcon = screen.getByTestId('clock-icon')
     expect(clockIcon).toBeInTheDocument()
@@ -54,6 +57,6 @@ describe('PostHeader Component', () => {
       <PostHeader {...defaultProps} publish={undefined} />,
     )
 
-    expect(container.querySelector(`.${styles.publish}`)).toBeNull()
+    expect(container.querySelector(`.${styles['publish']}`)).toBeNull()
   })
 })
