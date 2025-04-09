@@ -1,9 +1,20 @@
-// 記事に関連する特定のタグをリスト表示する機能
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from './index.module.css'
 
-export default function PostCategories({ categories }) {
+export interface PostCategoriesProps {
+  categories: {
+    name: string
+    slug: string
+    icon: {
+      url: string
+      width: number
+      height: number
+    }
+  }[]
+}
+
+const PostCategories: React.FC<PostCategoriesProps> = ({ categories }) => {
   return (
     <div className={styles.flexContainer}>
       <h3>カテゴリ</h3>
@@ -29,3 +40,5 @@ export default function PostCategories({ categories }) {
     </div>
   )
 }
+
+export default PostCategories
