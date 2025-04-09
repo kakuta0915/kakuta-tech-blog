@@ -16,17 +16,17 @@ export interface PostCategoriesProps {
 
 const PostCategories: React.FC<PostCategoriesProps> = ({ categories }) => {
   return (
-    <div className={styles.flexContainer}>
+    <div className={styles['flexContainer']}>
       <h3>カテゴリ</h3>
       <ul>
         {categories.map(({ name, slug, icon }) => (
           <li key={slug}>
             <Link
-              className={styles.categoriesLink}
+              className={styles['categoriesLink']}
               href={`/articles/categories/${slug}`}
             >
               <Image
-                className={styles.icon}
+                className={styles['icon']}
                 src={icon.url}
                 width={icon.width}
                 height={icon.height}
