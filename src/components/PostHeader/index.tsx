@@ -22,19 +22,19 @@ const PostHeader: React.FC<PostHeaderProps> = ({
   publish = '',
 }) => {
   return (
-    <div className={styles.header}>
+    <div className={styles['header']}>
       <Image
         src={icon.url}
         alt=""
         width={icon.width}
         height={icon.height}
-        className={styles.headerIcon}
+        className={styles['headerIcon']}
       />
-      <div className={styles.headerTitle}>
+      <div className={styles['headerTitle']}>
         <p>{subtitle}</p>
         <h1>{title}</h1>
         {publish && (
-          <div className={styles.publish}>
+          <div className={styles['publish']}>
             <FontAwesomeIcon
               icon={faClock}
               size="lg"
