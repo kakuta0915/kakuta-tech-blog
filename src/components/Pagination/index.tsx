@@ -1,4 +1,3 @@
-// ページネーション機能の追加
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -7,19 +6,26 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import styles from './index.module.css'
 
-export default function Pagination({
+interface PaginationProps {
+  prevText?: string
+  prevUrl?: string
+  nextText?: string
+  nextUrl?: string
+}
+
+const Pagination: React.FC<PaginationProps> = ({
   prevText = '',
   prevUrl = '',
   nextText = '',
   nextUrl = '',
-}) {
+}) => {
   return (
-    <ul className={styles.flexContainer}>
+    <ul className={styles['flexContainer']}>
       {prevText && prevUrl && (
-        <li className={styles.prev}>
+        <li className={styles['prev']}>
           <Link
             href={prevUrl}
-            className={styles.iconText}
+            className={styles['iconText']}
             data-testid="icon-left"
           >
             <FontAwesomeIcon icon={faChevronLeft} color="var(--gray)" />
@@ -28,10 +34,10 @@ export default function Pagination({
         </li>
       )}
       {nextText && nextUrl && (
-        <li className={styles.next}>
+        <li className={styles['next']}>
           <Link
             href={nextUrl}
-            className={styles.iconText}
+            className={styles['conText']}
             data-testid="icon-right"
           >
             <span>{nextText}</span>
@@ -42,3 +48,5 @@ export default function Pagination({
     </ul>
   )
 }
+
+export default Pagination
