@@ -1,8 +1,6 @@
-/* eslint-disable react/display-name */
 import { render, screen } from '@testing-library/react'
 import Layout from '.'
 
-// HeaderとFooterのモックコンポーネントを作成
 jest.mock('./Header', () => () => <div data-testid="header">Header</div>)
 jest.mock('./Footer', () => () => <div data-testid="footer">Footer</div>)
 
