@@ -1,11 +1,10 @@
-// ナビコンポーネント
 import Link from 'next/link'
 import styles from './index.module.css'
 
-export default function Nav() {
+const Nav: React.FC = () => {
   return (
-    <nav className={styles.headerNav} data-testid="nav">
-      <ul className={styles.nav}>
+    <nav className={styles['headerNav']} data-testid="nav">
+      <ul className={styles['nav']}>
         <li>
           <Link href="/">TOP</Link>
         </li>
@@ -25,3 +24,5 @@ export default function Nav() {
     </nav>
   )
 }
+
+export default Nav
