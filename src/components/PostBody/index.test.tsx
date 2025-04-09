@@ -16,6 +16,6 @@ describe('PostBody', () => {
 
   it('正しいクラス名が適応されているか確認', () => {
     const { container } = render(<PostBody>Test content</PostBody>)
-    expect(container.firstChild).toHaveClass(styles.stack)
+    expect(container.firstChild).toHaveClass(styles['stack'])
   })
 })
