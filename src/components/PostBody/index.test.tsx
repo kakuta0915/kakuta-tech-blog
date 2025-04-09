@@ -1,9 +1,7 @@
-import React from 'react'
 import { render } from '@testing-library/react'
 import PostBody from '.'
 import styles from './index.module.css'
 
-// CSSモジュールのスタイルをモック
 jest.mock('./postBody.module.css', () => ({
   stack: 'stack',
 }))
