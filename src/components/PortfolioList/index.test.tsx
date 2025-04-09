@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import PortfolioList from '.'
-import { portfolioData } from '@/src/__mocks__/portfolioDataMock'
+import { portfolioData } from '@/__mocks__/portfolioDataMock'
 
 test('portfolioDataが正しく表示される', () => {
-  render(<PortfolioList portfolioData={portfolioData} />)
+  render(<PortfolioList portfolioData={portfolioData} className={''} />)
 
   portfolioData.forEach((portfolio) => {
     // 各ポートフォリオのタイトルが表示されているかを確認
