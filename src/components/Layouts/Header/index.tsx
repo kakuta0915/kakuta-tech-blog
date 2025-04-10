@@ -1,6 +1,6 @@
-import Logo from '@/components/Logo'
-import Nav from '@/components/Nav'
-import AuthService from '@/components/AuthService/AuthService'
+import Logo from '@/src/components/Logo'
+import Nav from '@/src/components/Nav'
+import AuthService from '@/src/components/AuthService/AuthService'
 import styles from './index.module.css'
 
 const Header: React.FC = () => {
