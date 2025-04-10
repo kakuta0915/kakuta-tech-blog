@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { siteMeta } from '../../../libs/constants'
+import { siteMeta } from '@/libs/constants'
 import siteImg from '/public/images/ogp.jpg'
 const { siteTitle, siteUrl, siteLocal, siteType, siteIcon } = siteMeta
 
