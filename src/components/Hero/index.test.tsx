@@ -2,6 +2,12 @@ import { render, screen } from '@testing-library/react'
 import Hero from '.'
 import '@testing-library/jest-dom'
 
+jest.mock('@/src/components/UseScrollAnimation/index.module.css', () => ({
+  fadeInUp: 'fadeInUp',
+  fadeInRight: 'fadeInRight',
+  fadeInLeft: 'fadeInLeft',
+}))
+
 describe('Hero Component', () => {
   const defaultProps = {
     title: 'Test Title',
