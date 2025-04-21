@@ -11,8 +11,6 @@ import {
   updateDoc,
   deleteDoc,
   doc,
-  Timestamp,
-  DocumentData,
 } from 'firebase/firestore'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { toast } from 'react-toastify'
@@ -44,6 +42,8 @@ type CommentData = {
   parentId: string | null
 }
 
+type NewCommentData = Omit<CommentData, 'id'>
+
 type ViewState = {
   [commentId: string]: {
     edit: 'markdown' | 'preview'
@@ -52,7 +52,7 @@ type ViewState = {
 }
 
 type VisibilityState = {
-  [id: string]: boolean
+  [commentId: string]: boolean
 }
 
 function timeAgo(date: Date): string {
@@ -112,10 +112,9 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
     const unsubscribe = onSnapshot(
       q,
       (snapshot) => {
-        const updatedComments: Comment[] = snapshot.docs.map((doc) => ({
+        const updatedComments = snapshot.docs.map((doc) => ({
           id: doc.id,
-          ...(doc.data() as DocumentData),
-          return
+          ...(doc.data() as Omit<CommentData, 'id'>),
         }))
         setComments(updatedComments.filter((doc) => doc.postId === postId))
       },
@@ -128,7 +127,7 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
   }, [postId])
 
   // コメントを投稿する関数
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     if (!comment.trim()) {
@@ -137,16 +136,18 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
     }
 
     // Firestoreへの保存処理
+    const newComment: NewCommentData = {
+      postId,
+      text: comment,
+      createdAt: serverTimestamp(),
+      displayName: user?.displayName ?? '',
+      photoURL: user?.photoURL ?? '',
+      parentId: null,
+      userId: '',
+    }
+
     try {
-      await addDoc(collection(db, 'comments'), {
-        postId,
-        text: comment,
-        createdAt: serverTimestamp(),
-        userId: user.uid,
-        displayName: user.displayName,
-        photoURL: user.photoURL,
-        parentId: null,
-      })
+      await addDoc(collection(db, 'comments'), newComment)
 
       setComment('')
       toast.success('コメントが投稿されました！')
@@ -157,23 +158,33 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
   }
 
   // 返信を送信する関数
-  const handleReplySubmit = async (e, parentId) => {
+  const handleReplySubmit = async (
+    e: React.FormEvent<HTMLElement>,
+    parentId: string | null,
+  ) => {
     e.preventDefault()
+
+    if (!user) {
+      return null
+    }
 
     if (!replyContent.trim()) {
       toast.error('返信を入力してください。')
       return
     }
+
+    const newReply: NewCommentData = {
+      postId,
+      text: replyContent,
+      createdAt: serverTimestamp(),
+      userId: user.uid,
+      displayName: user.displayName ?? '',
+      photoURL: user.photoURL ?? '',
+      parentId,
+    }
+
     try {
-      await addDoc(collection(db, 'comments'), {
-        postId,
-        text: replyContent,
-        createdAt: serverTimestamp(),
-        userId: user.uid,
-        displayName: user.displayName,
-        photoURL: user.photoURL,
-        parentId,
-      })
+      await addDoc(collection(db, 'comments'), newReply)
       setReplyContent('')
       setActiveReply(null)
       setCommentsActionsVisible(true)
@@ -185,7 +196,7 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
   }
 
   // 返信フォームを表示する関数
-  const handleReplyClick = (id) => {
+  const handleReplyClick = (id: React.SetStateAction<string | null>) => {
     setCommentsActionsVisible(false)
 
     if (!user) {
@@ -197,7 +208,7 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
   }
 
   // 返信のキャンセルを表示
-  const handleCancelReply = () => {
+  const handleCancelReply = (): void => {
     if (!replyContent.trim()) {
       setCommentsActionsVisible(true)
       setReplyState(true)
@@ -211,23 +222,32 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
       setReplyState(true)
       setSelectedView((prevState) => ({
         ...prevState,
-        [id]: { ...prevState[id], reply: 'markdown' },
+        [id]: {
+          ...prevState[id],
+          reply: 'markdown',
+          edit: prevState[id]?.edit || 'markdown',
+        },
       }))
     }
   }
 
   // 編集・削除ボタンをトグルで表示・非表示にする関数
-  const toggleVisibility = (id: string) => {
-    setVisibilityState((prevState) => {
-      if (prevState === id) {
-        return null
+  const toggleVisibility = (id: string): void => {
+    setVisibilityState((prevState: VisibilityState) => {
+      return {
+        ...prevState,
+        [id]: prevState[id] ? false : true,
       }
-      return id
     })
   }
 
   // コメントを編集してFirebaseに保存する関数
-  const handleEditSubmit = async (e, id, editContent, closeEditMode) => {
+  const handleEditSubmit = async (
+    e: React.FormEvent<HTMLFormElement>,
+    id: string,
+    editContent: string,
+    closeEditMode: { (): void; (): void; (): void },
+  ) => {
     e.preventDefault()
 
     try {
@@ -244,7 +264,11 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
   }
 
   // コメントを編集するボタンをクリックしたときの処理
-  const handleEditClick = (id, text) => {
+  const handleEditClick = (id: string | null, text: string): void => {
+    if (!id) {
+      return
+    }
+
     setActiveEdit(id)
     setEditContent(text)
     setCommentsActionsVisible(false)
@@ -257,7 +281,7 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
 
   // コメント取得後は 'markdown' 表示に設定
   useEffect(() => {
-    const defaultViews = comments.reduce((views, comment) => {
+    const defaultViews = comments.reduce<ViewState>((views, comment) => {
       views[comment.id] = { edit: 'markdown', reply: 'markdown' }
       return views
     }, {})
@@ -265,9 +289,9 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
   }, [comments])
 
   // 編集をキャンセルする関数
-  const handleCancelEdit = (text) => {
+  const handleCancelEdit = (text: string): void => {
     if (editContent !== text) {
-      const confirmCancel = window.confirm(
+      const confirmCancel: boolean = window.confirm(
         '変更内容が保存されていません。編集をキャンセルしますか?',
       )
       if (!confirmCancel) {
@@ -286,18 +310,22 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
     setEditContent('')
     setSelectedView((prevState) => ({
       ...prevState,
-      [id]: { ...prevState[id], edit: 'markdown' },
+      [id]: {
+        ...prevState[id],
+        edit: 'markdown',
+        reply: 'markdown',
+      },
     }))
   }
 
   // コメントや返信を削除する関数
-  const handleDelete = async (id) => {
+  const handleDelete = async (id: string): Promise<void> => {
     if (window.confirm('本当に削除しますか？')) {
       try {
         await deleteDoc(doc(db, 'comments', id))
         setCommentsActionsVisible(true)
         toast.success('コメントを削除しました。')
-        setVisibilityState((prevState) => ({
+        setVisibilityState((prevState: VisibilityState) => ({
           ...prevState,
           [id]: false,
         }))
@@ -309,11 +337,15 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
   }
 
   // 各コメントのビュー状態を保持する関数
-  const handleViewToggle = (commentId, mode, view) => {
-    setSelectedView((prevState) => ({
+  const handleViewToggle = (
+    commentId: string,
+    mode: 'edit' | 'reply',
+    view: 'markdown' | 'preview',
+  ): void => {
+    setSelectedView((prevState: ViewState) => ({
       ...prevState,
       [commentId]: {
-        ...(prevState[commentId] || {}),
+        ...(prevState[commentId] || { edit: 'markdown', reply: 'markdown' }),
         [mode]: view,
       },
     }))

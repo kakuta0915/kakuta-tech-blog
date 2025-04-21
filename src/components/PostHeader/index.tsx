@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock } from '@fortawesome/free-regular-svg-icons'
-import ConvertDate from '../Convert/convertDate'
+import ConvertDate from '../Convert/ConvertDate'
 import styles from './index.module.css'
 
 export interface PostHeaderProps {

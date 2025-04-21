@@ -37,7 +37,7 @@ const Pagination: React.FC<PaginationProps> = ({
         <li className={styles['next']}>
           <Link
             href={nextUrl}
-            className={styles['conText']}
+            className={styles['iconText']}
             data-testid="icon-right"
           >
             <span>{nextText}</span>
