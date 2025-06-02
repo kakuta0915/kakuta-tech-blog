@@ -7,11 +7,11 @@ import UserInfo from './UserInfo'
 import SignInWithGoogle from './SignInWithGoogle'
 import styles from './AuthService.module.css'
 
-export default function AuthService() {
+const AuthService: React.FC = () => {
   const [user] = useAuthState(auth)
 
   return (
-    <div className={styles.authService}>
+    <div className={styles['authService']}>
       {user ? <UserInfo user={user} /> : <SignInWithGoogle />}
       <ToastContainer
         position="top-center"
@@ -23,3 +23,5 @@ export default function AuthService() {
     </div>
   )
 }
+
+export default AuthService
