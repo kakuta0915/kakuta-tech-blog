@@ -9,7 +9,7 @@ import styles from './AuthService.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRightToBracket, faTimes } from '@fortawesome/free-solid-svg-icons'
 
-export default function SignInWithGoogle() {
+const SignInWithGoogle: React.FC = () => {
   const [showPopup, setShowPopup] = useState(false)
   const [error, setError] = useState('')
 
@@ -19,9 +19,13 @@ export default function SignInWithGoogle() {
       await signInWithPopup(auth, provider)
       toast.success('ログインしました')
     } catch (error) {
-      setError(
-        `エラーが発生しました。もう一度やり直してください。: ${error.message}`,
-      )
+      if (error instanceof Error) {
+        setError(
+          `エラーが発生しました。もう一度やり直してください。: ${error.message}`,
+        )
+      } else {
+        setError('不明なエラーが発生しました。')
+      }
       toast.error('ログインに失敗しました')
     }
   }
@@ -33,18 +37,18 @@ export default function SignInWithGoogle() {
 
   return (
     <>
-      <button onClick={togglePopup} className={styles.loginButton}>
-        <FontAwesomeIcon icon={faRightToBracket} className={styles.icon} />
+      <button onClick={togglePopup} className={styles['loginButton']}>
+        <FontAwesomeIcon icon={faRightToBracket} className={styles['icon']} />
         Log in
       </button>
       {showPopup && (
-        <div className={styles.popupOverlay} onClick={togglePopup}>
+        <div className={styles['popupOverlay']} onClick={togglePopup}>
           <div
-            className={styles.popupContent}
+            className={styles['popupContent']}
             onClick={(e) => e.stopPropagation()}
           >
             <button
-              className={styles.closeButton}
+              className={styles['closeButton']}
               onClick={togglePopup}
               aria-label="close"
             >
@@ -52,7 +56,10 @@ export default function SignInWithGoogle() {
             </button>
             <h3>KAKUTA TECH BLOG</h3>
             <p>ログインして記事を保存したり、コメントをしましょう。</p>
-            <button onClick={handleAuthAction} className={styles.googleButton}>
+            <button
+              onClick={handleAuthAction}
+              className={styles['googleButton']}
+            >
               <Image
                 src={googleIcon}
                 alt="Googleでログイン"
@@ -61,10 +68,12 @@ export default function SignInWithGoogle() {
               />
               <span>Googleでログイン</span>
             </button>
-            {error && <p className={styles.errorMessage}>{error}</p>}
+            {error && <p className={styles['errorMessage']}>{error}</p>}
           </div>
         </div>
       )}
     </>
   )
 }
+
+export default SignInWithGoogle

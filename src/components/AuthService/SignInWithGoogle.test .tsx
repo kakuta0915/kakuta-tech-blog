@@ -47,7 +47,7 @@ describe('SignInWithGoogle', () => {
   })
 
   it('ログインエラー時にエラーメッセージが表示される', async () => {
-    signInWithPopup.mockRejectedValue(new Error('テストエラー'))
+    ;(signInWithPopup as jest.Mock).mockRejectedValue(new Error('テストエラー'))
 
     render(<SignInWithGoogle />)
 
