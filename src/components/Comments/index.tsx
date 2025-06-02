@@ -19,6 +19,7 @@ import remarkGfm from 'remark-gfm'
 import styles from './index.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { error } from 'console'
 
 type CommentsProps = {
   postId: string
@@ -161,11 +162,11 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
   const handleReplySubmit = async (
     e: React.FormEvent<HTMLElement>,
     parentId: string | null,
-  ) => {
+  ): Promise<void> => {
     e.preventDefault()
 
     if (!user) {
-      return null
+      return
     }
 
     if (!replyContent.trim()) {
@@ -352,32 +353,34 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
   }
 
   return (
-    <div className={styles.commentsContainer}>
+    <div className={styles['commentsContainer']}>
       <h2>コメント</h2>
 
       {/* コメント投稿 */}
       {user ? (
         <>
-          <div className={styles.userInfo}>
-            <Image
-              src={user.photoURL}
-              alt={user.displayName || 'User'}
-              width={50}
-              height={50}
-              className={styles.userIcon}
-            />
-            <span className={styles.userName}>
+          <div className={styles['userInfo']}>
+            {user.photoURL && (
+              <Image
+                src={user.photoURL}
+                alt={user.displayName || 'User'}
+                width={50}
+                height={50}
+                className={styles['userIcon']}
+              />
+            )}
+            <span className={styles['userName']}>
               {user.displayName || '匿名ユーザー'}
             </span>
           </div>
 
-          <form onSubmit={handleSubmit} className={styles.form}>
-            <div className={styles.viewToggleButtons}>
+          <form onSubmit={handleSubmit} className={styles['form']}>
+            <div className={styles['viewToggleButtons']}>
               <button
                 type="button"
                 onClick={() => handleViewToggle(id, 'edit', 'markdown')}
-                className={`${styles.viewButton} ${
-                  selectedView[id]?.edit === 'markdown' ? styles.active : ''
+                className={`${styles['viewButton']} ${
+                  selectedView[id]?.edit === 'markdown' ? styles['active'] : ''
                 }`}
               >
                 Markdown
@@ -385,25 +388,25 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
               <button
                 type="button"
                 onClick={() => handleViewToggle(id, 'edit', 'preview')}
-                className={`${styles.viewButton} ${
-                  selectedView[id]?.edit === 'preview' ? styles.active : ''
+                className={`${styles['viewButton']} ${
+                  selectedView[id]?.edit === 'preview' ? styles['active'] : ''
                 }`}
               >
                 プレビュー
               </button>
             </div>
 
-            <div className={styles.inputAndPreview}>
+            <div className={styles['inputAndPreview']}>
               {selectedView[id]?.edit === 'markdown' && (
                 <textarea
                   value={comment}
                   onChange={(e) => setComment(e.target.value)}
                   placeholder="記事についてコメントする (マークダウン記法が使えます)"
-                  className={styles.textarea}
+                  className={styles['textarea']}
                 />
               )}
               {selectedView[id]?.edit === 'preview' && (
-                <div className={styles.preview}>
+                <div className={styles['preview']}>
                   <ReactMarkdown remarkPlugins={[remarkGfm]}>
                     {comment}
                   </ReactMarkdown>
@@ -411,7 +414,7 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
               )}
             </div>
 
-            <button type="submit" className={styles.commentButton}>
+            <button type="submit" className={styles['commentButton']}>
               投稿
             </button>
           </form>
@@ -426,18 +429,18 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
           .filter((c) => !c.parentId)
           .map(({ id, text, createdAt, displayName, photoURL, userId }) => (
             <li key={id}>
-              <div className={styles.commentHeader}>
+              <div className={styles['commentHeader']}>
                 <Image
                   src={photoURL}
                   alt={displayName || '匿名ユーザー'}
                   width={50}
                   height={50}
-                  className={styles.commentIcon}
+                  className={styles['commentIcon']}
                 />
-                <span className={styles.userName}>
+                <span className={styles['userName']}>
                   {displayName || '匿名ユーザー'}
                 </span>
-                <small className={styles.time}>
+                <small className={styles['time']}>
                   {createdAt?.seconds
                     ? timeAgo(new Date(createdAt.seconds * 1000))
                     : '日時情報なし'}
@@ -445,36 +448,38 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
 
                 {user?.uid === userId && (
                   <div
-                    className={`${styles.commentsActions} ${
-                      !commentsActionsVisible ? styles.hiddenIcon : ''
+                    className={`${styles['commentsActions']} ${
+                      !commentsActionsVisible ? styles['hiddenIcon'] : ''
                     }`}
                     ref={actionsRef}
                   >
                     <button
                       onClick={() => toggleVisibility(id)}
-                      className={styles.toggleButton}
+                      className={styles['toggleButton']}
                     >
-                      {visibilityState === id ? (
+                      {visibilityState[id] ? (
                         <FontAwesomeIcon
                           icon={faChevronDown}
-                          className={styles.icon}
+                          className={styles['icon']}
                         />
                       ) : (
                         <FontAwesomeIcon
                           icon={faChevronDown}
-                          className={styles.icon}
+                          className={styles['icon']}
                         />
                       )}
                     </button>
 
                     <div
-                      className={`${styles.actionButtons} ${
-                        visibilityState === id ? styles.visible : styles.hidden
+                      className={`${styles['actionButtons']} ${
+                        visibilityState[id]
+                          ? styles['visible']
+                          : styles['hidden']
                       }`}
                     >
                       <button
                         onClick={() => handleEditClick(id, text)}
-                        className={styles.editButton}
+                        className={styles['editButton']}
                       >
                         編集
                       </button>
@@ -496,15 +501,15 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
                       setActiveEdit(null),
                     )
                   }
-                  className={styles.editForm}
+                  className={styles['editForm']}
                 >
-                  <div className={styles.viewToggleButtons}>
+                  <div className={styles['viewToggleButtons']}>
                     <button
                       type="button"
                       onClick={() => handleViewToggle(id, 'edit', 'markdown')}
-                      className={`${styles.viewButton} ${
+                      className={`${styles['viewButton']} ${
                         selectedView[id]?.edit === 'markdown'
-                          ? styles.active
+                          ? styles['active']
                           : ''
                       }`}
                     >
@@ -513,9 +518,9 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
                     <button
                       type="button"
                       onClick={() => handleViewToggle(id, 'edit', 'preview')}
-                      className={`${styles.viewButton} ${
+                      className={`${styles['viewButton']} ${
                         selectedView[id]?.edit === 'preview'
-                          ? styles.active
+                          ? styles['active']
                           : ''
                       }`}
                     >
@@ -523,17 +528,17 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
                     </button>
                   </div>
 
-                  <div className={styles.inputAndPreview}>
+                  <div className={styles['inputAndPreview']}>
                     {selectedView[id]?.edit === 'markdown' && (
                       <textarea
                         value={editContent}
                         onChange={(e) => setEditContent(e.target.value)}
                         placeholder="編集内容を入力してください"
-                        className={styles.textarea}
+                        className={styles['textarea']}
                       />
                     )}
                     {selectedView[id]?.edit === 'preview' && (
-                      <div className={styles.preview}>
+                      <div className={styles['preview']}>
                         <ReactMarkdown remarkPlugins={[remarkGfm]}>
                           {editContent}
                         </ReactMarkdown>
@@ -541,13 +546,13 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
                     )}
                   </div>
 
-                  <button type="submit" className={styles.savaButton}>
+                  <button type="submit" className={styles['savaButton']}>
                     保存
                   </button>
                   <button
                     type="button"
                     onClick={() => handleCancelEdit(text)}
-                    className={styles.cancelButton}
+                    className={styles['cancelButton']}
                   >
                     キャンセル
                   </button>
@@ -557,29 +562,29 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
               {activeReply !== id && (
                 <button
                   onClick={() => handleReplyClick(id)}
-                  className={`${styles.addReplyButton} ${
-                    !replyState ? styles.hiddenReplyButton : ''
+                  className={`${styles['addReplyButton']} ${
+                    !replyState ? styles['hiddenReplyButton'] : ''
                   }`}
                 >
                   返信を追加
                 </button>
               )}
 
-              <div className={styles.replyContainer}>
+              <div className={styles['replyContainer']}>
                 {activeReply === id && (
                   <form
                     onSubmit={(e) => handleReplySubmit(e, id)}
-                    className={styles.replyForm}
+                    className={styles['replyForm']}
                   >
-                    <div className={styles.viewToggleButtons}>
+                    <div className={styles['viewToggleButtons']}>
                       <button
                         type="button"
                         onClick={() =>
                           handleViewToggle(id, 'reply', 'markdown')
                         }
-                        className={`${styles.viewButton} ${
+                        className={`${styles['viewButton']} ${
                           selectedView[id]?.reply === 'markdown'
-                            ? styles.active
+                            ? styles['active']
                             : ''
                         }`}
                       >
@@ -588,9 +593,9 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
                       <button
                         type="button"
                         onClick={() => handleViewToggle(id, 'reply', 'preview')}
-                        className={`${styles.viewButton} ${
+                        className={`${styles['viewButton']} ${
                           selectedView[id]?.reply === 'preview'
-                            ? styles.active
+                            ? styles['active']
                             : ''
                         }`}
                       >
@@ -598,30 +603,30 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
                       </button>
                     </div>
 
-                    <div className={styles.inputAndPreview}>
+                    <div className={styles['inputAndPreview']}>
                       {selectedView[id]?.reply === 'markdown' && (
                         <textarea
                           value={replyContent}
                           onChange={(e) => setReplyContent(e.target.value)}
                           placeholder="投稿に対してコメントする (マークダウン記法が使えます)"
-                          className={styles.textarea}
+                          className={styles['textarea']}
                         />
                       )}
                       {selectedView[id]?.reply === 'preview' && (
-                        <div className={styles.preview}>
+                        <div className={styles['preview']}>
                           <ReactMarkdown remarkPlugins={[remarkGfm]}>
                             {replyContent}
                           </ReactMarkdown>
                         </div>
                       )}
                     </div>
-                    <button type="submit" className={styles.replyButton}>
+                    <button type="submit" className={styles['replyButton']}>
                       返信する
                     </button>
                     <button
                       type="button"
                       onClick={handleCancelReply}
-                      className={styles.cancelButton}
+                      className={styles['cancelButton']}
                     >
                       キャンセル
                     </button>
@@ -641,19 +646,19 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
                         createdAt,
                         userId,
                       }) => (
-                        <li key={id} className={styles.reply}>
-                          <div className={styles.replyCommentHeader}>
+                        <li key={id} className={styles['reply']}>
+                          <div className={styles['replyCommentHeader']}>
                             <Image
                               src={photoURL}
                               alt={displayName || '匿名ユーザー'}
                               width={50}
                               height={50}
-                              className={styles.commentIcon}
+                              className={styles['commentIcon']}
                             />
-                            <span className={styles.userName}>
+                            <span className={styles['userName']}>
                               {displayName || '匿名ユーザー'}
                             </span>
-                            <small className={styles.time}>
+                            <small className={styles['time']}>
                               {createdAt?.seconds
                                 ? timeAgo(new Date(createdAt.seconds * 1000))
                                 : '日時情報なし'}
@@ -661,46 +666,46 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
 
                             {user?.uid === userId && (
                               <div
-                                className={`${styles.commentsActions} ${
+                                className={`${styles['commentsActions']} ${
                                   !commentsActionsVisible
-                                    ? styles.hiddenIcon
+                                    ? styles['hiddenIcon']
                                     : ''
                                 }`}
                                 ref={actionsRef}
                               >
                                 <button
                                   onClick={() => toggleVisibility(id)}
-                                  className={styles.toggleButton}
+                                  className={styles['toggleButton']}
                                 >
-                                  {visibilityState === id ? (
+                                  {visibilityState[id] ? (
                                     <FontAwesomeIcon
                                       icon={faChevronDown}
-                                      className={styles.icon}
+                                      className={styles['icon']}
                                     />
                                   ) : (
                                     <FontAwesomeIcon
                                       icon={faChevronDown}
-                                      className={styles.icon}
+                                      className={styles['icon']}
                                     />
                                   )}
                                 </button>
 
                                 <div
-                                  className={`${styles.actionButtons} ${
-                                    visibilityState === id
-                                      ? styles.visible
-                                      : styles.hidden
+                                  className={`${styles['actionButtons']} ${
+                                    visibilityState[id]
+                                      ? styles['visible']
+                                      : styles['hidden']
                                   }`}
                                 >
                                   <button
                                     onClick={() => handleEditClick(id, text)}
-                                    className={styles.editButton}
+                                    className={styles['editButton']}
                                   >
                                     編集
                                   </button>
                                   <button
                                     onClick={() => handleDelete(id)}
-                                    className={styles.deleteButton}
+                                    className={styles['deleteButton']}
                                   >
                                     削除
                                   </button>
@@ -722,17 +727,17 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
                                   setActiveEdit(null),
                                 )
                               }
-                              className={styles.editForm}
+                              className={styles['editForm']}
                             >
-                              <div className={styles.viewToggleButtons}>
+                              <div className={styles['viewToggleButtons']}>
                                 <button
                                   type="button"
                                   onClick={() =>
                                     handleViewToggle(id, 'edit', 'markdown')
                                   }
-                                  className={`${styles.viewButton} ${
+                                  className={`${styles['viewButton']} ${
                                     selectedView[id]?.edit === 'markdown'
-                                      ? styles.active
+                                      ? styles['active']
                                       : ''
                                   }`}
                                 >
@@ -743,9 +748,9 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
                                   onClick={() =>
                                     handleViewToggle(id, 'edit', 'preview')
                                   }
-                                  className={`${styles.viewButton} ${
+                                  className={`${styles['viewButton']} ${
                                     selectedView[id]?.edit === 'preview'
-                                      ? styles.active
+                                      ? styles['active']
                                       : ''
                                   }`}
                                 >
@@ -753,7 +758,7 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
                                 </button>
                               </div>
 
-                              <div className={styles.inputAndPreview}>
+                              <div className={styles['inputAndPreview']}>
                                 {selectedView[id]?.edit === 'markdown' && (
                                   <textarea
                                     value={editContent}
@@ -761,11 +766,11 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
                                       setEditContent(e.target.value)
                                     }
                                     placeholder="編集内容を入力してください"
-                                    className={styles.textarea}
+                                    className={styles['textarea']}
                                   />
                                 )}
                                 {selectedView[id]?.edit === 'preview' && (
-                                  <div className={styles.preview}>
+                                  <div className={styles['preview']}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]}>
                                       {editContent}
                                     </ReactMarkdown>
@@ -775,14 +780,14 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
 
                               <button
                                 type="submit"
-                                className={styles.savaButton}
+                                className={styles['savaButton']}
                               >
                                 保存
                               </button>
                               <button
                                 type="button"
                                 onClick={() => handleCancelEdit(text)}
-                                className={styles.cancelButton}
+                                className={styles['cancelButton']}
                               >
                                 キャンセル
                               </button>
@@ -799,3 +804,5 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
     </div>
   )
 }
+
+export default Comments
