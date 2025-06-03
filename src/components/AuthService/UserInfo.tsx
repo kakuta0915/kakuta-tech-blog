@@ -6,10 +6,15 @@ import 'react-toastify/dist/ReactToastify.css'
 import styles from './AuthService.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGear, faUser } from '@fortawesome/free-solid-svg-icons'
+import { User } from 'firebase/auth'
 
-export default function UserInfo({ user }) {
+type Props = {
+  user: User | null
+}
+
+const UserInfo: React.FC<Props> = ({ user }) => {
   const [isOpen, setIsOpen] = useState(false)
-  const dropdownRef = useRef(null)
+  const dropdownRef = useRef<HTMLDivElement | null>(null)
   const isMountedRef = useRef(true)
 
   // ドロップダウンを切り替える
@@ -19,8 +24,11 @@ export default function UserInfo({ user }) {
   }, [user])
 
   // 外部クリックでドロップダウンを閉じる
-  const handleClickOutside = useCallback((event) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+  const handleClickOutside = useCallback((event: MouseEvent) => {
+    if (
+      dropdownRef.current &&
+      !dropdownRef.current.contains(event.target as Node)
+    ) {
       if (isMountedRef.current) {
         setIsOpen(false)
       }
@@ -61,36 +69,42 @@ export default function UserInfo({ user }) {
 
   if (!user) {
     return (
-      <div className={styles.userInfo}>
+      <div className={styles['userInfo']}>
         <p>ログインしてください。</p>
       </div>
     )
   }
 
   return (
-    <div className={styles.userInfo} ref={dropdownRef}>
-      <Image
-        src={user.photoURL}
-        alt="User Icon"
-        onClick={toggleDropdown}
-        width={18}
-        height={18}
-      />
+    <div className={styles['userInfo']} ref={dropdownRef}>
+      {user.photoURL && (
+        <Image
+          src={user.photoURL}
+          alt="User Icon"
+          onClick={toggleDropdown}
+          width={18}
+          height={18}
+        />
+      )}
       {isOpen && (
-        <div className={`${styles.dropdownMenu} ${isOpen ? styles.open : ''}`}>
+        <div
+          className={`${styles['dropdownMenu']} ${
+            isOpen ? styles['open'] : ''
+          }`}
+        >
           <Link href="/my-page/" onClick={() => setIsOpen(false)}>
-            <FontAwesomeIcon icon={faUser} className={styles.icon} />
+            <FontAwesomeIcon icon={faUser} className={styles['icon']} />
             マイページ
           </Link>
           <Link
             href="/settings/"
             onClick={() => setIsOpen(false)}
-            className={styles.lastLink}
+            className={styles['lastLink']}
           >
-            <FontAwesomeIcon icon={faGear} className={styles.icon} />
+            <FontAwesomeIcon icon={faGear} className={styles['icon']} />
             アカウント設定
           </Link>
-          <button onClick={handleSignOut} className={styles.loginButton}>
+          <button onClick={handleSignOut} className={styles['loginButton']}>
             ログアウト
           </button>
         </div>
@@ -98,3 +112,5 @@ export default function UserInfo({ user }) {
     </div>
   )
 }
+
+export default UserInfo
