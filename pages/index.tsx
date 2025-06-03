@@ -1,3 +1,4 @@
+import React from 'react'
 import { getAllArticles } from '@/libs/api'
 import Image from 'next/image'
 import Link from 'next/link'
