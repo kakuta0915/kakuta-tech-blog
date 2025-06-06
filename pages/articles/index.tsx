@@ -5,17 +5,35 @@ import Hero from '@/src/components/Hero'
 import Container from '@/src/components/Container'
 import Posts from '@/src/components/Posts'
 import CategoriesList from '@/src/components/CategoriesList'
-import useScrollAnimation from '@/src/components/UseScrollAnimation'
-import useScrollAnimationStyles from '@/src/components/UseScrollAnimation/index.module.css'
 import eyecatch from '@/public/images/articles.jpg'
 
-export default function Articles({ posts, allCategories }) {
-  useScrollAnimation([
-    `.${useScrollAnimationStyles.fadeInUp}`,
-    `.${useScrollAnimationStyles.fadeInRight}`,
-    `.${useScrollAnimationStyles.fadeInLeft}`,
-  ])
+type Post = {
+  title: string
+  slug: string
+  eyecatch: { url: string }
+  publishDate: string
+  categories: { name: string; slug: string }[]
+  source: string
+  likesCount: number
+  bookmarksCount: number
+}
 
+type Category = {
+  name: string
+  slug: string
+  icon: {
+    url: string
+    width: number
+    height: number
+  }
+}
+
+type ArticleProps = {
+  posts: Post[]
+  allCategories: Category[]
+}
+
+const Articles: React.FC<ArticleProps> = ({ posts, allCategories }) => {
   return (
     <>
       <Meta
@@ -31,11 +49,8 @@ export default function Articles({ posts, allCategories }) {
         imageSrc="/images/articles.jpg"
       />
       <Container>
-        <Posts className={useScrollAnimationStyles.fadeInUp} posts={posts} />
-        <CategoriesList
-          className={useScrollAnimationStyles.fadeInUp}
-          allCategories={allCategories}
-        />
+        <Posts posts={posts} maxPosts={0} />
+        <CategoriesList allCategories={allCategories} />
       </Container>
     </>
   )
@@ -52,3 +67,5 @@ export async function getServerSideProps() {
     },
   }
 }
+
+export default Articles
