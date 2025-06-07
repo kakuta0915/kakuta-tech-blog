@@ -19,7 +19,7 @@ export default function Contact() {
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault()
     const res = await fetch('/api/contact', {
       method: 'POST',
@@ -54,12 +54,12 @@ export default function Contact() {
         imageSrc="./images/contact.jpg"
       />
       <Container>
-        <div className={styles.contact}>
-          <form className={styles.form} onSubmit={handleSubmit}>
+        <div className={styles['contact']}>
+          <form className={styles['form']} onSubmit={handleSubmit}>
             <ul>
               <li>
                 <label htmlFor="name">
-                  <FontAwesomeIcon icon={faUser} className={styles.icon} />
+                  <FontAwesomeIcon icon={faUser} className={styles['icon']} />
                   お名前
                   <span>【必須】</span>
                 </label>
@@ -74,7 +74,10 @@ export default function Contact() {
               </li>
               <li>
                 <label htmlFor="company">
-                  <FontAwesomeIcon icon={faBuilding} className={styles.icon} />
+                  <FontAwesomeIcon
+                    icon={faBuilding}
+                    className={styles['icon']}
+                  />
                   会社名
                 </label>
                 <input
@@ -87,7 +90,10 @@ export default function Contact() {
               </li>
               <li>
                 <label htmlFor="email">
-                  <FontAwesomeIcon icon={faEnvelope} className={styles.icon} />
+                  <FontAwesomeIcon
+                    icon={faEnvelope}
+                    className={styles['icon']}
+                  />
                   メールアドレス
                   <span>【必須】</span>
                 </label>
@@ -102,7 +108,10 @@ export default function Contact() {
               </li>
               <li>
                 <label htmlFor="message">
-                  <FontAwesomeIcon icon={faMessage} className={styles.icon} />
+                  <FontAwesomeIcon
+                    icon={faMessage}
+                    className={styles['icon']}
+                  />
                   お問い合わせ内容
                   <span>【必須】</span>
                 </label>
@@ -115,7 +124,7 @@ export default function Contact() {
                 ></textarea>
               </li>
             </ul>
-            <button className={styles.button} type="submit">
+            <button className={styles['button']} type="submit">
               送信する
             </button>
           </form>
