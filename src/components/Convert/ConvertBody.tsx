@@ -5,6 +5,7 @@ import hljs from 'highlight.js'
 
 interface ConvertBodyProps {
   contentHTML: string
+  id?: string
 }
 
 function isElementNode(node: DOMNode): node is DOMNode & {
