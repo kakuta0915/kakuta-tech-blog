@@ -1,9 +1,8 @@
+import React from 'react'
 import Meta from '@/src/components/Meta'
 import Hero from '@/src/components/Hero'
 import Container from '@/src/components/Container'
 import PortfolioList from '@/src/components/PortfolioList'
-import useScrollAnimation from '@/src/components/UseScrollAnimation'
-import useScrollAnimationStyles from '@/src/components/UseScrollAnimation/index.module.css'
 import styles from './index.module.css'
 import eyecatch from '@/public/images/works.jpg'
 
@@ -19,17 +18,11 @@ const portfolioData = [
 ]
 
 export default function Portfolio() {
-  useScrollAnimation([
-    `.${useScrollAnimationStyles.fadeInUp}`,
-    `.${useScrollAnimationStyles.fadeInRight}`,
-    `.${useScrollAnimationStyles.fadeInLeft}`,
-  ])
   return (
     <>
       <Meta
         pageTitle="PORTFOLIO"
-        description="独学で制作したサイトなどを掲載しており、GitHubからコードもご覧いただけます。"
-        pageDesc=""
+        pageDesc="独学で制作したサイトなどを掲載しており、GitHubからコードもご覧いただけます。"
         pageImg={eyecatch.src}
         pageImgW={eyecatch.width}
         pageImgH={eyecatch.height}
@@ -40,11 +33,8 @@ export default function Portfolio() {
         imageSrc="./images/works.jpg"
       />
       <Container>
-        <section className={styles.portfolioList}>
-          <PortfolioList
-            className={useScrollAnimationStyles.fadeInUp}
-            portfolioData={portfolioData}
-          />
+        <section className={styles['portfolioList']}>
+          <PortfolioList portfolioData={portfolioData} className={''} />
         </section>
       </Container>
     </>
