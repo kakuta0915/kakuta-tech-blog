@@ -1,6 +1,5 @@
 import React from 'react'
-import { useAuthState } from 'react-firebase-hooks/auth'
-import { auth } from '@/firebaseConfig'
+import { useAuthState as useAuthStateOriginal } from 'react-firebase-hooks/auth'
 import { render, screen } from '@testing-library/react'
 import AuthService from './AuthService'
 
@@ -12,9 +11,11 @@ jest.mock('@/firebaseConfig', () => ({
   auth: {},
 }))
 
+// 型アサーションしてモック関数として扱う
+const useAuthState = useAuthStateOriginal as jest.Mock
+
 describe('AuthService Component', () => {
   it('ユーザーが認証されていない場合、SignInWithGoogleをレンダリングする', () => {
-    // ユーザーが未認証の場合のモック
     useAuthState.mockReturnValue([null])
     render(<AuthService />)
 
@@ -22,8 +23,13 @@ describe('AuthService Component', () => {
   })
 
   it('ユーザーが認証されている場合、UserInfoをレンダリングする', () => {
-    // ユーザーが認証されている場合のモック
-    useAuthState.mockReturnValue([{}])
+    useAuthState.mockReturnValue([
+      {
+        uid: '123',
+        displayName: 'Test User',
+        photoURL: 'https://example.com/user-icon.png',
+      },
+    ])
 
     render(<AuthService />)
 
