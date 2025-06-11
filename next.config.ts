@@ -1,7 +1,6 @@
 import path from 'path'
-import { NextConfig } from 'next'
 
-const nextConfig: NextConfig = {
+const nextConfig = {
   reactStrictMode: true,
   images: {
     domains: ['lh3.googleusercontent.com'],
@@ -13,10 +12,7 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'images.microcms-assets.io' },
     ],
   },
-  experimental: {
-    optimizeCss: true,
-  },
-  webpack(config) {
+  webpack: (config: { resolve: { alias: { [x: string]: string } } }) => {
     config.resolve.alias['@'] = path.resolve(__dirname, 'src')
     return config
   },
