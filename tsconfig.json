@@ -26,12 +26,8 @@
     "moduleResolution": "node" /* Specify how TypeScript looks up a file from a given module specifier. */,
     "baseUrl": "." /* Specify the base directory to resolve non-relative module names. */,
     "paths": {
-      "@/src/*": [
-        "src/*"
-      ],
-      "@/*": [
-        "*"
-      ]
+      "@/src/*": ["src/*"],
+      "@/*": ["*"]
     } /* Specify a set of entries that re-map imports to additional lookup locations. */,
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */
@@ -103,20 +99,14 @@
     /* Completeness */
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true /* Skip type checking all .d.ts files. */,
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": true,
     "incremental": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
-    "types": [
-      "react"
-    ]
+    "types": ["react"]
   },
   "include": [
     "next-env.d.ts",
@@ -125,10 +115,8 @@
     "**/*.ts",
     "**/*.tsx",
     "src/components/UseScrollAnimation/index.test.jsx",
-    "src/components/ThreeColum/index.test.tsx"
+    "src/components/ThreeColum/index.test.tsx",
+    "pages/_app.jsx"
   ],
-  "exclude": [
-    "node_modules",
-    "jest.config.js"
-  ]
+  "exclude": ["node_modules", "jest.config.js"]
 }
