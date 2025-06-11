@@ -1,4 +1,5 @@
 import { auth } from '@/firebaseConfig'
+import type { User } from 'firebase/auth'
 import '@testing-library/jest-dom'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
@@ -12,8 +13,22 @@ jest.mock('@/firebaseConfig', () => ({
 
 describe('UserInfo Component', () => {
   const mockUser = {
+    uid: '123',
+    email: 'test@example.com',
+    emailVerified: true,
+    isAnonymous: false,
+    metadata: {},
+    providerData: [],
+    phoneNumber: null,
+    displayName: 'テストユーザー',
     photoURL: 'https://example.com/user.jpg',
-  }
+    // 使っていないけど必要なメソッドのモック
+    delete: jest.fn(),
+    getIdToken: jest.fn(),
+    getIdTokenResult: jest.fn(),
+    reload: jest.fn(),
+    toJSON: jest.fn(),
+  } as unknown as User
 
   test('ユーザーがログインしていない場合、ログインを促すメッセージが表示されること', () => {
     render(<UserInfo user={null} />)
