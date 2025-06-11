@@ -2,8 +2,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useState, useRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import useScrollAnimation from '@/src/components/UseScrollAnimation'
-import useScrollAnimationStyles from '@/src/components/UseScrollAnimation/index.module.css'
 import styles from './index.module.css'
 
 interface Category {
@@ -27,12 +25,6 @@ const CategoriesList: React.FC<CategoriesListProps> = ({ allCategories }) => {
   }
   const refCategories = useRef<HTMLDivElement | null>(null)
 
-  useScrollAnimation([
-    `.${useScrollAnimationStyles['fadeInUp']}`,
-    `.${useScrollAnimationStyles['fadeInRight']}`,
-    `.${useScrollAnimationStyles['fadeInLeft']}`,
-  ])
-
   return (
     <div
       className={`${styles['categories']} ${
@@ -40,7 +32,7 @@ const CategoriesList: React.FC<CategoriesListProps> = ({ allCategories }) => {
       }`}
     >
       <div className={styles['categoriesBtn']} onClick={toggleCategories}>
-        <h3 className={useScrollAnimationStyles['fadeInUp']}>カテゴリ 一覧</h3>
+        <h3>カテゴリ 一覧</h3>
         <FontAwesomeIcon className={styles['icon']} icon={'function'} />
       </div>
       <div
@@ -54,7 +46,7 @@ const CategoriesList: React.FC<CategoriesListProps> = ({ allCategories }) => {
           } as React.CSSProperties
         }
       >
-        <ul className={useScrollAnimationStyles['fadeInUp']}>
+        <ul>
           {allCategories.map(({ name, slug, icon }) => (
             <li className={styles['categoriesList']} key={slug}>
               <Link
