@@ -4,9 +4,9 @@
 const config = {
   siteUrl: 'https://kakuta-programming-blog',
   outDir: './out',
-  exclude: ['/server-sitemap.xml'],
+  exclude: ['/sitemap.xml'],
   robotsTxtOptions: {
-    additionalSitemaps: ['https://kakuta-programming-blog/server-sitemap.xml'],
+    additionalSitemaps: ['https://kakuta-programming-blog/sitemap.xml'],
   },
 }
 
