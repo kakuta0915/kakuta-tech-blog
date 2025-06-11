@@ -1,26 +1,25 @@
-// 設定ページ
-import { useEffect, useState } from 'react'
+// マイページの設定ページ
+import { useEffect, useState, ChangeEvent } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { auth } from '@/firebaseConfig'
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 import { updateProfile } from 'firebase/auth'
+import { auth, storage } from '@/firebaseConfig'
 import { toast } from 'react-toastify'
 import Meta from '@/src/components/Meta'
 import styles from './index.module.css'
 import eyecatch from '@/public/images/index.jpg'
 
-export default function Settings() {
-  const [user, loading] = useAuthState(auth) // ログイン状態
+const Settings: React.FC = () => {
+  const [user, loading] = useAuthState(auth)
   const router = useRouter()
 
-  // フォーム用のローカルステート
-  const [displayName, setDisplayName] = useState('')
-  const [photoURL, setPhotoURL] = useState('')
-  const [selectedFile, setSelectedFile] = useState(null)
+  const [displayName, setDisplayName] = useState<string>('')
+  const [photoURL, setPhotoURL] = useState<string>('')
+  const [selectedFile, setSelectedFile] = useState<File | null>(null)
 
-  // ユーザー情報の初期化
   useEffect(() => {
     if (!loading && !user) {
       router.push('/')
@@ -31,35 +30,38 @@ export default function Settings() {
     }
   }, [loading, user, router])
 
-  // ファイルが選択されたときの処理
-  const handleFileChange = (e) => {
-    const file = e.target.files[0]
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
     if (file) {
       setSelectedFile(file)
       const reader = new FileReader()
       reader.onload = () => {
-        setPhotoURL(reader.result)
+        if (typeof reader.result === 'string') {
+          setPhotoURL(reader.result)
+        }
       }
       reader.readAsDataURL(file)
     }
   }
 
-  // 更新ボタンの処理
   const handleUpdateProfile = async () => {
     if (!user) return
 
     let updatePhotoURL = photoURL
 
     if (selectedFile) {
-      // Firebase Storageに画像をアップロード
-      const storageRef = ref(
-        storage,
-        `profile_images/${user.uid}/${selectedFile.name}`,
-      )
-      await uploadBytes(storageRef, selectedFile)
-
-      // アップロードした画像のURLを取得
-      updatePhotoURL = await getDownloadURL(storageRef)
+      try {
+        const storageRef = ref(
+          storage,
+          `profile_images/${user.uid}/${selectedFile.name}`,
+        )
+        await uploadBytes(storageRef, selectedFile)
+        updatePhotoURL = await getDownloadURL(storageRef)
+      } catch (err) {
+        console.error('画像アップロードエラー:', err)
+        toast.error('画像のアップロードに失敗しました。')
+        return
+      }
     }
 
     if (!displayName.trim()) {
@@ -70,11 +72,11 @@ export default function Settings() {
     try {
       await updateProfile(user, {
         displayName,
-        photoURL,
+        photoURL: updatePhotoURL,
       })
       toast.success('プロフィールを更新しました！')
     } catch (error) {
-      console.error('プロフィールの更新に失敗しました。:', error)
+      console.error('プロフィールの更新に失敗:', error)
       toast.error('プロフィールの更新に失敗しました。')
     }
   }
@@ -92,40 +94,45 @@ export default function Settings() {
         pageImgW={eyecatch.width}
         pageImgH={eyecatch.height}
       />
-      <h1 className={styles.pageTitle}>Settings</h1>
-      <div className={styles.profileContainer}>
-        <div className={styles.preview}>
+      <h1 className={styles['pageTitle']}>Settings</h1>
+      <div className={styles['profileContainer']}>
+        <div className={styles['preview']}>
           <Image src={photoURL} alt="User Icon" width={80} height={80} />
           <p>{displayName}</p>
         </div>
-        <div className={styles.formSection}>
-          <h3 className={styles.sectionTitle}>プロフィール設定</h3>
-          <div className={styles.formGroup}>
+        <div className={styles['formSection']}>
+          <h3 className={styles['sectionTitle']}>プロフィール設定</h3>
+          <div className={styles['formGroup']}>
             <label>表示名</label>
             <input
-              className={styles.inputText}
+              className={styles['inputText']}
               type="text"
               value={displayName}
               onChange={(e) => setDisplayName(e.target.value)}
               placeholder="新しい名前を入力"
             />
           </div>
-          <div className={styles.formGroup}>
+          <div className={styles['formGroup']}>
             <label>アイコンURL</label>
             <input type="file" accept="image/*" onChange={handleFileChange} />
           </div>
-          <button onClick={handleUpdateProfile} className={styles.updateButton}>
+          <button
+            onClick={handleUpdateProfile}
+            className={styles['updateButton']}
+          >
             更新する
           </button>
         </div>
       </div>
-      <div className={styles.deleteSection}>
-        <h3 className={styles.sectionTitle}>プロフィール設定</h3>
+      <div className={styles['deleteSection']}>
+        <h3 className={styles['sectionTitle']}>アカウント削除</h3>
         <p>一度アカウントを削除すると、二度ともとに戻すことが出来ません。</p>
-        <Link href="/settings/delete" className={styles.deleteButton}>
+        <Link href="/settings/delete" className={styles['deleteButton']}>
           アカウントを削除する
         </Link>
       </div>
     </>
   )
 }
+
+export default Settings
