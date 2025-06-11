@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { auth } from '@/firebaseConfig'
@@ -11,7 +11,7 @@ import {
 } from 'firebase/auth'
 import { toast } from 'react-toastify'
 import Meta from '@/src/components/Meta'
-import styles from './delete.module.css'
+import styles from './DeleteAccount.module.css'
 import eyecatch from '@/public/images/index.jpg'
 
 const DeleteAccount: React.FC = () => {

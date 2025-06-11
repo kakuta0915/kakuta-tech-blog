@@ -1,4 +1,5 @@
 // 記事一覧ページ
+import React from 'react'
 import { getAllArticles, getAllCategories } from '@/libs/api'
 import Meta from '@/src/components/Meta'
 import Hero from '@/src/components/Hero'

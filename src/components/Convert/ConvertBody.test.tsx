@@ -1,23 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 import { render } from '@testing-library/react'
 import ConvertBody from './ConvertBody'
 
-jest.mock('next/image', () => ({
-  __esModule: true,
-  default: ({
-    src,
-    width,
-    height,
-    alt,
-  }: {
-    src: string
-    width: number
-    height: number
-    alt: string
-  }) => <img src={src} width={width} height={height} alt={alt} />,
-}))
-
 jest.mock('html-react-parser', () => {
-  return (html: string) => {
+  const MockParser = (html: string) => {
     if (html.includes('<img')) {
       return (
         <img src="/image.jpg" alt="Example image" width={600} height={400} />
@@ -35,6 +21,7 @@ jest.mock('html-react-parser', () => {
     }
     return html
   }
+  return MockParser
 })
 
 describe('ConvertBody Component', () => {

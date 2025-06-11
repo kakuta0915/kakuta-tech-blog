@@ -1,3 +1,4 @@
+import React from 'react'
 import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock } from '@fortawesome/free-regular-svg-icons'
@@ -39,7 +40,7 @@ const PostHeader: React.FC<PostHeaderProps> = ({
               icon={faClock}
               size="lg"
               color="var(--gray)"
-              className={styles.icon}
+              className={styles['icon']}
               data-testid="clock-icon"
             />
             <ConvertDate dateISO={publish} />

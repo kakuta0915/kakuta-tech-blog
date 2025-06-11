@@ -1,20 +1,9 @@
-import type { ImgHTMLAttributes } from 'react'
 import { render, screen } from '@testing-library/react'
 import Posts from '.'
 
 jest.mock('../convert/convertDate', () => ({
   __esModule: true,
   default: ({ dateISO }: { dateISO: string }) => <span>{dateISO}</span>,
-}))
-
-jest.mock('next/image', () => ({
-  __esModule: true,
-  default: ({
-    fill,
-    ...props
-  }: { fill?: boolean } & ImgHTMLAttributes<HTMLImageElement>) => (
-    <img {...props} style={{ objectFit: fill ? 'cover' : undefined }} />
-  ),
 }))
 
 describe('Posts Component', () => {

@@ -1,4 +1,5 @@
 // 取得したスラッグで生成されたカテゴリーページ (〇〇に関する記事)
+import React from 'react'
 import { getAllCategories, getAllPostByCategory } from '@/libs/api'
 import Meta from '@/src/components/Meta'
 import PostHeader from '@/src/components/PostHeader'
@@ -98,3 +99,5 @@ export const getServerSideProps = async (
     },
   }
 }
+
+export default Category

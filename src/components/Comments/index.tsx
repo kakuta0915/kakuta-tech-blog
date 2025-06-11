@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
+import error from 'next/error'
 import { db } from '@/firebaseConfig'
 import {
   collection,
@@ -19,7 +20,6 @@ import remarkGfm from 'remark-gfm'
 import styles from './index.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
-import { error } from 'console'
 
 type CommentsProps = {
   postId: string

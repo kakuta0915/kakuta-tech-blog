@@ -4,13 +4,6 @@ import PostHeader from '.'
 import type { PostHeaderProps } from '.'
 import styles from './index.module.css'
 
-jest.mock('next/image', () => ({
-  __esModule: true,
-  default: (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
-    <img {...props} />
-  ),
-}))
-
 jest.mock('../convert/convertDate', () => ({
   __esModule: true,
   default: ({ dateISO }: { dateISO: string }) => <span>{dateISO}</span>,

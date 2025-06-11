@@ -2,12 +2,6 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import CategoriesList from '.'
 
-jest.mock('@/src/components/UseScrollAnimation/index.module.css', () => ({
-  fadeInUp: 'fadeInUp',
-  fadeInRight: 'fadeInRight',
-  fadeInLeft: 'fadeInLeft',
-}))
-
 describe('CategoriesList component', () => {
   const mockCategories = [
     {

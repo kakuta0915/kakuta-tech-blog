@@ -1,5 +1,5 @@
 // Contactページ
-import { useState } from 'react'
+import React, { useState } from 'react'
 import Meta from '@/src/components/Meta'
 import Hero from '@/src/components/Hero'
 import Container from '@/src/components/Container'

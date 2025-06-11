@@ -1,3 +1,4 @@
+import React from 'react'
 import Image from 'next/image'
 import Meta from '@/src/components/Meta'
 import Hero from '@/src/components/Hero'

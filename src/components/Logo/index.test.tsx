@@ -2,13 +2,6 @@ import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import Logo from '.'
 
-jest.mock('next/image', () => ({
-  __esModule: true,
-  default: (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
-    <img {...props} />
-  ),
-}))
-
 describe('Logo Component', () => {
   test('デフォルトでヘッダーロゴが表示される', () => {
     render(<Logo />)

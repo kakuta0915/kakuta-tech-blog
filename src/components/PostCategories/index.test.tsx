@@ -2,13 +2,6 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import PostCategories from '.'
 
-jest.mock('next/image', () => ({
-  __esModule: true,
-  default: (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
-    <img {...props} />
-  ),
-}))
-
 describe('PostCategories', () => {
   const categories = [
     {
