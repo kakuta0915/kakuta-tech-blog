@@ -1,39 +1,18 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
+import { mockCategories } from '@/src/__mocks__/categories'
 import CategoriesList from '.'
 
 describe('CategoriesList component', () => {
-  const mockCategories = [
-    {
-      name: 'Tech',
-      slug: 'tech',
-      icon: { url: '/icons/tech.png', width: 30, height: 30 },
-    },
-    {
-      name: 'Lifestyle',
-      slug: 'lifestyle',
-      icon: {
-        url: '/icons/lifestyle.png',
-        width: 30,
-        height: 30,
-      },
-    },
-  ]
-
   it('カテゴリ 一覧が正しく表示される', async () => {
     render(<CategoriesList allCategories={mockCategories} />)
-
     expect(screen.getByText('カテゴリ 一覧')).toBeInTheDocument()
   })
 
   it('ボタンをクリックするとカテゴリリストがトグル表示される', () => {
     render(<CategoriesList allCategories={mockCategories} />)
-
-    const button = screen.getByText('カテゴリ 一覧')
-    fireEvent.click(button)
-
-    const categoriesList = screen.getByRole('list')
-    expect(categoriesList).toBeInTheDocument()
+    fireEvent.click(screen.getByText('カテゴリ 一覧'))
+    expect(screen.getByRole('list')).toBeInTheDocument()
   })
 
   it('カテゴリのリンクとアイコンが正しく表示される', () => {
@@ -51,9 +30,7 @@ describe('CategoriesList component', () => {
         'src',
         category.icon.url,
       )
-
-      const icon = screen.getByTestId(`icon-${category.slug}`)
-      expect(icon).toBeInTheDocument()
+      expect(screen.getByTestId(`icon-${category.slug}`)).toBeInTheDocument()
     })
   })
 })
