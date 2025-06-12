@@ -2,30 +2,10 @@
 import { render } from '@testing-library/react'
 import ConvertBody from './ConvertBody'
 
-jest.mock('html-react-parser', () => {
-  const MockParser = (html: string) => {
-    if (html.includes('<img')) {
-      return (
-        <img src="/image.jpg" alt="Example image" width={600} height={400} />
-      )
-    }
-    if (html.includes('<code')) {
-      return (
-        <code className="hljs">
-          <span className="hljs-keyword">const</span>
-        </code>
-      )
-    }
-    if (html.includes('<p')) {
-      return <p>This is a paragraph.</p>
-    }
-    return html
-  }
-  return MockParser
-})
+jest.mock('html-react-parser')
 
 describe('ConvertBody Component', () => {
-  it('renders an image tag correctly', () => {
+  it('画像タグが正しく描画されること', () => {
     const contentHTML =
       '<img src="/image.jpg" alt="Example image" width="600" height="400" />'
     const { container } = render(<ConvertBody contentHTML={contentHTML} />)
@@ -36,7 +16,7 @@ describe('ConvertBody Component', () => {
     expect(img).toHaveAttribute('height', '400')
   })
 
-  it('renders a code block correctly with syntax highlighting', () => {
+  it('シンタックスハイライト付きのコードブロックが正しく描画されること', () => {
     const contentHTML = '<code>const a = 1;</code>'
     const { container } = render(<ConvertBody contentHTML={contentHTML} />)
     const codeBlock = container.querySelector('code')
@@ -47,7 +27,7 @@ describe('ConvertBody Component', () => {
     }
   })
 
-  it('renders other HTML elements correctly', () => {
+  it('段落が正しく描画されること', () => {
     const contentHTML = '<p>This is a paragraph.</p>'
     const { container } = render(<ConvertBody contentHTML={contentHTML} />)
     const paragraph = container.querySelector('p')

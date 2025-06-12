@@ -7,12 +7,19 @@ import qiitaImg from '/public/images/qiitaEyecatch.png'
 import { faBookmark, faHeart, faTag } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-interface Category {
-  name: string
-  slug: string
+export type Icon = {
+  url: string
+  width: number
+  height: number
 }
 
-interface Post {
+export type Category = {
+  name: string
+  slug: string
+  icon?: Icon
+}
+
+export type Post = {
   title: string
   slug: string
   eyecatch: { url: string }
@@ -23,7 +30,7 @@ interface Post {
   bookmarksCount: number
 }
 
-interface PostsProps {
+export type PostsProps = {
   className?: string
   btn?: boolean
   posts: Post[]

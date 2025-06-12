@@ -2,13 +2,15 @@ import { render, screen } from '@testing-library/react'
 import Layout from '.'
 
 jest.mock('./Header', () => {
-  const Header = () => <div data-testid="header">Header</div>
-  return Header
+  const MockHeader = () => <div data-testid="header">Header</div>
+  MockHeader.displayName = 'MockHeader'
+  return MockHeader
 })
 
 jest.mock('./Footer', () => {
-  const Footer = () => <div data-testid="footer">Footer</div>
-  return Footer
+  const MockFooter = () => <div data-testid="footer">Footer</div>
+  MockFooter.displayName = 'MockFooter'
+  return MockFooter
 })
 
 describe('Layout Component', () => {
@@ -18,9 +20,7 @@ describe('Layout Component', () => {
         <div>Test Content</div>
       </Layout>,
     )
-
-    const headerElement = screen.getByTestId('header')
-    expect(headerElement).toBeInTheDocument()
+    expect(screen.getByTestId('header')).toBeInTheDocument()
   })
 
   it('Footerコンポーネントがレンダリングされているか', () => {
@@ -29,9 +29,7 @@ describe('Layout Component', () => {
         <div>Test Content</div>
       </Layout>,
     )
-
-    const footerElement = screen.getByTestId('footer')
-    expect(footerElement).toBeInTheDocument()
+    expect(screen.getByTestId('footer')).toBeInTheDocument()
   })
 
   it('childrenがmainタグ内に正しく表示されているか', () => {
@@ -40,8 +38,6 @@ describe('Layout Component', () => {
         <div>Test Content</div>
       </Layout>,
     )
-
-    const contentElement = screen.getByText('Test Content')
-    expect(contentElement).toBeInTheDocument()
+    expect(screen.getByText('Test Content')).toBeInTheDocument()
   })
 })

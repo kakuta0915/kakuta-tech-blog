@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import PortfolioList from '.'
-import { portfolioData } from '@/src/__mocks__/portfolioDataMock'
+import { portfolioData } from '@/src/__mocks__/portfolioData'
 
 test('portfolioDataが正しく表示される', () => {
   render(<PortfolioList portfolioData={portfolioData} className={''} />)
