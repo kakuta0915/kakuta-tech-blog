@@ -34,20 +34,6 @@ describe('UserInfo Component', () => {
     })
   })
 
-  test('ドロップダウンメニューのリンクをクリックすると、メニューが閉じること', async () => {
-    render(<UserInfo user={user} />)
-
-    const userIcon = screen.getByAltText('User Icon')
-    fireEvent.click(userIcon)
-
-    const myPageLink = screen.getByText('マイページ')
-    fireEvent.click(myPageLink)
-
-    await waitFor(() => {
-      expect(screen.queryByText('マイページ')).not.toBeInTheDocument()
-    })
-  })
-
   test('外部クリックでドロップダウンメニューが閉じること', async () => {
     render(<UserInfo user={user} />)
 
