@@ -1,9 +1,17 @@
 import { render, screen } from '@testing-library/react'
 import Layout from '.'
 
-jest.mock('./Header', () => () => <div data-testid="header">Header</div>)
+jest.mock('./Header', () => {
+  const MockHeader = () => <div data-testid="header">Header</div>
+  MockHeader.displayName = 'MockHeader'
+  return MockHeader
+})
 
-jest.mock('./Footer', () => () => <div data-testid="footer">Footer</div>)
+jest.mock('./Footer', () => {
+  const MockFooter = () => <div data-testid="footer">Footer</div>
+  MockFooter.displayName = 'MockFooter'
+  return MockFooter
+})
 
 describe('Layout Component', () => {
   it('Headerコンポーネントがレンダリングされているか', () => {
