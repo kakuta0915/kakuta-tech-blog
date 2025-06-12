@@ -27,7 +27,7 @@ interface PostsProps {
   className?: string
   btn?: boolean
   posts: Post[]
-  maxPosts: number
+  maxPosts?: number
 }
 
 const Posts: React.FC<PostsProps> = ({

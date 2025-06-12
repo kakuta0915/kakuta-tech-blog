@@ -50,7 +50,7 @@ const Articles: React.FC<ArticleProps> = ({ posts, allCategories }) => {
         imageSrc="/images/articles.jpg"
       />
       <Container>
-        <Posts posts={posts} maxPosts={0} />
+        <Posts posts={posts} />
         <CategoriesList allCategories={allCategories} />
       </Container>
     </>
