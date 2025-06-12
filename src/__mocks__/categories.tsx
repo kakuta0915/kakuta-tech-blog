@@ -1,4 +1,6 @@
-export const mockCategories = [
+import type { Category } from '@/src/components/Posts'
+
+export const mockCategories: Category[] = [
   {
     name: 'Tech',
     slug: 'tech',
