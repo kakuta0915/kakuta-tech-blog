@@ -5,7 +5,7 @@ import { signInWithPopup } from 'firebase/auth'
 import { auth, provider } from '@/firebaseConfig'
 import { toast } from 'react-toastify'
 import googleIcon from '/public/images/googleIcon.png'
-import styles from './SignInWithGoogle.module.css'
+import styles from './index.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRightToBracket, faTimes } from '@fortawesome/free-solid-svg-icons'
 

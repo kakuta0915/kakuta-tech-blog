@@ -1,21 +1,10 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
-import SignInWithGoogle from './SignInWithGoogle'
+import SignInWithGoogle from '.'
 import { signInWithPopup } from 'firebase/auth'
 import { toast } from 'react-toastify'
 
-// firebase/authをモック
-jest.mock('firebase/auth', () => ({
-  getAuth: jest.fn(() => ({})),
-  GoogleAuthProvider: jest.fn(() => ({})),
-  signInWithPopup: jest.fn(),
-}))
-
-jest.mock('react-toastify', () => ({
-  toast: {
-    success: jest.fn(),
-    error: jest.fn(),
-  },
-}))
+jest.mock('firebase/auth', () => require('@/src/__mocks__/firebase-auth'))
+jest.mock('react-toastify', () => require('@/src/__mocks__/react-toastify'))
 
 describe('SignInWithGoogle', () => {
   it('ログインボタンが表示される', () => {
