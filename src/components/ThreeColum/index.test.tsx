@@ -7,13 +7,6 @@ import {
   ThreeColumSocialActions,
 } from '.'
 
-jest.mock('./threeColum.module.css', () => ({
-  flexContainer: 'flexContainer',
-  main: 'main',
-  sidebar: 'sidebar',
-  socialActions: 'socialActions',
-}))
-
 describe('ThreeColum Components', () => {
   test('ThreeColumと子要素がレンダリングされているか', () => {
     render(
