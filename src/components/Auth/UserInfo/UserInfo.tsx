@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef, useCallback } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { auth } from '@/firebaseConfig'
+import { User } from 'firebase/auth'
 import 'react-toastify/dist/ReactToastify.css'
-import styles from './AuthService.module.css'
+import styles from './UserInfo.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGear, faUser } from '@fortawesome/free-solid-svg-icons'
-import { User } from 'firebase/auth'
 
 type Props = {
   user: User | null

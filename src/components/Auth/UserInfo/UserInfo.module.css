@@ -1,0 +1,65 @@
+.loginButton {
+  color: var(--white);
+  padding: calc(var(--space-xxs) * 0.5);
+  background-color: var(--blue-1);
+  border: 1px solid var(--blue-1);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.userInfo {
+  position: relative;
+}
+
+.userInfo img {
+  cursor: pointer;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 15rem;
+  background-color: var(--white);
+  border: 1px solid var(--gray);
+  border-radius: 8px;
+  padding: calc(var(--space-xxs) * 0.75);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.dropdownMenu a,
+.dropdownMenu .loginButton {
+  display: block;
+  padding: calc(var(--space-xxs) * 0.7) 0.6rem;
+}
+
+.dropdownMenu a {
+  transition: background-color 0.3s ease;
+  border-radius: 4px;
+}
+
+.lastLink {
+  border-bottom: 1px solid var(--gray-1);
+}
+
+.dropdownMenu a:hover {
+  background-color: var(--gray-3);
+}
+
+.icon {
+  margin-right: 0.5rem;
+}
+
+.dropdownMenu .loginButton {
+  margin-top: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .loginButton {
+    font-size: var(--body);
+  }
+}

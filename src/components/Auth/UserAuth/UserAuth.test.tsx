@@ -1,7 +1,7 @@
 import React from 'react'
 import { useAuthState as useAuthStateOriginal } from 'react-firebase-hooks/auth'
 import { render, screen } from '@testing-library/react'
-import AuthService from './AuthService'
+import UserAuth from './UserAuth'
 
 jest.mock('react-firebase-hooks/auth', () => ({
   useAuthState: jest.fn(),
@@ -17,7 +17,7 @@ const useAuthState = useAuthStateOriginal as jest.Mock
 describe('AuthService Component', () => {
   it('ユーザーが認証されていない場合、SignInWithGoogleをレンダリングする', () => {
     useAuthState.mockReturnValue([null])
-    render(<AuthService />)
+    render(<UserAuth />)
 
     expect(screen.getByText('Log in')).toBeInTheDocument()
   })
@@ -31,7 +31,7 @@ describe('AuthService Component', () => {
       },
     ])
 
-    render(<AuthService />)
+    render(<UserAuth />)
 
     const userIcon = screen.getByAltText('User Icon')
     expect(userIcon).toBeInTheDocument()
