@@ -1,39 +1,63 @@
-import React from 'react'
-import { useAuthState as useAuthStateOriginal } from 'react-firebase-hooks/auth'
-import { render, screen } from '@testing-library/react'
-import UserAuth from '.'
+import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import SignInWithGoogle from '../SignInWithGoogle'
+import { signInWithPopup } from 'firebase/auth'
+import { toast } from 'react-toastify'
 
-jest.mock('react-firebase-hooks/auth', () => ({
-  useAuthState: jest.fn(),
-}))
+jest.mock('firebase/auth')
+jest.mock('react-toastify')
 
-jest.mock('@/firebaseConfig', () => ({
-  auth: {},
-}))
+beforeEach(() => {
+  jest.clearAllMocks()
+  ;(signInWithPopup as jest.Mock).mockResolvedValue({
+    user: { uid: 'mockUser' },
+  })
+})
 
-// 型アサーションしてモック関数として扱う
-const useAuthState = useAuthStateOriginal as jest.Mock
-
-describe('AuthService Component', () => {
-  it('ユーザーが認証されていない場合、SignInWithGoogleをレンダリングする', () => {
-    useAuthState.mockReturnValue([null])
-    render(<UserAuth />)
-
+describe('SignInWithGoogle', () => {
+  it('ログインボタンが表示される', () => {
+    render(<SignInWithGoogle />)
     expect(screen.getByText('Log in')).toBeInTheDocument()
   })
 
-  it('ユーザーが認証されている場合、UserInfoをレンダリングする', () => {
-    useAuthState.mockReturnValue([
-      {
-        uid: '123',
-        displayName: 'Test User',
-        photoURL: 'https://example.com/user-icon.png',
-      },
-    ])
+  it('ポップアップが開閉する', () => {
+    render(<SignInWithGoogle />)
 
-    render(<UserAuth />)
+    fireEvent.click(screen.getByText('Log in'))
+    expect(screen.getByText('KAKUTA TECH BLOG')).toBeInTheDocument()
 
-    const userIcon = screen.getByAltText('User Icon')
-    expect(userIcon).toBeInTheDocument()
+    fireEvent.click(screen.getByRole('button', { name: /close/i }))
+    expect(screen.queryByText('KAKUTA TECH BLOG')).not.toBeInTheDocument()
+  })
+
+  it('Googleでログインボタンがクリックされたときに `signInWithPopup` が呼び出される', async () => {
+    render(<SignInWithGoogle />)
+
+    fireEvent.click(screen.getByText('Log in'))
+    fireEvent.click(screen.getByText('Googleでログイン'))
+
+    expect(signInWithPopup).toHaveBeenCalled()
+
+    await waitFor(() => {
+      expect(toast.success).toHaveBeenCalledWith('ログインしました')
+    })
+  })
+
+  it('ログインエラー時にエラーメッセージが表示される', async () => {
+    ;(signInWithPopup as jest.Mock).mockRejectedValueOnce(
+      new Error('テストエラー'),
+    )
+
+    render(<SignInWithGoogle />)
+
+    fireEvent.click(screen.getByText('Log in'))
+    fireEvent.click(screen.getByText('Googleでログイン'))
+
+    await waitFor(() => {
+      expect(
+        screen.getByText(/エラーが発生しました。もう一度やり直してください。/),
+      ).toBeInTheDocument()
+    })
+
+    expect(toast.error).toHaveBeenCalledWith('ログインに失敗しました')
   })
 })

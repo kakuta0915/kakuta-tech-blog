@@ -3,9 +3,9 @@ import { auth } from '@/firebaseConfig'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import styles from './index.module.css'
 import UserInfo from '../UserInfo'
 import SignInWithGoogle from '../SignInWithGoogle'
-import styles from './index.module.css'
 
 const UserAuth: React.FC = () => {
   const [user] = useAuthState(auth)

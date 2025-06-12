@@ -3,10 +3,14 @@ import SignInWithGoogle from '.'
 import { signInWithPopup } from 'firebase/auth'
 import { toast } from 'react-toastify'
 
-jest.mock('firebase/auth', () => require('@/src/__mocks__/firebase-auth'))
-jest.mock('react-toastify', () => require('@/src/__mocks__/react-toastify'))
+jest.mock('firebase/auth')
+jest.mock('react-toastify')
 
 describe('SignInWithGoogle', () => {
+  beforeEach(() => {
+    jest.clearAllMocks()
+  })
+
   it('ログインボタンが表示される', () => {
     render(<SignInWithGoogle />)
     expect(screen.getByText('Log in')).toBeInTheDocument()
@@ -36,7 +40,9 @@ describe('SignInWithGoogle', () => {
   })
 
   it('ログインエラー時にエラーメッセージが表示される', async () => {
-    ;(signInWithPopup as jest.Mock).mockRejectedValue(new Error('テストエラー'))
+    ;(signInWithPopup as jest.Mock).mockRejectedValueOnce(
+      new Error('テストエラー'),
+    )
 
     render(<SignInWithGoogle />)
 
