@@ -1,19 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import Nav from '.'
-import { ReactNode } from 'react'
-
-jest.mock('next/link', () => {
-  return function MockLink({
-    children,
-    href,
-  }: {
-    children: ReactNode
-    href: string
-  }) {
-    return <a href={href}>{children}</a>
-  }
-})
 
 describe('Nav Component', () => {
   test('ナビタグが正しくレンダリングされる', () => {
