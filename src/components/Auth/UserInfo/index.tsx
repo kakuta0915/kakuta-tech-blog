@@ -8,9 +8,7 @@ import styles from './index.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGear, faUser } from '@fortawesome/free-solid-svg-icons'
 
-type Props = UserProps
-
-const UserInfo: React.FC<Props> = ({ user }) => {
+const UserInfo: React.FC<UserProps> = ({ user }) => {
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement | null>(null)
   const isMountedRef = useRef(true)
