@@ -3,12 +3,16 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { auth } from '@/firebaseConfig'
 import 'react-toastify/dist/ReactToastify.css'
-import { UserProps } from '@/types'
+import { SimpleUserProps } from '@/types'
 import styles from './index.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGear, faUser } from '@fortawesome/free-solid-svg-icons'
 
-const UserInfo: React.FC<UserProps> = ({ user }) => {
+type Props = {
+  user: SimpleUserProps | null
+}
+
+const UserInfo: React.FC<Props> = ({ user }) => {
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement | null>(null)
   const isMountedRef = useRef(true)
