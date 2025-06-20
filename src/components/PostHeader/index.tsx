@@ -4,17 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock } from '@fortawesome/free-regular-svg-icons'
 import ConvertDate from '../Convert/ConvertDate'
 import styles from './index.module.css'
-
-export interface PostHeaderProps {
-  icon: {
-    url: string
-    width: number
-    height: number
-  }
-  title: string
-  subtitle: string
-  publish?: string
-}
+import { PostHeaderProps } from '@/types'
 
 const PostHeader: React.FC<PostHeaderProps> = ({
   icon,
