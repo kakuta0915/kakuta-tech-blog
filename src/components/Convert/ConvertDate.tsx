@@ -2,7 +2,7 @@ import React from 'react'
 import { parseISO, format } from 'date-fns'
 import { ja } from 'date-fns/locale/ja'
 
-interface ConvertDateProps {
+type ConvertDateProps = {
   dateISO: string
 }
 

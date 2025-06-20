@@ -3,7 +3,7 @@ import Image from 'next/image'
 import parse, { DOMNode } from 'html-react-parser'
 import hljs from 'highlight.js'
 
-interface ConvertBodyProps {
+type ConvertBodyProps = {
   contentHTML: string
   id?: string
 }
