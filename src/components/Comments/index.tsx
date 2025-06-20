@@ -68,11 +68,6 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
     const auth = getAuth()
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
-        // setUser({
-        //   uid: currentUser.uid,
-        //   displayName: currentUser.displayName ?? '',
-        //   photoURL: currentUser.photoURL ?? '',
-        // })
         setUser(currentUser)
       } else {
         setUser(null)
