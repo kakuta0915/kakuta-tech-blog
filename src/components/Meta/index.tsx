@@ -5,7 +5,7 @@ import { siteMeta } from '@/libs/constants'
 import siteImg from '/public/images/ogp.jpg'
 const { siteTitle, siteUrl, siteLocal, siteType, siteIcon } = siteMeta
 
-interface MetaProps {
+type MetaProps = {
   pageTitle: string
   pageDesc: string
   pageImg?: string

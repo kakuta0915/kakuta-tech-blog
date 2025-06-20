@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styles from './index.module.css'
 
-interface SocialProps {
+type SocialProps = {
   className?: string
   isFooterSocial: boolean
 }

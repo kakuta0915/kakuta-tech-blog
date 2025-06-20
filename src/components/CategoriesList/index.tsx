@@ -2,22 +2,9 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState, useRef } from 'react'
+import { CategoriesListProps } from '@/types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styles from './index.module.css'
-
-interface Category {
-  name: string
-  slug: string
-  icon: {
-    url: string
-    width: number
-    height: number
-  }
-}
-
-interface CategoriesListProps {
-  allCategories: Category[]
-}
 
 const CategoriesList: React.FC<CategoriesListProps> = ({ allCategories }) => {
   const [categoriesOpen, setCategoriesOpen] = useState(false)

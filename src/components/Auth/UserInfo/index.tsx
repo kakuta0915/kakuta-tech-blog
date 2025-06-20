@@ -2,14 +2,14 @@ import React, { useState, useEffect, useRef, useCallback } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { auth } from '@/firebaseConfig'
-import { User } from 'firebase/auth'
 import 'react-toastify/dist/ReactToastify.css'
+import { SimpleUserProps } from '@/types'
 import styles from './index.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGear, faUser } from '@fortawesome/free-solid-svg-icons'
 
 type Props = {
-  user: User | null
+  user: SimpleUserProps | null
 }
 
 const UserInfo: React.FC<Props> = ({ user }) => {

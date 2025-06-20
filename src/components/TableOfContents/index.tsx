@@ -3,15 +3,7 @@ import { Link as Scroll } from 'react-scroll'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleDown } from '@fortawesome/free-solid-svg-icons'
 import styles from './index.module.css'
-
-type TocItem = {
-  id: string
-  text: string
-}
-
-interface TableOfContentsProps {
-  toc: TocItem[]
-}
+import { TableOfContentsProps } from '@/types'
 
 interface CustomStyle extends React.CSSProperties {
   '--toc-height'?: string

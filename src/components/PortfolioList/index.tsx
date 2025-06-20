@@ -2,19 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from './index.module.css'
-
-interface PortfolioItem {
-  id: number
-  title: string
-  link: string
-  imageUrl: string
-  description: string
-}
-
-interface PortfolioListProps {
-  className: string
-  portfolioData: PortfolioItem[]
-}
+import { PortfolioListProps } from '@/types'
 
 const PortfolioList: React.FC<PortfolioListProps> = ({
   className,

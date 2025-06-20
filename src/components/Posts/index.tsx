@@ -6,36 +6,7 @@ import styles from './index.module.css'
 import qiitaImg from '/public/images/qiitaEyecatch.png'
 import { faBookmark, faHeart, faTag } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
-export type Icon = {
-  url: string
-  width: number
-  height: number
-}
-
-export type Category = {
-  name: string
-  slug: string
-  icon?: Icon
-}
-
-export type Post = {
-  title: string
-  slug: string
-  eyecatch: { url: string }
-  publishDate: string
-  categories: Category[]
-  source: string
-  likesCount: number
-  bookmarksCount: number
-}
-
-export type PostsProps = {
-  className?: string
-  btn?: boolean
-  posts: Post[]
-  maxPosts?: number
-}
+import { PostsProps } from '@/types'
 
 const Posts: React.FC<PostsProps> = ({
   className,
@@ -105,13 +76,16 @@ const Posts: React.FC<PostsProps> = ({
                   </div>
                 </div>
                 <ul>
-                  {categories.map(({ name, slug }) => (
-                    <li className={styles['postsCategoriesLi']} key={slug}>
+                  {categories.map((category) => (
+                    <li
+                      className={styles['postsCategoriesLi']}
+                      key={category.slug}
+                    >
                       <FontAwesomeIcon
                         className={styles['tagIcon']}
                         icon={faTag}
                       />
-                      <div className={styles['name']}>{name}</div>
+                      <div className={styles['name']}>{category.name}</div>
                     </li>
                   ))}
                 </ul>
