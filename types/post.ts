@@ -1,6 +1,9 @@
-import { Category } from './category'
+type Category = {
+  name: string
+  slug: string
+}
 
-type Posts = {
+export type Posts = {
   title: string
   slug: string
   eyecatch: { url: string }

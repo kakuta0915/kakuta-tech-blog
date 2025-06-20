@@ -76,13 +76,16 @@ const Posts: React.FC<PostsProps> = ({
                   </div>
                 </div>
                 <ul>
-                  {categories.map(({ name, slug }) => (
-                    <li className={styles['postsCategoriesLi']} key={slug}>
+                  {categories.map((category) => (
+                    <li
+                      className={styles['postsCategoriesLi']}
+                      key={category.slug}
+                    >
                       <FontAwesomeIcon
                         className={styles['tagIcon']}
                         icon={faTag}
                       />
-                      <div className={styles['name']}>{name}</div>
+                      <div className={styles['name']}>{category.name}</div>
                     </li>
                   ))}
                 </ul>
