@@ -6,13 +6,7 @@ import {
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons'
 import styles from './index.module.css'
-
-interface PaginationProps {
-  prevText?: string
-  prevUrl?: string
-  nextText?: string
-  nextUrl?: string
-}
+import { PaginationProps } from '@/types'
 
 const Pagination: React.FC<PaginationProps> = ({
   prevText = '',
