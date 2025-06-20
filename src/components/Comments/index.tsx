@@ -49,8 +49,7 @@ function timeAgo(date: Date): string {
 }
 
 const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
-  const [user, setUser] = useState<FirebaseUserProps | null>(null)
-  // ログインユーザー情報
+  const [user, setUser] = useState<FirebaseUserProps | null>(null) // ログインユーザー情報
   const [comment, setComment] = useState<string>('') // 入力されたコメント
   const [comments, setComments] = useState<CommentData[]>([]) // 取得したコメント
   const [replyContent, setReplyContent] = useState<string>('') // 返信内容
