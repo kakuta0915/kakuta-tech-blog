@@ -1,14 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import styles from './index.module.css'
-
-interface HeroProps {
-  title: string
-  title2?: string | false
-  description: string
-  imageSrc: string
-  contact?: boolean
-}
+import { HeroProps } from '@/types'
 
 const Hero: React.FC<HeroProps> = ({
   title,
