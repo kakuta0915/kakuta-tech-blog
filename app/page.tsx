@@ -23,21 +23,34 @@ type Post = {
   bookmarksCount: number
 }
 
-type HomeProps = {
-  posts: Post[]
+export const metadata = {
+  title: 'TOP',
+  description: 'プログラミング学習記録をまとめたサイト',
+  openGraph: {
+    images: [
+      {
+        url: eyecatch.src,
+        width: eyecatch.width,
+        height: eyecatch.height,
+      },
+    ],
+  },
 }
 
-const Home: React.FC<HomeProps> = ({ posts }) => {
-  const portfolioData = [
-    {
-      id: 1,
-      imageUrl: '/images/kenshinkai.png',
-      title: '健進会',
-      description:
-        '「尊厳と自立の尊重」を理念に都内各所に介護施設を運営しています。',
-      link: 'https://kenshinkai.vercel.app/',
-    },
-  ]
+const portfolioData = [
+  {
+    id: 1,
+    imageUrl: '/images/kenshinkai.png',
+    title: '健進会',
+    description:
+      '「尊厳と自立の尊重」を理念に都内各所に介護施設を運営しています。',
+    link: 'https://kenshinkai.vercel.app/',
+  },
+]
+
+export default async function Home() {
+  const { articles } = await getAllArticles()
+  const posts: Post[] = articles
 
   return (
     <>
@@ -72,11 +85,12 @@ const Home: React.FC<HomeProps> = ({ posts }) => {
           />
           <Social isFooterSocial={false} />
           <div className={styles['btnBox']}>
-            <Link className={styles['btn']} href="./about/">
+            <Link className={styles['btn']} href="/about">
               MORE
             </Link>
           </div>
         </section>
+
         <section className={styles['articlesSection']}>
           <h2>Articles</h2>
           <p className={styles['text']}>
@@ -84,6 +98,7 @@ const Home: React.FC<HomeProps> = ({ posts }) => {
           </p>
           <Posts posts={posts} maxPosts={6} btn />
         </section>
+
         <section className={styles['portfolioSection']}>
           <h2>Portfolio</h2>
           <p className={styles['text']}>
@@ -91,7 +106,7 @@ const Home: React.FC<HomeProps> = ({ posts }) => {
           </p>
           <PortfolioList portfolioData={portfolioData} className={''} />
           <div className={styles['btnBox']}>
-            <Link className={styles['btn']} href="./portfolio/">
+            <Link className={styles['btn']} href="/portfolio">
               MORE
             </Link>
           </div>
@@ -100,15 +115,3 @@ const Home: React.FC<HomeProps> = ({ posts }) => {
     </>
   )
 }
-
-export async function getServerSideProps() {
-  const { articles } = await getAllArticles()
-
-  return {
-    props: {
-      posts: articles,
-    },
-  }
-}
-
-export default Home
