@@ -8,7 +8,7 @@ import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 import { updateProfile } from 'firebase/auth'
 import { auth, storage } from '@/firebaseConfig'
 import { toast } from 'react-toastify'
-import Meta from '@/components/common/Meta/page'
+import Meta from '@/components/common/Meta'
 import styles from './index.module.css'
 import eyecatch from '@/public/images/index.jpg'
 
