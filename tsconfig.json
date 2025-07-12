@@ -125,7 +125,8 @@
     ".next/types/**/*.ts",
     "components/common/Metaeta",
     "components/ui/PortfolioList",
-    "features/articles/components/CategoriesList"
+    "features/articles/components/CategoriesList",
+    "features/articles/components/Comments"
   ],
   "exclude": ["node_modules", "jest.config.js"]
 }
