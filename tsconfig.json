@@ -120,7 +120,7 @@
     "pages/_app.jsx",
     "src/**/*",
     "src/**/*.css.d.ts",
-    "src/components/ThreeColum/index.test.tsx",
+    "features/articles/components/ThreeColum/index.test.tsx",
     "src/components/UseScrollAnimation/index.test.jsx",
     ".next/types/**/*.ts",
     "components/common/Metaeta",
