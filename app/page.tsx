@@ -8,7 +8,7 @@ import Container from '@/src/components/Container'
 import Posts from '@/components/ui/Posts'
 import Social from '@/src/components/Social'
 import PortfolioList from '@/src/components/PortfolioList'
-import styles from './index.module.css'
+import styles from './page.module.css'
 import eyecatch from '@/public/images/index.jpg'
 import kakuta0915 from '@/public/images/kakuta0915.png'
 
