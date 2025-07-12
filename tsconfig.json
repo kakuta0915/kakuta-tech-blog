@@ -130,7 +130,8 @@
     "features/articles/components/Pagination",
     "features/articles/components/PostBody",
     "features/articles/components/PostCategories",
-    "features/articles/components/PostActions"
+    "features/articles/components/PostActions",
+    "features/articles/components/TableOfContents"
   ],
   "exclude": ["node_modules", "jest.config.js"]
 }
