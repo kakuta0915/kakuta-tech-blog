@@ -106,17 +106,24 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
-    "types": ["react"]
+    "types": ["react"],
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
-    "next-env.d.ts",
-    "src/**/*",
-    "src/**/*.css.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/components/UseScrollAnimation/index.test.jsx",
+    "next-env.d.ts",
+    "pages/_app.jsx",
+    "src/**/*",
+    "src/**/*.css.d.ts",
     "src/components/ThreeColum/index.test.tsx",
-    "pages/_app.jsx"
+    "src/components/UseScrollAnimation/index.test.jsx",
+    ".next/types/**/*.ts",
+    "components/common/Metaeta"
   ],
   "exclude": ["node_modules", "jest.config.js"]
 }
