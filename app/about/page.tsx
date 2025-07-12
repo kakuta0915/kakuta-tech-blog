@@ -1,10 +1,10 @@
 import React from 'react'
 import Image from 'next/image'
-import Meta from '@/src/components/Meta'
+import Meta from '@/components/common/Meta'
 import Hero from '@/src/components/Hero'
 import Container from '@/src/components/Container'
 import Social from '@/src/components/Social'
-import styles from './index.module.css'
+import styles from './page.module.css'
 import eyecatch from '@/public/images/about.jpg'
 import kakuta0915 from '@/public/images/kakuta0915.png'
 
