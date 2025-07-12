@@ -6,6 +6,11 @@ import PostCategories from './PostCategories'
 import PostHeader from './PostHeader'
 import SocialActions from './PostActions'
 import TableOfContents from './TableOfContents'
+import {
+  ThreeColumMain,
+  ThreeColumSidebar,
+  ThreeColumSocialActions,
+} from './ThreeColum'
 
 export {
   CategoriesList,
@@ -16,4 +21,7 @@ export {
   PostHeader,
   SocialActions,
   TableOfContents,
+  ThreeColumMain,
+  ThreeColumSidebar,
+  ThreeColumSocialActions,
 }
