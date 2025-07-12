@@ -1,9 +1,9 @@
 import React from 'react'
-import Meta from '@/src/components/Meta'
+import Meta from '@/components/common/Meta'
 import Hero from '@/src/components/Hero'
 import Container from '@/src/components/Container'
-import PortfolioList from '@/src/components/PortfolioList'
-import styles from './index.module.css'
+import PortfolioList from '@/components/ui/PortfolioList'
+import styles from './page.module.css'
 import eyecatch from '@/public/images/works.jpg'
 
 const portfolioData = [

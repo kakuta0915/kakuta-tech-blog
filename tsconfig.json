@@ -123,7 +123,8 @@
     "src/components/ThreeColum/index.test.tsx",
     "src/components/UseScrollAnimation/index.test.jsx",
     ".next/types/**/*.ts",
-    "components/common/Metaeta"
+    "components/common/Metaeta",
+    "components/ui/PortfolioList"
   ],
   "exclude": ["node_modules", "jest.config.js"]
 }
