@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import * as gtag from 'libs/gtag'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import Layout from '@/src/components/Layouts'
-import '@/src/styles/globals.css'
+// import '@/src/styles/globals.css'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { config } from '@fortawesome/fontawesome-svg-core'
 
