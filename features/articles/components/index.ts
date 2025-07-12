@@ -1,4 +1,5 @@
 import CategoriesList from './CategoriesList'
 import Comments from './Comments'
+import Pagination from './Pagination'
 
-export { CategoriesList, Comments }
+export { CategoriesList, Comments, Pagination }

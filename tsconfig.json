@@ -126,7 +126,8 @@
     "components/common/Metaeta",
     "components/ui/PortfolioList",
     "features/articles/components/CategoriesList",
-    "features/articles/components/Comments"
+    "features/articles/components/Comments",
+    "features/articles/components/Pagination"
   ],
   "exclude": ["node_modules", "jest.config.js"]
 }
