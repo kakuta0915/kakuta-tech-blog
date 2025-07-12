@@ -127,7 +127,8 @@
     "components/ui/PortfolioList",
     "features/articles/components/CategoriesList",
     "features/articles/components/Comments",
-    "features/articles/components/Pagination"
+    "features/articles/components/Pagination",
+    "features/articles/components/PostBody"
   ],
   "exclude": ["node_modules", "jest.config.js"]
 }
