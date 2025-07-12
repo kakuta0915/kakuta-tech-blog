@@ -16,12 +16,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark, faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faXTwitter } from '@fortawesome/free-brands-svg-icons'
 
-type SocialActionsProps = {
+type PostActionsProps = {
   postId: string
   title: string
 }
 
-const SocialActions: React.FC<SocialActionsProps> = ({ postId, title }) => {
+const PostActions: React.FC<PostActionsProps> = ({ postId, title }) => {
   const [user] = useAuthState(auth)
   const [liked, setLiked] = useState<boolean>(false)
   const [likeCount, setLikeCount] = useState<number>(0)
@@ -169,4 +169,4 @@ const SocialActions: React.FC<SocialActionsProps> = ({ postId, title }) => {
   )
 }
 
-export default SocialActions
+export default PostActions

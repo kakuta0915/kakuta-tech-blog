@@ -129,7 +129,8 @@
     "features/articles/components/Comments",
     "features/articles/components/Pagination",
     "features/articles/components/PostBody",
-    "features/articles/components/PostCategories"
+    "features/articles/components/PostCategories",
+    "features/articles/components/PostActions"
   ],
   "exclude": ["node_modules", "jest.config.js"]
 }
