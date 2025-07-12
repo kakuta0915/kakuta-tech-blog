@@ -1,9 +1,12 @@
+'use client'
+
 import React from 'react'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
 import { siteMeta } from '@/libs/constants'
 import siteImg from '/public/images/ogp.jpg'
-const { siteTitle, siteUrl, siteLocal, siteType, siteIcon } = siteMeta
+
+const { siteTitle, siteUrl, siteLocale, siteType, siteIcon } = siteMeta
 
 type MetaProps = {
   pageTitle: string
@@ -13,15 +16,15 @@ type MetaProps = {
   pageImgH?: number
 }
 
-const Meta: React.FC<MetaProps> = ({
+const Meta = ({
   pageTitle,
   pageDesc,
   pageImg,
   pageImgW,
   pageImgH,
-}) => {
-  const router = useRouter()
-  const url = `${siteUrl}${router.asPath}`
+}: MetaProps) => {
+  const pathname = usePathname()
+  const url = `${siteUrl}${pathname}`
   const img = pageImg || siteImg.src
   const imgW = pageImgW || siteImg.width
   const imgH = pageImgH || siteImg.height
@@ -40,7 +43,7 @@ const Meta: React.FC<MetaProps> = ({
       <meta property="og:url" content={url} />
       <meta property="og:site_name" content={siteTitle} />
       <meta property="og:type" content={siteType} />
-      <meta property="og:locale" content={siteLocal} />
+      <meta property="og:locale" content={siteLocale} />
 
       <link rel="icon" href={siteIcon} />
       <link rel="apple-touch-icon" href={siteIcon} />
