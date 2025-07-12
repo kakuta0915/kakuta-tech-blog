@@ -1,7 +1,9 @@
+'use client'
+
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import ConvertDate from '../Convert/ConvertDate'
+import ConvertDate from '@/src/components/Convert/ConvertDate'
 import styles from './index.module.css'
 import qiitaImg from '/public/images/qiitaEyecatch.png'
 import { faBookmark, faHeart, faTag } from '@fortawesome/free-solid-svg-icons'
