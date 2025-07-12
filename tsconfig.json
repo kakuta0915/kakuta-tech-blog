@@ -128,7 +128,8 @@
     "features/articles/components/CategoriesList",
     "features/articles/components/Comments",
     "features/articles/components/Pagination",
-    "features/articles/components/PostBody"
+    "features/articles/components/PostBody",
+    "features/articles/components/PostCategories"
   ],
   "exclude": ["node_modules", "jest.config.js"]
 }
