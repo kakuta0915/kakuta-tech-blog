@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import Header from './'
 
-jest.mock('@/src/components/Auth/UserAuth')
+jest.mock('@/features/auth/UserAuth')
 
 describe('Headerコンポーネント', () => {
   it('Logoコンポーネントがレンダリングされているか', () => {

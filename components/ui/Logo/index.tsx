@@ -2,8 +2,8 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from './index.module.css'
-import headerLogo from '/public/images/headerLogo.png'
-import footerLogoImage from '/public/images/footerLogo.png'
+import headerLogo from '@/public/images/headerLogo.png'
+import footerLogoImage from '@/public/images/footerLogo.png'
 
 interface LogoProps {
   isFooterLogo?: boolean

@@ -4,7 +4,7 @@ import {
   ThreeColum,
   ThreeColumMain,
   ThreeColumSidebar,
-  ThreeColumSocialActions,
+  ThreeColumPostActions,
 } from '.'
 
 describe('ThreeColum Components', () => {
@@ -45,13 +45,13 @@ describe('ThreeColum Components', () => {
 
   test('ThreeColumSocialActionsと子要素がレンダリングされているか', () => {
     render(
-      <ThreeColumSocialActions>
-        <div>Test Social Actions</div>
-      </ThreeColumSocialActions>,
+      <ThreeColumPostActions>
+        <div>Test Post Actions</div>
+      </ThreeColumPostActions>,
     )
 
-    expect(screen.getByText('Test Social Actions')).toBeInTheDocument()
-    expect(screen.getByText('Test Social Actions').parentElement).toHaveClass(
+    expect(screen.getByText('Test Post Actions')).toBeInTheDocument()
+    expect(screen.getByText('Test Post Actions').parentElement).toHaveClass(
       'socialActions',
     )
   })

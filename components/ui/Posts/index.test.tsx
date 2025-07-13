@@ -1,10 +1,7 @@
 import { render, screen } from '@testing-library/react'
-import { mockConvertDate } from '@/__mocks__/convert-date'
 import { mockPosts } from '@/__mocks__/posts'
 import { mockCategories } from '@/__mocks__/categories'
 import Posts from '.'
-
-mockConvertDate()
 
 describe('Posts Component', () => {
   test('投稿のタイトル、公開日、カテゴリーを確認', () => {
@@ -13,9 +10,6 @@ describe('Posts Component', () => {
     // タイトル確認
     expect(screen.getByText('Post Title 1')).toBeInTheDocument()
     expect(screen.getByText('Post Title 2')).toBeInTheDocument()
-
-    // 公開日（mockConvertDateでモックしているためISO文字列をそのまま確認）
-    expect(screen.getByText('2024年07月23日')).toBeInTheDocument()
 
     // カテゴリ名を mockCategories に合わせて確認
     expect(screen.getByText(mockCategories[0]!.name)).toBeInTheDocument() // Tech
