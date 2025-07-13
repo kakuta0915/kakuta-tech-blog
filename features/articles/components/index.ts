@@ -3,10 +3,10 @@ import Comments from './Comments'
 import ConvertBody from './Convert/ConvertBody'
 import ConvertDate from './Convert/ConvertDate'
 import Pagination from './Pagination'
+import PostActions from './PostActions'
 import PostBody from './PostBody'
 import PostCategories from './PostCategories'
 import PostHeader from './PostHeader'
-import SocialActions from './PostActions'
 import TableOfContents from './TableOfContents'
 import {
   ThreeColumMain,
@@ -17,15 +17,15 @@ import {
 export {
   CategoriesList,
   Comments,
+  ConvertBody,
+  ConvertDate,
   Pagination,
+  PostActions,
   PostBody,
   PostCategories,
   PostHeader,
-  SocialActions,
   TableOfContents,
   ThreeColumMain,
   ThreeColumSidebar,
   ThreeColumSocialActions,
-  ConvertBody,
-  ConvertDate,
 }

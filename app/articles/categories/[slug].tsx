@@ -4,8 +4,8 @@ import { getAllCategories, getAllPostByCategory } from '@/libs/api'
 import Meta from '@/src/components/Meta'
 import PostHeader from '@/src/components/PostHeader'
 import Posts from '@/src/components/Posts'
-import CategoriesList from '@/src/components/CategoriesList'
-import Container from '@/src/components/Container'
+import CategoriesList from '@/features/articles/components/CategoriesList'
+import Container from '@/components/ui/Container'
 import { GetServerSidePropsContext } from 'next'
 
 type Icon = {

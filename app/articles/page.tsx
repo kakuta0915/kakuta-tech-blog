@@ -1,11 +1,10 @@
-// 記事一覧ページ
 import React from 'react'
 import { getAllArticles, getAllCategories } from '@/libs/api'
-import Meta from '@/src/components/Meta'
-import Hero from '@/src/components/Hero'
-import Container from '@/src/components/Container'
-import Posts from '@/src/components/Posts'
-import CategoriesList from '@/src/components/CategoriesList'
+import Meta from '@/components/common/Meta'
+import Hero from '@/components/ui/Hero'
+import Container from '@/components/ui/Container'
+import Posts from '@/components/ui/Posts'
+import * as ArticleComponents from '@/features/articles/components'
 import eyecatch from '@/public/images/articles.jpg'
 
 type Post = {
@@ -29,12 +28,10 @@ type Category = {
   }
 }
 
-type ArticleProps = {
-  posts: Post[]
-  allCategories: Category[]
-}
+export default async function ArticlesPage() {
+  const { articles: posts }: { articles: Post[] } = await getAllArticles()
+  const allCategories: Category[] = await getAllCategories()
 
-const Articles: React.FC<ArticleProps> = ({ posts, allCategories }) => {
   return (
     <>
       <Meta
@@ -51,22 +48,8 @@ const Articles: React.FC<ArticleProps> = ({ posts, allCategories }) => {
       />
       <Container>
         <Posts posts={posts} />
-        <CategoriesList allCategories={allCategories} />
+        <ArticleComponents.CategoriesList allCategories={allCategories} />
       </Container>
     </>
   )
 }
-
-export async function getServerSideProps() {
-  const { articles: posts } = await getAllArticles()
-  const allCategories = await getAllCategories()
-
-  return {
-    props: {
-      posts,
-      allCategories,
-    },
-  }
-}
-
-export default Articles

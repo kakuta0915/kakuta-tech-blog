@@ -13,17 +13,17 @@ import {
   ThreeColumMain,
   ThreeColumSidebar,
   ThreeColumSocialActions,
-} from '@/src/components/ThreeColum'
-import Container from '@/src/components/Container'
-import ConvertBody from '@/src/components/Convert/ConvertBody'
+} from '@/features/articles/components/ThreeColum'
+import Container from '@/components/ui/Container'
+import ConvertBody from '@/features/articles/components/Convert/ConvertBody'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/github-dark.css'
-import PostBody from '@/src/components/PostBody'
-import Comments from '@/src/components/Comments'
-import SocialActions from '@/src/components/SocialActions'
-import PostCategories from '@/src/components/PostCategories'
-import Pagination from '@/src/components/Pagination'
-import TableOfContents from '@/src/components/TableOfContents'
+import PostBody from '@/features/articles/components/PostBody'
+import Comments from '@/features/articles/components/Comments'
+import SocialActions from '@/features/articles/components/PostActions'
+import PostCategories from '@/features/articles/components/PostCategories'
+import Pagination from '@/features/articles/components/Pagination'
+import TableOfContents from '@/features/articles/components/TableOfContents'
 
 type Eyecatch = {
   url: string
