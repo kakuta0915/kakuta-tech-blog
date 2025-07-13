@@ -10,7 +10,7 @@ import {
   User,
 } from 'firebase/auth'
 import { toast } from 'react-toastify'
-import Meta from '@/src/components/Meta'
+import Meta from '@/components/common/Meta'
 import styles from './DeleteAccount.module.css'
 import eyecatch from '@/public/images/index.jpg'
 
