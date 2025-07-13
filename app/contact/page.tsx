@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import Meta from '@/components/common/Meta'
 import Hero from '@/src/components/Hero'
-import Container from '@/src/components/Container'
+import Container from '@/components/ui/Container'
 import styles from './page.module.css'
 import eyecatch from '@/public/images/contact.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

@@ -131,7 +131,8 @@
     "features/articles/components/PostBody",
     "features/articles/components/PostCategories",
     "features/articles/components/PostActions",
-    "features/articles/components/TableOfContents"
+    "features/articles/components/TableOfContents",
+    "components/ui/Container"
   ],
   "exclude": ["node_modules", "jest.config.js"]
 }
