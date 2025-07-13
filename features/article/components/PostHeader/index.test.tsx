@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import PostHeader from '.'
-import { mockPostHeader } from '@/src/__mocks__/post-header'
+import { mockPostHeader } from '@/__mocks__/post-header'
 import styles from './index.module.css'
 
 describe('PostHeader Component', () => {

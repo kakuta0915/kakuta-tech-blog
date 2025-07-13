@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import { mockCategories } from '@/src/__mocks__/categories'
+import { mockCategories } from '@/__mocks__/categories'
 import PostCategories from '.'
 
 describe('PostCategories', () => {

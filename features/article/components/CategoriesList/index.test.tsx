@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { mockCategories } from '@/src/__mocks__/categories'
+import { mockCategories } from '@/__mocks__/categories'
 import CategoriesList from '.'
 
 describe('CategoriesList component', () => {

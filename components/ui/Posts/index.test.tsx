@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
-import { mockConvertDate } from '@/src/__mocks__/convert-date'
-import { mockPosts } from '@/src/__mocks__/posts'
-import { mockCategories } from '@/src/__mocks__/categories'
+import { mockConvertDate } from '@/__mocks__/convert-date'
+import { mockPosts } from '@/__mocks__/posts'
+import { mockCategories } from '@/__mocks__/categories'
 import Posts from '.'
 
 mockConvertDate()

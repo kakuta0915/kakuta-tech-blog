@@ -1,7 +1,7 @@
 import { auth } from '@/firebaseConfig'
 import '@testing-library/jest-dom'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
-import { user } from '@/src/__mocks__/user'
+import { user } from '@/__mocks__/user'
 import userEvent from '@testing-library/user-event'
 import UserInfo from '.'
 

@@ -138,7 +138,8 @@
     "components/ui/Logo",
     "components/ui/Nav",
     "components/ui/Social",
-    "features/auth"
+    "features/auth",
+    "__mocks__"
   ],
   "exclude": ["node_modules", "jest.config.js"]
 }
