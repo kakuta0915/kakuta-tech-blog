@@ -136,7 +136,8 @@
     "features/articles/components/Convert",
     "components/ui/Hero",
     "components/ui/Logo",
-    "components/ui/Nav"
+    "components/ui/Nav",
+    "components/ui/Social"
   ],
   "exclude": ["node_modules", "jest.config.js"]
 }

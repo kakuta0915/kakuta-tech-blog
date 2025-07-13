@@ -1,6 +1,6 @@
 import React from 'react'
 import Logo from '@/components/ui/Logo'
-import Social from '@/src/components/Social'
+import Social from '@/components/ui/Social'
 import styles from './index.module.css'
 
 const Footer: React.FC = () => {
