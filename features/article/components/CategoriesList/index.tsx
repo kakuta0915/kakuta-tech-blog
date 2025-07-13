@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useState, useRef } from 'react'
 import { CategoriesListProps } from '@/types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import styles from './index.module.css'
 
 const CategoriesList: React.FC<CategoriesListProps> = ({ allCategories }) => {
@@ -23,7 +24,7 @@ const CategoriesList: React.FC<CategoriesListProps> = ({ allCategories }) => {
     >
       <div className={styles['categoriesBtn']} onClick={toggleCategories}>
         <h3>カテゴリ 一覧</h3>
-        <FontAwesomeIcon className={styles['icon']} icon={'function'} />
+        <FontAwesomeIcon className={styles['icon']} icon={faChevronDown} />
       </div>
       <div
         className={styles['accordion']}
