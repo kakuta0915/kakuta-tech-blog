@@ -1,6 +1,6 @@
 import React from 'react'
 import Meta from '@/components/common/Meta'
-import Hero from '@/src/components/Hero'
+import Hero from '@/components/ui/Hero'
 import Container from '@/components/ui/Container'
 import PortfolioList from '@/components/ui/PortfolioList'
 import styles from './page.module.css'
