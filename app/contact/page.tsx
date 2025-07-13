@@ -2,8 +2,7 @@
 
 import React, { useState } from 'react'
 import Meta from '@/components/common/Meta'
-import Hero from '@/components/ui/Hero'
-import Container from '@/components/ui/Container'
+import * as Ui from '@/components/ui'
 import styles from './page.module.css'
 import eyecatch from '@/public/images/contact.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -49,12 +48,12 @@ export default function Contact() {
         pageImgW={eyecatch.width}
         pageImgH={eyecatch.height}
       />
-      <Hero
+      <Ui.Hero
         title="CONTACT"
         description="ご質問やご意見、お仕事の依頼などをお待ちしています。お気軽に以下のフォームからご連絡ください。"
         imageSrc="./images/contact.jpg"
       />
-      <Container>
+      <Ui.Container>
         <div className={styles['contact']}>
           <form className={styles['form']} onSubmit={handleSubmit}>
             <ul>
@@ -130,7 +129,7 @@ export default function Contact() {
             </button>
           </form>
         </div>
-      </Container>
+      </Ui.Container>
     </>
   )
 }
