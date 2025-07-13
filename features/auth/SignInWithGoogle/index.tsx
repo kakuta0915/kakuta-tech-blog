@@ -1,4 +1,6 @@
 // Googleでログインする機能
+'use client'
+
 import React, { useState } from 'react'
 import Image from 'next/image'
 import { signInWithPopup } from 'firebase/auth'
