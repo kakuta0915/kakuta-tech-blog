@@ -1,4 +1,3 @@
-// 取得したスラッグで生成されたカテゴリーページ (〇〇に関する記事)
 import { notFound } from 'next/navigation'
 import { getAllCategories, getAllPostByCategory } from '@/libs/api'
 import Meta from '@/components/common/Meta'
@@ -16,14 +15,13 @@ type CategoryPageProps = {
 
 export async function generateStaticParams() {
   const categories: Category[] = await getAllCategories()
-
   return categories.map((category) => ({
     slug: category.slug,
   }))
 }
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
-  const { slug } = await params
+  const { slug } = params
 
   const allCategories: Category[] = await getAllCategories()
   const category = allCategories.find((cat) => cat.slug === slug)
@@ -36,9 +34,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   try {
     const fetchedPosts = await getAllPostByCategory(category.id)
     posts = fetchedPosts ?? []
-  } catch (err) {
-    console.error('カテゴリー別記事取得エラー:', err)
-  }
+  } catch (err) {}
 
   return (
     <>
@@ -52,7 +48,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           title={`${category.name}に関する記事`}
           subtitle="Blog Category"
         />
-        <Ui.Posts posts={posts} maxPosts={0} />
+        <Ui.Posts posts={posts} maxPosts={1000} />
         <Article.CategoriesList allCategories={allCategories} />
       </Ui.Container>
     </>

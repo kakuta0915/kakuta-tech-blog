@@ -28,8 +28,6 @@ type Category = {
   }
 }
 
-export const dynamic = 'force-static'
-
 export default async function ArticlesPage() {
   const { articles: posts }: { articles: Post[] } = await getAllArticles()
   const allCategories: Category[] = await getAllCategories()
