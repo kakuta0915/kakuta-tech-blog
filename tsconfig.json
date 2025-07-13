@@ -137,7 +137,8 @@
     "components/ui/Hero",
     "components/ui/Logo",
     "components/ui/Nav",
-    "components/ui/Social"
+    "components/ui/Social",
+    "features/auth"
   ],
   "exclude": ["node_modules", "jest.config.js"]
 }

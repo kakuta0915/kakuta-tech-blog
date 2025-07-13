@@ -1,6 +1,6 @@
 import React from 'react'
 import Logo from '@/components/ui/Logo'
-import UserAuth from '@/src/components/Auth/UserAuth'
+import UserAuth from '@/features/auth/UserAuth'
 import Nav from '@/components/ui/Nav'
 import styles from './index.module.css'
 
