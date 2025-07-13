@@ -2,7 +2,6 @@
 
 import React, { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import error from 'next/error'
 import { db } from '@/firebaseConfig'
 import {
   collection,
@@ -50,7 +49,7 @@ function timeAgo(date: Date): string {
   return `${diffInSeconds}秒前`
 }
 
-const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
+const Comments: React.FC<CommentsProps> = ({ postId }) => {
   const [user, setUser] = useState<FirebaseUserProps | null>(null) // ログインユーザー情報
   const [comment, setComment] = useState<string>('') // 入力されたコメント
   const [comments, setComments] = useState<CommentData[]>([]) // 取得したコメント
@@ -84,10 +83,14 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
     const unsubscribe = onSnapshot(
       q,
       (snapshot) => {
-        const updatedComments = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...(doc.data() as Omit<CommentData, 'id'>),
-        }))
+        const updatedComments = snapshot.docs.map((doc) => {
+          const data = doc.data() as Omit<CommentData, 'id'>
+          return {
+            id: doc.id,
+            ...data,
+            text: typeof data.text === 'string' ? data.text : '',
+          }
+        })
         setComments(updatedComments.filter((doc) => doc.postId === postId))
       },
       (error) => {
@@ -108,7 +111,16 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
     }
 
     try {
-      await addDoc(collection(db, 'comments'), new Comment())
+      const newComment = {
+        postId,
+        text: comment,
+        parentId: null,
+        createdAt: serverTimestamp(),
+        userId: user?.uid ?? '',
+        displayName: user?.displayName ?? '',
+        photoURL: user?.photoURL ?? '',
+      }
+      await addDoc(collection(db, 'comments'), newComment)
 
       setComment('')
       toast.success('コメントが投稿されました！')
@@ -149,7 +161,7 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
       setActiveReply(null)
       setCommentsActionsVisible(true)
       toast.success('返信が投稿されました。')
-    } catch {
+    } catch (error) {
       console.error('Firestore保存エラー', error)
       toast.error('返信の投稿に失敗しました。')
     }
@@ -182,11 +194,6 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
       setReplyState(true)
       setSelectedView((prevState) => ({
         ...prevState,
-        [id]: {
-          ...prevState[id],
-          reply: 'markdown',
-          edit: prevState[id]?.edit || 'markdown',
-        },
       }))
     }
   }
@@ -206,7 +213,7 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
     e: React.FormEvent<HTMLFormElement>,
     id: string,
     editContent: string,
-    closeEditMode: { (): void; (): void; (): void },
+    closeEditMode: { (): void },
   ) => {
     e.preventDefault()
 
@@ -258,23 +265,15 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
         return
       }
     } else {
-      const confirmDiscard = toast.info('編集をキャンセルしました')
+      toast.info('編集をキャンセルしました')
       setCommentsActionsVisible(true)
       setReplyState(true)
-      if (!confirmDiscard) {
-        return
-      }
     }
 
     setActiveEdit(null)
     setEditContent('')
     setSelectedView((prevState) => ({
       ...prevState,
-      [id]: {
-        ...prevState[id],
-        edit: 'markdown',
-        reply: 'markdown',
-      },
     }))
   }
 
@@ -337,18 +336,22 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
             <div className={styles['viewToggleButtons']}>
               <button
                 type="button"
-                onClick={() => handleViewToggle(id, 'edit', 'markdown')}
+                onClick={() => handleViewToggle(postId, 'edit', 'markdown')}
                 className={`${styles['viewButton']} ${
-                  selectedView[id]?.edit === 'markdown' ? styles['active'] : ''
+                  selectedView[postId]?.edit === 'markdown'
+                    ? styles['active']
+                    : ''
                 }`}
               >
                 Markdown
               </button>
               <button
                 type="button"
-                onClick={() => handleViewToggle(id, 'edit', 'preview')}
+                onClick={() => handleViewToggle(postId, 'edit', 'preview')}
                 className={`${styles['viewButton']} ${
-                  selectedView[id]?.edit === 'preview' ? styles['active'] : ''
+                  selectedView[postId]?.edit === 'preview'
+                    ? styles['active']
+                    : ''
                 }`}
               >
                 プレビュー
@@ -356,7 +359,7 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
             </div>
 
             <div className={styles['inputAndPreview']}>
-              {selectedView[id]?.edit === 'markdown' && (
+              {selectedView[postId]?.edit === 'markdown' && (
                 <textarea
                   value={comment}
                   onChange={(e) => setComment(e.target.value)}
@@ -364,12 +367,10 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
                   className={styles['textarea']}
                 />
               )}
-              {selectedView[id]?.edit === 'preview' && (
-                <div className={styles['preview']}>
-                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                    {comment}
-                  </ReactMarkdown>
-                </div>
+              {selectedView[postId]?.edit === 'preview' && (
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {comment}
+                </ReactMarkdown>
               )}
             </div>
 
@@ -414,10 +415,10 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
                     ref={actionsRef}
                   >
                     <button
-                      onClick={() => toggleVisibility(id)}
+                      onClick={() => toggleVisibility(comment.id)}
                       className={styles['toggleButton']}
                     >
-                      {visibilityState[id] ? (
+                      {visibilityState[comment.id] ? (
                         <FontAwesomeIcon
                           icon={faChevronDown}
                           className={styles['icon']}
@@ -432,32 +433,40 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
 
                     <div
                       className={`${styles['actionButtons']} ${
-                        visibilityState[id]
+                        visibilityState[comment.id]
                           ? styles['visible']
                           : styles['hidden']
                       }`}
                     >
                       <button
-                        onClick={() => handleEditClick(id, comment.text)}
+                        onClick={() =>
+                          handleEditClick(comment.id, comment.text)
+                        }
                         className={styles['editButton']}
                       >
                         編集
+                      </button>
+                      <button
+                        onClick={() => handleDelete(comment.id)}
+                        className={styles['deleteButton']}
+                      >
+                        削除
                       </button>
                     </div>
                   </div>
                 )}
               </div>
 
-              {activeEdit !== id && (
+              {activeEdit !== comment.id && (
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                  {comment.text}
+                  {typeof comment.text === 'string' ? comment.text : ''}
                 </ReactMarkdown>
               )}
 
-              {activeEdit === id && (
+              {activeEdit === comment.id && (
                 <form
                   onSubmit={(e) =>
-                    handleEditSubmit(e, id, editContent, () =>
+                    handleEditSubmit(e, comment.id, editContent, () =>
                       setActiveEdit(null),
                     )
                   }
@@ -466,9 +475,11 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
                   <div className={styles['viewToggleButtons']}>
                     <button
                       type="button"
-                      onClick={() => handleViewToggle(id, 'edit', 'markdown')}
+                      onClick={() =>
+                        handleViewToggle(comment.id, 'edit', 'markdown')
+                      }
                       className={`${styles['viewButton']} ${
-                        selectedView[id]?.edit === 'markdown'
+                        selectedView[comment.id]?.edit === 'markdown'
                           ? styles['active']
                           : ''
                       }`}
@@ -477,9 +488,11 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
                     </button>
                     <button
                       type="button"
-                      onClick={() => handleViewToggle(id, 'edit', 'preview')}
+                      onClick={() =>
+                        handleViewToggle(comment.id, 'edit', 'preview')
+                      }
                       className={`${styles['viewButton']} ${
-                        selectedView[id]?.edit === 'preview'
+                        selectedView[comment.id]?.edit === 'preview'
                           ? styles['active']
                           : ''
                       }`}
@@ -489,7 +502,7 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
                   </div>
 
                   <div className={styles['inputAndPreview']}>
-                    {selectedView[id]?.edit === 'markdown' && (
+                    {selectedView[comment.id]?.edit === 'markdown' && (
                       <textarea
                         value={editContent}
                         onChange={(e) => setEditContent(e.target.value)}
@@ -497,10 +510,10 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
                         className={styles['textarea']}
                       />
                     )}
-                    {selectedView[id]?.edit === 'preview' && (
+                    {selectedView[comment.id]?.edit === 'preview' && (
                       <div className={styles['preview']}>
                         <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                          {editContent}
+                          {typeof editContent === 'string' ? editContent : ''}
                         </ReactMarkdown>
                       </div>
                     )}
@@ -519,9 +532,9 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
                 </form>
               )}
 
-              {activeReply !== id && (
+              {activeReply !== comment.id && (
                 <button
-                  onClick={() => handleReplyClick(id)}
+                  onClick={() => handleReplyClick(comment.id)}
                   className={`${styles['addReplyButton']} ${
                     !replyState ? styles['hiddenReplyButton'] : ''
                   }`}
@@ -531,7 +544,7 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
               )}
 
               <div className={styles['replyContainer']}>
-                {activeReply === id && (
+                {activeReply === comment.id && (
                   <form
                     onSubmit={(e) => handleReplySubmit(e)}
                     className={styles['replyForm']}
@@ -540,10 +553,10 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
                       <button
                         type="button"
                         onClick={() =>
-                          handleViewToggle(id, 'reply', 'markdown')
+                          handleViewToggle(comment.id, 'reply', 'markdown')
                         }
                         className={`${styles['viewButton']} ${
-                          selectedView[id]?.reply === 'markdown'
+                          selectedView[comment.id]?.reply === 'markdown'
                             ? styles['active']
                             : ''
                         }`}
@@ -552,9 +565,11 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
                       </button>
                       <button
                         type="button"
-                        onClick={() => handleViewToggle(id, 'reply', 'preview')}
+                        onClick={() =>
+                          handleViewToggle(comment.id, 'reply', 'preview')
+                        }
                         className={`${styles['viewButton']} ${
-                          selectedView[id]?.reply === 'preview'
+                          selectedView[comment.id]?.reply === 'preview'
                             ? styles['active']
                             : ''
                         }`}
@@ -564,7 +579,7 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
                     </div>
 
                     <div className={styles['inputAndPreview']}>
-                      {selectedView[id]?.reply === 'markdown' && (
+                      {selectedView[comment.id]?.reply === 'markdown' && (
                         <textarea
                           value={replyContent}
                           onChange={(e) => setReplyContent(e.target.value)}
@@ -572,186 +587,25 @@ const Comments: React.FC<CommentsProps> = ({ postId, id }) => {
                           className={styles['textarea']}
                         />
                       )}
-                      {selectedView[id]?.reply === 'preview' && (
-                        <div className={styles['preview']}>
-                          <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                            {replyContent}
-                          </ReactMarkdown>
-                        </div>
+                      {selectedView[comment.id]?.reply === 'preview' && (
+                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                          {typeof replyContent === 'string' ? replyContent : ''}
+                        </ReactMarkdown>
                       )}
                     </div>
+
                     <button type="submit" className={styles['replyButton']}>
                       返信する
                     </button>
                     <button
                       type="button"
-                      onClick={handleCancelReply}
-                      className={styles['cancelButton']}
+                      onClick={() => handleCancelReply()}
+                      className={styles['cancelReplyButton']}
                     >
                       キャンセル
                     </button>
                   </form>
                 )}
-
-                {/* 子コメント */}
-                <ul>
-                  {comments
-                    .filter((c) => c.parentId === id)
-                    .map((comment) => (
-                      <li key={comment.id} className={styles['reply']}>
-                        <div className={styles['replyCommentHeader']}>
-                          <Image
-                            src={comment.photoURL}
-                            alt={comment.displayName || '匿名ユーザー'}
-                            width={50}
-                            height={50}
-                            className={styles['commentIcon']}
-                          />
-                          <span className={styles['userName']}>
-                            {comment.displayName || '匿名ユーザー'}
-                          </span>
-                          <small className={styles['time']}>
-                            {comment.createdAt?.seconds
-                              ? timeAgo(
-                                  new Date(comment.createdAt.seconds * 1000),
-                                )
-                              : '日時情報なし'}
-                          </small>
-
-                          {user?.uid === comment.userId && (
-                            <div
-                              className={`${styles['commentsActions']} ${
-                                !commentsActionsVisible
-                                  ? styles['hiddenIcon']
-                                  : ''
-                              }`}
-                              ref={actionsRef}
-                            >
-                              <button
-                                onClick={() => toggleVisibility(id)}
-                                className={styles['toggleButton']}
-                              >
-                                {visibilityState[id] ? (
-                                  <FontAwesomeIcon
-                                    icon={faChevronDown}
-                                    className={styles['icon']}
-                                  />
-                                ) : (
-                                  <FontAwesomeIcon
-                                    icon={faChevronDown}
-                                    className={styles['icon']}
-                                  />
-                                )}
-                              </button>
-
-                              <div
-                                className={`${styles['actionButtons']} ${
-                                  visibilityState[id]
-                                    ? styles['visible']
-                                    : styles['hidden']
-                                }`}
-                              >
-                                <button
-                                  onClick={() =>
-                                    handleEditClick(id, comment.text)
-                                  }
-                                  className={styles['editButton']}
-                                >
-                                  編集
-                                </button>
-                                <button
-                                  onClick={() => handleDelete(id)}
-                                  className={styles['deleteButton']}
-                                >
-                                  削除
-                                </button>
-                              </div>
-                            </div>
-                          )}
-                        </div>
-
-                        {activeEdit !== id && (
-                          <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                            {comment.text}
-                          </ReactMarkdown>
-                        )}
-
-                        {activeEdit === id && (
-                          <form
-                            onSubmit={(e) =>
-                              handleEditSubmit(e, id, editContent, () =>
-                                setActiveEdit(null),
-                              )
-                            }
-                            className={styles['editForm']}
-                          >
-                            <div className={styles['viewToggleButtons']}>
-                              <button
-                                type="button"
-                                onClick={() =>
-                                  handleViewToggle(id, 'edit', 'markdown')
-                                }
-                                className={`${styles['viewButton']} ${
-                                  selectedView[id]?.edit === 'markdown'
-                                    ? styles['active']
-                                    : ''
-                                }`}
-                              >
-                                Markdown
-                              </button>
-                              <button
-                                type="button"
-                                onClick={() =>
-                                  handleViewToggle(id, 'edit', 'preview')
-                                }
-                                className={`${styles['viewButton']} ${
-                                  selectedView[id]?.edit === 'preview'
-                                    ? styles['active']
-                                    : ''
-                                }`}
-                              >
-                                プレビュー
-                              </button>
-                            </div>
-
-                            <div className={styles['inputAndPreview']}>
-                              {selectedView[id]?.edit === 'markdown' && (
-                                <textarea
-                                  value={editContent}
-                                  onChange={(e) =>
-                                    setEditContent(e.target.value)
-                                  }
-                                  placeholder="編集内容を入力してください"
-                                  className={styles['textarea']}
-                                />
-                              )}
-                              {selectedView[id]?.edit === 'preview' && (
-                                <div className={styles['preview']}>
-                                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                                    {editContent}
-                                  </ReactMarkdown>
-                                </div>
-                              )}
-                            </div>
-
-                            <button
-                              type="submit"
-                              className={styles['savaButton']}
-                            >
-                              保存
-                            </button>
-                            <button
-                              type="button"
-                              onClick={() => handleCancelEdit(comment.text)}
-                              className={styles['cancelButton']}
-                            >
-                              キャンセル
-                            </button>
-                          </form>
-                        )}
-                      </li>
-                    ))}
-                </ul>
               </div>
             </li>
           ))}
