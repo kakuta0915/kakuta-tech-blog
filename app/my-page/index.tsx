@@ -6,8 +6,8 @@ import Link from 'next/link'
 import { auth, db } from '@/firebaseConfig'
 import { collection, getDocs, query, where } from 'firebase/firestore'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import Meta from '@/src/components/Meta'
-import Container from '@/components/ui/Container'
+import Meta from '@/components/common/Meta'
+import * as Ui from '@/components/ui'
 import styles from './index.module.css'
 import eyecatch from '@/public/images/index.jpg'
 
@@ -99,7 +99,7 @@ const MyPage: React.FC = () => {
         pageImgW={eyecatch.width}
         pageImgH={eyecatch.height}
       />
-      <Container>
+      <Ui.Container>
         <div className={styles['userInfo']}>
           <Image
             src={user.photoURL || '/default-user.png'}
@@ -149,7 +149,7 @@ const MyPage: React.FC = () => {
             </ul>
           </section>
         </div>
-      </Container>
+      </Ui.Container>
     </>
   )
 }
