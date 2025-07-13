@@ -132,7 +132,8 @@
     "features/articles/components/PostCategories",
     "features/articles/components/PostActions",
     "features/articles/components/TableOfContents",
-    "components/ui/Container"
+    "components/ui/Container",
+    "features/articles/components/Convert"
   ],
   "exclude": ["node_modules", "jest.config.js"]
 }
