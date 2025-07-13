@@ -1,8 +1,6 @@
 import React from 'react'
 import Meta from '@/components/common/Meta'
-import Hero from '@/components/ui/Hero'
-import Container from '@/components/ui/Container'
-import PortfolioList from '@/components/ui/PortfolioList'
+import * as Ui from '@/components/ui'
 import styles from './page.module.css'
 import eyecatch from '@/public/images/works.jpg'
 
@@ -27,16 +25,16 @@ export default function Portfolio() {
         pageImgW={eyecatch.width}
         pageImgH={eyecatch.height}
       />
-      <Hero
+      <Ui.Hero
         title="PORTFOLIO"
         description="独学で制作したサイトなどを掲載しており、GitHubからコードもご覧いただけます。"
         imageSrc="./images/works.jpg"
       />
-      <Container>
+      <Ui.Container>
         <section className={styles['portfolioList']}>
-          <PortfolioList portfolioData={portfolioData} className={''} />
+          <Ui.PortfolioList portfolioData={portfolioData} className={''} />
         </section>
-      </Container>
+      </Ui.Container>
     </>
   )
 }
