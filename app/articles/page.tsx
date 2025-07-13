@@ -18,6 +18,7 @@ type Post = {
 }
 
 type Category = {
+  id: any
   name: string
   slug: string
   icon: {
@@ -26,6 +27,8 @@ type Category = {
     height: number
   }
 }
+
+export const dynamic = 'force-static'
 
 export default async function ArticlesPage() {
   const { articles: posts }: { articles: Post[] } = await getAllArticles()
