@@ -134,7 +134,8 @@
     "features/articles/components/TableOfContents",
     "components/ui/Container",
     "features/articles/components/Convert",
-    "components/ui/Hero"
+    "components/ui/Hero",
+    "components/ui/Logo"
   ],
   "exclude": ["node_modules", "jest.config.js"]
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import Logo from '@/src/components/Logo'
+import Logo from '@/components/ui/Logo'
 import UserAuth from '@/src/components/Auth/UserAuth'
 import Nav from '@/src/components/Nav'
 import styles from './index.module.css'
