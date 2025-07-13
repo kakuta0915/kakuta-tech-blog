@@ -2,9 +2,8 @@ import React from 'react'
 import { getAllArticles, getAllCategories } from '@/libs/api'
 import Meta from '@/components/common/Meta'
 import Hero from '@/components/ui/Hero'
-import Container from '@/components/ui/Container'
-import Posts from '@/components/ui/Posts'
-import * as ArticleComponents from '@/features/articles/components'
+import * as Ui from '@/components/ui'
+import * as Article from '@/features/article/components'
 import eyecatch from '@/public/images/articles.jpg'
 
 type Post = {
@@ -46,10 +45,10 @@ export default async function ArticlesPage() {
         description="プログラミング学習に関する記事をまとめたページです。学習中に躓いた箇所や、開発過程で遭遇した具体的な課題、それに対する解決策を紹介しています。"
         imageSrc="/images/articles.jpg"
       />
-      <Container>
-        <Posts posts={posts} />
-        <ArticleComponents.CategoriesList allCategories={allCategories} />
-      </Container>
+      <Ui.Container>
+        <Ui.Posts posts={posts} />
+        <Article.CategoriesList allCategories={allCategories} />
+      </Ui.Container>
     </>
   )
 }

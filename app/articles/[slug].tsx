@@ -3,27 +3,13 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import React, { useEffect } from 'react'
 import Image from 'next/image'
 import { getPostBySlug, getAllSlugs, getAllCategories } from '@/libs/api'
+import hljs from 'highlight.js'
 import { extractText } from '@/libs/extract-text'
 import { prevNextPost } from '@/libs/prev-next-post'
 import { renderToc } from '@/libs/render-toc'
-import Meta from '@/src/components/Meta'
-import PostHeader from '@/src/components/PostHeader'
-import {
-  ThreeColum,
-  ThreeColumMain,
-  ThreeColumSidebar,
-  ThreeColumSocialActions,
-} from '@/features/articles/components/ThreeColum'
-import Container from '@/components/ui/Container'
-import ConvertBody from '@/features/articles/components/Convert/ConvertBody'
-import hljs from 'highlight.js'
-import 'highlight.js/styles/github-dark.css'
-import PostBody from '@/features/articles/components/PostBody'
-import Comments from '@/features/articles/components/Comments'
-import SocialActions from '@/features/articles/components/PostActions'
-import PostCategories from '@/features/articles/components/PostCategories'
-import Pagination from '@/features/articles/components/Pagination'
-import TableOfContents from '@/features/articles/components/TableOfContents'
+import Meta from '@/components/common/Meta'
+import * as Ui from '@/components/ui'
+import * as Article from '@/features/article/components'
 
 type Eyecatch = {
   url: string
@@ -103,20 +89,20 @@ const Post: React.FC<PostProps> = ({
         pageImgW={eyecatch.width}
         pageImgH={eyecatch.height}
       />
-      <Container>
+      <Ui.Container>
         <article>
-          <PostHeader
+          <Article.PostHeader
             icon={icon}
             title={title}
             subtitle="Blog Article"
             publish={publish}
           />
-          <ThreeColum>
-            <ThreeColumSocialActions>
-              <SocialActions postId={postId} title={title} />
-            </ThreeColumSocialActions>
-            <ThreeColumMain>
-              <PostBody>
+          <Article.ThreeColum>
+            <Article.ThreeColumPostActions>
+              <Article.PostActions postId={postId} title={title} />
+            </Article.ThreeColumPostActions>
+            <Article.ThreeColumMain>
+              <Article.PostBody>
                 <Image
                   src={eyecatch.url}
                   alt=""
@@ -126,23 +112,23 @@ const Post: React.FC<PostProps> = ({
                   sizes="(min-width: 1152px) 1152px, 100vw"
                   priority
                 />
-                <ConvertBody contentHTML={content} />
-              </PostBody>
-              <Comments postId={postId} id={''} />
-            </ThreeColumMain>
-            <ThreeColumSidebar>
-              {tocVisible && <TableOfContents toc={toc} />}
-              <PostCategories categories={categories} />
-            </ThreeColumSidebar>
-          </ThreeColum>
-          <Pagination
+                <Article.ConvertBody contentHTML={content} />
+              </Article.PostBody>
+              <Article.Comments postId={postId} id={''} />
+            </Article.ThreeColumMain>
+            <Article.ThreeColumSidebar>
+              {tocVisible && <Article.TableOfContents toc={toc} />}
+              <Article.PostCategories categories={categories} />
+            </Article.ThreeColumSidebar>
+          </Article.ThreeColum>
+          <Article.Pagination
             prevText={prevPost.title}
             prevUrl={`/articles/${prevPost.slug}`}
             nextText={nextPost.title}
             nextUrl={`/articles/${nextPost.slug}`}
           />
         </article>
-      </Container>
+      </Ui.Container>
     </>
   )
 }

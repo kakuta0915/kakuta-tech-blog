@@ -18,7 +18,7 @@ export const ThreeColumSidebar: React.FC<ThreeColumProps> = ({ children }) => {
   return <div className={styles['sidebar']}>{children}</div>
 }
 
-export const ThreeColumSocialActions: React.FC<ThreeColumProps> = ({
+export const ThreeColumPostActions: React.FC<ThreeColumProps> = ({
   children,
 }) => {
   return <div className={styles['socialActions']}>{children}</div>

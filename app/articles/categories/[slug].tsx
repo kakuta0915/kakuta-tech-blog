@@ -1,12 +1,10 @@
 // 取得したスラッグで生成されたカテゴリーページ (〇〇に関する記事)
 import React from 'react'
 import { getAllCategories, getAllPostByCategory } from '@/libs/api'
-import Meta from '@/src/components/Meta'
-import PostHeader from '@/src/components/PostHeader'
-import Posts from '@/src/components/Posts'
-import CategoriesList from '@/features/articles/components/CategoriesList'
-import Container from '@/components/ui/Container'
 import { GetServerSidePropsContext } from 'next'
+import Meta from '@/components/common/Meta'
+import * as Ui from '@/components/ui'
+import * as Article from '@/features/article/components'
 
 type Icon = {
   url: string
@@ -53,15 +51,15 @@ const Category: React.FC<CategoryProps> = ({
   return (
     <>
       <Meta pageTitle={name} pageDesc={`${name}に関する記事`} />
-      <Container>
-        <PostHeader
+      <Ui.Container>
+        <Article.PostHeader
           icon={icon}
           title={` ${name}に関する記事`}
           subtitle="Blog Category"
         />
-        <Posts posts={posts} maxPosts={0} />
-        <CategoriesList allCategories={allCategories} />
-      </Container>
+        <Ui.Posts posts={posts} maxPosts={0} />
+        <Article.CategoriesList allCategories={allCategories} />
+      </Ui.Container>
     </>
   )
 }

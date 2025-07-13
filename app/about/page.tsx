@@ -1,9 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Meta from '@/components/common/Meta'
-import Hero from '@/components/ui/Hero'
-import Container from '@/components/ui/Container'
-import Social from '@/components/ui/Social'
+import * as UiComponents from '@/components/ui'
 import styles from './page.module.css'
 import eyecatch from '@/public/images/about.jpg'
 import kakuta0915 from '@/public/images/kakuta0915.png'
@@ -18,12 +16,12 @@ const About: React.FC = () => {
         pageImgW={eyecatch.width}
         pageImgH={eyecatch.height}
       />
-      <Hero
+      <UiComponents.Hero
         title="ABOUT"
         description="ブログサイトについての説明と、私の自己紹介を記載しています。"
         imageSrc="./images/about.jpg"
       />
-      <Container>
+      <UiComponents.Container>
         <div className={styles['profile']}>
           <h3>このサイトについて</h3>
           <p>
@@ -45,7 +43,7 @@ const About: React.FC = () => {
               placeholder="blur"
             />
           </figure>
-          <Social isFooterSocial={false} />
+          <UiComponents.Social isFooterSocial={false} />
 
           <h4>名前</h4>
           <p>
@@ -98,7 +96,7 @@ const About: React.FC = () => {
             プログラミング, ゲーム, アニメ鑑賞, 筋力トレーニング, 絵描き, 読書
           </p>
         </div>
-      </Container>
+      </UiComponents.Container>
     </>
   )
 }

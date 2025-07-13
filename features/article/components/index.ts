@@ -9,9 +9,10 @@ import PostCategories from './PostCategories'
 import PostHeader from './PostHeader'
 import TableOfContents from './TableOfContents'
 import {
+  ThreeColum,
   ThreeColumMain,
   ThreeColumSidebar,
-  ThreeColumSocialActions,
+  ThreeColumPostActions,
 } from './ThreeColum'
 
 export {
@@ -25,7 +26,8 @@ export {
   PostCategories,
   PostHeader,
   TableOfContents,
+  ThreeColum,
   ThreeColumMain,
   ThreeColumSidebar,
-  ThreeColumSocialActions,
+  ThreeColumPostActions,
 }
