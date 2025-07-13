@@ -1,7 +1,8 @@
 import Container from './Container'
-import PortfolioList from './PortfolioList'
-import Posts from './Posts'
 import Hero from './Hero'
 import Logo from './Logo'
+import Nav from './Nav'
+import PortfolioList from './PortfolioList'
+import Posts from './Posts'
 
-export { Container, PortfolioList, Posts, Hero, Logo }
+export { Container, Hero, Logo, Nav, PortfolioList, Posts }
