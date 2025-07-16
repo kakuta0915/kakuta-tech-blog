@@ -1,5 +1,6 @@
-import path from 'path'
+const path = require('path')
 
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   images: {
@@ -12,10 +13,10 @@ const nextConfig = {
       { protocol: 'https', hostname: 'images.microcms-assets.io' },
     ],
   },
-  webpack: (config: { resolve: { alias: { [x: string]: string } } }) => {
+  webpack: (config) => {
     config.resolve.alias['@'] = path.resolve(__dirname, 'src')
     return config
   },
 }
 
-export default nextConfig
+module.exports = nextConfig
