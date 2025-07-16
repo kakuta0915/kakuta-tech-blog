@@ -13,9 +13,9 @@ import type { Category } from '@/types'
 type PostSlug = { slug: string }
 
 type Props = {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 const fetchPost = cache(async (slug: string) => {
@@ -42,14 +42,14 @@ const fetchPost = cache(async (slug: string) => {
   }
 })
 
-// 動的ルート生成
-export async function generateStaticParams(): Promise<PostSlug[]> {
-  const slugs: PostSlug[] = await getAllSlugs()
-  return slugs.map((item) => ({ slug: item.slug }))
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
+  const slugs = await getAllSlugs()
+  return slugs.map((item: { slug: any }) => ({ slug: item.slug }))
 }
 
 export default async function ArticlePage({ params }: Props) {
-  const { slug } = params
+  const resolvedParams = await params
+  const { slug } = resolvedParams
   const data = await fetchPost(slug)
 
   if (!data) return notFound()
