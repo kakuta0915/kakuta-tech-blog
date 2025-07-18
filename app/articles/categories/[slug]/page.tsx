@@ -10,7 +10,7 @@ type CategoryParams = {
 }
 
 type CategoryPageProps = {
-  params: CategoryParams
+  params: Promise<CategoryParams>
 }
 
 export async function generateStaticParams() {
@@ -21,8 +21,8 @@ export async function generateStaticParams() {
 }
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
-  const { slug } = params
-
+  const resolvedParams = await params
+  const { slug } = resolvedParams
   const allCategories: Category[] = await getAllCategories()
   const category = allCategories.find((cat) => cat.slug === slug)
 
