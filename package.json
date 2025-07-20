@@ -48,6 +48,7 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
+    "@types/highlight.js": "^9.12.4",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.13.17",
     "@types/react-dom": "^18.3.3",
@@ -62,7 +63,6 @@
     "jest-css-modules-transform": "^4.4.2",
     "jest-environment-jsdom": "^29.7.0",
     "react-scroll": "^1.9.3",
-    "ts-jest": "^29.3.1",
     "typescript": "^5.5.3",
     "webpack-cli": "^6.0.1"
   }

@@ -118,7 +118,7 @@ a {
 
 code {
   color: var(--white);
-  background-color: #2e2e2e;
+  background-color: #252525;
   font-family: 'Fira Code', 'Courier New', monospace;
   border-radius: 4px;
   padding: 0.1rem 0.25rem;
@@ -126,7 +126,7 @@ code {
 }
 
 pre {
-  background-color: #2e2e2e;
+  background-color: #252525;
   margin-bottom: var(--space-xs);
   padding: 1rem;
   border-radius: 8px;
@@ -215,9 +215,9 @@ pre .hljs-selector-class {
 }
 
 pre .hljs-tag > .hljs-string {
-  color: #65a9d9;
+  color: #6fb9ee;
 }
 
 pre .hljs-tag > .hljs-attr {
-  color: rgb(211, 147, 29);
+  color: rgb(226, 158, 30);
 }
