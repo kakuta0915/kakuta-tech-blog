@@ -1,15 +1,14 @@
-// マイページ
+'use client'
+
 import React, { ReactNode, useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import { auth, db } from '@/firebaseConfig'
 import { collection, getDocs, query, where } from 'firebase/firestore'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import Meta from '@/components/common/Meta'
 import * as Ui from '@/components/ui'
-import styles from './index.module.css'
-import eyecatch from '@/public/images/index.jpg'
+import styles from './page.module.css'
 
 type UserPost = {
   postId: string
@@ -17,11 +16,11 @@ type UserPost = {
   id: string
 }
 
-const MyPage: React.FC = () => {
-  const [user, loading] = useAuthState(auth) // ログイン状態
-  const [likedPosts, setLikedPosts] = useState<UserPost[]>([]) // いいねした記事
-  const [bookmarkedPosts, setBookmarkedPosts] = useState<UserPost[]>([]) // ブックマークした記事
-  const [activeTab, setActiveTab] = useState('liked') // タブの切り替え
+const MyAccountClientComponent: React.FC = () => {
+  const [user, loading] = useAuthState(auth)
+  const [likedPosts, setLikedPosts] = useState<UserPost[]>([])
+  const [bookmarkedPosts, setBookmarkedPosts] = useState<UserPost[]>([])
+  const [activeTab, setActiveTab] = useState('liked')
   const router = useRouter()
 
   useEffect(() => {
@@ -35,7 +34,6 @@ const MyPage: React.FC = () => {
       if (!user) return
 
       try {
-        // いいねした記事を取得
         const likesQuery = query(
           collection(db, 'likes'),
           where('userId', '==', user.uid),
@@ -52,7 +50,6 @@ const MyPage: React.FC = () => {
 
         setLikedPosts(likedPostsData)
 
-        // ブックマークした記事を取得
         const bookmarksQuery = query(
           collection(db, 'bookmarks'),
           where('userId', '==', user.uid),
@@ -92,13 +89,6 @@ const MyPage: React.FC = () => {
 
   return (
     <>
-      <Meta
-        pageTitle="MY PAGE"
-        pageDesc="いいねやブックマークした記事を見れます。"
-        pageImg={eyecatch.src}
-        pageImgW={eyecatch.width}
-        pageImgH={eyecatch.height}
-      />
       <Ui.Container>
         <div className={styles['userInfo']}>
           <Image
@@ -154,4 +144,4 @@ const MyPage: React.FC = () => {
   )
 }
 
-export default MyPage
+export default MyAccountClientComponent
