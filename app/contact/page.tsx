@@ -1,7 +1,8 @@
 'use client'
 
 import React, { useState } from 'react'
-import Meta from '@/components/common/Meta'
+import type { Metadata } from 'next'
+import { siteMeta } from '@/libs/constants'
 import * as Ui from '@/components/ui'
 import styles from './page.module.css'
 import eyecatch from '@/public/images/contact.jpg'
@@ -13,20 +14,64 @@ import {
   faUser,
 } from '@fortawesome/free-solid-svg-icons'
 
-export default function Contact() {
-  const [name, setName] = useState('')
-  const [company, setCompany] = useState('')
-  const [email, setEmail] = useState('')
-  const [message, setMessage] = useState('')
+const { siteTitle, siteUrl } = siteMeta
 
-  const handleSubmit = async (e: { preventDefault: () => void }) => {
+export const metadata: Metadata = {
+  title: 'CONTACT',
+  description:
+    'ご質問やご意見、お仕事の依頼などをお待ちしています。お気軽に以下のフォームからご連絡ください。',
+  alternates: {
+    canonical: `${siteUrl}/contact`,
+  },
+  openGraph: {
+    title: `CONTACT | ${siteTitle}`,
+    description:
+      'ご質問やご意見、お仕事の依頼などをお待ちしています。お気軽に以下のフォームからご連絡ください。',
+    url: `${siteUrl}/contact`,
+    siteName: siteTitle,
+    type: 'website',
+    images: [
+      {
+        url: eyecatch.src,
+        width: eyecatch.width,
+        height: eyecatch.height,
+        alt: 'お問い合わせページのアイキャッチ画像',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `CONTACT | ${siteTitle}`,
+    description:
+      'ご質問やご意見、お仕事の依頼などをお待ちしています。お気軽に以下のフォームからご連絡ください。',
+    images: [eyecatch.src],
+  },
+}
+
+type ContactFormData = {
+  name: string
+  company: string
+  email: string
+  message: string
+}
+
+export default function Contact() {
+  const [name, setName] = useState<string>('')
+  const [company, setCompany] = useState<string>('')
+  const [email, setEmail] = useState<string>('')
+  const [message, setMessage] = useState<string>('')
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
+    const formData: ContactFormData = { name, company, email, message }
+
     const res = await fetch('/api/contact', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name, company, email, message }),
+      body: JSON.stringify(formData),
     })
     if (res.ok) {
       alert('送信完了')
@@ -41,13 +86,6 @@ export default function Contact() {
 
   return (
     <>
-      <Meta
-        pageTitle="CONTACT"
-        pageDesc="ご質問やご意見、お仕事の依頼などをお待ちしています。お気軽に以下のフォームからご連絡ください。"
-        pageImg={eyecatch.src}
-        pageImgW={eyecatch.width}
-        pageImgH={eyecatch.height}
-      />
       <Ui.Hero
         title="CONTACT"
         description="ご質問やご意見、お仕事の依頼などをお待ちしています。お気軽に以下のフォームからご連絡ください。"
