@@ -1,21 +1,48 @@
 import React from 'react'
 import Image from 'next/image'
-import Meta from '@/components/common/Meta'
+import type { Metadata } from 'next'
+import { siteMeta } from '@/libs/constants'
 import * as UiComponents from '@/components/ui'
 import styles from './page.module.css'
 import eyecatch from '@/public/images/about.jpg'
 import kakuta0915 from '@/public/images/kakuta0915.png'
 
+const { siteTitle, siteUrl } = siteMeta
+
+export const metadata: Metadata = {
+  title: 'ABOUT',
+  description: 'ブログサイトについての説明と、私の自己紹介を記載しています。',
+  alternates: {
+    canonical: `${siteUrl}/about`,
+  },
+
+  openGraph: {
+    title: `ABOUT | ${siteTitle}`,
+    description: 'ブログサイトについての説明と、私の自己紹介を記載しています。',
+    url: `${siteUrl}/about`,
+    siteName: siteTitle,
+    type: 'website',
+    images: [
+      {
+        url: eyecatch.src,
+        width: eyecatch.width,
+        height: eyecatch.height,
+        alt: 'Aboutページのアイキャッチ画像',
+      },
+    ],
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: `ABOUT | ${siteTitle}`,
+    description: 'ブログサイトについての説明と、私の自己紹介を記載しています。',
+    images: [eyecatch.src],
+  },
+}
+
 const About: React.FC = () => {
   return (
     <>
-      <Meta
-        pageTitle="ABOUT"
-        pageDesc="ブログサイトについての説明と、私の自己紹介を記載しています。"
-        pageImg={eyecatch.src}
-        pageImgW={eyecatch.width}
-        pageImgH={eyecatch.height}
-      />
       <UiComponents.Hero
         title="ABOUT"
         description="ブログサイトについての説明と、私の自己紹介を記載しています。"
