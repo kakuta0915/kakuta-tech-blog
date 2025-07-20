@@ -1,0 +1,223 @@
+/* グローバルスタイルの設定 */
+
+:root {
+  /* カラー（色） */
+  --black: #222;
+  --gray: #808080;
+  --gray-1: #ccc;
+  --gray-2: #ddd;
+  --gray-3: #e8e8e8;
+  --white: #fff;
+  --blue: #6495ed; /* ベースカラー */
+  --blue-1: #4169e1; /* 「KAKUTA BLOG」に使用 */
+  --blue-2: #4682b4; /* TOPページのボタンに使用 */
+  --blue-3: #00aeef;
+  --base-color: #f5f5f5;
+
+  /* フォントサイズ */
+  --body: clamp(1.031rem, 1.009rem + 0.11vw, 1.094rem); /* 16.5-17.5px */
+  --display: clamp(4.5rem, 1.83rem + 11.34vw, 10rem); /* 72-160px */
+  --heading1: clamp(1.75rem, 1.295rem + 2.27vw, 3rem); /* 28-48px */
+  --heading2: clamp(1.688rem, 1.574rem + 0.57vw, 2rem); /* 27-32 */
+  --heading3: clamp(1.5rem, 1.432rem + 0.34vw, 1.688rem); /* 24-27 */
+  --heading4: clamp(1.313rem, 1.267rem + 0.23vw, 1.438rem); /* 21-23 */
+  --heading5: clamp(1.094rem, 1.071rem + 0.11vw, 1.156rem); /* 17.5-18.5*/
+
+  /* スペース */
+  --space-xxs: clamp(1rem, 0.95rem + 0.2vw, 1.125rem); /* 16-18px */
+  --space-xs: clamp(1.25rem, 1rem + 0.98vw, 1.875rem); /* 20-30px */
+  --space-sm: calc(var(--space-xs) * 1.5); /* 30-45px */
+  --space-md: calc(var(--space-xs) * 2); /* 40-60px */
+  --space-lg: calc(var(--space-xs) * 3); /* 60-90px */
+  --space-xl: calc(var(--space-xs) * 4); /* 80-120px */
+  --space-jump: clamp(1.25rem, 0.35rem + 3.8vw, 3.75rem); /* 20-60px */
+}
+
+/* 基本設定 */
+body {
+  color: #494949;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
+    sans-serif;
+  font-size: var(--body);
+  background-color: var(--base-color);
+}
+
+h1 {
+  font-size: var(--heading1);
+}
+
+h2 {
+  font-size: var(--heading2);
+}
+
+h3 {
+  font-size: var(--heading3);
+}
+
+h4 {
+  font-size: var(--heading4);
+}
+
+h5 {
+  font-size: var(--heading5);
+}
+
+p {
+  line-height: 1.8;
+}
+
+/* リセット */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* microCMS カスタムclass */
+.marginTop05,
+.marginTop1,
+.marginBottom05,
+.marginBottom1 {
+  display: inline-block;
+}
+
+.marginTop05 {
+  margin-top: 0.5rem;
+}
+
+.marginTop1 {
+  margin-top: 1rem;
+}
+
+.marginBottom05 {
+  margin-bottom: 0.5rem;
+}
+
+.marginBottom1 {
+  margin-bottom: 1rem;
+}
+
+code {
+  color: var(--white);
+  background-color: #2e2e2e;
+  font-family: 'Fira Code', 'Courier New', monospace;
+  border-radius: 4px;
+  padding: 0.1rem 0.25rem;
+  overflow-x: auto;
+}
+
+pre {
+  background-color: #2e2e2e;
+  margin-bottom: var(--space-xs);
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+pre code {
+  font-size: calc(var(--body) * 0.9);
+  line-height: 1.5;
+}
+
+pre .hljs-comment {
+  color: rgb(82, 175, 82);
+}
+
+pre .hljs-function {
+  color: rgb(218, 218, 0);
+}
+
+pre .hljs-keyword {
+  color: #cc78e6;
+}
+
+pre .hljs-string {
+  color: rgb(254, 173, 23);
+}
+
+pre .hljs-number {
+  color: #70eb84;
+}
+
+pre .hljs-title {
+  color: rgb(209, 209, 29);
+}
+
+pre .hljs-tag {
+  color: white;
+}
+
+pre .hljs-name {
+  color: #70eb84;
+}
+
+pre .hljs-attr {
+  color: #84cafc;
+}
+
+pre .hljs-attribute {
+  color: #84cafc;
+}
+
+pre .hljs-params {
+  color: #84cafc;
+}
+
+pre .hljs-built_in {
+  color: #70eb84;
+}
+
+pre .hljs-literal {
+  color: #84cafc;
+}
+
+pre .hljs-regexp {
+  color: rgb(245, 50, 50);
+}
+
+pre .hljs-selector-tag {
+  color: rgb(226, 226, 22);
+}
+
+pre .hljs-selector-class {
+  color: rgb(226, 226, 22);
+}
+
+pre .hljs-tag > .hljs-string {
+  color: #65a9d9;
+}
+
+pre .hljs-tag > .hljs-attr {
+  color: rgb(211, 147, 29);
+}

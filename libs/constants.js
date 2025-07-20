@@ -3,7 +3,7 @@ export const siteMeta = {
   siteDesc: '独学でプログラミング学習しているサイト主の個人ブログサイト',
   siteUrl: 'https://kakuta-tech-blog',
   siteLang: 'ja',
-  siteLocal: 'ja_JP',
+  siteLocale: 'ja_JP',
   siteType: 'website',
   siteIcon: '/images/favicon.png',
 }
