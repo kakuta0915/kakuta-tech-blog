@@ -11,7 +11,7 @@ type ConvertBodyProps = {
 function isElementNode(node: DOMNode): node is DOMNode & {
   name: string
   attribs: { [key: string]: string }
-  children?: DOMNode[]
+  children: DOMNode[]
 } {
   return node.type === 'tag' && !!node.name
 }
@@ -24,7 +24,7 @@ const ConvertBody: React.FC<ConvertBodyProps> = ({ contentHTML }) => {
   const contentReact = parse(contentHTML, {
     replace: (node) => {
       if (isElementNode(node)) {
-        if (node.name === 'img' && node.attribs) {
+        if (node.name === 'img') {
           const { src, alt, width, height } = node.attribs
 
           if (!src) return null
@@ -45,21 +45,42 @@ const ConvertBody: React.FC<ConvertBodyProps> = ({ contentHTML }) => {
           )
         }
 
-        if (
-          node.name === 'code' &&
-          node.children?.[0] &&
-          isTextNode(node.children[0])
-        ) {
-          const result = hljs.highlightAuto(node.children[0].data)
-          const dom = parse(result.value)
+        if (node.name === 'pre') {
+          const codeNodeCandidate = node.children.find(
+            (child) => isElementNode(child) && child.name === 'code',
+          )
 
-          return <code className="hljs">{dom}</code>
+          if (codeNodeCandidate && isElementNode(codeNodeCandidate)) {
+            const codeTextNodeCandidate = codeNodeCandidate.children[0]
+
+            if (codeTextNodeCandidate && isTextNode(codeTextNodeCandidate)) {
+              const codeText = codeTextNodeCandidate.data
+              const language = codeNodeCandidate.attribs['class']
+                ? codeNodeCandidate.attribs['class']
+                    .replace(/^language-/, '')
+                    .trim()
+                : undefined
+
+              const result = language
+                ? hljs.highlight(codeText, { language }).value
+                : hljs.highlightAuto(codeText).value
+
+              const highlightedDom = parse(result)
+
+              return (
+                <pre className={`stack language-${language || 'plaintext'}`}>
+                  <code className="hljs">{highlightedDom}</code>
+                </pre>
+              )
+            }
+          }
         }
       }
 
-      return null
+      return undefined
     },
   })
+
   return <>{contentReact}</>
 }
 

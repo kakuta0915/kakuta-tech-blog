@@ -66,11 +66,6 @@ p {
   line-height: 1.8;
 }
 
-/* next/image */
-span > img {
-  transition: 0.2s;
-}
-
 /* リセット */
 body,
 h1,
@@ -97,17 +92,6 @@ a {
   text-decoration: none;
 }
 
-.fadeInSection {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-
-  &.fadeInImage {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* microCMS カスタムclass */
 .marginTop05,
 .marginTop1,
@@ -132,95 +116,108 @@ a {
   margin-bottom: 1rem;
 }
 
-/* コードブロック内の単語1つ1つのスタイル */
-pre * {
-  margin-bottom: var(--space-xs);
-  overflow-x: auto;
-}
-
-/* コード単語のスタイル */
 code {
-  font-size: var(--body);
+  color: var(--white);
+  background-color: #2e2e2e;
   font-family: 'Fira Code', 'Courier New', monospace;
   border-radius: 4px;
-  line-height: 1.5;
+  padding: 0.1rem 0.25rem;
   overflow-x: auto;
 }
 
-/* コード内のspanタグ */
-code * {
-  padding: 0.2rem;
-  color: #c9d1d9;
-  font-weight: normal;
+pre {
+  background-color: #2e2e2e;
+  margin-bottom: var(--space-xs);
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
 }
 
-/* highlight.js カラーコード */
-code.hljs * {
-  color: #c9d1d9;
-  font-weight: normal;
-}
-
-/* コードブロック内のカラー */
-pre .hljs.language-dsconfig *,
-pre .hljs.language-routeros *,
-pre .hljs.language-cmake *,
-pre .hljs.language-ini *,
-pre .hljs.language-bash * {
-  color: #c9d1d9;
-}
-
-pre .hljs-keyword {
-  color: #d283e8;
-}
-
-pre .hljs-string {
-  color: #ed9b2d;
-}
-
-pre .hljs-title.function_ {
-  color: #f3e142;
-}
-
-pre .hljs-title.class_ {
-  color: #85d2ff;
-}
-
-pre .hljs-variable.constant_ {
-  color: #85d2ff;
+pre code {
+  font-size: calc(var(--body) * 0.9);
+  line-height: 1.5;
 }
 
 pre .hljs-comment {
-  color: #7abd74;
+  color: rgb(82, 175, 82);
 }
 
-pre .hljs-attr {
-  color: #18aaff;
+pre .hljs-function {
+  color: rgb(218, 218, 0);
 }
 
-pre .hljs-params {
-  color: #4db2ed;
+pre .hljs-keyword {
+  color: #cc78e6;
 }
 
-pre .hljs-built_in {
-  color: #50bfff;
+pre .hljs-string {
+  color: rgb(254, 173, 23);
 }
 
-pre .hljs-literal {
-  color: #50bfff;
+pre .hljs-number {
+  color: #70eb84;
 }
 
-pre .hljs-property {
-  color: #50bfff;
-}
-
-pre .hljs-symbol {
-  color: #f3e142;
+pre .hljs-title {
+  color: rgb(209, 209, 29);
 }
 
 pre .hljs-tag {
-  color: #9f9f9f;
+  color: white;
 }
 
 pre .hljs-name {
-  color: #04c568;
+  color: #70eb84;
+}
+
+pre .hljs-attr {
+  color: #84cafc;
+}
+
+pre .hljs-attribute {
+  color: #84cafc;
+}
+
+pre .hljs-params {
+  color: #84cafc;
+}
+
+pre .hljs-built_in {
+  color: #70eb84;
+}
+
+pre .hljs-literal {
+  color: #84cafc;
+}
+
+pre .hljs-regexp {
+  color: rgb(245, 50, 50);
+}
+
+pre .hljs-selector-tag {
+  color: rgb(226, 226, 22);
+}
+
+pre .hljs-selector-class {
+  color: rgb(226, 226, 22);
+}
+
+pre .hljs-tag > .hljs-string {
+  color: #65a9d9;
+}
+
+pre .hljs-tag > .hljs-attr {
+  color: rgb(211, 147, 29);
 }

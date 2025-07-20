@@ -61,11 +61,6 @@
   font-weight: 600;
 }
 
-/* コードブロックのスタイル */
-.stack pre * {
-  background-color: #1e1e1e;
-}
-
 .stack ol,
 .stack ul {
   margin: 0.75rem 0 var(--space-xxs);
