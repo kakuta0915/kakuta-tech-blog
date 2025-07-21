@@ -1,8 +1,43 @@
 import React from 'react'
-import Meta from '@/components/common/Meta'
+import type { Metadata } from 'next'
+import { siteMeta } from '@/libs/constants'
 import * as Ui from '@/components/ui'
 import styles from './page.module.css'
 import eyecatch from '@/public/images/works.jpg'
+
+const { siteTitle, siteUrl } = siteMeta
+
+export const metadata: Metadata = {
+  title: 'PORTFOLIO',
+  description:
+    '独学で制作したサイトなどを掲載しており、GitHubからコードもご覧いただけます。',
+  alternates: {
+    canonical: `${siteUrl}/portfolio`,
+  },
+  openGraph: {
+    title: `PORTFOLIO | ${siteTitle}`,
+    description:
+      '独学で制作したサイトなどを掲載しており、GitHubからコードもご覧いただけます。',
+    url: `${siteUrl}/portfolio`,
+    siteName: siteTitle,
+    type: 'website',
+    images: [
+      {
+        url: eyecatch.src,
+        width: eyecatch.width,
+        height: eyecatch.height,
+        alt: 'ポートフォリオページのアイキャッチ画像',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `PORTFOLIO | ${siteTitle}`,
+    description:
+      '独学で制作したサイトなどを掲載しており、GitHubからコードもご覧いただけます。',
+    images: [eyecatch.src],
+  },
+}
 
 const portfolioData = [
   {
@@ -18,13 +53,6 @@ const portfolioData = [
 export default function Portfolio() {
   return (
     <>
-      <Meta
-        pageTitle="PORTFOLIO"
-        pageDesc="独学で制作したサイトなどを掲載しており、GitHubからコードもご覧いただけます。"
-        pageImg={eyecatch.src}
-        pageImgW={eyecatch.width}
-        pageImgH={eyecatch.height}
-      />
       <Ui.Hero
         title="PORTFOLIO"
         description="独学で制作したサイトなどを掲載しており、GitHubからコードもご覧いただけます。"

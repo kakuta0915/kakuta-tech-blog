@@ -1,11 +1,12 @@
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import { cache } from 'react'
+import type { Metadata } from 'next'
+import { createMetadata } from '@/utils/createMetadata'
 import { getPostBySlug, getAllSlugs, getAllCategories } from '@/libs/api'
 import { extractText } from '@/libs/extract-text'
 import { prevNextPost } from '@/libs/prev-next-post'
 import { renderToc } from '@/libs/render-toc'
-import Meta from '@/components/common/Meta'
 import * as Ui from '@/components/ui'
 import * as Article from '@/features/article/components'
 import type { Category } from '@/types'
@@ -13,19 +14,22 @@ import type { Category } from '@/types'
 type PostSlug = { slug: string }
 
 type Props = {
-  params: Promise<{
+  params: {
     slug: string
-  }>
+  }
 }
 
 const fetchPost = cache(async (slug: string) => {
   const post = await getPostBySlug(slug)
+  if (!post) return null
+
   const allSlugs: PostSlug[] = await getAllSlugs()
   const allCategories: Category[] = await getAllCategories()
   const category = allCategories.find(({ slug: s }) => s === post.category)
-  const [prevPost, nextPost] = prevNextPost(allSlugs, slug)
 
-  if (!post || !category) return null
+  if (!category) return null
+
+  const [prevPost, nextPost] = prevNextPost(allSlugs, slug)
 
   return {
     icon: category.icon,
@@ -42,17 +46,38 @@ const fetchPost = cache(async (slug: string) => {
   }
 })
 
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = params
+  const data = await fetchPost(slug)
+
+  if (!data) {
+    notFound()
+  }
+
+  const { title, description, eyecatch } = data
+
+  return createMetadata({
+    pageTitle: title,
+    pageDesc: description,
+    slug: slug,
+    pageImg: eyecatch.url,
+    pageImgW: eyecatch.width,
+    pageImgH: eyecatch.height,
+  })
+}
+
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const slugs = await getAllSlugs()
-  return slugs.map((item: { slug: any }) => ({ slug: item.slug }))
+  return slugs.map((item: { slug: string }) => ({ slug: item.slug }))
 }
 
 export default async function ArticlePage({ params }: Props) {
-  const resolvedParams = await params
-  const { slug } = resolvedParams
+  const { slug } = params
   const data = await fetchPost(slug)
 
-  if (!data) return notFound()
+  if (!data) {
+    notFound()
+  }
 
   const {
     icon,
@@ -61,7 +86,6 @@ export default async function ArticlePage({ params }: Props) {
     content,
     eyecatch,
     categories,
-    description,
     prevPost,
     nextPost,
     tocVisible,
@@ -77,13 +101,6 @@ export default async function ArticlePage({ params }: Props) {
 
   return (
     <>
-      <Meta
-        pageTitle={title}
-        pageDesc={description}
-        pageImg={eyecatch.url}
-        pageImgW={eyecatch.width}
-        pageImgH={eyecatch.height}
-      />
       <Ui.Container>
         <article>
           <Article.PostHeader
@@ -116,12 +133,14 @@ export default async function ArticlePage({ params }: Props) {
               <Article.PostCategories categories={categories} />
             </Article.ThreeColumSidebar>
           </Article.ThreeColum>
-          <Article.Pagination
-            prevText={prevPost.title}
-            prevUrl={`/articles/${prevPost.slug}`}
-            nextText={nextPost.title}
-            nextUrl={`/articles/${nextPost.slug}`}
-          />
+          {prevPost && nextPost && (
+            <Article.Pagination
+              prevText={prevPost.title}
+              prevUrl={`/articles/${prevPost.slug}`}
+              nextText={nextPost.title}
+              nextUrl={`/articles/${nextPost.slug}`}
+            />
+          )}
         </article>
       </Ui.Container>
     </>

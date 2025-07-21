@@ -2,7 +2,8 @@ import React from 'react'
 import { getAllArticles } from '@/libs/api'
 import Image from 'next/image'
 import Link from 'next/link'
-import Meta from '@/components/common/Meta'
+import type { Metadata } from 'next'
+import { siteMeta } from '@/libs/constants'
 import Hero from '@/components/ui/Hero'
 import Container from '@/components/ui/Container'
 import Posts from '@/components/ui/Posts'
@@ -23,17 +24,34 @@ type Post = {
   bookmarksCount: number
 }
 
-export const metadata = {
+const { siteTitle, siteUrl } = siteMeta
+
+export const metadata: Metadata = {
   title: 'TOP',
   description: 'プログラミング学習記録をまとめたサイト',
+  alternates: {
+    canonical: siteUrl,
+  },
   openGraph: {
+    title: `TOP | ${siteTitle}`,
+    description: 'プログラミング学習記録をまとめたサイト',
+    url: siteUrl,
+    siteName: siteTitle,
+    type: 'website',
     images: [
       {
         url: eyecatch.src,
         width: eyecatch.width,
         height: eyecatch.height,
+        alt: 'KAKUTA TECH BLOGのアイキャッチ画像',
       },
     ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `TOP | ${siteTitle}`,
+    description: 'プログラミング学習記録をまとめたサイト',
+    images: [eyecatch.src],
   },
 }
 
@@ -48,19 +66,12 @@ const portfolioData = [
   },
 ]
 
-export default async function Home() {
+export default async function HomePage() {
   const { articles } = await getAllArticles()
   const posts: Post[] = articles
 
   return (
     <>
-      <Meta
-        pageTitle="TOP"
-        pageDesc="プログラミング学習記録をまとめたサイト"
-        pageImg={eyecatch.src}
-        pageImgW={eyecatch.width}
-        pageImgH={eyecatch.height}
-      />
       <Hero
         title="KAKUTA"
         title2="TECH BLOG"
@@ -78,7 +89,7 @@ export default async function Home() {
           <Image
             className={styles['profileIcon']}
             src={kakuta0915}
-            alt=""
+            alt="角田のプロフィールアイコン"
             objectFit="contain"
             priority
             placeholder="blur"

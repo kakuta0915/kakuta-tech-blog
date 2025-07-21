@@ -1,18 +1,19 @@
-// マイページの設定ページ
+'use client'
+
 import React, { useEffect, useState, ChangeEvent } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 import { updateProfile } from 'firebase/auth'
 import { auth, storage } from '@/firebaseConfig'
 import { toast } from 'react-toastify'
-import Meta from '@/components/common/Meta'
-import styles from './index.module.css'
-import eyecatch from '@/public/images/index.jpg'
+import styles from './MyAccountEdit.module.css'
 
-const Settings: React.FC = () => {
+type MyAccountEditProps = {}
+
+const MyAccountEdit: React.FC<MyAccountEditProps> = () => {
   const [user, loading] = useAuthState(auth)
   const router = useRouter()
 
@@ -58,7 +59,6 @@ const Settings: React.FC = () => {
         await uploadBytes(storageRef, selectedFile)
         updatePhotoURL = await getDownloadURL(storageRef)
       } catch (err) {
-        console.error('画像アップロードエラー:', err)
         toast.error('画像のアップロードに失敗しました。')
         return
       }
@@ -76,7 +76,6 @@ const Settings: React.FC = () => {
       })
       toast.success('プロフィールを更新しました！')
     } catch (error) {
-      console.error('プロフィールの更新に失敗:', error)
       toast.error('プロフィールの更新に失敗しました。')
     }
   }
@@ -87,13 +86,6 @@ const Settings: React.FC = () => {
 
   return (
     <>
-      <Meta
-        pageTitle="SETTING"
-        pageDesc="アイコンやアカウント名の設定を行うページです。"
-        pageImg={eyecatch.src}
-        pageImgW={eyecatch.width}
-        pageImgH={eyecatch.height}
-      />
       <h1 className={styles['pageTitle']}>Settings</h1>
       <div className={styles['profileContainer']}>
         <div className={styles['preview']}>
@@ -135,4 +127,4 @@ const Settings: React.FC = () => {
   )
 }
 
-export default Settings
+export default MyAccountEdit
