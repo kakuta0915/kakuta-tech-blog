@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { siteMeta } from '@/libs/constants'
 import eyecatch from '@/public/images/contact.jpg'
-import ContactClient from './ContactClient'
+import Contact from './Contact'
 
 const { siteTitle, siteUrl } = siteMeta
 
@@ -38,5 +38,5 @@ export const metadata: Metadata = {
 }
 
 export default function ContactPage() {
-  return <ContactClient />
+  return <Contact />
 }

@@ -9,11 +9,11 @@ import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 import { updateProfile } from 'firebase/auth'
 import { auth, storage } from '@/firebaseConfig'
 import { toast } from 'react-toastify'
-import styles from './page.module.css'
+import styles from './MyAccountEdit.module.css'
 
-type MyAccountEditClientProps = {}
+type MyAccountEditProps = {}
 
-const MyAccountEditClient: React.FC<MyAccountEditClientProps> = () => {
+const MyAccountEdit: React.FC<MyAccountEditProps> = () => {
   const [user, loading] = useAuthState(auth)
   const router = useRouter()
 
@@ -127,4 +127,4 @@ const MyAccountEditClient: React.FC<MyAccountEditClientProps> = () => {
   )
 }
 
-export default MyAccountEditClient
+export default MyAccountEdit

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { siteMeta } from '@/libs/constants'
 import eyecatch from '@/public/images/index.jpg'
-import MyAccountClient from './MyAccountClient'
+import MyAccountClient from './MyAccount'
 
 const { siteTitle, siteUrl } = siteMeta
 

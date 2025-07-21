@@ -8,7 +8,7 @@ import { auth, db } from '@/firebaseConfig'
 import { collection, getDocs, query, where } from 'firebase/firestore'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import * as Ui from '@/components/ui'
-import styles from './page.module.css'
+import styles from './MyAccount.module.css'
 
 type UserPost = {
   postId: string
@@ -16,7 +16,7 @@ type UserPost = {
   id: string
 }
 
-const MyAccountClient: React.FC = () => {
+const MyAccount: React.FC = () => {
   const [user, loading] = useAuthState(auth)
   const [likedPosts, setLikedPosts] = useState<UserPost[]>([])
   const [bookmarkedPosts, setBookmarkedPosts] = useState<UserPost[]>([])
@@ -144,4 +144,4 @@ const MyAccountClient: React.FC = () => {
   )
 }
 
-export default MyAccountClient
+export default MyAccount

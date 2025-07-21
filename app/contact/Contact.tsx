@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import * as Ui from '@/components/ui'
-import styles from './page.module.css'
+import styles from './Contact.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faBuilding,
@@ -18,7 +18,7 @@ type ContactFormData = {
   message: string
 }
 
-export default function ContactClient() {
+export default function Contact() {
   const [name, setName] = useState<string>('')
   const [company, setCompany] = useState<string>('')
   const [email, setEmail] = useState<string>('')
