@@ -98,7 +98,7 @@ const MyAccount: React.FC = () => {
             height={80}
           />
           <p>{user.displayName}</p>
-          <Link href="/settings/account/edit" className={styles['edit']}>
+          <Link href="/settings/edit" className={styles['edit']}>
             編集
           </Link>
         </div>
