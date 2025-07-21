@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   },
 }
 
-const About: React.FC = () => {
+const AboutPage: React.FC = () => {
   return (
     <>
       <UiComponents.Hero
@@ -128,4 +128,4 @@ const About: React.FC = () => {
   )
 }
 
-export default About
+export default AboutPage
