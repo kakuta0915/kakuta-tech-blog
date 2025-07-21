@@ -99,7 +99,7 @@ const UserInfo: React.FC<Props> = ({ user }) => {
             マイページ
           </Link>
           <Link
-            href="/settings/"
+            href="/settings/edit"
             onClick={() => setIsOpen(false)}
             className={styles['lastLink']}
           >
