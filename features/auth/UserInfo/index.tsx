@@ -94,7 +94,7 @@ const UserInfo: React.FC<Props> = ({ user }) => {
             isOpen ? styles['open'] : ''
           }`}
         >
-          <Link href="/my-page/" onClick={() => setIsOpen(false)}>
+          <Link href="/my-account/" onClick={() => setIsOpen(false)}>
             <FontAwesomeIcon icon={faUser} className={styles['icon']} />
             マイページ
           </Link>
