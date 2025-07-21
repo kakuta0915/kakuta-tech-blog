@@ -16,7 +16,7 @@ type UserPost = {
   id: string
 }
 
-const MyAccountClientComponent: React.FC = () => {
+const MyAccount: React.FC = () => {
   const [user, loading] = useAuthState(auth)
   const [likedPosts, setLikedPosts] = useState<UserPost[]>([])
   const [bookmarkedPosts, setBookmarkedPosts] = useState<UserPost[]>([])
@@ -98,7 +98,7 @@ const MyAccountClientComponent: React.FC = () => {
             height={80}
           />
           <p>{user.displayName}</p>
-          <Link href="/settings/" className={styles['edit']}>
+          <Link href="/settings/edit" className={styles['edit']}>
             編集
           </Link>
         </div>
@@ -144,4 +144,4 @@ const MyAccountClientComponent: React.FC = () => {
   )
 }
 
-export default MyAccountClientComponent
+export default MyAccount
