@@ -1,6 +1,8 @@
+'use client'
+
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { auth } from '@/firebaseConfig'
 import {
   deleteUser,
@@ -10,11 +12,9 @@ import {
   User,
 } from 'firebase/auth'
 import { toast } from 'react-toastify'
-import Meta from '@/components/common/Meta'
-import styles from './DeleteAccount.module.css'
-import eyecatch from '@/public/images/index.jpg'
+import styles from './MyAccountDelete.module.css'
 
-const DeleteAccount: React.FC = () => {
+const MyAccountDelete: React.FC = () => {
   const [user, setUser] = useState<User | null>(null)
   const [loading, setLoading] = useState(true)
   const [isDeleting, setIsDeleting] = useState(false)
@@ -56,7 +56,6 @@ const DeleteAccount: React.FC = () => {
       if (error.code === 'auth/requires-recent-login') {
         toast.error('再認証が必要です。再度ログインしてください。')
       } else {
-        console.error('アカウント削除エラー:', error)
         toast.error('アカウントの削除に失敗しました。')
       }
     } finally {
@@ -74,13 +73,6 @@ const DeleteAccount: React.FC = () => {
 
   return (
     <>
-      <Meta
-        pageTitle="Delete Account"
-        pageDesc="アカウントの削除ページです。"
-        pageImg={eyecatch.src}
-        pageImgW={eyecatch.width}
-        pageImgH={eyecatch.height}
-      />
       <div className={styles['deleteContainer']}>
         <h2>アカウントを削除しますか？</h2>
         <div className={styles['userInfo']}>
@@ -115,4 +107,4 @@ const DeleteAccount: React.FC = () => {
   )
 }
 
-export default DeleteAccount
+export default MyAccountDelete
