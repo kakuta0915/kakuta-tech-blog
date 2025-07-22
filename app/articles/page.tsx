@@ -6,6 +6,7 @@ import Hero from '@/components/ui/Hero'
 import * as Ui from '@/components/ui'
 import * as Article from '@/features/article/components'
 import eyecatch from '@/public/images/articles.jpg'
+import { redirect } from 'next/navigation'
 
 type Post = {
   title: string
@@ -60,9 +61,33 @@ export const metadata: Metadata = {
   },
 }
 
-export default async function ArticlesPage() {
+const POSTS_PER_PAGE = 10
+
+type ArticlesPageProps = {
+  searchParams?: { page?: string }
+}
+
+export default async function ArticlesPage({
+  searchParams,
+}: ArticlesPageProps) {
+  const pageParam = searchParams?.page
+  const currentPage = pageParam ? parseInt(pageParam, 10) : 1
+
   const { articles: posts }: { articles: Post[] } = await getAllArticles()
   const allCategories: Category[] = await getAllCategories()
+
+  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE)
+  if (currentPage < 1 || currentPage > totalPages) {
+    redirect('/articles?page=1')
+  }
+
+  const startIdx = (currentPage - 1) * POSTS_PER_PAGE
+  const endIdx = startIdx + POSTS_PER_PAGE
+  const pagedPosts = posts.slice(startIdx, endIdx)
+
+  const prevPage = currentPage > 1 ? `/articles?page=${currentPage - 1}` : ''
+  const nextPage =
+    currentPage < totalPages ? `/articles?page=${currentPage + 1}` : ''
 
   return (
     <>
@@ -72,7 +97,16 @@ export default async function ArticlesPage() {
         imageSrc="/images/articles.jpg"
       />
       <Ui.Container>
-        <Ui.Posts posts={posts} />
+        <Ui.Posts posts={pagedPosts} />
+        <Article.Pagination
+          prevText={prevPage ? '前のページ' : ''}
+          prevUrl={prevPage}
+          nextText={nextPage ? '次のページ' : ''}
+          nextUrl={nextPage}
+          totalPages={totalPages}
+          currentPage={currentPage}
+          createPageLink={(page) => `/articles?page=${page}`}
+        />
         <Article.CategoriesList allCategories={allCategories} />
       </Ui.Container>
     </>
