@@ -61,7 +61,7 @@ export const metadata: Metadata = {
   },
 }
 
-const POSTS_PER_PAGE = 10
+const POSTS_PER_PAGE = 15
 
 type ArticlesPageProps = {
   searchParams?: { page?: string }
@@ -71,7 +71,7 @@ export default async function ArticlesPage({
   searchParams,
 }: ArticlesPageProps) {
   const pageParam = searchParams?.page
-  const currentPage = pageParam ? parseInt(pageParam, 10) : 1
+  const currentPage = pageParam ? parseInt(pageParam, 15) : 1
 
   const { articles: posts }: { articles: Post[] } = await getAllArticles()
   const allCategories: Category[] = await getAllCategories()
