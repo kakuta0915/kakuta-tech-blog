@@ -19,13 +19,11 @@ const UserInfo: React.FC<Props> = ({ user }) => {
   const dropdownRef = useRef<HTMLDivElement | null>(null)
   const isMountedRef = useRef(true)
 
-  // ドロップダウンを切り替える
   const toggleDropdown = useCallback(() => {
     if (!user || !isMountedRef.current) return
     setIsOpen((prev) => !prev)
   }, [user])
 
-  // 外部クリックでドロップダウンを閉じる
   const handleClickOutside = useCallback((event: MouseEvent) => {
     if (
       dropdownRef.current &&
@@ -38,7 +36,6 @@ const UserInfo: React.FC<Props> = ({ user }) => {
   }, [])
 
   useEffect(() => {
-    // コンポーネントがマウント中であることを記録
     isMountedRef.current = true
 
     if (isOpen) {
@@ -48,20 +45,17 @@ const UserInfo: React.FC<Props> = ({ user }) => {
     }
 
     return () => {
-      // コンポーネントがアンマウントされたらフラグを false に設定
       isMountedRef.current = false
       document.removeEventListener('mousedown', handleClickOutside)
     }
   }, [isOpen, handleClickOutside])
 
-  // ユーザーがログアウトまたは削除された場合、ドロップダウンを閉じる
   useEffect(() => {
     if (!user && isMountedRef.current) {
       setIsOpen(false)
     }
   }, [user])
 
-  // ログアウトボタンの処理
   const handleSignOut = () => {
     if (isMountedRef.current) {
       setIsOpen(false)
