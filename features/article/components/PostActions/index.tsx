@@ -30,7 +30,7 @@ const PostActions: React.FC<PostActionsProps> = ({ postId, title }) => {
   const [bookmarked, setBookmarked] = useState<boolean>(false)
   const [bookmarkCount, setBookmarkCount] = useState<number>(0)
   const baseUrl = typeof window !== 'undefined' ? window.location.origin : ''
-  const postUrl = `${baseUrl}/articles/${postId}`
+  const postUrl = `${baseUrl}/posts/${postId}`
 
   useEffect(() => {
     if (postId) {
