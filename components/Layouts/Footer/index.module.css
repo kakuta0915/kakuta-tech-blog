@@ -5,8 +5,14 @@
   padding: var(--space-md) 0;
 }
 
-/* デスクトップサイズ */
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1024px) {
+  .footer {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 1025px) {
   .footer {
     flex-direction: row;
     justify-content: space-between;
