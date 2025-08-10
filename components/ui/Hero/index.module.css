@@ -1,7 +1,7 @@
 .heroContainer {
   display: flex;
   align-items: center;
-  height: 50vh;
+  height: 65vh;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -55,5 +55,25 @@
     background-color: var(--blue);
     color: var(--white);
     transform: scale(1.05);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .heroContainer {
+    height: 50vh;
+  }
+
+  .heroText {
+    width: 70%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .heroContainer {
+    height: 60vh;
+  }
+
+  .heroText {
+    width: 50%;
   }
 }
