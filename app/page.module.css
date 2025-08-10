@@ -66,3 +66,15 @@
     height: 25%;
   }
 }
+
+@media (min-width: 1025px) {
+  .text {
+    width: 85%;
+    margin: 0 auto;
+  }
+
+  .aboutSection .profileIcon {
+    width: 20%;
+    height: 20%;
+  }
+}
