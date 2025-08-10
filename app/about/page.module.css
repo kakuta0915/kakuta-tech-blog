@@ -8,7 +8,7 @@
 
 .profile figure {
   text-align: center;
-  margin-bottom: var(--space-xs);
+  margin: var(--space-md) 0 var(--space-xs);
 }
 
 .profileImage {
@@ -41,4 +41,18 @@
 
 .profile > p {
   margin: 0 var(--space-xs) var(--space-xs);
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .profileImage {
+    width: 25%;
+    height: 25%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .profileImage {
+    width: 20%;
+    height: 20%;
+  }
 }
