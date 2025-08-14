@@ -12,12 +12,12 @@
   text-align: left;
   color: var(--white);
   background-color: rgba(0, 0, 0, 0.5);
-  padding: var(--space-xs);
+  padding: var(--space-2);
   margin: 0 auto;
 }
 
 .heroContainer > h1 {
-  margin-bottom: calc(var(--space-xs) * 0.5);
+  margin-bottom: calc(var(--space-2) * 0.5);
 }
 
 .heroText > p {
@@ -30,8 +30,8 @@
   font-size: var(--body);
   font-weight: bold;
   background-color: var(--blue-1);
-  padding: 0.5rem var(--space-xxs);
-  margin-top: var(--space-xs);
+  padding: 0.5rem var(--space-1);
+  margin-top: var(--space-2);
   transition: 0.3s;
 }
 
@@ -43,12 +43,12 @@
 
   .heroText {
     width: 50%;
-    padding: var(--space-sm);
-    margin-left: var(--space-sm);
+    padding: var(--space-3);
+    margin-left: var(--space-3);
   }
 
   .heroContact {
-    padding: var(--space-xxs) var(--space-xs);
+    padding: var(--space-1) var(--space-2);
   }
 
   .heroContact:hover {

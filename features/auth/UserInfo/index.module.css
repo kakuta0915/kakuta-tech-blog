@@ -1,6 +1,6 @@
 .loginButton {
   color: var(--white);
-  padding: calc(var(--space-xxs) * 0.5);
+  padding: calc(var(--space-1) * 0.5);
   background-color: var(--blue-1);
   border: 1px solid var(--blue-1);
   border-radius: 8px;
@@ -26,7 +26,7 @@
   background-color: var(--white);
   border: 1px solid var(--gray);
   border-radius: 8px;
-  padding: calc(var(--space-xxs) * 0.75);
+  padding: calc(var(--space-1) * 0.75);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 10;
 }
@@ -34,7 +34,7 @@
 .dropdownMenu a,
 .dropdownMenu .loginButton {
   display: block;
-  padding: calc(var(--space-xxs) * 0.7) 0.6rem;
+  padding: calc(var(--space-1) * 0.7) 0.6rem;
 }
 
 .dropdownMenu a {

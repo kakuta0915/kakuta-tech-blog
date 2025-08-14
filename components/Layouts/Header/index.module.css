@@ -3,7 +3,7 @@
   justify-content: space-between;
   flex-direction: column;
   align-items: center;
-  padding: var(--space-xxs);
+  padding: var(--space-1);
   margin: 0 auto;
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
   background-color: var(--white);
@@ -14,13 +14,13 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding-bottom: calc(var(--space-xxs) * 0.5);
+  padding-bottom: calc(var(--space-1) * 0.5);
   border-bottom: 1px solid var(--gray-1);
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .header {
-    padding: 0 var(--space-sm) var(--space-xxs);
+    padding: 0 var(--space-3) var(--space-1);
   }
 
   .flex {
@@ -34,7 +34,7 @@
 
 @media (min-width: 1025px) {
   .header {
-    padding: 0 var(--space-sm) var(--space-xxs);
+    padding: 0 var(--space-3) var(--space-1);
   }
 
   .flex {

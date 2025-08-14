@@ -1,5 +1,5 @@
 .commentsContainer {
-  padding: var(--space-xxs) var(--space-xxs) var(--space-md);
+  padding: var(--space-1) var(--space-1) var(--space-4);
   background-color: var(--white);
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
   border-radius: 5px;
@@ -9,19 +9,19 @@
   text-align: center;
   border-bottom: 1px solid var(--gray-1);
   padding-bottom: 0.5rem;
-  margin-bottom: var(--space-xs);
+  margin-bottom: var(--space-2);
 }
 
 .replyContainer {
-  margin-left: var(--space-xxs);
-  padding-left: var(--space-xxs);
+  margin-left: var(--space-1);
+  padding-left: var(--space-1);
   border-left: 3px solid var(--gray-2);
 }
 
 .userInfo {
   display: flex;
   align-items: center;
-  margin-bottom: var(--space-xxs);
+  margin-bottom: var(--space-1);
 }
 
 .userIcon {
@@ -155,12 +155,12 @@
 
 .form,
 .replyForm {
-  padding-bottom: var(--space-xs);
+  padding-bottom: var(--space-2);
   border-bottom: 1px solid var(--gray-2);
 }
 
 .inputAndPreview {
-  margin-bottom: var(--space-xxs);
+  margin-bottom: var(--space-1);
   width: 100%;
   height: 10rem;
 }
@@ -170,7 +170,7 @@
   width: 100%;
   height: 10rem;
   padding: 0.5rem;
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-5);
   box-sizing: border-box;
   resize: vertical;
   border: 1px solid var(--gray-1);
@@ -228,7 +228,7 @@
 }
 
 .addReplyButton {
-  margin-top: var(--space-xxs);
+  margin-top: var(--space-1);
 }
 
 .cancelButton {

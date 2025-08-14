@@ -1,8 +1,8 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: var(--space-xxs);
-  margin: var(--space-sm) auto;
+  gap: var(--space-1);
+  margin: var(--space-3) auto;
 }
 
 .portfolioItem {
@@ -21,7 +21,7 @@
 }
 
 .portfolioDetails {
-  padding: 0.5rem var(--space-xxs) var(--space-xxs);
+  padding: 0.5rem var(--space-1) var(--space-1);
 }
 
 .portfolioDetails h3 {

@@ -1,7 +1,7 @@
 .categories {
   width: 100%;
-  padding: var(--space-xxs);
-  margin-bottom: var(--space-xs);
+  padding: var(--space-1);
+  margin-bottom: var(--space-2);
   border: 1px solid var(--gray-1);
   background-color: var(--white);
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
@@ -14,14 +14,14 @@
 }
 
 .categoriesBtn > h3 {
-  font-size: var(--heading3);
-  margin: var(--space-xxs);
+  font-size: var(--h3);
+  margin: var(--space-1);
   text-align: center;
 }
 
 .icon {
   display: block;
-  font-size: var(--heading2);
+  font-size: var(--h2);
   transition: transform 0.4s;
 }
 
@@ -47,8 +47,8 @@
 
 .categoriesList {
   width: 40%;
-  margin: calc(var(--space-xxs) * 0.4);
-  padding: calc(var(--space-xxs) * 0.5);
+  margin: calc(var(--space-1) * 0.4);
+  padding: calc(var(--space-1) * 0.5);
 }
 
 .categoriesLink {
@@ -76,7 +76,7 @@
   }
 
   .categoriesBtn {
-    margin-bottom: var(--space-xxs);
+    margin-bottom: var(--space-1);
   }
 
   .icon {
@@ -93,7 +93,7 @@
     justify-content: center;
     align-items: center;
     font-size: 1rem;
-    margin: calc(var(--space-xxs) * 0.5);
+    margin: calc(var(--space-1) * 0.5);
     width: 20%;
     background-color: var(--white);
     border: 1px solid var(--blue);

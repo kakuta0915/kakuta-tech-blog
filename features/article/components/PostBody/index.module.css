@@ -1,6 +1,6 @@
 .stack {
-  margin-bottom: var(--space-xs);
-  padding: var(--space-xs);
+  margin-bottom: var(--space-2);
+  padding: var(--space-2);
   background-color: var(--white);
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
   border-radius: 5px;
@@ -13,30 +13,30 @@
 }
 
 .stack p:not(h2 + p):not(h3 + p):not(h4 + p)p:not(h5 + p) {
-  margin: var(--space-xxs) 0;
+  margin: var(--space-1) 0;
 }
 
 .stack h2 {
-  margin-top: var(--space-md);
-  padding: 0.5rem var(--space-xxs);
+  margin-top: var(--space-4);
+  padding: 0.5rem var(--space-1);
   background: #eeeeee;
   border-left: solid 8px var(--blue);
 }
 
 .stack h3 {
-  margin-top: var(--space-sm);
+  margin-top: var(--space-3);
   padding: 0.8rem;
   border-left: 5px solid var(--blue);
   border-bottom: 1px solid var(--gray-1);
 }
 
 .stack h4 {
-  margin: var(--space-xxs) 0 0.5rem;
-  padding-top: var(--space-xxs);
+  margin: var(--space-1) 0 0.5rem;
+  padding-top: var(--space-1);
 }
 
 .stack h5 {
-  margin: var(--space-xxs) 0 0.5rem;
+  margin: var(--space-1) 0 0.5rem;
 }
 
 .stack figure img {
@@ -62,7 +62,7 @@
 
 .stack ol,
 .stack ul {
-  margin: 0.75rem 0 var(--space-xxs);
+  margin: 0.75rem 0 var(--space-1);
   padding-left: 0.85rem;
   list-style: revert;
 }
@@ -94,7 +94,7 @@
 .stack > table th,
 .stack > table td {
   border: 1px solid var(--gray-2);
-  padding: 0.85rem var(--space-xxs);
+  padding: 0.85rem var(--space-1);
 }
 
 .stack > table th {
@@ -109,9 +109,9 @@
 /* 引用のレイアウト */
 .stack > blockquote {
   position: relative;
-  padding: var(--space-xxs) var(--space-xxs) var(--space-xxs)
-    calc(var(--space-xs) * 1.2);
-  margin: var(--space-xs);
+  padding: var(--space-1) var(--space-1) var(--space-1)
+    calc(var(--space-2) * 1.2);
+  margin: var(--space-2);
   box-sizing: border-box;
   background: #f3f3f3;
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);

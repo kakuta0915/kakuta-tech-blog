@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-around;
   white-space: nowrap;
-  margin-top: calc(var(--space-xxs) * 0.4);
+  margin-top: calc(var(--space-1) * 0.4);
 }
 
 .nav li {
@@ -15,8 +15,8 @@
 .nav a {
   display: inline-block;
   font-size: clamp(0.75rem, 0.534rem + 0.45vw, 0.875rem);
-  padding: calc(var(--space-xxs) * 0.3);
-  margin: 0 calc(var(--space-xxs) * 0.3);
+  padding: calc(var(--space-1) * 0.3);
+  margin: 0 calc(var(--space-1) * 0.3);
   position: relative;
   flex-shrink: 0;
 }
@@ -29,8 +29,8 @@
 
   .nav a {
     font-size: var(--body);
-    padding: calc(var(--space-xs) * 0.3);
-    margin: 0 calc(var(--space-xs) * 0.3);
+    padding: calc(var(--space-2) * 0.3);
+    margin: 0 calc(var(--space-2) * 0.3);
   }
 
   .nav a::before {

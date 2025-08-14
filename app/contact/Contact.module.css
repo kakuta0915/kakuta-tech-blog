@@ -4,7 +4,7 @@
 
 .form {
   width: 80%;
-  margin: var(--space-md) auto;
+  margin: var(--space-4) auto;
 }
 .form ul > * {
   display: flex;
@@ -18,24 +18,24 @@
 }
 
 .form label {
-  padding: var(--space-xxs) var(--space-xxs) var(--space-xxs) 0;
+  padding: var(--space-1) var(--space-1) var(--space-1) 0;
   display: inline-block;
   font-weight: bold;
 }
 .form label span {
   font-weight: normal;
-  font-size: calc(var(--space-xxs) * 0.8);
+  font-size: calc(var(--space-1) * 0.8);
   color: red;
-  margin-left: calc(var(--space-xxs) * 0.8);
+  margin-left: calc(var(--space-1) * 0.8);
 }
 .form input[type='text'],
 .form input[type='email'] {
-  padding: var(--space-xxs);
+  padding: var(--space-1);
 }
 
 .form textarea {
   vertical-align: middle;
-  padding: var(--space-xxs);
+  padding: var(--space-1);
   height: 15rem;
 }
 
@@ -51,8 +51,8 @@
   font-size: calc(var(--body) * 1.2);
   color: var(--white);
   background-color: var(--blue);
-  padding: var(--space-xxs) var(--space-md);
-  margin: var(--space-lg) auto;
+  padding: var(--space-1) var(--space-4);
+  margin: var(--space-5) auto;
   transition: 0.3s;
   border: none;
 }
@@ -60,7 +60,7 @@
 @media (min-width: 768px) {
   .form {
     width: 90%;
-    margin-top: var(--space-lg);
+    margin-top: var(--space-5);
   }
 
   .form ul > * {

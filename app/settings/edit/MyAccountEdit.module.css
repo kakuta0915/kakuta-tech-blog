@@ -1,6 +1,6 @@
 .pageTitle {
   text-align: center;
-  margin: var(--space-xs);
+  margin: var(--space-2);
 }
 
 .sectionTitle {
@@ -27,14 +27,14 @@
 }
 
 .formSection {
-  padding: var(--space-md) var(--space-md) var(--space-xxs);
+  padding: var(--space-4) var(--space-4) var(--space-1);
   background-color: var(--white);
 }
 
 .formGroup {
   display: flex;
   flex-direction: column;
-  padding: 0.5rem var(--space-xxs);
+  padding: 0.5rem var(--space-1);
   margin-bottom: 0.85rem;
 }
 
@@ -67,7 +67,7 @@
 
 .deleteSection {
   background-color: var(--white);
-  padding: var(--space-xs) var(--space-md) 4rem;
+  padding: var(--space-2) var(--space-4) 4rem;
 }
 
 .deleteSection p {
@@ -86,7 +86,7 @@
 
 @media (min-width: 768px) {
   .formSection {
-    padding: var(--space-md) calc(var(--space-xl) * 3) var(--space-xs);
+    padding: var(--space-4) calc(var(--space-6) * 3) var(--space-2);
   }
 
   .updateButton:hover {
@@ -97,7 +97,7 @@
   }
 
   .deleteSection {
-    padding: var(--space-xs) calc(var(--space-xl) * 3) var(--space-xl);
+    padding: var(--space-2) calc(var(--space-6) * 3) var(--space-6);
   }
 
   .deleteButton:hover {
