@@ -61,15 +61,15 @@ const Posts: React.FC<PostsProps> = ({
                   <ConvertDate dateISO={publishDate} />
                 </div>
                 <h2>{title}</h2>
-                <div className={styles['flexSocialActions']}>
-                  <div className={styles['socialActions']}>
+                <div className={styles['actionsContainer']}>
+                  <div className={styles['actionsCount']}>
                     <FontAwesomeIcon
                       icon={faHeart}
                       className={styles['icon']}
                     />
                     <span>{likesCount}</span>
                   </div>
-                  <div className={styles['socialActions']}>
+                  <div className={styles['actionsCount']}>
                     <FontAwesomeIcon
                       icon={faBookmark}
                       className={styles['icon']}
@@ -79,10 +79,7 @@ const Posts: React.FC<PostsProps> = ({
                 </div>
                 <ul>
                   {categories.map((category) => (
-                    <li
-                      className={styles['postsCategoriesLi']}
-                      key={category.slug}
-                    >
+                    <li className={styles['postsCategory']} key={category.slug}>
                       <FontAwesomeIcon
                         className={styles['tagIcon']}
                         icon={faTag}
