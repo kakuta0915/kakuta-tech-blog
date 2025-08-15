@@ -1,22 +1,22 @@
-.socialActions {
+.postActions {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   position: relative;
 }
 
-.actionButton,
-.shareButton {
+.actionContainer,
+.shareContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0 calc(var(--space-1) * 0.5);
 }
 
-.socialActions button {
+.postActions .button {
   width: clamp(2.25rem, 2.068rem + 0.91vw, 2.75rem);
   height: clamp(2.25rem, 2.068rem + 0.91vw, 2.75rem);
-  font-size: 1rem;
+  font-size: var(--body);
   padding: calc(var(--space-1) * 0.5);
   margin: calc(var(--space-1) * 0.5);
   border-radius: 50%;
@@ -25,8 +25,8 @@
   color: rgba(0, 0, 0, 0.4);
 }
 
-.actionButton button:hover,
-.shareButton button:hover {
+.actionContainer .button:hover,
+.shareContainer .button:hover {
   color: var(--blue);
   border: 1px solid var(--blue);
 }
@@ -36,12 +36,12 @@
 }
 
 .likeIconAction {
-  color: #ef4123;
+  color: var(--like-action);
   animation: pop 0.4s ease forwards;
 }
 
 .bookmarkIconAction {
-  color: #ffcc33;
+  color: var(--bockmark-action);
   animation: pop 0.4s ease forwards;
 }
 
@@ -50,7 +50,6 @@
   margin-right: 0.75rem;
 }
 
-/* ボタンを押したときのポップアニメーション */
 @keyframes pop {
   0% {
     transform: scale(1);
@@ -63,28 +62,54 @@
   }
 }
 
-@media (min-width: 768px) {
-  .socialActions .actionButton {
+@media (min-width: 768px) and (max-width: 1024px) {
+  .postActions .actionContainer {
     flex-direction: column;
   }
 
-  .socialActions button {
+  .postActions .button {
     font-size: 1.25rem;
   }
 
-  .actionButton,
-  .shareButton {
+  .actionContainer,
+  .shareContainer {
     position: absolute;
     top: -0.5rem;
     left: -1rem;
   }
 
-  .shareButton {
+  .shareContainer {
     top: 10.5rem;
   }
 
   .count {
     font-size: 0.85rem;
+    margin: 0 auto 0.65rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .postActions .actionContainer {
+    flex-direction: column;
+  }
+
+  .postActions .button {
+    font-size: 1.25rem;
+  }
+
+  .actionContainer,
+  .shareContainer {
+    position: absolute;
+    top: -0.5rem;
+    left: -1rem;
+  }
+
+  .shareContainer {
+    top: 10.5rem;
+  }
+
+  .count {
+    font-size: var(--body);
     margin: 0 auto 0.65rem;
   }
 }
