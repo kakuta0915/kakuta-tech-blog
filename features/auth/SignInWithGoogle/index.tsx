@@ -1,4 +1,3 @@
-// Googleでログインする機能
 'use client'
 
 import React, { useState } from 'react'
