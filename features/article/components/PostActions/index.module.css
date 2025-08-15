@@ -10,7 +10,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 calc(var(--space-1) * 0.5);
+  margin: 0 calc(var(--space-1) * 0.2);
 }
 
 .postActions .button {
@@ -63,28 +63,13 @@
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  .postActions .actionContainer {
-    flex-direction: column;
-  }
-
   .postActions .button {
     font-size: 1.25rem;
   }
 
-  .actionContainer,
-  .shareContainer {
-    position: absolute;
-    top: -0.5rem;
-    left: -1rem;
-  }
-
-  .shareContainer {
-    top: 10.5rem;
-  }
-
   .count {
-    font-size: 0.85rem;
-    margin: 0 auto 0.65rem;
+    font-size: 1.25rem;
+    margin: 0 0.8rem 0.25rem 0;
   }
 }
 
