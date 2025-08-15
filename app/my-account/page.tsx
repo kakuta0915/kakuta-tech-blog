@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { siteMeta } from '@/libs/constants'
 import eyecatch from '@/public/images/index.jpg'
-import MyAccountClient from './MyAccount'
+import MyAccount from './MyAccount'
 
 const { siteTitle, siteUrl } = siteMeta
 
@@ -35,5 +35,5 @@ export const metadata: Metadata = {
 }
 
 export default function MyAccountPage() {
-  return <MyAccountClient />
+  return <MyAccount />
 }
