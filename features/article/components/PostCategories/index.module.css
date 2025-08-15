@@ -1,22 +1,21 @@
-.flexContainer {
+.postCategoriesContainer {
   background-color: var(--white);
   border-radius: 5px;
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
   padding: var(--space-1);
 }
 
-.flexContainer > h3 {
-  font-size: var(--h3);
+.postCategoriesContainer > h3 {
   color: var(--blue);
   text-align: center;
   margin-bottom: var(--space-1);
 }
 
-.flexContainer > ul {
+.postCategoriesContainer > ul {
   margin: var(--space-2) var(--space-2) 0;
 }
 
-.flexContainer > li {
+.postCategoriesContainer > li {
   display: block;
   text-align: center;
 }
@@ -39,7 +38,7 @@
 }
 
 @media (min-width: 768px) {
-  .flexContainer > ul {
+  .postCategoriesContainer > ul {
     margin: calc(var(--space-1) * 0.5) calc(var(--space-1) * 0.5) 0;
   }
 

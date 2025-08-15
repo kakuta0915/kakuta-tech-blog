@@ -6,7 +6,7 @@ import { PostCategoriesProps } from '@/types'
 
 const PostCategories: React.FC<PostCategoriesProps> = ({ categories }) => {
   return (
-    <div className={styles['flexContainer']}>
+    <div className={styles['postCategoriesContainer']}>
       <h3>カテゴリ</h3>
       <ul>
         {categories.map(({ name, slug, icon }) => (
