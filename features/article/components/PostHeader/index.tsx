@@ -13,15 +13,15 @@ const PostHeader: React.FC<PostHeaderProps> = ({
   publish = '',
 }) => {
   return (
-    <div className={styles['header']}>
+    <div className={styles['postHeader']}>
       <Image
         src={icon.url}
         alt=""
         width={icon.width}
         height={icon.height}
-        className={styles['headerIcon']}
+        className={styles['postHeaderIcon']}
       />
-      <div className={styles['headerTitle']}>
+      <div className={styles['postHeaderTitle']}>
         <p>{subtitle}</p>
         <h1>{title}</h1>
         {publish && (
