@@ -30,6 +30,7 @@
 
 .articleContainer {
   padding: var(--space-1) 0 var(--space-5);
+  margin: 0 auto;
 }
 
 .tabContainer {
@@ -67,4 +68,16 @@
 .listItem a {
   display: block;
   padding: 1rem;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .articleContainer {
+    width: 85%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .articleContainer {
+    width: 80%;
+  }
 }
