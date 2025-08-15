@@ -7,7 +7,7 @@ interface PostBodyProps {
 }
 
 const PostBody: React.FC<PostBodyProps> = ({ children }) => {
-  return <div className={styles['stack']}>{children}</div>
+  return <div className={styles['postBody']}>{children}</div>
 }
 
 export default PostBody
