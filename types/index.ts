@@ -1,5 +1,4 @@
 export * from './category'
-export * from './comment'
 export * from './hero'
 export * from './pagination'
 export * from './post-category'

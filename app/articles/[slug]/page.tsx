@@ -126,7 +126,6 @@ export default async function ArticlePage({ params }: Props) {
                 />
                 <Article.ConvertBody contentHTML={content} />
               </Article.PostBody>
-              <Article.Comments postId={postId} id={''} />
             </Article.ThreeColumMain>
             <Article.ThreeColumSidebar>
               {tocVisible && <Article.TableOfContents toc={toc} />}
