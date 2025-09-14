@@ -5,6 +5,7 @@
   padding: var(--space-4) 0;
 }
 
+<<<<<<< HEAD
 @media (min-width: 768px) and (max-width: 1024px) {
   .footer {
     flex-direction: row;
@@ -13,6 +14,9 @@
 }
 
 @media (min-width: 1025px) {
+=======
+@media (min-width: 768px) {
+>>>>>>> 9e7aa5b (remove: 不要なコードを削除)
   .footer {
     flex-direction: row;
     justify-content: space-between;

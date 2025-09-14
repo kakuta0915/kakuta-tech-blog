@@ -55,7 +55,6 @@ app/           # Next.jsのルーティング・各ページ
   about/       # サイト・運営者紹介
   articles/    # 記事一覧・カテゴリ別記事
   my-account/  # ユーザーの「いいね」「ブックマーク」管理
-  portfolio/   # ポートフォリオ紹介
   contact/     # お問い合わせフォーム
   settings/    # アカウント編集・削除
 features/
@@ -77,7 +76,6 @@ types/         # 型定義
 - **About**: サイトの目的・運営者プロフィール・技術スタック
 - **Articles**: 記事一覧、カテゴリ別記事、記事詳細
 - **My Account**: ログインユーザーの「いいね」「ブックマーク」記事管理
-- **Portfolio**: 制作物紹介
 - **Contact**: お問い合わせフォーム
 - **Settings**: アカウント情報編集・削除
 
