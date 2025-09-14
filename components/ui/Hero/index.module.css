@@ -25,6 +25,7 @@
   margin-top: 0.5rem;
 }
 
+<<<<<<< HEAD
 .heroContact {
   display: inline-block;
   font-size: var(--body);
@@ -35,6 +36,8 @@
   transition: 0.3s;
 }
 
+=======
+>>>>>>> 253ce2f (remove: Homeのボタンを削除)
 @media (min-width: 768px) {
   .heroContainer {
     justify-content: space-between;
@@ -46,6 +49,7 @@
     padding: var(--space-3);
     margin-left: var(--space-3);
   }
+<<<<<<< HEAD
 
   .heroContact {
     padding: var(--space-1) var(--space-2);
@@ -56,6 +60,8 @@
     color: var(--white);
     transform: scale(1.05);
   }
+=======
+>>>>>>> 253ce2f (remove: Homeのボタンを削除)
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
