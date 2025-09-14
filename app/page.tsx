@@ -61,7 +61,7 @@ export default async function HomePage() {
       <Hero
         title="KAKUTA"
         title2="TECH BLOG"
-        description="このサイトでは、ReactとNext.jsとmicroCMSを組み合わせ、プログラミングの技術ブログを制作しました。 学習したことをアウトプットしたり、学習時に躓いた箇所や解決策について、詳細な記事をまとめています。"
+        description="このサイトでは、Next.jsとmicroCMSを組み合わせ、プログラミングの技術ブログを制作しました。 学習したことをアウトプットしたり、学習時に躓いた箇所や解決策について、詳細な記事をまとめています。"
         imageSrc="/images/index.jpg"
         contact={true}
       />
