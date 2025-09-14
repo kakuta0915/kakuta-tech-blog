@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .postActions {
   display: flex;
   justify-content: flex-start;
@@ -14,6 +15,9 @@
 }
 
 .postActions .button {
+=======
+.shareButton button {
+>>>>>>> 239b144 (fix: PostActionsのコードを修正)
   width: clamp(2.25rem, 2.068rem + 0.91vw, 2.75rem);
   height: clamp(2.25rem, 2.068rem + 0.91vw, 2.75rem);
   font-size: var(--body);
@@ -25,12 +29,17 @@
   color: rgba(0, 0, 0, 0.4);
 }
 
+<<<<<<< HEAD
 .actionContainer .button:hover,
 .shareContainer .button:hover {
+=======
+.shareButton button:hover {
+>>>>>>> 239b144 (fix: PostActionsのコードを修正)
   color: var(--blue);
   border: 1px solid var(--blue);
 }
 
+<<<<<<< HEAD
 .icon {
   transition: transform 0.2s ease, color 0.2s ease;
 }
@@ -97,4 +106,10 @@
     font-size: var(--body);
     margin: 0 auto 0.65rem;
   }
+=======
+@media (min-width: 768px) {
+  .shareButton button {
+    font-size: 1.25rem;
+  }
+>>>>>>> 239b144 (fix: PostActionsのコードを修正)
 }
