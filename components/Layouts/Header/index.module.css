@@ -9,6 +9,7 @@
   background-color: var(--white);
 }
 
+<<<<<<< HEAD
 .flex {
   width: 100%;
   align-items: center;
@@ -19,6 +20,9 @@
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
+=======
+@media (min-width: 768px) {
+>>>>>>> 75bd82b (remove: 認証機能の削除)
   .header {
     padding: 0 var(--space-3) var(--space-1);
   }
@@ -35,10 +39,6 @@
 @media (min-width: 1025px) {
   .header {
     padding: 0 var(--space-3) var(--space-1);
-  }
-
-  .flex {
-    padding-bottom: 0;
   }
 
   .nav {

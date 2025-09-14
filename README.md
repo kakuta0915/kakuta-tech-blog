@@ -6,7 +6,7 @@
 
 ## サイト概要
 
-**KAKUTA TECH BLOG**は、React・Next.js・microCMS・Firebase を活用した技術ブログです。プログラミング学習の記録や、学習・開発過程で遭遇した課題とその解決策を記事としてまとめています。他の開発者や学習者との知識共有を目指しています。
+**KAKUTA TECH BLOG**は、Next.js・microCMS を活用した技術ブログです。プログラミング学習の記録や、学習・開発過程で遭遇した課題とその解決策を記事としてまとめています。他の開発者や学習者との知識共有を目指しています。
 
 - **サイト URL**: https://kakuta-tech-blog.vercel.app
 
@@ -14,9 +14,8 @@
 
 ## 技術スタック
 
-- **フロントエンド**: React, Next.js, TypeScript, CSS Modules, styled-jsx
+- **フロントエンド**: Next.js, TypeScript, CSS Modules, styled-jsx
 - **バックエンド/ヘッドレス CMS**: microCMS
-- **認証・データストア**: Firebase (Firestore, Auth, Storage)
 - **デプロイ**: Vercel
 - **その他**: Jest（テスト）, ESLint/Prettier（静的解析・整形）, axios, cheerio, react-markdown, react-syntax-highlighter, react-toastify など
 
@@ -28,14 +27,6 @@
 
 - microCMS・Qiita API から記事を取得し、一覧・詳細表示
 - 記事のカテゴリ分け・カテゴリごとの記事一覧
-- 記事への「いいね」「ブックマーク」「コメント」機能（Firebase 連携）
-- 記事のリアルタイムな「いいね数」「ブックマーク数」表示
-
-### ユーザー機能
-
-- Google 認証によるログイン
-- 「いいね」した記事・ブックマークした記事の管理
-- コメント投稿
 
 ### ポートフォリオ
 
@@ -59,7 +50,6 @@ app/           # Next.jsのルーティング・各ページ
   settings/    # アカウント編集・削除
 features/
   article/     # 記事関連の機能コンポーネント
-  auth/        # 認証関連
 components/
   ui/          # 汎用UIコンポーネント
   Layouts/     # レイアウト用コンポーネント
@@ -85,17 +75,8 @@ types/         # 型定義
 
 - **microCMS**: 記事・カテゴリデータの取得
 - **Qiita API**: Qiita 投稿記事の取得
-- **Firebase Firestore**: 記事ごとの「いいね数」「ブックマーク数」管理、コメント保存
-- **Firebase Auth**: Google 認証
-- **Firebase Storage**: 画像等の保存
 
 ---
-
-## 認証・ユーザー管理
-
-- Google アカウントでのログイン（Firebase Auth）
-- ログインユーザーのみ「いいね」「ブックマーク」「コメント」可能
-- マイアカウントページで自分のアクション履歴を管理
 
 ---
 
@@ -125,7 +106,6 @@ types/         # 型定義
 - `SERVICE_DOMAIN` ... microCMS のサービスドメイン
 - `API_KEY` ... microCMS の API キー
 - `QIITA_API_TOKEN` ... Qiita API トークン
-- Firebase 関連（`.env`または`firebaseConfig.js`で管理）
 
 ---
 
@@ -133,7 +113,6 @@ types/         # 型定義
 
 - サイト運営: 角田（かくた）
 - [Twitter: @_kakuta0915_](https://twitter.com/_kakuta0915_)
-- お問い合わせは `/contact` ページから
 
 ---
 

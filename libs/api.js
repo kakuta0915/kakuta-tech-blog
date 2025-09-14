@@ -1,15 +1,5 @@
 import { createClient } from 'microcms-js-sdk'
 import axios from 'axios'
-import { db } from '@/firebaseConfig'
-import {
-  collection,
-  doc,
-  setDoc,
-  getDoc,
-  query,
-  where,
-  onSnapshot,
-} from 'firebase/firestore'
 
 // サービスドメインとAPIキーを取得するか、テスト用のデフォルト値を設定する
 const serviceDomain = process.env.SERVICE_DOMAIN || 'test-service-domain'

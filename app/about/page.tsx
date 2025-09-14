@@ -105,7 +105,7 @@ const AboutPage: React.FC = () => {
           <p>
             HTML5 / CSS3 / JavaScript / Sass / TypeScript / Node.js / jQuery /
             React / TailwindCSS / Next.js / Git / GitHub / Gulp / microCMS /
-            Linux / Firebase / Docker / ESLint / Prettier / Jest / Vercel
+            Linux / Docker / ESLint / Prettier / Jest / Vercel
           </p>
 
           <h4>これから学びたい技術</h4>
