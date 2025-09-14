@@ -69,31 +69,6 @@ export async function getAllPostByCategory(categoryID, limit = 100) {
         limit: limit,
       },
     })
-
-    // Firestoreからいいね数とブックマーク数を取得
-    const postsWithStats = await Promise.all(
-      posts.contents.map(async (post) => {
-        const docRef = doc(db, 'posts', post.slug)
-        const docSnap = await getDoc(docRef)
-
-        if (docSnap.exists()) {
-          const stats = docSnap.data()
-          return {
-            ...post,
-            likesCount: stats.likesCount ?? 0,
-            bookmarksCount: stats.bookmarksCount ?? 0,
-          }
-        } else {
-          return {
-            ...post,
-            likesCount: 0,
-            bookmarksCount: 0,
-          }
-        }
-      }),
-    )
-
-    return postsWithStats
   } catch (err) {
     console.error('~~ getAllPostByCategory ~~')
     console.error(err)
@@ -145,45 +120,6 @@ export async function getAllQiitaArticles() {
   }
 }
 
-// Firebaseに記事が登録されていない時にドキュメントを自動生成する関数
-const initializePostDocument = async (postId, title = '') => {
-  const postRef = doc(db, 'posts', postId)
-  try {
-    await setDoc(
-      postRef,
-      { title, likesCount: 0, bookmarksCount: 0 },
-      { merge: true },
-    )
-    console.log(`Initialized post document for  ${postId}`)
-  } catch (error) {
-    console.error(`Error initializing post document for ${postId}:`, error)
-  }
-}
-
-// いいね数をリアルタイムで取得する関数
-export const getLikesCount = (postId, onUpdate) => {
-  const likesRef = collection(db, 'likes')
-  const q = query(likesRef, where('postId', '==', postId))
-  const unsubscribe = onSnapshot(q, (querySnapshot) => {
-    const count = querySnapshot.size
-    onUpdate(count)
-  })
-
-  return unsubscribe
-}
-
-// ブックマーク数をリアルタイムで取得する関数
-export const getBookmarkCount = (postId, onUpdate) => {
-  const bookmarksRef = collection(db, 'bookmarks')
-  const q = query(bookmarksRef, where('postId', '==', postId))
-  const unsubscribe = onSnapshot(q, (querySnapshot) => {
-    const count = querySnapshot.size
-    onUpdate(count)
-  })
-
-  return unsubscribe
-}
-
 // 全ての記事を統合する関数・いいね数とブックマーク数を取得する関数
 export async function getAllArticles(maxArticles = Infinity, onArticlesUpdate) {
   const [qiitaArticles, microCMSArticles] = await Promise.all([
@@ -215,26 +151,8 @@ export async function getAllArticles(maxArticles = Infinity, onArticlesUpdate) {
 
         const data = postSnap.data() || {}
 
-        // リアルタイム監視
-        const unsubscribeLikes = getLikesCount(article.slug, (likesCount) => {
-          article.likesCount = likesCount
-          onArticlesUpdate?.([...allArticles])
-        })
-
-        const unsubscribeBookmarks = getBookmarkCount(
-          article.slug,
-          (bookmarksCount) => {
-            article.bookmarksCount = bookmarksCount
-            onArticlesUpdate?.([...allArticles])
-          },
-        )
-
-        unsubscribeFunctions.push(unsubscribeLikes, unsubscribeBookmarks)
-
         return {
           ...article,
-          likesCount: data.likesCount || 0,
-          bookmarksCount: data.bookmarksCount || 0,
         }
       } catch (error) {
         console.error(

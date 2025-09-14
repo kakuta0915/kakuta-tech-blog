@@ -19,8 +19,6 @@ type Post = {
   publishDate: string
   categories: { name: string; slug: string }[]
   source: string
-  likesCount: number
-  bookmarksCount: number
 }
 
 const { siteTitle, siteUrl } = siteMeta

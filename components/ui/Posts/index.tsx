@@ -6,7 +6,7 @@ import Image from 'next/image'
 import ConvertDate from '@/features/article/components/Convert/ConvertDate'
 import styles from './index.module.css'
 import qiitaImg from '@/public/images/qiitaEyecatch.png'
-import { faBookmark, faHeart, faTag } from '@fortawesome/free-solid-svg-icons'
+import { faTag } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { PostsProps } from '@/types'
 
@@ -29,16 +29,7 @@ const Posts: React.FC<PostsProps> = ({
     <>
       <div className={`${className} ${styles['postsContainer']}`}>
         {articles.map(
-          ({
-            title,
-            slug,
-            eyecatch,
-            publishDate = '',
-            categories,
-            source,
-            likesCount = 0,
-            bookmarksCount = 0,
-          }) => (
+          ({ title, slug, eyecatch, publishDate = '', categories, source }) => (
             <article key={slug}>
               <Link
                 className={styles['link']}
@@ -61,6 +52,7 @@ const Posts: React.FC<PostsProps> = ({
                   <ConvertDate dateISO={publishDate} />
                 </div>
                 <h2>{title}</h2>
+<<<<<<< HEAD
                 <div className={styles['actionsContainer']}>
                   <div className={styles['actionsCount']}>
                     <FontAwesomeIcon
@@ -77,6 +69,8 @@ const Posts: React.FC<PostsProps> = ({
                     <span>{bookmarksCount}</span>
                   </div>
                 </div>
+=======
+>>>>>>> 86b4102 (remove: いいね機能・ブックマーク機能を削除)
                 <ul>
                   {categories.map((category) => (
                     <li className={styles['postsCategory']} key={category.slug}>
