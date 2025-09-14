@@ -8,7 +8,6 @@ import Hero from '@/components/ui/Hero'
 import Container from '@/components/ui/Container'
 import Posts from '@/components/ui/Posts'
 import Social from '@/components/ui/Social'
-import PortfolioList from '@/components/ui/PortfolioList'
 import styles from './page.module.css'
 import eyecatch from '@/public/images/index.jpg'
 import kakuta0915 from '@/public/images/kakuta0915.png'
@@ -55,17 +54,6 @@ export const metadata: Metadata = {
   },
 }
 
-const portfolioData = [
-  {
-    id: 1,
-    imageUrl: '/images/kenshinkai.png',
-    title: '健進会',
-    description:
-      '「尊厳と自立の尊重」を理念に都内各所に介護施設を運営しています。',
-    link: 'https://kenshinkai.vercel.app/',
-  },
-]
-
 export default async function HomePage() {
   const { articles } = await getAllArticles()
   const posts: Post[] = articles
@@ -108,19 +96,6 @@ export default async function HomePage() {
             プログラミング学習に関する記事をまとめたページです。学習中に躓いた箇所や、開発過程で遭遇した具体的な課題、それに対する解決策を紹介しています。
           </p>
           <Posts posts={posts} maxPosts={6} btn />
-        </section>
-
-        <section className={styles['portfolioSection']}>
-          <h2>Portfolio</h2>
-          <p className={styles['text']}>
-            独学で制作したサイトなどを掲載しており、GitHubからコードもご覧いただけます。
-          </p>
-          <PortfolioList portfolioData={portfolioData} className={''} />
-          <div className={styles['btnBox']}>
-            <Link className={styles['btn']} href="/portfolio">
-              MORE
-            </Link>
-          </div>
         </section>
       </Container>
     </>
