@@ -1,11 +1,14 @@
 .header {
+<<<<<<< HEAD
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   align-items: center;
   padding: var(--space-1);
+=======
+  padding: var(--space-xxs);
+>>>>>>> b925d3e (feat: Headerのレイアウトを修正)
   margin: 0 auto;
-  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
   background-color: var(--white);
 }
 
@@ -39,9 +42,5 @@
 @media (min-width: 1025px) {
   .header {
     padding: 0 var(--space-3) var(--space-1);
-  }
-
-  .nav {
-    margin-left: auto;
   }
 }

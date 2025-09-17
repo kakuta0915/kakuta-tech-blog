@@ -1,10 +1,11 @@
-/* ナビ */
-
 .nav {
   display: flex;
   justify-content: space-around;
   white-space: nowrap;
+<<<<<<< HEAD
   margin-top: calc(var(--space-1) * 0.4);
+=======
+>>>>>>> b925d3e (feat: Headerのレイアウトを修正)
 }
 
 .nav li {
