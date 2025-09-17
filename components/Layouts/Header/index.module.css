@@ -1,31 +1,10 @@
 .header {
-<<<<<<< HEAD
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  align-items: center;
-  padding: var(--space-1);
-=======
   padding: var(--space-xxs);
->>>>>>> b925d3e (feat: Headerのレイアウトを修正)
   margin: 0 auto;
   background-color: var(--white);
 }
 
-<<<<<<< HEAD
-.flex {
-  width: 100%;
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: calc(var(--space-1) * 0.5);
-  border-bottom: 1px solid var(--gray-1);
-}
-
 @media (min-width: 768px) and (max-width: 1024px) {
-=======
-@media (min-width: 768px) {
->>>>>>> 75bd82b (remove: 認証機能の削除)
   .header {
     padding: 0 var(--space-3) var(--space-1);
   }
