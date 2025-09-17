@@ -52,25 +52,6 @@ const Posts: React.FC<PostsProps> = ({
                   <ConvertDate dateISO={publishDate} />
                 </div>
                 <h2>{title}</h2>
-<<<<<<< HEAD
-                <div className={styles['actionsContainer']}>
-                  <div className={styles['actionsCount']}>
-                    <FontAwesomeIcon
-                      icon={faHeart}
-                      className={styles['icon']}
-                    />
-                    <span>{likesCount}</span>
-                  </div>
-                  <div className={styles['actionsCount']}>
-                    <FontAwesomeIcon
-                      icon={faBookmark}
-                      className={styles['icon']}
-                    />
-                    <span>{bookmarksCount}</span>
-                  </div>
-                </div>
-=======
->>>>>>> 86b4102 (remove: いいね機能・ブックマーク機能を削除)
                 <ul>
                   {categories.map((category) => (
                     <li className={styles['postsCategory']} key={category.slug}>

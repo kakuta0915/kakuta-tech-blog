@@ -10,15 +10,8 @@
   transition: 0.3s;
 }
 
-.aboutSection,
-<<<<<<< HEAD
-.articlesSection,
-.portfolioSection {
-  margin: var(--space-4) var(--space-1);
-=======
 .articlesSection {
   margin: var(--space-md) var(--space-xxs);
->>>>>>> ae892ea (remove: Portfolioに関するコードを削除)
 }
 
 .aboutSection {
@@ -47,15 +40,7 @@
   margin: var(--space-4) auto var(--space-3);
 }
 
-<<<<<<< HEAD
-.portfolioSection {
-  padding-bottom: var(--space-3);
-}
-
 @media (min-width: 768px) and (max-width: 1024px) {
-=======
-@media (min-width: 768px) {
->>>>>>> ae892ea (remove: Portfolioに関するコードを削除)
   .btn:hover {
     background-color: var(--blue);
     color: var(--white);

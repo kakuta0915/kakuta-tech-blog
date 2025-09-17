@@ -1,23 +1,4 @@
-<<<<<<< HEAD
-.postActions {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  position: relative;
-}
-
-.actionContainer,
-.shareContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 calc(var(--space-1) * 0.2);
-}
-
-.postActions .button {
-=======
 .shareButton button {
->>>>>>> 239b144 (fix: PostActionsのコードを修正)
   width: clamp(2.25rem, 2.068rem + 0.91vw, 2.75rem);
   height: clamp(2.25rem, 2.068rem + 0.91vw, 2.75rem);
   font-size: var(--body);
@@ -29,87 +10,13 @@
   color: rgba(0, 0, 0, 0.4);
 }
 
-<<<<<<< HEAD
-.actionContainer .button:hover,
-.shareContainer .button:hover {
-=======
 .shareButton button:hover {
->>>>>>> 239b144 (fix: PostActionsのコードを修正)
   color: var(--blue);
   border: 1px solid var(--blue);
 }
 
-<<<<<<< HEAD
-.icon {
-  transition: transform 0.2s ease, color 0.2s ease;
-}
-
-.likeIconAction {
-  color: var(--like-action);
-  animation: pop 0.4s ease forwards;
-}
-
-.bookmarkIconAction {
-  color: var(--bockmark-action);
-  animation: pop 0.4s ease forwards;
-}
-
-.count {
-  font-size: 1.2rem;
-  margin-right: 0.75rem;
-}
-
-@keyframes pop {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.5);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  .postActions .button {
-    font-size: 1.25rem;
-  }
-
-  .count {
-    font-size: 1.25rem;
-    margin: 0 0.8rem 0.25rem 0;
-  }
-}
-
-@media (min-width: 1025px) {
-  .postActions .actionContainer {
-    flex-direction: column;
-  }
-
-  .postActions .button {
-    font-size: 1.25rem;
-  }
-
-  .actionContainer,
-  .shareContainer {
-    position: absolute;
-    top: -0.5rem;
-    left: -1rem;
-  }
-
-  .shareContainer {
-    top: 10.5rem;
-  }
-
-  .count {
-    font-size: var(--body);
-    margin: 0 auto 0.65rem;
-  }
-=======
 @media (min-width: 768px) {
   .shareButton button {
     font-size: 1.25rem;
   }
->>>>>>> 239b144 (fix: PostActionsのコードを修正)
 }

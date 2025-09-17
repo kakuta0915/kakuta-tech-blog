@@ -22,45 +22,10 @@ const PostActions: React.FC<PostActionsProps> = ({ postId, title }) => {
   }
 
   return (
-<<<<<<< HEAD
-    <div className={styles['postActions']}>
-      <div className={styles['actionContainer']}>
-        <button
-          className={styles['button']}
-          onClick={() => handleAction('likes')}
-        >
-          <FontAwesomeIcon
-            icon={faHeart}
-            className={liked ? styles['likeIconAction'] : styles['icon']}
-          />
-        </button>
-        <span className={styles['count']}>{likeCount}</span>
-
-        <button
-          className={styles['button']}
-          onClick={() => handleAction('bookmarks')}
-        >
-          <FontAwesomeIcon
-            icon={faBookmark}
-            className={
-              bookmarked ? styles['bookmarkIconAction'] : styles['icon']
-            }
-          />
-        </button>
-        <span className={styles['count']}>{bookmarkCount}</span>
-      </div>
-
-      <div className={styles['shareContainer']}>
-        <button className={styles['button']} onClick={handleShare}>
-          <FontAwesomeIcon icon={faXTwitter} />
-        </button>
-      </div>
-=======
     <div className={styles['shareButton']}>
       <button onClick={handleShare}>
         <FontAwesomeIcon icon={faXTwitter} />
       </button>
->>>>>>> 239b144 (fix: PostActionsのコードを修正)
     </div>
   )
 }
