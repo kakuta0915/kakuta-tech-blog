@@ -3,8 +3,8 @@
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
   border-top: 5px solid var(--blue);
   border-radius: 5px;
-  padding: var(--space-xs);
-  margin-bottom: var(--space-xs);
+  padding: var(--space-2);
+  margin-bottom: var(--space-2);
 }
 
 .tocBtn {
@@ -15,13 +15,13 @@
 
 .tocBtn > h3 {
   text-align: center;
-  margin-right: var(--space-xs);
+  margin-right: var(--space-2);
   color: var(--blue);
 }
 
 .icon {
-  font-size: var(--space-sm);
-  padding: var(--space-xxs);
+  font-size: var(--space-3);
+  padding: var(--space-1);
   color: var(--gray-1);
   transition: 0.4s;
 }
@@ -41,14 +41,14 @@
 }
 
 .accordion > ul {
-  margin: 0 0 var(--space-xxs) var(--space-sm);
+  margin: 0 0 var(--space-1) var(--space-3);
 }
 
 .tocLi {
   position: relative;
   line-height: 1.7;
   cursor: pointer;
-  padding: var(--space-xxs) var(--space-xxs) 0.25rem;
+  padding: var(--space-1) var(--space-1) 0.25rem;
   border-bottom: 1px dashed var(--gray-1);
 }
 
@@ -69,11 +69,11 @@
     position: sticky;
     height: 400px;
     overflow-y: scroll;
-    padding: var(--space-xxs);
+    padding: var(--space-1);
   }
 
   .tocBtn > h3 {
-    margin: 0 auto var(--space-xxs);
+    margin: 0 auto var(--space-1);
   }
 
   .icon {
@@ -85,12 +85,12 @@
   }
 
   .accordion > ul {
-    margin-left: var(--space-xxs);
+    margin-left: var(--space-1);
   }
 
   .tocLi {
     font-size: 0.9rem;
-    padding: var(--space-xxs) 0.85rem 0.25rem;
+    padding: var(--space-1) 0.85rem 0.25rem;
   }
 
   .tocLi:hover {

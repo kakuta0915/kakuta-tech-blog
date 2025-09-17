@@ -1,87 +1,88 @@
-.stack {
-  margin-bottom: var(--space-xs);
-  padding: var(--space-xs);
+.postBody {
+  margin-bottom: var(--space-2);
+  padding: var(--space-2);
   background-color: var(--white);
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
   border-radius: 5px;
 }
 
-.stack h2 + p,
-.stack h3 + p,
-.stack h4 + p .stack h5 + p {
+.postBody h2 + p,
+.postBody h3 + p,
+.postBody h4 + p,
+.postBody h5 + p {
   margin-top: 0.75rem;
 }
 
-.stack p:not(h2 + p):not(h3 + p):not(h4 + p)p:not(h5 + p) {
-  margin: var(--space-xxs) 0;
+.postBody p:not(h2 + p):not(h3 + p):not(h4 + p)p:not(h5 + p) {
+  margin: var(--space-1) 0;
 }
 
-.stack h2 {
-  margin-top: var(--space-md);
-  padding: 0.5rem var(--space-xxs);
+.postBody h2 {
+  margin-top: var(--space-4);
+  padding: 0.5rem var(--space-1);
   background: #eeeeee;
   border-left: solid 8px var(--blue);
 }
 
-.stack h3 {
-  margin-top: var(--space-sm);
+.postBody h3 {
+  margin-top: var(--space-3);
   padding: 0.8rem;
   border-left: 5px solid var(--blue);
   border-bottom: 1px solid var(--gray-1);
 }
 
-.stack h4 {
-  margin: var(--space-xxs) 0 0.5rem;
-  padding-top: var(--space-xxs);
+.postBody h4 {
+  margin: var(--space-1) 0 0.5rem;
+  padding-top: var(--space-1);
 }
 
-.stack h5 {
-  margin: var(--space-xxs) 0 0.5rem;
+.postBody h5 {
+  margin: var(--space-1) 0 0.5rem;
 }
 
-.stack figure img {
+.postBody figure img {
   margin: 1rem 0 3rem;
   border: 1px solid var(--gray-1);
 }
 
-.stack p {
+.postBody p {
   line-height: 1.8;
 }
 
-.stack a {
+.postBody a {
   color: var(--blue);
 }
 
-.stack a:hover {
+.postBody a:hover {
   color: var(--blue-1);
 }
 
-.stack strong {
+.postBody strong {
   font-weight: 600;
 }
 
-.stack ol,
-.stack ul {
-  margin: 0.75rem 0 var(--space-xxs);
+.postBody ol,
+.postBody ul {
+  margin: 0.75rem 0 var(--space-1);
   padding-left: 0.85rem;
   list-style: revert;
 }
 
-.stack li {
+.postBody li {
   line-height: 1.7;
 }
 
-.stack li > p {
+.postBody li > p {
   font-weight: normal;
 }
 
-.stack hr {
+.postBody hr {
   color: var(--gray-2);
   border: 1px solid;
   margin: 0.25rem 0 0;
 }
 
-.stack > table {
+.postBody > table {
   width: 100%;
   text-align: left;
   border-collapse: collapse;
@@ -91,33 +92,32 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.stack > table th,
-.stack > table td {
+.postBody > table th,
+.postBody > table td {
   border: 1px solid var(--gray-2);
-  padding: 0.85rem var(--space-xxs);
+  padding: 0.85rem var(--space-1);
 }
 
-.stack > table th {
+.postBody > table th {
   background-color: #f4f4f4;
   border-bottom: 2px solid var(--gray-2);
 }
 
-.stack > table td {
+.postBody > table td {
   border-bottom: 1px solid var(--gray-2);
 }
 
-/* 引用のレイアウト */
-.stack > blockquote {
+.postBody > blockquote {
   position: relative;
-  padding: var(--space-xxs) var(--space-xxs) var(--space-xxs)
-    calc(var(--space-xs) * 1.2);
-  margin: var(--space-xs);
+  padding: var(--space-1) var(--space-1) var(--space-1)
+    calc(var(--space-2) * 1.2);
+  margin: var(--space-2);
   box-sizing: border-box;
   background: #f3f3f3;
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
 }
 
-.stack > blockquote:before {
+.postBody > blockquote:before {
   display: inline-block;
   position: absolute;
   top: 10px;
@@ -135,7 +135,7 @@
   font-weight: 900;
 }
 
-.stack > blockquote:after {
+.postBody > blockquote:after {
   position: absolute;
   content: '';
   top: 40px;
@@ -145,7 +145,7 @@
   border-right: solid 15px var(--blue-2);
 }
 
-.stack > blockquote p {
+.postBody > blockquote p {
   position: relative;
   padding: 0;
   margin: 0.3rem 0;

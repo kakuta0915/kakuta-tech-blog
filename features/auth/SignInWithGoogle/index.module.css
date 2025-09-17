@@ -1,6 +1,6 @@
 .loginButton {
   color: var(--white);
-  padding: calc(var(--space-xxs) * 0.5);
+  padding: calc(var(--space-1) * 0.5);
   background-color: var(--blue-1);
   border: 1px solid var(--blue-1);
   border-radius: 8px;
@@ -11,8 +11,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: var(--space-xxs) auto;
-  padding: calc(var(--space-xxs) * 0.5) var(--space-xxs);
+  margin: var(--space-1) auto;
+  padding: calc(var(--space-1) * 0.5) var(--space-1);
   font-weight: bold;
   background-color: var(--white);
   border: 1px solid var(--gray-3);
@@ -61,7 +61,7 @@
 .popupContent {
   position: relative;
   background: var(--white);
-  padding: var(--space-sm) var(--space-xxs);
+  padding: var(--space-3) var(--space-1);
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
@@ -69,7 +69,7 @@
 }
 
 .popupContent h3 {
-  margin-bottom: calc(var(--space-xxs) * 0.5);
+  margin-bottom: calc(var(--space-1) * 0.5);
 }
 
 .googleButton img {

@@ -1,8 +1,8 @@
 .userInfo {
   position: relative;
   text-align: center;
-  padding: var(--space-sm);
-  margin-top: var(--space-xs);
+  padding: var(--space-3);
+  margin-top: var(--space-2);
 }
 
 .userInfo img {
@@ -16,7 +16,7 @@
   position: absolute;
   top: 1rem;
   right: 1.5rem;
-  padding: 0.25rem var(--space-xxs);
+  padding: 0.25rem var(--space-1);
   color: var(--gray);
   border: 1px solid var(--gray);
   border-radius: 5px;
@@ -29,13 +29,14 @@
 }
 
 .articleContainer {
-  padding: var(--space-xxs) 0 var(--space-lg);
+  padding: var(--space-1) 0 var(--space-5);
+  margin: 0 auto;
 }
 
 .tabContainer {
   display: flex;
   justify-content: center;
-  margin-bottom: var(--space-xs);
+  margin-bottom: var(--space-2);
 }
 
 .tabButton {
@@ -67,4 +68,16 @@
 .listItem a {
   display: block;
   padding: 1rem;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .articleContainer {
+    width: 85%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .articleContainer {
+    width: 80%;
+  }
 }

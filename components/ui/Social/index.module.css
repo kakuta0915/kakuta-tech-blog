@@ -8,7 +8,7 @@
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin-top: var(--space-xxs);
+  margin-top: var(--space-1);
 }
 
 .link {
@@ -25,14 +25,34 @@
   height: 2.5rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .socialList {
     gap: 1.5rem;
   }
 
   .socialListFooter {
     gap: 1.5rem;
-    margin: var(--space-md) var(--space-md) 0 0;
+    margin: var(--space-4) var(--space-4) 0 0;
+  }
+
+  .icon {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .link:hover {
+    transform: scale(1.1);
+  }
+}
+
+@media (min-width: 1025px) {
+  .socialList {
+    gap: 1.5rem;
+  }
+
+  .socialListFooter {
+    gap: 1.5rem;
+    margin: var(--space-4) var(--space-4) 0 0;
   }
 
   .icon {

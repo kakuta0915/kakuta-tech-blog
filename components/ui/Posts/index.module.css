@@ -1,5 +1,5 @@
 .postsContainer {
-  margin: var(--space-sm) 0;
+  margin: var(--space-3) 0;
 }
 
 .link {
@@ -8,8 +8,8 @@
   background-color: var(--white);
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-  margin-bottom: var(--space-xxs);
-  padding: var(--space-xxs);
+  margin-bottom: var(--space-1);
+  padding: var(--space-1);
   width: 100%;
   height: 100%;
 }
@@ -22,20 +22,21 @@
 .publishDate {
   font-size: calc(var(--body));
   color: var(--gray);
-  margin: calc(var(--space-xxs) * 0.5) 0;
+  margin: calc(var(--space-1) * 0.5) 0;
 }
 
 .link > h2 {
-  font-size: calc(var(--body) * 1.1);
+  font-size: calc(var(--body) * 1.3);
   font-weight: bold;
-  margin-bottom: var(--space-xxs);
+  margin-bottom: var(--space-1);
 }
 
-.flexSocialActions {
+.actionsContainer {
   display: flex;
+  align-items: center;
 }
 
-.socialActions {
+.actionsCount {
   display: flex;
   align-items: center;
   font-size: var(--body);
@@ -43,7 +44,7 @@
   color: var(--gray);
 }
 
-.socialActions .icon {
+.actionsCount .icon {
   color: var(--gray);
   margin-right: 0.5rem;
 }
@@ -54,11 +55,11 @@
   margin-top: auto;
 }
 
-.postsCategoriesLi {
+.postsCategory {
   display: flex;
   flex-wrap: nowrap;
-  padding: calc(var(--space-xxs) * 0.5);
-  margin: calc(var(--space-xxs) * 0.15);
+  padding: calc(var(--space-1) * 0.5);
+  margin: calc(var(--space-1) * 0.15);
   color: var(--white);
   background-color: var(--blue);
   border-radius: 10px;
@@ -66,7 +67,7 @@
 
 .tagIcon {
   font-size: calc(var(--body) * 0.7);
-  padding-right: calc(var(--space-xxs) * 0.2);
+  padding-right: calc(var(--space-1) * 0.2);
   color: var(--white);
 }
 
@@ -75,24 +76,24 @@
 }
 
 .btnBox {
-  padding: var(--space-sm) 0;
-  margin-bottom: var(--space-lg);
+  padding: var(--space-3) 0;
+  margin-bottom: var(--space-5);
   text-align: center;
 }
 
 .btn {
   display: inline-block;
   background-color: var(--blue-1);
-  padding: var(--space-xxs) var(--space-sm);
+  padding: var(--space-1) var(--space-3);
   color: var(--white);
   transition: 0.3s;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .postsContainer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: var(--space-xxs);
+    gap: var(--space-1);
   }
 
   .link {
@@ -103,13 +104,62 @@
     font-size: calc(var(--body) * 0.9);
   }
 
+  .tagIcon {
+    font-size: calc(var(--body) * 0.8);
+  }
+
+  .name {
+    font-size: calc(var(--body) * 0.7);
+  }
+
   .link:hover {
     box-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
     transform: scale(1.05);
   }
 
   .link > h2 {
-    margin-bottom: calc(var(--space-xxs) * 0.5);
+    font-size: var(--body);
+    margin-bottom: calc(var(--space-1) * 0.5);
+  }
+
+  .btn:hover {
+    background-color: var(--blue);
+    color: var(--white);
+    transform: scale(1.05);
+  }
+}
+
+@media (min-width: 1025px) {
+  .postsContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--space-1);
+  }
+
+  .link {
+    transition: box-shadow 0.3s, transform 0.3s;
+  }
+
+  .publishDate {
+    font-size: calc(var(--body) * 0.9);
+  }
+
+  .tagIcon {
+    font-size: calc(var(--body) * 0.9);
+  }
+
+  .name {
+    font-size: calc(var(--body) * 0.8);
+  }
+
+  .link:hover {
+    box-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+  }
+
+  .link > h2 {
+    font-size: calc(var(--body) * 1.3);
+    margin-bottom: calc(var(--space-1) * 0.5);
   }
 
   .btn:hover {

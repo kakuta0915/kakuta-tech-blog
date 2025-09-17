@@ -1,22 +1,21 @@
-.flexContainer {
+.postCategoriesContainer {
   background-color: var(--white);
   border-radius: 5px;
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
-  padding: var(--space-xxs);
+  padding: var(--space-1);
 }
 
-.flexContainer > h3 {
-  font-size: var(--heading3);
+.postCategoriesContainer > h3 {
   color: var(--blue);
   text-align: center;
-  margin-bottom: var(--space-xxs);
+  margin-bottom: var(--space-1);
 }
 
-.flexContainer > ul {
-  margin: var(--space-xs) var(--space-xs) 0;
+.postCategoriesContainer > ul {
+  margin: var(--space-2) var(--space-2) 0;
 }
 
-.flexContainer > li {
+.postCategoriesContainer > li {
   display: block;
   text-align: center;
 }
@@ -28,8 +27,8 @@
   line-height: 1.5;
   font-size: var(--body);
   border-bottom: 1px dashed var(--gray-1);
-  padding: calc(var(--space-xxs) * 0.5);
-  margin-bottom: var(--space-xxs);
+  padding: calc(var(--space-1) * 0.5);
+  margin-bottom: var(--space-1);
 }
 
 .icon {
@@ -39,8 +38,8 @@
 }
 
 @media (min-width: 768px) {
-  .flexContainer > ul {
-    margin: calc(var(--space-xxs) * 0.5) calc(var(--space-xxs) * 0.5) 0;
+  .postCategoriesContainer > ul {
+    margin: calc(var(--space-1) * 0.5) calc(var(--space-1) * 0.5) 0;
   }
 
   .categoriesLink {

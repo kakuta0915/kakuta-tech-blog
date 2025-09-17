@@ -5,7 +5,7 @@
 
 .sidebar {
   order: 1;
-  margin-bottom: var(--space-xxs);
+  margin-bottom: var(--space-1);
 }
 
 .main {
@@ -14,10 +14,10 @@
 
 .socialActions {
   order: 2;
-  margin: var(--space-xxs) 0;
+  margin: var(--space-1) 0;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1025px) {
   .flexContainer {
     flex-direction: row;
     justify-content: space-between;

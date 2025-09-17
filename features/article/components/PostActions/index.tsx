@@ -141,9 +141,12 @@ const PostActions: React.FC<PostActionsProps> = ({ postId, title }) => {
   }
 
   return (
-    <div className={styles['socialActions']}>
-      <div className={styles['actionButton']}>
-        <button onClick={() => handleAction('likes')}>
+    <div className={styles['postActions']}>
+      <div className={styles['actionContainer']}>
+        <button
+          className={styles['button']}
+          onClick={() => handleAction('likes')}
+        >
           <FontAwesomeIcon
             icon={faHeart}
             className={liked ? styles['likeIconAction'] : styles['icon']}
@@ -151,7 +154,10 @@ const PostActions: React.FC<PostActionsProps> = ({ postId, title }) => {
         </button>
         <span className={styles['count']}>{likeCount}</span>
 
-        <button onClick={() => handleAction('bookmarks')}>
+        <button
+          className={styles['button']}
+          onClick={() => handleAction('bookmarks')}
+        >
           <FontAwesomeIcon
             icon={faBookmark}
             className={
@@ -162,8 +168,8 @@ const PostActions: React.FC<PostActionsProps> = ({ postId, title }) => {
         <span className={styles['count']}>{bookmarkCount}</span>
       </div>
 
-      <div className={styles['shareButton']}>
-        <button onClick={handleShare}>
+      <div className={styles['shareContainer']}>
+        <button className={styles['button']} onClick={handleShare}>
           <FontAwesomeIcon icon={faXTwitter} />
         </button>
       </div>

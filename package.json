@@ -65,5 +65,8 @@
     "react-scroll": "^1.9.3",
     "typescript": "^5.5.3",
     "webpack-cli": "^6.0.1"
+  },
+  "engines": {
+    "node": "22.x"
   }
 }

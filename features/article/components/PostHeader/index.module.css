@@ -1,19 +1,19 @@
-.header {
+.postHeader {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: var(--space-xxs);
-  margin: var(--space-xs) 0;
+  padding: var(--space-1);
+  margin: var(--space-2) 0;
 }
 
-.headerIcon {
-  margin: 0 0 var(--space-sm);
+.postHeaderIcon {
+  margin: 0 0 var(--space-3);
   width: 5rem;
   height: 5rem;
 }
 
-.headerTitle > h1 {
-  margin-bottom: var(--space-xxs);
+.postHeaderTitle > h1 {
+  margin-bottom: var(--space-1);
 }
 
 .icon {
@@ -27,17 +27,27 @@
   font-size: var(--body);
 }
 
-@media (min-width: 768px) {
-  .header {
+@media (min-width: 768px) and (max-width: 1024px) {
+  .postHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--space-1);
+    margin: var(--space-2) 0 var(--space-3);
+  }
+}
+
+@media (min-width: 1025px) {
+  .postHeader {
     flex-direction: row;
     text-align: left;
-    margin: var(--space-md) 0 var(--space-lg);
+    margin: var(--space-4) 0;
     padding: 0;
   }
 
-  .headerIcon {
-    margin-right: var(--space-xs);
-    height: 7rem;
-    width: 7rem;
+  .postHeaderIcon {
+    margin-right: var(--space-2);
+    height: 6rem;
+    width: 6rem;
   }
 }

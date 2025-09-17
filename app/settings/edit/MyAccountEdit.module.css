@@ -1,6 +1,6 @@
 .pageTitle {
   text-align: center;
-  margin: var(--space-xs);
+  margin: var(--space-2);
 }
 
 .sectionTitle {
@@ -12,7 +12,7 @@
 
 .preview {
   text-align: center;
-  padding: 1rem 0 3rem;
+  padding: var(--space-1) 0 3rem;
 }
 
 .preview img {
@@ -27,14 +27,14 @@
 }
 
 .formSection {
-  padding: var(--space-md) var(--space-md) var(--space-xxs);
+  padding: var(--space-4) var(--space-4) var(--space-1);
   background-color: var(--white);
 }
 
 .formGroup {
   display: flex;
   flex-direction: column;
-  padding: 0.5rem var(--space-xxs);
+  padding: 0.5rem var(--space-1);
   margin-bottom: 0.85rem;
 }
 
@@ -60,18 +60,18 @@
   background-color: var(--white);
   border: 1px solid var(--blue-3);
   border-radius: 10px;
-  padding: 0.75rem 1rem;
-  margin: 1rem auto;
+  padding: 0.75rem var(--space-1);
+  margin: var(--space-1) auto;
   transition: 0.3s;
 }
 
 .deleteSection {
   background-color: var(--white);
-  padding: var(--space-xs) var(--space-md) 4rem;
+  padding: var(--space-2) var(--space-4) 4rem;
 }
 
 .deleteSection p {
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-1);
 }
 
 .deleteButton {
@@ -80,13 +80,13 @@
   border: 1px solid #b30516;
   background-color: var(--white);
   border-radius: 5px;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem var(--space-1);
   transition: 0.3s;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .formSection {
-    padding: var(--space-md) calc(var(--space-xl) * 3) var(--space-xs);
+    padding: var(--space-4) calc(var(--space-6) * 3) var(--space-2);
   }
 
   .updateButton:hover {
@@ -97,7 +97,7 @@
   }
 
   .deleteSection {
-    padding: var(--space-xs) calc(var(--space-xl) * 3) var(--space-xl);
+    padding: var(--space-2) calc(var(--space-6) * 3) var(--space-6);
   }
 
   .deleteButton:hover {

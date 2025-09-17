@@ -3,12 +3,12 @@
 }
 
 .profile {
-  margin: var(--space-md) var(--space-xs) var(--space-lg);
+  margin: var(--space-4) var(--space-2) var(--space-5);
 }
 
 .profile figure {
   text-align: center;
-  margin-bottom: var(--space-xs);
+  margin: var(--space-4) 0 var(--space-2);
 }
 
 .profileImage {
@@ -28,17 +28,31 @@
 }
 
 .profile > h3 {
-  margin-bottom: var(--space-sm);
-  padding: calc(var(--space-xxs) * 0.5) 0 calc(var(--space-xxs) * 0.5)
-    var(--space-xxs);
+  margin-bottom: var(--space-3);
+  padding: calc(var(--space-1) * 0.5) 0 calc(var(--space-1) * 0.5)
+    var(--space-1);
   border-bottom: 1px solid var(--gray);
   border-left: 10px solid var(--blue);
 }
 
 .profile > h4 {
-  padding: var(--space-xxs);
+  padding: var(--space-1);
 }
 
 .profile > p {
-  margin: 0 var(--space-xs) var(--space-xs);
+  margin: 0 var(--space-2) var(--space-2);
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .profileImage {
+    width: 25%;
+    height: 25%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .profileImage {
+    width: 20%;
+    height: 20%;
+  }
 }

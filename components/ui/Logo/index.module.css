@@ -9,11 +9,20 @@
 
 .footerLogo {
   width: 50%;
-  margin-left: var(--space-xs);
+  margin-left: var(--space-2);
 }
 
-/* デスクトップサイズ */
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1024px) {
+  .headerLogo {
+    width: 32%;
+  }
+
+  .footerLogo {
+    width: 40%;
+  }
+}
+
+@media (min-width: 1025px) {
   .headerLogo {
     width: 32%;
   }

@@ -1,12 +1,11 @@
-/* Common */
 .btnBox {
-  padding: var(--space-md) 0 var(--space-md);
+  padding: var(--space-4) 0 var(--space-4);
 }
 
 .btn {
   display: inline-block;
   background-color: var(--blue-1);
-  padding: var(--space-xxs) var(--space-sm);
+  padding: var(--space-1) var(--space-3);
   color: var(--white);
   transition: 0.3s;
 }
@@ -14,7 +13,7 @@
 .aboutSection,
 .articlesSection,
 .portfolioSection {
-  margin: var(--space-md) var(--space-xxs);
+  margin: var(--space-4) var(--space-1);
 }
 
 .aboutSection,
@@ -27,15 +26,14 @@
 .portfolioSection > h2 {
   text-align: center;
   font-size: clamp(2rem, 1.636rem + 1.82vw, 3rem);
-  margin-bottom: var(--space-xxs);
+  margin-bottom: var(--space-1);
 }
 
-/* About */
 .aboutSection p,
 .articlesSection p,
 .portfolioSection p {
   text-align: center;
-  padding-bottom: var(--space-xs);
+  padding-bottom: var(--space-2);
 }
 
 .aboutSection .profileIcon {
@@ -44,15 +42,14 @@
   width: 30%;
   height: 30%;
   object-fit: cover;
-  margin: var(--space-md) auto var(--space-sm);
+  margin: var(--space-4) auto var(--space-3);
 }
 
-/* Portfolio */
 .portfolioSection {
-  padding-bottom: var(--space-sm);
+  padding-bottom: var(--space-3);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .btn:hover {
     background-color: var(--blue);
     color: var(--white);
@@ -60,7 +57,24 @@
   }
 
   .text {
-    width: 70%;
+    width: 90%;
     margin: 0 auto;
+  }
+
+  .aboutSection .profileIcon {
+    width: 25%;
+    height: 25%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .text {
+    width: 85%;
+    margin: 0 auto;
+  }
+
+  .aboutSection .profileIcon {
+    width: 20%;
+    height: 20%;
   }
 }
