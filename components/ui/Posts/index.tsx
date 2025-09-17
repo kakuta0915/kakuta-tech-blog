@@ -6,7 +6,7 @@ import Image from 'next/image'
 import ConvertDate from '@/features/article/components/Convert/ConvertDate'
 import styles from './index.module.css'
 import qiitaImg from '@/public/images/qiitaEyecatch.png'
-import { faBookmark, faHeart, faTag } from '@fortawesome/free-solid-svg-icons'
+import { faTag } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { PostsProps } from '@/types'
 
@@ -29,16 +29,7 @@ const Posts: React.FC<PostsProps> = ({
     <>
       <div className={`${className} ${styles['postsContainer']}`}>
         {articles.map(
-          ({
-            title,
-            slug,
-            eyecatch,
-            publishDate = '',
-            categories,
-            source,
-            likesCount = 0,
-            bookmarksCount = 0,
-          }) => (
+          ({ title, slug, eyecatch, publishDate = '', categories, source }) => (
             <article key={slug}>
               <Link
                 className={styles['link']}
@@ -61,22 +52,6 @@ const Posts: React.FC<PostsProps> = ({
                   <ConvertDate dateISO={publishDate} />
                 </div>
                 <h2>{title}</h2>
-                <div className={styles['actionsContainer']}>
-                  <div className={styles['actionsCount']}>
-                    <FontAwesomeIcon
-                      icon={faHeart}
-                      className={styles['icon']}
-                    />
-                    <span>{likesCount}</span>
-                  </div>
-                  <div className={styles['actionsCount']}>
-                    <FontAwesomeIcon
-                      icon={faBookmark}
-                      className={styles['icon']}
-                    />
-                    <span>{bookmarksCount}</span>
-                  </div>
-                </div>
                 <ul>
                   {categories.map((category) => (
                     <li className={styles['postsCategory']} key={category.slug}>

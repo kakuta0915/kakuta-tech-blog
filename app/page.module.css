@@ -10,28 +10,23 @@
   transition: 0.3s;
 }
 
-.aboutSection,
-.articlesSection,
-.portfolioSection {
-  margin: var(--space-4) var(--space-1);
+.articlesSection {
+  margin: var(--space-md) var(--space-xxs);
 }
 
-.aboutSection,
-.portfolioSection {
+.aboutSection {
   text-align: center;
 }
 
 .aboutSection > h2,
-.articlesSection > h2,
-.portfolioSection > h2 {
+.articlesSection > h2 {
   text-align: center;
   font-size: clamp(2rem, 1.636rem + 1.82vw, 3rem);
   margin-bottom: var(--space-1);
 }
 
 .aboutSection p,
-.articlesSection p,
-.portfolioSection p {
+.articlesSection p {
   text-align: center;
   padding-bottom: var(--space-2);
 }
@@ -43,10 +38,6 @@
   height: 30%;
   object-fit: cover;
   margin: var(--space-4) auto var(--space-3);
-}
-
-.portfolioSection {
-  padding-bottom: var(--space-3);
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {

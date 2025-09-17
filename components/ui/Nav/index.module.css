@@ -1,10 +1,7 @@
-/* ナビ */
-
 .nav {
   display: flex;
   justify-content: space-around;
   white-space: nowrap;
-  margin-top: calc(var(--space-1) * 0.4);
 }
 
 .nav li {

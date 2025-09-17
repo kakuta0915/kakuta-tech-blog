@@ -1,9 +1,10 @@
 import { render, screen } from '@testing-library/react'
-import Header from './'
+import '@testing-library/jest-dom'
+import StickyHeader from './'
 
-describe('Headerコンポーネント', () => {
+describe('StickyHeaderコンポーネント', () => {
   it('Navコンポーネントがレンダリングされているか', () => {
-    render(<Header />)
+    render(<StickyHeader />)
     expect(screen.getByRole('navigation')).toBeInTheDocument()
   })
 })

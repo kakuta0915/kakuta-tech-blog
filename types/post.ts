@@ -10,8 +10,6 @@ export type Posts = {
   publishDate: string
   categories: Category[]
   source: string
-  likesCount: number
-  bookmarksCount: number
 }
 
 export type PostsProps = {

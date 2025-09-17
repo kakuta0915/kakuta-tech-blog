@@ -1,5 +1,4 @@
 import CategoriesList from './CategoriesList'
-import Comments from './Comments'
 import ConvertBody from './Convert/ConvertBody'
 import ConvertDate from './Convert/ConvertDate'
 import Pagination from './Pagination'
@@ -17,7 +16,6 @@ import {
 
 export {
   CategoriesList,
-  Comments,
   ConvertBody,
   ConvertDate,
   Pagination,

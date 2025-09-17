@@ -18,13 +18,7 @@ describe('Nav Component', () => {
     expect(links[1]).toHaveAttribute('href', '/about/')
     expect(links[1]).toHaveTextContent('ABOUT')
 
-    expect(links[2]).toHaveAttribute('href', '/portfolio/')
-    expect(links[2]).toHaveTextContent('PORTFOLIO')
-
     expect(links[3]).toHaveAttribute('href', '/articles/')
     expect(links[3]).toHaveTextContent('ARTICLES')
-
-    expect(links[4]).toHaveAttribute('href', '/contact/')
-    expect(links[4]).toHaveTextContent('CONTACT')
   })
 })
