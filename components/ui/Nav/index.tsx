@@ -4,7 +4,7 @@ import styles from './index.module.css'
 
 const Nav: React.FC = () => {
   return (
-    <nav className={styles['headerNav']} data-testid="nav">
+    <nav className={styles['navContent']} data-testid="nav">
       <ul className={styles['nav']}>
         <li>
           <Link href="/">TOP</Link>
