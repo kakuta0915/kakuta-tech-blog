@@ -1,25 +1,20 @@
 .header {
-  padding: var(--space-xxs);
-  margin: 0 auto;
+  padding: var(--space-1) var(--space-1) calc(var(--space-1) * 0.5);
   background-color: var(--white);
+}
+
+.header h1 {
+  color: var(--blue-4);
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .header {
-    padding: 0 var(--space-3) var(--space-1);
-  }
-
-  .flex {
-    padding-bottom: 0;
-  }
-
-  .nav {
-    margin-left: auto;
+    padding: var(--space-1) var(--space-2) calc(var(--space-1) * 0.5);
   }
 }
 
 @media (min-width: 1025px) {
   .header {
-    padding: 0 var(--space-3) var(--space-1);
+    padding: var(--space-2) var(--space-3) calc(var(--space-1) * 0.5);
   }
 }
