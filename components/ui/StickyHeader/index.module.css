@@ -23,18 +23,6 @@
   margin-left: 0.25rem;
 }
 
-.toc {
-  display: flex;
-  align-items: center;
-  font-size: calc(var(--body) * 0.8);
-  padding: 0 calc(var(--space-1) * 0.3);
-  margin-left: 0.25rem;
-}
-
-.toc > .icon {
-  margin-left: 0.25rem;
-}
-
 @media (min-width: 768px) and (max-width: 1024px) {
   .stickyHeader {
     padding: calc(var(--space-1) * 0.5) var(--space-1);
@@ -43,11 +31,6 @@
   .icon {
     font-size: var(--body);
     padding: calc(var(--space-1) * 0.5);
-  }
-
-  .toc {
-    font-size: var(--body);
-    padding: 0 calc(var(--space-1) * 0.5);
   }
 }
 
@@ -64,15 +47,6 @@
   .icon:hover {
     color: var(--blue-1);
     transition: 0.2s;
-  }
-
-  .toc {
-    font-size: var(--body);
-    padding: 0 calc(var(--space-1) * 0.5);
-  }
-
-  .toc:hover {
-    color: var(--blue-1);
-    transition: 0.2s;
+    cursor: pointer;
   }
 }

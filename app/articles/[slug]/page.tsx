@@ -88,7 +88,6 @@ export default async function ArticlePage({ params }: Props) {
     categories,
     prevPost,
     nextPost,
-    tocVisible,
     postId,
   } = data
 
@@ -101,6 +100,7 @@ export default async function ArticlePage({ params }: Props) {
 
   return (
     <>
+      <Article.ArticleStickyHeader toc={toc} />
       <Ui.Container>
         <article>
           <Article.PostHeader
@@ -128,7 +128,7 @@ export default async function ArticlePage({ params }: Props) {
               </Article.PostBody>
             </Article.ThreeColumMain>
             <Article.ThreeColumSidebar>
-              {tocVisible && <Article.TableOfContents toc={toc} />}
+              <Article.TableOfContents toc={toc} />
               <Article.PostCategories categories={categories} />
             </Article.ThreeColumSidebar>
           </Article.ThreeColum>

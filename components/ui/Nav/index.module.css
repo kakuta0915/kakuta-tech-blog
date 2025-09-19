@@ -26,7 +26,7 @@
 
 @media (min-width: 1025px) {
   .nav li a {
-    font-size: var(--body);
+    font-size: calc(var(--body) * 1.1);
     padding: calc(var(--space-1) * 0.5);
     margin: 0 calc(var(--space-1) * 0.5);
   }
@@ -34,5 +34,6 @@
   .nav li:hover {
     color: var(--blue-1);
     transition: 0.2s;
+    cursor: pointer;
   }
 }

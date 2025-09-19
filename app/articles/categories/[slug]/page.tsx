@@ -71,6 +71,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   return (
     <>
+      <Ui.StickyHeader />
       <Ui.Container>
         <article>
           <Article.PostHeader

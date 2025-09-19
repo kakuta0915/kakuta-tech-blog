@@ -43,6 +43,7 @@ export const metadata: Metadata = {
 const AboutPage: React.FC = () => {
   return (
     <>
+      <UiComponents.StickyHeader />
       <UiComponents.Hero
         title="ABOUT"
         description="ブログサイトについての説明と、私の自己紹介を記載しています。"

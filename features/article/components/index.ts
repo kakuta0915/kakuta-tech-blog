@@ -1,3 +1,4 @@
+import ArticleStickyHeader from './ArticleStickyHeader'
 import CategoriesList from './CategoriesList'
 import ConvertBody from './Convert/ConvertBody'
 import ConvertDate from './Convert/ConvertDate'
@@ -15,6 +16,7 @@ import {
 } from './ThreeColum'
 
 export {
+  ArticleStickyHeader,
   CategoriesList,
   ConvertBody,
   ConvertDate,
