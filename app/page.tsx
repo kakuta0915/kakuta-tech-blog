@@ -4,10 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { siteMeta } from '@/libs/constants'
-import Hero from '@/components/ui/Hero'
-import Container from '@/components/ui/Container'
-import Posts from '@/components/ui/Posts'
-import Social from '@/components/ui/Social'
+import * as Ui from '@/components/ui'
 import styles from './page.module.css'
 import eyecatch from '@/public/images/index.jpg'
 import kakuta0915 from '@/public/images/kakuta0915.png'
@@ -58,14 +55,15 @@ export default async function HomePage() {
 
   return (
     <>
-      <Hero
+      <Ui.StickyHeader />
+      <Ui.Hero
         title="KAKUTA"
         title2="TECH BLOG"
         description="このサイトでは、Next.jsとmicroCMSを組み合わせ、プログラミングの技術ブログを制作しました。 学習したことをアウトプットしたり、学習時に躓いた箇所や解決策について、詳細な記事をまとめています。"
         imageSrc="/images/index.jpg"
         contact={true}
       />
-      <Container>
+      <Ui.Container>
         <section className={styles['aboutSection']}>
           <h2>About Me</h2>
           <p className={styles['text']}>
@@ -80,7 +78,7 @@ export default async function HomePage() {
             priority
             placeholder="blur"
           />
-          <Social isFooterSocial={false} />
+          <Ui.Social isFooterSocial={false} />
           <div className={styles['btnBox']}>
             <Link className={styles['btn']} href="/about">
               MORE
@@ -93,9 +91,9 @@ export default async function HomePage() {
           <p className={styles['text']}>
             プログラミング学習に関する記事をまとめたページです。学習中に躓いた箇所や、開発過程で遭遇した具体的な課題、それに対する解決策を紹介しています。
           </p>
-          <Posts posts={posts} maxPosts={6} btn />
+          <Ui.Posts posts={posts} maxPosts={6} btn />
         </section>
-      </Container>
+      </Ui.Container>
     </>
   )
 }

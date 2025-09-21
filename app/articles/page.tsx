@@ -2,7 +2,6 @@ import React from 'react'
 import type { Metadata } from 'next'
 import { siteMeta } from '@/libs/constants'
 import { getAllArticles, getAllCategories } from '@/libs/api'
-import Hero from '@/components/ui/Hero'
 import * as Ui from '@/components/ui'
 import * as Article from '@/features/article/components'
 import eyecatch from '@/public/images/articles.jpg'
@@ -89,7 +88,8 @@ export default async function ArticlesPage({
 
   return (
     <>
-      <Hero
+      <Ui.StickyHeader />
+      <Ui.Hero
         title="ARTICLES"
         description="プログラミング学習に関する記事をまとめたページです。学習中に躓いた箇所や、開発過程で遭遇した具体的な課題、それに対する解決策を紹介しています。"
         imageSrc="/images/articles.jpg"
