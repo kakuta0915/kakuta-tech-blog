@@ -42,7 +42,6 @@ const fetchPost = cache(async (slug: string) => {
     description: extractText(post.content),
     prevPost,
     nextPost,
-    tocVisible: post.toc_visible,
     postId: slug,
   }
 })
@@ -110,11 +109,8 @@ export default async function ArticlePage({ params }: Props) {
             subtitle="Blog Article"
             publish={publish}
           />
-          <Article.ThreeColum>
-            <Article.ThreeColumPostActions>
-              <Article.PostActions postId={postId} title={title} />
-            </Article.ThreeColumPostActions>
-            <Article.ThreeColumMain>
+          <div className={styles['container']}>
+            <div className={styles['main']}>
               <Article.PostBody>
                 <Image
                   src={eyecatch.url}
@@ -127,14 +123,15 @@ export default async function ArticlePage({ params }: Props) {
                 />
                 <Article.ConvertBody contentHTML={content} />
               </Article.PostBody>
-            </Article.ThreeColumMain>
-            <Article.ThreeColumSidebar>
-              <div className={styles['toDesktop']}>
+            </div>
+            <div className={styles['sidebar']}>
+              <Article.PostActions postId={postId} title={title} />
+              <Article.PostCategories categories={categories} />
+              <div className={styles['tocDesktop']}>
                 <Article.TableOfContents toc={toc} />
               </div>
-              <Article.PostCategories categories={categories} />
-            </Article.ThreeColumSidebar>
-          </Article.ThreeColum>
+            </div>
+          </div>
           {prevPost && nextPost && (
             <Article.Pagination
               prevText={prevPost.title}

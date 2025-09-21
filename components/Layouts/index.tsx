@@ -4,7 +4,6 @@ import Footer from './Footer'
 
 type LayoutProps = {
   children: ReactNode
-  isArticlePage?: boolean
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
