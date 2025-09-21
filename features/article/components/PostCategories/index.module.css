@@ -1,52 +1,45 @@
-.postCategoriesContainer {
-  background-color: var(--white);
-  border-radius: 5px;
-  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
-  padding: var(--space-1);
-}
-
-.postCategoriesContainer > h3 {
-  color: var(--blue);
-  text-align: center;
+.container {
+  overflow-x: auto;
   margin-bottom: var(--space-1);
 }
 
-.postCategoriesContainer > ul {
-  margin: var(--space-2) var(--space-2) 0;
+.list {
+  display: flex;
+  gap: 0.75rem;
+  white-space: nowrap;
 }
 
-.postCategoriesContainer > li {
-  display: block;
-  text-align: center;
+.category {
+  display: inline-block;
 }
 
-.categoriesLink {
+.link {
   display: flex;
   flex-direction: row;
   align-items: center;
   line-height: 1.5;
   font-size: var(--body);
-  border-bottom: 1px dashed var(--gray-1);
-  padding: calc(var(--space-1) * 0.5);
-  margin-bottom: var(--space-1);
+  background-color: var(--white);
+  border: 1px solid var(--gray-1);
+  border-radius: 1.5rem;
+  padding: calc(var(--space-1) * 0.5) calc(var(--space-1) * 0.75);
 }
 
 .icon {
-  width: 1.6rem;
-  height: 1.6rem;
-  margin: 0 0.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
 }
 
-@media (min-width: 768px) {
-  .postCategoriesContainer > ul {
-    margin: calc(var(--space-1) * 0.5) calc(var(--space-1) * 0.5) 0;
-  }
+.link:active {
+  color: var(--blue-4);
+}
 
-  .categoriesLink {
-    font-size: 0.9rem;
-  }
+@media (min-width: 768px) and (max-width: 1024px) {
+}
 
-  .categoriesLink:hover {
-    color: var(--blue);
+@media (min-width: 1024px) {
+  .link:hover {
+    color: var(--blue-4);
   }
 }

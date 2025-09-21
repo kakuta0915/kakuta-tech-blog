@@ -6,13 +6,12 @@ import { PostCategoriesProps } from '@/types'
 
 const PostCategories: React.FC<PostCategoriesProps> = ({ categories }) => {
   return (
-    <div className={styles['postCategoriesContainer']}>
-      <h3>カテゴリ</h3>
-      <ul>
+    <div className={styles['container']}>
+      <ul className={styles['list']}>
         {categories.map(({ name, slug, icon }) => (
-          <li key={slug}>
+          <li key={slug} className={styles['category']}>
             <Link
-              className={styles['categoriesLink']}
+              className={styles['link']}
               href={`/articles/categories/${slug}`}
             >
               <Image

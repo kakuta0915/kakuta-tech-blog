@@ -88,7 +88,7 @@ export default async function ArticlePage({ params }: Props) {
     categories,
     prevPost,
     nextPost,
-    postId,
+    // postId,
   } = data
 
   const rawToc = renderToc(content)
@@ -125,7 +125,7 @@ export default async function ArticlePage({ params }: Props) {
               </Article.PostBody>
             </div>
             <div className={styles['sidebar']}>
-              <Article.PostActions postId={postId} title={title} />
+              {/* <Article.PostActions postId={postId} title={title} /> */}
               <Article.PostCategories categories={categories} />
               <div className={styles['tocDesktop']}>
                 <Article.TableOfContents toc={toc} />

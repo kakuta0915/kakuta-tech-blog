@@ -23,10 +23,6 @@
   .sidebar {
     order: 1;
   }
-
-  .tocDesktop {
-    display: block;
-  }
 }
 
 @media (min-width: 1025px) {
