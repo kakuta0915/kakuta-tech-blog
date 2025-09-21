@@ -8,12 +8,6 @@ import PostBody from './PostBody'
 import PostCategories from './PostCategories'
 import PostHeader from './PostHeader'
 import TableOfContents from './TableOfContents'
-import {
-  ThreeColum,
-  ThreeColumMain,
-  ThreeColumSidebar,
-  ThreeColumPostActions,
-} from './ThreeColum'
 
 export {
   ArticleStickyHeader,
@@ -26,8 +20,4 @@ export {
   PostCategories,
   PostHeader,
   TableOfContents,
-  ThreeColum,
-  ThreeColumMain,
-  ThreeColumSidebar,
-  ThreeColumPostActions,
 }
