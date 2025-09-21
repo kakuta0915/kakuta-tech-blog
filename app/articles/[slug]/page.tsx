@@ -88,7 +88,7 @@ export default async function ArticlePage({ params }: Props) {
     categories,
     prevPost,
     nextPost,
-    postId,
+    // postId,
   } = data
 
   const rawToc = renderToc(content)
