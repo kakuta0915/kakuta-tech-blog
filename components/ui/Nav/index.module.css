@@ -13,7 +13,7 @@
 }
 
 .nav li a:active {
-  color: var(--blue-4);
+  color: var(--blue-active);
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -32,7 +32,7 @@
   }
 
   .nav li:hover {
-    color: var(--blue-1);
+    color: var(--blue-active);
     transition: 0.2s;
     cursor: pointer;
   }

@@ -4,7 +4,7 @@
 }
 
 .header h1 {
-  color: var(--blue-4);
+  color: var(--blue-base);
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {

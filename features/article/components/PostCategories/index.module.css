@@ -32,7 +32,7 @@
 }
 
 .link:active {
-  color: var(--blue-4);
+  color: var(--blue-active);
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -40,6 +40,6 @@
 
 @media (min-width: 1024px) {
   .link:hover {
-    color: var(--blue-4);
+    color: var(--blue-active);
   }
 }
