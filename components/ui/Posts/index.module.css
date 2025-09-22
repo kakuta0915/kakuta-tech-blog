@@ -31,27 +31,6 @@
   margin-bottom: var(--space-1);
 }
 
-<<<<<<< HEAD
-.actionsContainer {
-  display: flex;
-  align-items: center;
-}
-
-.actionsCount {
-  display: flex;
-  align-items: center;
-  font-size: var(--body);
-  margin: auto 1rem 0.8rem 0;
-  color: var(--gray);
-}
-
-.actionsCount .icon {
-  color: var(--gray);
-  margin-right: 0.5rem;
-}
-
-=======
->>>>>>> 86b4102 (remove: いいね機能・ブックマーク機能を削除)
 .link > ul {
   display: flex;
   flex-wrap: wrap;
