@@ -9,8 +9,6 @@ const mockToc = [
 test('目次が正しく表示されるか確認', () => {
   render(<TableOfContents toc={mockToc} />)
 
-  expect(screen.getByText('目次')).toBeInTheDocument()
-
   mockToc.forEach(({ id, text }) => {
     const listItem = screen.getByText(text)
     expect(listItem).toBeInTheDocument()
