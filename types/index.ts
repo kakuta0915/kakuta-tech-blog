@@ -1,5 +1,6 @@
 export * from './category'
 export * from './hero'
+export * from './list-pagination'
 export * from './pagination'
 export * from './post-category'
 export * from './post-header'
