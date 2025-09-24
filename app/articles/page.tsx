@@ -82,10 +82,6 @@ export default async function ArticlesPage({
   const endIdx = startIdx + POSTS_PER_PAGE
   const pagedPosts = posts.slice(startIdx, endIdx)
 
-  const prevPage = currentPage > 1 ? `/articles?page=${currentPage - 1}` : ''
-  const nextPage =
-    currentPage < totalPages ? `/articles?page=${currentPage + 1}` : ''
-
   return (
     <>
       <Ui.StickyHeader />
@@ -96,12 +92,8 @@ export default async function ArticlesPage({
       />
       <Ui.Container>
         <Ui.Posts posts={pagedPosts} />
-        <Article.Pagination
-          prevText={prevPage ? '前のページ' : ''}
-          prevUrl={prevPage}
-          nextText={nextPage ? '次のページ' : ''}
-          nextUrl={nextPage}
-          totalPages={totalPages}
+        <Article.ListPagination
+          pageCount={totalPages}
           currentPage={currentPage}
           createPageLink={(page) => `/articles?page=${page}`}
         />

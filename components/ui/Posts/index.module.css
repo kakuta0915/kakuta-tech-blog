@@ -58,8 +58,8 @@
 }
 
 .btnBox {
-  padding: var(--space-3) 0;
-  margin-bottom: var(--space-5);
+  /* padding: var(--space-3) 0; */
+  /* margin-bottom: var(--space-5); */
   text-align: center;
 }
 
