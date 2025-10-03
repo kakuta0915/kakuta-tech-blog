@@ -2,11 +2,11 @@ import Link from 'next/link'
 import styles from './index.module.css'
 import { ListPaginationProps } from '@/types'
 
-export default function ListPagination({
+const ListPagination: React.FC<ListPaginationProps> = ({
   pageCount,
   currentPage,
   createPageLink,
-}: ListPaginationProps) {
+}) => {
   if (pageCount <= 1) return null
 
   const pages = Array.from({ length: pageCount }, (_, i) => i + 1)
@@ -29,3 +29,5 @@ export default function ListPagination({
     </nav>
   )
 }
+
+export default ListPagination
