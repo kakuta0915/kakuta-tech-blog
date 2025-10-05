@@ -5,11 +5,13 @@
   --black: #494949;
   --gray: #808080;
   --gray-2: #ddd;
+  --gray-3: #f6f6f6;
   --bg-color: #f9f8f8;
   --blue-base: #286cff;
   --blue-active: #4383f1;
-  --blue-2: #3b81f6; /**/
-  --blue-6: #eff6ff;
+  --blue-2: #3b81f6;
+  --blue-3: #7babff;
+  --blue-4: #eff6ff;
   --navy: #383b56;
   --navy-2: #65717b;
 
@@ -23,11 +25,11 @@
 
   /* フォントサイズ */
   --body: clamp(1.031rem, 1.009rem + 0.11vw, 1.094rem); /* 16.5-17.5px */
-  --h1: clamp(1.75rem, 1.477rem + 1.36vw, 2.5rem); /* 28-40px */
-  --h2: clamp(1.688rem, 1.574rem + 0.57vw, 2rem); /* 27-32 */
-  --h3: clamp(1.5rem, 1.432rem + 0.34vw, 1.688rem); /* 24-27 */
-  --h4: clamp(1.313rem, 1.267rem + 0.23vw, 1.438rem); /* 21-23 */
-  --h5: clamp(1.094rem, 1.071rem + 0.11vw, 1.156rem); /* 17.5-18.5*/
+  --h1: clamp(1.75rem, 1.477rem + 1.36vw, 2.5rem); /*28-40px*/
+  --h2: clamp(1.5rem, 1.146rem + 1.53vw, 2.125rem); /*24-34px*/
+  --h3: clamp(1.25rem, 1.109rem + 0.61vw, 1.5rem); /*20-24px*/
+  --h4: clamp(1.125rem, 1.054rem + 0.31vw, 1.25rem); /*18-20px*/
+  --h5: clamp(1.031rem, 0.961rem + 0.31vw, 1.156rem); /*16.5-18.5px*/
 
   /* スペース */
   --space-1: clamp(1rem, 0.95rem + 0.2vw, 1.125rem); /* 16-18px */
