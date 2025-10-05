@@ -1,12 +1,19 @@
+'use client'
+
 import React from 'react'
 import Image from 'next/image'
 import parse, { DOMNode } from 'html-react-parser'
-import hljs from 'highlight.js'
-
-type ConvertBodyProps = {
-  contentHTML: string
-  id?: string
-}
+import Prism from 'prismjs'
+import CodeBlock from '../CodeBlock'
+import type { ConvertBodyProps } from '@/types/convet-body'
+import 'prismjs/components/prism-markup'
+import 'prismjs/components/prism-bash'
+import 'prismjs/components/prism-javascript'
+import 'prismjs/components/prism-typescript'
+import 'prismjs/components/prism-jsx'
+import 'prismjs/components/prism-tsx'
+import 'prismjs/components/prism-json'
+import 'prismjs/components/prism-css'
 
 function isElementNode(node: DOMNode): node is DOMNode & {
   name: string
@@ -26,21 +33,15 @@ const ConvertBody: React.FC<ConvertBodyProps> = ({ contentHTML }) => {
       if (isElementNode(node)) {
         if (node.name === 'img') {
           const { src, alt, width, height } = node.attribs
-
           if (!src) return null
-
-          const imageWidth = width ? parseInt(width, 10) : 0
-          const imageHeight = height ? parseInt(height, 10) : 0
-          const imageAlt = alt || ''
-
           return (
             <Image
-              layout="responsive"
               src={src}
-              width={imageWidth || 0}
-              height={imageHeight || 0}
-              alt={imageAlt}
+              alt={alt || ''}
+              width={width ? parseInt(width, 10) : 800}
+              height={height ? parseInt(height, 10) : 450}
               sizes="(min-width: 768px) 768px, 100vw"
+              style={{ height: 'auto', width: '100%' }}
             />
           )
         }
@@ -52,7 +53,6 @@ const ConvertBody: React.FC<ConvertBodyProps> = ({ contentHTML }) => {
 
           if (codeNodeCandidate && isElementNode(codeNodeCandidate)) {
             const codeTextNodeCandidate = codeNodeCandidate.children[0]
-
             if (codeTextNodeCandidate && isTextNode(codeTextNodeCandidate)) {
               const codeText = codeTextNodeCandidate.data
               const language = codeNodeCandidate.attribs['class']
@@ -61,22 +61,22 @@ const ConvertBody: React.FC<ConvertBodyProps> = ({ contentHTML }) => {
                     .trim()
                 : undefined
 
-              const result = language
-                ? hljs.highlight(codeText, { language }).value
-                : hljs.highlightAuto(codeText).value
-
-              const highlightedDom = parse(result)
+              const prismLanguage = language && Prism.languages[language]
+              const highlightedHtml = prismLanguage
+                ? Prism.highlight(codeText, prismLanguage, language)
+                : Prism.util.encode(codeText)
 
               return (
-                <pre className={`stack language-${language || 'plaintext'}`}>
-                  <code className="hljs">{highlightedDom}</code>
-                </pre>
+                <CodeBlock
+                  code={highlightedHtml as unknown as string}
+                  rawCode={codeText}
+                  language={language}
+                />
               )
             }
           }
         }
       }
-
       return undefined
     },
   })

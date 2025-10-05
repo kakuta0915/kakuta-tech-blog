@@ -1,6 +1,6 @@
+import { cache } from 'react'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
-import { cache } from 'react'
 import type { Metadata } from 'next'
 import { createMetadata } from '@/utils/createMetadata'
 import { getPostBySlug, getAllSlugs, getAllCategories } from '@/libs/api'
@@ -11,6 +11,10 @@ import * as Ui from '@/components/ui'
 import * as Article from '@/features/article/components'
 import type { Category } from '@/types'
 import styles from './page.module.css'
+
+export const fetchCache =
+  process.env.NODE_ENV === 'development' ? 'force-no-store' : 'default'
+export const revalidate = 60
 
 type PostSlug = { slug: string }
 
