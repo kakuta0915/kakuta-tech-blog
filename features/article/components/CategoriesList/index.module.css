@@ -16,7 +16,7 @@
 }
 
 .categoryItem {
-  border: 1px solid var(--gray-1);
+  border: 1px solid var(--gray-2);
   background-color: var(--white);
   border-radius: 1rem;
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);

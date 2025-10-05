@@ -31,7 +31,7 @@
 
 .icon {
   font-size: calc(var(--body) * 0.8);
-  color: var(--gray-4);
+  color: var(--navy-2);
   padding: calc(var(--space-1) * 0.3);
   margin-left: 0.25rem;
 }

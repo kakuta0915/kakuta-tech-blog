@@ -1,5 +1,6 @@
 import ArticleStickyHeader from './ArticleStickyHeader'
 import CategoriesList from './CategoriesList'
+import CodeBlock from './CodeBlock'
 import ConvertBody from './Convert/ConvertBody'
 import ConvertDate from './Convert/ConvertDate'
 import ListPagination from './ListPagination'
@@ -13,6 +14,7 @@ import TableOfContents from './TableOfContents'
 export {
   ArticleStickyHeader,
   CategoriesList,
+  CodeBlock,
   ConvertBody,
   ConvertDate,
   ListPagination,
