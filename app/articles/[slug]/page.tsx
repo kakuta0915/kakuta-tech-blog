@@ -13,7 +13,7 @@ import type { Category } from '@/types'
 import styles from './page.module.css'
 
 export const fetchCache =
-  process.env.NODE_ENV === 'development' ? 'force-no-store' : 'default'
+  process.env.NODE_ENV === 'development' ? 'force-no-store' : 'default-cache'
 export const revalidate = 60
 
 type PostSlug = { slug: string }
