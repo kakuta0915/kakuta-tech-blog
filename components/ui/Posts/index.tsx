@@ -6,13 +6,11 @@ import Image from 'next/image'
 import ConvertDate from '@/features/article/components/Convert/ConvertDate'
 import styles from './index.module.css'
 import qiitaImg from '@/public/images/qiitaEyecatch.png'
-import { faTag } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { PostsProps } from '@/types'
 
 const Posts: React.FC<PostsProps> = ({
   className,
-  btn = false,
+  showMoreButton = false,
   posts = [],
   maxPosts,
 }) => {
@@ -55,10 +53,15 @@ const Posts: React.FC<PostsProps> = ({
                 <ul>
                   {categories.map((category) => (
                     <li className={styles['postsCategory']} key={category.slug}>
-                      <FontAwesomeIcon
-                        className={styles['tagIcon']}
-                        icon={faTag}
-                      />
+                      {category.icon?.url && (
+                        <Image
+                          className={styles['categoryIcon']}
+                          src={category.icon.url}
+                          width={category.icon.width}
+                          height={category.icon.height}
+                          alt="カテゴリアイコン"
+                        />
+                      )}
                       <div className={styles['name']}>{category.name}</div>
                     </li>
                   ))}
@@ -68,9 +71,9 @@ const Posts: React.FC<PostsProps> = ({
           ),
         )}
       </div>
-      <div className={styles['btnBox']}>
-        {btn && (
-          <Link className={styles['btn']} href="/articles/">
+      <div className={styles['btnContainer']}>
+        {showMoreButton && (
+          <Link className={styles['showMoreButton']} href="/articles/">
             MORE
           </Link>
         )}

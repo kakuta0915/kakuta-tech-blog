@@ -91,7 +91,7 @@ export default async function HomePage() {
           <p className={styles['text']}>
             プログラミング学習に関する記事をまとめたページです。学習中に躓いた箇所や、開発過程で遭遇した具体的な課題、それに対する解決策を紹介しています。
           </p>
-          <Ui.Posts posts={posts} maxPosts={6} btn />
+          <Ui.Posts posts={posts} maxPosts={6} showMoreButton />
         </section>
       </Ui.Container>
     </>
