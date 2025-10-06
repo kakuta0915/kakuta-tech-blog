@@ -20,14 +20,15 @@
 .postBody h2 {
   margin-top: var(--space-4);
   padding: 0.5rem var(--space-1);
-  background: #eeeeee;
-  border-left: solid 8px var(--blue);
+  background: var(--gray-3);
+  border-left: solid 8px var(--blue-3);
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.2);
 }
 
 .postBody h3 {
   margin-top: var(--space-3);
   padding: 0.8rem;
-  border-left: 5px solid var(--blue);
+  border-left: 5px solid var(--blue-3);
   border-bottom: 1px solid var(--gray-2);
 }
 
@@ -50,11 +51,16 @@
 }
 
 .postBody a {
-  color: var(--blue);
+  word-break: break-all;
+  color: var(--blue-2);
 }
 
 .postBody a:hover {
-  color: var(--blue-1);
+  color: var(--blue-3);
+}
+
+.postBody a:active {
+  color: var(--blue-active);
 }
 
 .postBody strong {

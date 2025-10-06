@@ -1,6 +1,11 @@
 type Category = {
   name: string
   slug: string
+  icon?: {
+    url: string
+    width: number
+    height: number
+  }
 }
 
 export type Posts = {
@@ -14,7 +19,7 @@ export type Posts = {
 
 export type PostsProps = {
   className?: string
-  btn?: boolean
+  showMoreButton?: boolean
   posts: Posts[]
   maxPosts?: number
 }
