@@ -51,11 +51,16 @@
 }
 
 .postBody a {
-  color: var(--blue);
+  word-break: break-all;
+  color: var(--blue-2);
 }
 
 .postBody a:hover {
-  color: var(--blue-1);
+  color: var(--blue-3);
+}
+
+.postBody a:active {
+  color: var(--blue-active);
 }
 
 .postBody strong {
