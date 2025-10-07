@@ -25,7 +25,7 @@
   align-items: center;
   background: none;
   border: none;
-  color: var(--white);
+  color: var(--black-2);
   font-size: calc(var(--body) * 0.8);
   cursor: pointer;
 }
@@ -62,7 +62,7 @@
   }
 
   .tocButton {
-    color: var(--white);
+    color: var(--black-2);
     font-size: var(--body);
   }
 
