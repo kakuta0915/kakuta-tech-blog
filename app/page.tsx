@@ -79,8 +79,8 @@ export default async function HomePage() {
             placeholder="blur"
           />
           <Ui.Social isFooterSocial={false} />
-          <div className={styles['btnBox']}>
-            <Link className={styles['btn']} href="/about">
+          <div className={styles['btnContainer']}>
+            <Link className={styles['showMoreButton']} href="/about">
               MORE
             </Link>
           </div>

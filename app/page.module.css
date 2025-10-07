@@ -1,21 +1,23 @@
-.btnBox {
-  padding: var(--space-4) 0 var(--space-4);
+.btnContainer {
+  margin: var(--space-3) auto;
 }
 
-.btn {
+.showMoreButton {
   display: inline-block;
-  background-color: var(--blue-1);
+  background-color: var(--blue-2);
   padding: var(--space-1) var(--space-3);
   color: var(--white);
   transition: 0.3s;
 }
 
-.articlesSection {
-  margin: var(--space-md) var(--space-xxs);
+.showMoreButton:active {
+  background-color: var(--blue-active);
 }
 
-.aboutSection {
+.aboutSection,
+.articlesSection {
   text-align: center;
+  margin: var(--space-5) var(--space-1) 0;
 }
 
 .aboutSection > h2,
@@ -28,7 +30,7 @@
 .aboutSection p,
 .articlesSection p {
   text-align: center;
-  padding-bottom: var(--space-2);
+  margin-bottom: var(--space-2);
 }
 
 .aboutSection .profileIcon {
@@ -37,16 +39,10 @@
   width: 30%;
   height: 30%;
   object-fit: cover;
-  margin: var(--space-4) auto var(--space-3);
+  margin: var(--space-1) auto var(--space-3);
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  .btn:hover {
-    background-color: var(--blue);
-    color: var(--white);
-    transform: scale(1.05);
-  }
-
   .text {
     width: 90%;
     margin: 0 auto;
@@ -67,5 +63,11 @@
   .aboutSection .profileIcon {
     width: 20%;
     height: 20%;
+  }
+
+  .btnContainer:hover {
+    background-color: var(--blue);
+    color: var(--white);
+    transform: scale(1.05);
   }
 }
