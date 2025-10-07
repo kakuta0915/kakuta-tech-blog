@@ -16,6 +16,10 @@
   align-items: center;
 }
 
+.tocWrapper {
+  display: block;
+}
+
 .icon {
   font-size: calc(var(--body) * 0.8);
   color: var(--navy-2);
@@ -37,6 +41,10 @@
 @media (min-width: 1025px) {
   .stickyHeader {
     padding: calc(var(--space-1) * 0.5) var(--space-2);
+  }
+
+  .tocWrapper {
+    display: none;
   }
 
   .icon {

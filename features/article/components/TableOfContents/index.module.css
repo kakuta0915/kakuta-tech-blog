@@ -1,9 +1,9 @@
 .toc {
   background-color: var(--white);
-  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   border-top: 6px solid var(--blue-2);
   border-radius: 5px;
-  padding: var(--space-1) var(--space-2) var(--space-1);
+  padding: var(--space-1) var(--space-1) var(--space-1);
 }
 
 .navTitle {
@@ -37,7 +37,7 @@
 .scroll {
   width: 100%;
   display: inline-block;
-  padding: 0.6rem 0 0.6rem var(--space-3);
+  padding: 0.4rem 0 0.6rem 1.7rem;
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
