@@ -69,9 +69,21 @@ export async function getAllPostByCategory(categoryID, limit = 100) {
         limit: limit,
       },
     })
+    // microCMSの記事を返却（必要ならここで形を整える）
+    return (
+      posts.contents?.map((p) => ({
+        title: p.title,
+        slug: p.slug,
+        eyecatch: p.eyecatch,
+        publishDate: p.publishDate,
+        categories: p.categories || [],
+        source: 'microcms',
+      })) || []
+    )
   } catch (err) {
     console.error('~~ getAllPostByCategory ~~')
     console.error(err)
+    return []
   }
 }
 
