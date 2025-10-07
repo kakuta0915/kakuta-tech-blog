@@ -65,8 +65,8 @@
     height: 20%;
   }
 
-  .btnContainer:hover {
-    background-color: var(--blue);
+  .showMoreButton:hover {
+    background-color: var(--blue-3);
     color: var(--white);
     transform: scale(1.05);
   }
