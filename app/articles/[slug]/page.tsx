@@ -100,7 +100,7 @@ export default async function ArticlePage({ params }: Props) {
     .filter(
       (item): item is { id: string; text: string; name: string } => !!item.id,
     )
-    .map(({ id, text }) => ({ id, text }))
+    .map(({ id, text, name }) => ({ id, text, name }))
 
   return (
     <>
@@ -132,7 +132,13 @@ export default async function ArticlePage({ params }: Props) {
               {/* <Article.PostActions postId={postId} title={title} /> */}
               <Article.PostCategories categories={categories} />
               <div className={styles['tocDesktop']}>
-                <Article.TableOfContents toc={toc} />
+                <Article.TableOfContents
+                  toc={toc.map(({ id, text, name }) => ({
+                    id,
+                    text,
+                    name: name === 'h2' || name === 'h3' ? name : undefined,
+                  }))}
+                />
               </div>
             </div>
           </div>
