@@ -32,7 +32,7 @@
 
   .heroText {
     width: 50%;
-    padding: var(--space-sm);
-    margin-left: var(--space-sm);
+    padding: var(--space-3);
+    margin-left: var(--space-3);
   }
 }
