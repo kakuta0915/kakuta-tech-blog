@@ -58,6 +58,9 @@
 
 .active {
   font-weight: 600;
+}
+
+.tocItem.active .scroll {
   color: var(--blue-active);
   background-color: var(--blue-4);
 }

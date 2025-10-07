@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link as Scroll } from 'react-scroll'
 import styles from './index.module.css'
 import { TableOfContentsProps } from '@/types'
@@ -10,14 +10,34 @@ import { faListUl } from '@fortawesome/free-solid-svg-icons'
 const TableOfContents: React.FC<TableOfContentsProps> = ({ toc }) => {
   const [activeId, setActiveId] = useState<string | null>(null)
 
-  const targets = useMemo(() => {
-    if (typeof document === 'undefined') return []
-    return toc
-      .map(({ id }) => {
-        const el = document.getElementById(id)
-        return el ? { id, el } : null
-      })
-      .filter((v): v is { id: string; el: HTMLElement } => v !== null)
+  const [targets, setTargets] = useState<{ id: string; el: HTMLElement }[]>([])
+
+  useEffect(() => {
+    if (typeof document === 'undefined') return
+
+    const resolveTargets = () => {
+      const resolved = toc
+        .map(({ id }) => {
+          const el = document.getElementById(id)
+          return el ? { id, el } : null
+        })
+        .filter((v): v is { id: string; el: HTMLElement } => v !== null)
+      setTargets(resolved)
+    }
+
+    resolveTargets()
+
+    const observer = new MutationObserver(() => {
+      resolveTargets()
+    })
+    observer.observe(document.body, { childList: true, subtree: true })
+
+    window.addEventListener('resize', resolveTargets)
+
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('resize', resolveTargets)
+    }
   }, [toc])
 
   useEffect(() => {
@@ -26,15 +46,23 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ toc }) => {
     const getTop = (el: HTMLElement) =>
       el.getBoundingClientRect().top + window.scrollY
 
-    const handle = () => {
-      const y = window.scrollY + 80
+    let rafId: number | null = null
+    const headerOffset = 80
+    const hysteresis = 4
+
+    const update = () => {
+      rafId = null
+      const y = window.scrollY + headerOffset
       for (let i = 0; i < targets.length; i++) {
-        const current = targets[i]
-        if (!current) continue
+        const current = targets[i]!
         const cur = getTop(current.el)
         const nextItem = i + 1 < targets.length ? targets[i + 1] : undefined
         const next = nextItem ? getTop(nextItem.el) : Infinity
-        if (y >= cur && y < next) {
+
+        const lowerBound = cur - hysteresis
+        const upperBound = next + hysteresis
+
+        if (y >= lowerBound && y < upperBound) {
           if (activeId !== current.id) setActiveId(current.id)
           return
         }
@@ -42,12 +70,17 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ toc }) => {
       setActiveId(null)
     }
 
-    handle()
-    window.addEventListener('scroll', handle, { passive: true })
-    window.addEventListener('resize', handle)
+    const onScroll = () => {
+      if (rafId == null) rafId = window.requestAnimationFrame(update)
+    }
+
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
     return () => {
-      window.removeEventListener('scroll', handle)
-      window.removeEventListener('resize', handle)
+      if (rafId != null) cancelAnimationFrame(rafId)
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
     }
   }, [targets, activeId])
 
