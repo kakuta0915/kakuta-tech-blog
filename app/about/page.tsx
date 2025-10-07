@@ -50,7 +50,7 @@ const AboutPage: React.FC = () => {
         imageSrc="./images/about.jpg"
       />
       <UiComponents.Container>
-        <div className={styles['profile']}>
+        <div className={styles['profileContainer']}>
           <h3>このサイトについて</h3>
           <p>
             このサイトでは、ReactとNext.jsとmicroCMSを組み合わせ、プログラミングの技術ブログを制作しました。
