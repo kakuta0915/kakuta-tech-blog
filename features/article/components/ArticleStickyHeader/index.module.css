@@ -25,6 +25,7 @@
   align-items: center;
   background: none;
   border: none;
+  color: var(--white);
   font-size: calc(var(--body) * 0.8);
   cursor: pointer;
 }
@@ -61,6 +62,7 @@
   }
 
   .tocButton {
+    color: var(--white);
     font-size: var(--body);
   }
 
@@ -89,13 +91,5 @@
 
   .tocButton {
     display: none;
-    /* font-size: calc(var(--body) * 1.1);
-    margin-left: 0.5rem; */
   }
-
-  /* .tocButton:hover {
-    color: var(--blue-1);
-    transition: 0.2s;
-    cursor: pointer;
-  } */
 }
