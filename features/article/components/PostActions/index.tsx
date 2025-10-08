@@ -2,8 +2,7 @@
 
 import React from 'react'
 import styles from './index.module.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faXTwitter } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon, faXTwitter } from '@/libs/icons'
 
 type PostActionsProps = {
   postId: string

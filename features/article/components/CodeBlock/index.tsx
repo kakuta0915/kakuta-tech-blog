@@ -4,8 +4,7 @@ import React from 'react'
 import { toast } from 'react-toastify'
 import styles from './index.module.css'
 import { CodeBlockProps } from '@/types'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCopy } from '@fortawesome/free-regular-svg-icons'
+import { FontAwesomeIcon, faCopy } from '@/libs/icons'
 
 const CodeBlock: React.FC<CodeBlockProps> = ({ code, rawCode, language }) => {
   const onCopy = async () => {

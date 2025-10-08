@@ -4,8 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { Link as Scroll } from 'react-scroll'
 import styles from './index.module.css'
 import { TableOfContentsProps } from '@/types'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faListUl } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon, faListUl } from '@/libs/icons'
 
 const TableOfContents: React.FC<TableOfContentsProps> = ({ toc }) => {
   const [activeId, setActiveId] = useState<string | null>(null)
