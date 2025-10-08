@@ -2,11 +2,7 @@
 
 import React from 'react'
 import Link from 'next/link'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faChevronLeft,
-  faChevronRight,
-} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon, faChevronLeft, faChevronRight } from '@/libs/icons'
 import styles from './index.module.css'
 import { PaginationProps } from '@/types'
 

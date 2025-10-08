@@ -2,6 +2,7 @@
 
 import React, { useCallback, useEffect, useState } from 'react'
 import styles from './index.module.css'
+import { FontAwesomeIcon, faAngleUp } from '@/libs/icons'
 
 type TopButtonProps = {
   threshold?: number
@@ -32,9 +33,10 @@ const TopButton: React.FC<TopButtonProps> = ({ threshold = 240 }) => {
         className={styles['button']}
         onClick={handleClick}
       >
-        <i
-          className={`${styles['icon']} fa-solid fa-angle-up`}
-          aria-hidden="true"
+        <FontAwesomeIcon
+          icon={faAngleUp}
+          className={styles['icon']}
+          data-testid="top-icon"
         />
         <span className={styles['label']}>TOP</span>
       </button>

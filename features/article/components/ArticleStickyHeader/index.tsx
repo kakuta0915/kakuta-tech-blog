@@ -3,12 +3,12 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Nav from '@/components/ui/Nav'
 import styles from './index.module.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
+  FontAwesomeIcon,
   faChevronDown,
   faMagnifyingGlass,
   faMoon,
-} from '@fortawesome/free-solid-svg-icons'
+} from '@/libs/icons'
 import { TableOfContents } from '@/features/article/components'
 
 export type TocItem = { id: string; text: string }

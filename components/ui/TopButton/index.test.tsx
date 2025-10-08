@@ -38,7 +38,6 @@ describe('TopButton コンポーネント', () => {
   it('アイコンとラベルが表示される', () => {
     render(<TopButton threshold={0} />)
     expect(screen.getByText('TOP')).toBeInTheDocument()
-    const icon = document.querySelector('.fa-solid.fa-angle-up')
-    expect(icon).toBeInTheDocument()
+    expect(screen.getByTestId('top-icon')).toBeInTheDocument()
   })
 })

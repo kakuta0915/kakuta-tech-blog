@@ -8,7 +8,6 @@ import { siteMeta } from '@/libs/constants'
 import siteImg from '/public/images/ogp.jpg'
 import './globals.css'
 import 'react-toastify/dist/ReactToastify.css'
-import '@fortawesome/fontawesome-free/css/all.min.css'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 
 config.autoAddCss = false
