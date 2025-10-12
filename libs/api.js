@@ -132,8 +132,8 @@ export async function getAllQiitaArticles() {
   }
 }
 
-// 全ての記事を統合する関数・いいね数とブックマーク数を取得する関数
-export async function getAllArticles(maxArticles = Infinity, onArticlesUpdate) {
+// 全ての記事を統合する関数
+export async function getAllArticles(maxArticles = Infinity) {
   const [qiitaArticles, microCMSArticles] = await Promise.all([
     getAllQiitaArticles(),
     getAllPosts(),
@@ -146,43 +146,7 @@ export async function getAllArticles(maxArticles = Infinity, onArticlesUpdate) {
     allArticles = allArticles.slice(0, maxArticles)
   }
 
-  // 監視解除用の配列
-  const unsubscribeFunctions = []
-
-  // 記事ごとにリアルタイム更新を監視
-  const updatedArticles = await Promise.all(
-    allArticles.map(async (article) => {
-      try {
-        const postRef = doc(db, 'posts', article.slug)
-        let postSnap = await getDoc(postRef)
-
-        if (!postSnap.exists()) {
-          await initializePostDocument(article.slug, article.title || '')
-          postSnap = await getDoc(postRef)
-        }
-
-        const data = postSnap.data() || {}
-
-        return {
-          ...article,
-        }
-      } catch (error) {
-        console.error(
-          `Error fetching stats for article ${article.slug}:`,
-          error,
-        )
-        return article
-      }
-    }),
-  )
-
-  // サーバーサイドでは関数を返さないようにする
   return {
-    articles: updatedArticles,
-    unsubscribe: () => {
-      unsubscribeFunctions.forEach((fn) => {
-        if (typeof fn === 'function') fn()
-      })
-    },
+    articles: allArticles,
   }
 }
