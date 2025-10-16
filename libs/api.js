@@ -19,8 +19,6 @@ export async function getPostBySlug(slug) {
     })
     return post.contents[0]
   } catch (err) {
-    console.log('~~ getPostBySlug ~~')
-    console.log('エラーが発生しました', err)
     throw err
   }
 }
@@ -33,10 +31,7 @@ export async function getAllSlugs(limit = 100) {
       queries: { fields: 'title,slug', orders: '-publishDate', limit: limit },
     })
     return slugs.contents
-  } catch (err) {
-    console.log('~~ getAllSlugs ~~')
-    console.log(err)
-  }
+  } catch (err) {}
 }
 
 // すべての記事データを取得する
@@ -51,10 +46,7 @@ export async function getAllPosts(limit = 100) {
       },
     })
     return posts.contents
-  } catch (err) {
-    console.log('~~ getAllPosts ~~')
-    console.log(err)
-  }
+  } catch (err) {}
 }
 
 // 記事データの取得(カテゴリーページにslugが一致するページを追加)
@@ -81,8 +73,6 @@ export async function getAllPostByCategory(categoryID, limit = 100) {
       })) || []
     )
   } catch (err) {
-    console.error('~~ getAllPostByCategory ~~')
-    console.error(err)
     return []
   }
 }
@@ -127,7 +117,6 @@ export async function getAllQiitaArticles() {
       source: 'qiita',
     }))
   } catch (error) {
-    console.error('Error fetching Qiita articles:', error)
     throw error
   }
 }
