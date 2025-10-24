@@ -2,8 +2,8 @@ import { createClient } from 'microcms-js-sdk'
 import axios from 'axios'
 
 // サービスドメインとAPIキーを取得するか、テスト用のデフォルト値を設定する
-const serviceDomain = process.env.SERVICE_DOMAIN || 'test-service-domain'
-const apiKey = process.env.API_KEY || 'test-api-key'
+const serviceDomain = process.env['SERVICE_DOMAIN'] || 'test-service-domain'
+const apiKey = process.env['API_KEY'] || 'test-api-key'
 
 export const client = createClient({
   serviceDomain,
@@ -11,7 +11,7 @@ export const client = createClient({
 })
 
 // 記事ページに必要なデータを取得する (指定した１つのslugの記事データを返す)
-export async function getPostBySlug(slug) {
+export async function getPostBySlug(slug: string) {
   try {
     const post = await client.get({
       endpoint: 'blog',
@@ -50,7 +50,12 @@ export async function getAllPosts(limit = 100) {
 }
 
 // 記事データの取得(カテゴリーページにslugが一致するページを追加)
-export async function getAllPostByCategory(categoryID, limit = 100) {
+export async function getAllPostByCategory(
+  categoryID: (
+    id: any,
+  ) => import('../types').Posts[] | PromiseLike<import('../types').Posts[]>,
+  limit = 100,
+) {
   try {
     const posts = await client.get({
       endpoint: 'blog',
@@ -63,14 +68,22 @@ export async function getAllPostByCategory(categoryID, limit = 100) {
     })
     // microCMSの記事を返却（必要ならここで形を整える）
     return (
-      posts.contents?.map((p) => ({
-        title: p.title,
-        slug: p.slug,
-        eyecatch: p.eyecatch,
-        publishDate: p.publishDate,
-        categories: p.categories || [],
-        source: 'microcms',
-      })) || []
+      posts.contents?.map(
+        (p: {
+          title: string
+          slug: string
+          eyecatch: string
+          publishDate: string
+          categories: string
+        }) => ({
+          title: p.title,
+          slug: p.slug,
+          eyecatch: p.eyecatch,
+          publishDate: p.publishDate,
+          categories: p.categories || [],
+          source: 'microcms',
+        }),
+      ) || []
     )
   } catch (err) {
     return []
@@ -102,20 +115,27 @@ export async function getAllQiitaArticles() {
   try {
     const response = await axios.get(QIITA_API_URL, {
       headers: {
-        Authorization: `Bearer ${process.env.QIITA_API_TOKEN}`,
+        Authorization: `Bearer ${process.env['QIITA_API_TOKEN']}`,
       },
       params: {
         per_page: 100,
       },
     })
-    return response.data.map((article) => ({
-      title: article.title,
-      slug: article.id,
-      eyecatch: { url: article.user.profile_image_url },
-      publishDate: article.created_at,
-      categories: [], // Qiitaの記事にはカテゴリがないため空配列
-      source: 'qiita',
-    }))
+    return response.data.map(
+      (article: {
+        title: string
+        id: string
+        user: { profile_image_url: string }
+        created_at: string
+      }) => ({
+        title: article.title,
+        slug: article.id,
+        eyecatch: { url: article.user.profile_image_url },
+        publishDate: article.created_at,
+        categories: [], // Qiitaの記事にはカテゴリがないため空配列
+        source: 'qiita',
+      }),
+    )
   } catch (error) {
     throw error
   }
@@ -129,7 +149,11 @@ export async function getAllArticles(maxArticles = Infinity) {
   ])
 
   let allArticles = [...qiitaArticles, ...microCMSArticles]
-  allArticles.sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate))
+  allArticles.sort((a, b) => {
+    const dateA = new Date(a.publishDate).getTime()
+    const dateB = new Date(b.publishDate).getTime()
+    return dateB - dateA
+  })
 
   if (maxArticles !== Infinity) {
     allArticles = allArticles.slice(0, maxArticles)
