@@ -1,40 +1,49 @@
 import { createClient } from 'microcms-js-sdk'
 import axios from 'axios'
+import { Posts } from '@/types'
 
-// サービスドメインとAPIキーを取得するか、テスト用のデフォルト値を設定する
-const serviceDomain = process.env['SERVICE_DOMAIN'] || 'test-service-domain'
-const apiKey = process.env['API_KEY'] || 'test-api-key'
+// 環境変数チェック
+const serviceDomain = process.env['SERVICE_DOMAIN']
+const apiKey = process.env['API_KEY']
+
+if (!serviceDomain || !apiKey) {
+  throw new Error('SERVICE_DOMAIN or API_KEY is not set')
+}
 
 export const client = createClient({
   serviceDomain,
   apiKey,
 })
 
-// 記事ページに必要なデータを取得する (指定した１つのslugの記事データを返す)
-export async function getPostBySlug(slug: string) {
+// 記事ページに必要なデータを取得 (指定した１つのslugの記事データを返す)
+export async function getPostBySlug(slug: string): Promise<Posts | null> {
   try {
     const post = await client.get({
       endpoint: 'blog',
       queries: { filters: `slug[equals]${slug}` },
     })
-    return post.contents[0]
-  } catch (err) {
-    throw err
+    return post.contents[0] || null
+  } catch {
+    return null
   }
 }
 
-// 全てのSlugを取得する関数
-export async function getAllSlugs(limit = 100) {
+// 全Slugを取得
+export async function getAllSlugs(
+  limit = 100,
+): Promise<{ title: string; slug: string }[]> {
   try {
     const slugs = await client.get({
       endpoint: 'blog',
       queries: { fields: 'title,slug', orders: '-publishDate', limit: limit },
     })
     return slugs.contents
-  } catch (err) {}
+  } catch {
+    return []
+  }
 }
 
-// すべての記事データを取得する
+// 全記事データを取得 ================================================================================
 export async function getAllPosts(limit = 100) {
   try {
     const posts = await client.get({
@@ -50,31 +59,25 @@ export async function getAllPosts(limit = 100) {
 }
 
 // 記事データの取得(カテゴリーページにslugが一致するページを追加)
-export async function getAllPostByCategory(
-  categoryID: (
-    id: any,
-  ) => import('../types').Posts[] | PromiseLike<import('../types').Posts[]>,
-  limit = 100,
-) {
+export async function getAllPostByCategory(categoryID: string, limit = 100) {
   try {
     const posts = await client.get({
       endpoint: 'blog',
       queries: {
         filters: `categories[contains]${categoryID}`,
-        fields: 'title,category,slug,eyecatch,categories,publishDate',
+        fields: 'title,slug,eyecatch,categories,publishDate',
         orders: '-publishDate',
         limit: limit,
       },
     })
-    // microCMSの記事を返却（必要ならここで形を整える）
     return (
       posts.contents?.map(
         (p: {
           title: string
           slug: string
-          eyecatch: string
+          eyecatch: string | { url: string }
           publishDate: string
-          categories: string
+          categories: string[]
         }) => ({
           title: p.title,
           slug: p.slug,

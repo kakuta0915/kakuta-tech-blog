@@ -130,7 +130,13 @@ export default async function ArticlePage({ params }: Props) {
             </div>
             <div className={styles['sidebar']}>
               {/* <Article.PostActions postId={postId} title={title} /> */}
-              <Article.PostCategories categories={categories} />
+              <Article.PostCategories
+                categories={categories.map(({ name, slug, icon }) => ({
+                  name,
+                  slug,
+                  icon: icon ?? { url: '', width: 0, height: 0 },
+                }))}
+              />
               <div className={styles['tocDesktop']}>
                 <Article.TableOfContents
                   toc={toc.map(({ id, text, name }) => ({

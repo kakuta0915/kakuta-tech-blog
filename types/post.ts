@@ -9,9 +9,15 @@ type Category = {
 }
 
 export type Posts = {
+  content: string
+  category: string
   title: string
   slug: string
-  eyecatch: { url: string }
+  eyecatch: {
+    height: number | undefined
+    width: number | undefined
+    url: string
+  }
   publishDate: string
   categories: Category[]
   source: string
