@@ -44,7 +44,7 @@ export async function getAllSlugs(
 }
 
 // 全記事データを取得 ================================================================================
-export async function getAllPosts(limit = 100) {
+export async function getAllPosts(limit = 100): Promise<Posts[]> {
   try {
     const posts = await client.get({
       endpoint: 'blog',
@@ -55,7 +55,9 @@ export async function getAllPosts(limit = 100) {
       },
     })
     return posts.contents
-  } catch (err) {}
+  } catch {
+    return []
+  }
 }
 
 // 記事データの取得(カテゴリーページにslugが一致するページを追加)
