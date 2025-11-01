@@ -1,6 +1,6 @@
 import { createClient } from 'microcms-js-sdk'
 import axios from 'axios'
-import { Posts } from '@/types'
+import { Category, Posts } from '@/types'
 
 // 環境変数チェック
 const serviceDomain = process.env['SERVICE_DOMAIN']
@@ -60,8 +60,11 @@ export async function getAllPosts(limit = 100): Promise<Posts[]> {
   }
 }
 
-// 記事データの取得(カテゴリーページにslugが一致するページを追加)
-export async function getAllPostByCategory(categoryID: string, limit = 100) {
+// カテゴリーIDで記事を取得
+export async function getAllPostByCategory(
+  categoryID: string,
+  limit = 100,
+): Promise<Posts[]> {
   try {
     const posts = await client.get({
       endpoint: 'blog',
@@ -95,8 +98,8 @@ export async function getAllPostByCategory(categoryID: string, limit = 100) {
   }
 }
 
-// カテゴリーページを生成する機能
-export async function getAllCategories(limit = 100) {
+// 全カテゴリーを取得
+export async function getAllCategories(limit = 100): Promise<Category[]> {
   try {
     const categories = await client.get({
       endpoint: 'categories',
@@ -106,16 +109,15 @@ export async function getAllCategories(limit = 100) {
       },
     })
     return categories.contents
-  } catch (err) {
-    console.log('~~ getAllCategories ~~')
-    console.log(err)
+  } catch {
+    return []
   }
 }
 
 // Qiita API
 const QIITA_API_URL = 'https://qiita.com/api/v2/users/kakuta0915/items'
 
-// Qiita API を呼び出して記事を取得する関数
+// Qiita記事を取得
 export async function getAllQiitaArticles() {
   try {
     const response = await axios.get(QIITA_API_URL, {
@@ -129,24 +131,24 @@ export async function getAllQiitaArticles() {
     return response.data.map(
       (article: {
         title: string
-        id: string
+        slug: string
         user: { profile_image_url: string }
-        created_at: string
+        publishDate: string
       }) => ({
         title: article.title,
-        slug: article.id,
+        slug: article.slug,
         eyecatch: { url: article.user.profile_image_url },
-        publishDate: article.created_at,
+        publishDate: article.publishDate,
         categories: [], // Qiitaの記事にはカテゴリがないため空配列
         source: 'qiita',
       }),
     )
-  } catch (error) {
-    throw error
+  } catch {
+    return []
   }
 }
 
-// 全ての記事を統合する関数
+// 全ての記事を統合してソート
 export async function getAllArticles(maxArticles = Infinity) {
   const [qiitaArticles, microCMSArticles] = await Promise.all([
     getAllQiitaArticles(),

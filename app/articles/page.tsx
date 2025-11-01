@@ -6,26 +6,7 @@ import * as Ui from '@/components/ui'
 import * as Article from '@/features/article/components'
 import eyecatch from '@/public/images/articles.jpg'
 import { redirect } from 'next/navigation'
-
-type Post = {
-  title: string
-  slug: string
-  eyecatch: { url: string }
-  publishDate: string
-  categories: { name: string; slug: string }[]
-  source: string
-}
-
-type Category = {
-  id: any
-  name: string
-  slug: string
-  icon: {
-    url: string
-    width: number
-    height: number
-  }
-}
+import { Category, Posts } from '@/types'
 
 const { siteTitle, siteUrl } = siteMeta
 
@@ -70,7 +51,7 @@ export default async function ArticlesPage({
   const pageParam = searchParams?.page
   const currentPage = pageParam ? parseInt(pageParam, 10) : 1
 
-  const { articles: posts }: { articles: Post[] } = await getAllArticles()
+  const { articles: posts }: { articles: Posts[] } = await getAllArticles()
   const allCategories: Category[] = await getAllCategories()
 
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE)
