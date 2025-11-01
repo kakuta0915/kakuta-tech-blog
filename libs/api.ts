@@ -15,7 +15,7 @@ export const client = createClient({
   apiKey,
 })
 
-// 記事ページに必要なデータを取得 (指定した１つのslugの記事データを返す)
+// 記事ページに必要なデータを取得
 export async function getPostBySlug(slug: string): Promise<Posts | null> {
   try {
     const post = await client.get({
@@ -43,7 +43,7 @@ export async function getAllSlugs(
   }
 }
 
-// 全記事データを取得 ================================================================================
+// 全記事データを取得
 export async function getAllPosts(limit = 100): Promise<Posts[]> {
   try {
     const posts = await client.get({
