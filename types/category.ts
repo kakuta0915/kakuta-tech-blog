@@ -1,5 +1,5 @@
 export type Category = {
-  id(id: any): import('./post').Posts[] | PromiseLike<import('./post').Posts[]>
+  id: string
   name: string
   slug: string
   icon: {
