@@ -3,50 +3,36 @@ import { siteMeta } from '@/libs/constants'
 
 const { siteTitle, siteUrl, siteLocale, siteType, siteIcon } = siteMeta
 
-type OgType =
-  | 'website'
-  | 'article'
-  | 'book'
-  | 'profile'
-  | 'music.song'
-  | 'music.album'
-  | 'music.playlist'
-  | 'music.radio_station'
-  | 'video.movie'
-  | 'video.episode'
-  | 'video.tv_show'
-  | 'video.other'
+// Next.jsのMetadata型に合わせた OGタイプ
+export type OgType = 'website' | 'article' | 'book' | 'profile'
 
-const getValidOgType = (type: string): OgType => {
-  if (
-    type === 'article' ||
-    type === 'book' ||
-    type === 'profile' ||
-    type.startsWith('music.') ||
-    type.startsWith('video.')
-  ) {
-    return type as OgType
+// デフォルトOGタイプを安全に返す
+export const getValidOgType = (type?: string): OgType => {
+  if (!type || !['website', 'article', 'book', 'profile'].includes(type)) {
+    return 'website'
   }
-  return 'website'
+  return type as OgType
 }
 
-// SEO用の情報（メタデータ生成専用）
-interface CreateMetadataArgs {
+// メタデータ生成
+export interface CreateMetadataArgs {
   pageTitle: string
-  pageDesc: string
+  pageDesc?: string
   slug: string
   pageImg?: string
   pageImgW?: number
   pageImgH?: number
+  ogType?: OgType
 }
 
 export function createMetadata({
   pageTitle,
-  pageDesc,
+  pageDesc = '',
   slug,
   pageImg,
   pageImgW,
   pageImgH,
+  ogType = siteType as OgType,
 }: CreateMetadataArgs): Metadata {
   const pageUrl = `${siteUrl}/${slug}`
   const imageUrl = pageImg || siteIcon
@@ -58,15 +44,13 @@ export function createMetadata({
       template: `%s | ${siteTitle}`,
     },
     description: pageDesc,
-    alternates: {
-      canonical: pageUrl,
-    },
+    alternates: { canonical: pageUrl },
     openGraph: {
       title: `${pageTitle} | ${siteTitle}`,
       description: pageDesc,
       url: pageUrl,
       siteName: siteTitle,
-      type: getValidOgType(siteType),
+      type: getValidOgType(ogType),
       locale: siteLocale,
       images: [
         {
