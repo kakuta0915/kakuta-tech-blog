@@ -6,17 +6,9 @@ import type { Metadata } from 'next'
 import { siteMeta } from '@/libs/constants'
 import * as Ui from '@/components/ui'
 import styles from './page.module.css'
+import { Posts } from '@/types'
 import eyecatch from '@/public/images/index.jpg'
 import kakuta0915 from '@/public/images/kakuta0915.png'
-
-type Post = {
-  title: string
-  slug: string
-  eyecatch: { url: string }
-  publishDate: string
-  categories: { name: string; slug: string }[]
-  source: string
-}
 
 const { siteTitle, siteUrl } = siteMeta
 
@@ -51,7 +43,7 @@ export const metadata: Metadata = {
 
 export default async function HomePage() {
   const { articles } = await getAllArticles()
-  const posts: Post[] = articles
+  const posts: Posts[] = articles
 
   return (
     <>

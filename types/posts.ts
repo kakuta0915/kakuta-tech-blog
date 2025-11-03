@@ -1,12 +1,4 @@
-type Category = {
-  name: string
-  slug: string
-  icon?: {
-    url: string
-    width: number
-    height: number
-  }
-}
+import { Category } from '@/types/category'
 
 export type Posts = {
   content: string
