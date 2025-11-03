@@ -2,7 +2,7 @@ export type Category = {
   id: string
   name: string
   slug: string
-  icon: {
+  icon?: {
     url: string
     width: number
     height: number

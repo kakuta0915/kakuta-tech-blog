@@ -14,10 +14,10 @@ const PostHeader: React.FC<PostHeaderProps> = ({
   return (
     <div className={styles['postHeader']}>
       <Image
-        src={icon.url}
+        src={icon!.url}
         alt=""
-        width={icon.width}
-        height={icon.height}
+        width={icon!.width}
+        height={icon!.height}
         className={styles['postHeaderIcon']}
       />
       <div className={styles['postHeaderTitle']}>

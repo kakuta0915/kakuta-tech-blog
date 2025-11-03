@@ -6,12 +6,12 @@ import * as Ui from '@/components/ui'
 import * as Article from '@/features/article/components'
 import type { Category, Posts } from '@/types'
 
-type CategoryParams = {
+// カテゴリーページのslug
+type Params = {
   slug: string
 }
-
-type CategoryPageProps = {
-  params: Promise<CategoryParams>
+type Props = {
+  params: Params
 }
 
 const fetchCategoryData = async (slug: string) => {
@@ -31,9 +31,7 @@ const fetchCategoryData = async (slug: string) => {
   return { category, posts, allCategories }
 }
 
-export async function generateMetadata({
-  params,
-}: CategoryPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const resolvedParams = await params
   const { slug } = resolvedParams
   const data = await fetchCategoryData(slug)
@@ -58,7 +56,7 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
   }))
 }
 
-export default async function CategoryPage({ params }: CategoryPageProps) {
+export default async function CategoryPage({ params }: Props) {
   const resolvedParams = await params
   const { slug } = resolvedParams
   const data = await fetchCategoryData(slug)

@@ -1,5 +1,5 @@
 export type PostHeaderProps = {
-  icon: {
+  icon?: {
     url: string
     width: number
     height: number

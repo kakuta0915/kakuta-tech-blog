@@ -30,6 +30,7 @@ const getValidOgType = (type: string): OgType => {
   return 'website'
 }
 
+// SEO用の情報（メタデータ生成専用）
 interface CreateMetadataArgs {
   pageTitle: string
   pageDesc: string
