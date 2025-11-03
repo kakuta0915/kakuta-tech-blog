@@ -1,5 +1,5 @@
 export * from './category'
-export * from './convet-body'
+export * from '../features/article/components/Convert/types'
 export * from '../features/article/components/CodeBlock/types'
 export * from './hero'
 export * from './list-pagination'
