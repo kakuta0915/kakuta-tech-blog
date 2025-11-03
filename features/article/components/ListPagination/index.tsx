@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import styles from './index.module.css'
-import { ListPaginationProps } from '@/types'
+import { ListPaginationProps } from './types'
 
 const ListPagination: React.FC<ListPaginationProps> = ({
   pageCount,
