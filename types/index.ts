@@ -1,6 +1,6 @@
 export * from './category'
 export * from './convet-body'
-export * from './code-block'
+export * from '../features/article/components/CodeBlock/types'
 export * from './hero'
 export * from './list-pagination'
 export * from './pagination'
