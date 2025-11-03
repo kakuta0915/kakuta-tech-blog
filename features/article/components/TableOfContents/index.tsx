@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link as Scroll } from 'react-scroll'
 import styles from './index.module.css'
-import { TableOfContentsProps } from '@/types'
+import { TableOfContentsProps } from './types'
 import { FontAwesomeIcon, faListUl } from '@/libs/icons'
 
 const TableOfContents: React.FC<TableOfContentsProps> = ({ toc }) => {
