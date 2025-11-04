@@ -117,10 +117,30 @@ export async function getAllCategories(limit = 100): Promise<Category[]> {
 // Qiita API
 const QIITA_API_URL = 'https://qiita.com/api/v2/users/kakuta0915/items'
 
+type QiitaUser = {
+  profile_image_url: string
+}
+
+type QiitaApiArticle = {
+  id: string
+  title: string
+  created_at: string
+  user: QiitaUser
+}
+
+type Article = {
+  title: string
+  slug: string
+  eyecatch: { url: string }
+  publishDate: string
+  categories: string[]
+  source: 'qiita'
+}
+
 // Qiita記事を取得
-export async function getAllQiitaArticles() {
+export async function getAllQiitaArticles(): Promise<Article[]> {
   try {
-    const response = await axios.get(QIITA_API_URL, {
+    const response = await axios.get<QiitaApiArticle[]>(QIITA_API_URL, {
       headers: {
         Authorization: `Bearer ${process.env['QIITA_API_TOKEN']}`,
       },
@@ -128,21 +148,15 @@ export async function getAllQiitaArticles() {
         per_page: 100,
       },
     })
-    return response.data.map(
-      (article: {
-        title: string
-        slug: string
-        user: { profile_image_url: string }
-        publishDate: string
-      }) => ({
-        title: article.title,
-        slug: article.slug,
-        eyecatch: { url: article.user.profile_image_url },
-        publishDate: article.publishDate,
-        categories: [], // Qiitaの記事にはカテゴリがないため空配列
-        source: 'qiita',
-      }),
-    )
+
+    return response.data.map((article) => ({
+      title: article.title,
+      slug: article.id, // Qiitaはslugを持たないためidを代用
+      eyecatch: { url: article.user.profile_image_url },
+      publishDate: article.created_at, // 公開日としてcreated_atを使用
+      categories: [],
+      source: 'qiita',
+    }))
   } catch {
     return []
   }
