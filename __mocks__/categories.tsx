@@ -1,4 +1,4 @@
-import type { Category } from '@/src/components/Posts'
+import { Category } from '@/types'
 
 export const mockCategories: Category[] = [
   {
@@ -9,6 +9,7 @@ export const mockCategories: Category[] = [
       width: 30,
       height: 30,
     },
+    id: '',
   },
   {
     name: 'Lifestyle',
@@ -18,5 +19,6 @@ export const mockCategories: Category[] = [
       width: 30,
       height: 30,
     },
+    id: '',
   },
 ]

@@ -3,7 +3,7 @@
 import React from 'react'
 import { toast } from 'react-toastify'
 import styles from './index.module.css'
-import { CodeBlockProps } from '@/types'
+import { CodeBlockProps } from './types'
 import { FontAwesomeIcon, faCopy } from '@/libs/icons'
 
 const CodeBlock: React.FC<CodeBlockProps> = ({ code, rawCode, language }) => {

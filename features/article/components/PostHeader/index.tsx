@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { FontAwesomeIcon, faClock } from '@/libs/icons'
 import ConvertDate from '../Convert/ConvertDate'
 import styles from './index.module.css'
-import { PostHeaderProps } from '@/types'
+import { PostHeaderProps } from './types'
 
 const PostHeader: React.FC<PostHeaderProps> = ({
   icon,
@@ -14,10 +14,10 @@ const PostHeader: React.FC<PostHeaderProps> = ({
   return (
     <div className={styles['postHeader']}>
       <Image
-        src={icon.url}
+        src={icon!.url}
         alt=""
-        width={icon.width}
-        height={icon.height}
+        width={icon!.width}
+        height={icon!.height}
         className={styles['postHeaderIcon']}
       />
       <div className={styles['postHeaderTitle']}>

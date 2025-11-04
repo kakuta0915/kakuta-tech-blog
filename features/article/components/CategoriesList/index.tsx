@@ -19,9 +19,9 @@ const CategoriesList: React.FC<CategoriesListProps> = ({ allCategories }) => {
             >
               <Image
                 className={styles['categoryIcon']}
-                src={icon.url}
-                width={icon.width}
-                height={icon.height}
+                src={icon!.url}
+                width={icon!.width}
+                height={icon!.height}
                 alt={`${name} icon`}
                 data-testid={`icon-${slug}`}
               />

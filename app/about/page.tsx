@@ -1,44 +1,20 @@
 import React from 'react'
 import Image from 'next/image'
 import type { Metadata } from 'next'
-import { siteMeta } from '@/libs/constants'
+import { createMetadata } from '@/libs/seo'
 import * as UiComponents from '@/components/ui'
 import styles from './page.module.css'
 import eyecatch from '@/public/images/about.jpg'
 import kakuta0915 from '@/public/images/kakuta0915.png'
 
-const { siteTitle, siteUrl } = siteMeta
-
-export const metadata: Metadata = {
-  title: 'ABOUT',
-  description: 'ブログサイトについての説明と、私の自己紹介を記載しています。',
-  alternates: {
-    canonical: `${siteUrl}/about`,
-  },
-
-  openGraph: {
-    title: `ABOUT | ${siteTitle}`,
-    description: 'ブログサイトについての説明と、私の自己紹介を記載しています。',
-    url: `${siteUrl}/about`,
-    siteName: siteTitle,
-    type: 'website',
-    images: [
-      {
-        url: eyecatch.src,
-        width: eyecatch.width,
-        height: eyecatch.height,
-        alt: 'Aboutページのアイキャッチ画像',
-      },
-    ],
-  },
-
-  twitter: {
-    card: 'summary_large_image',
-    title: `ABOUT | ${siteTitle}`,
-    description: 'ブログサイトについての説明と、私の自己紹介を記載しています。',
-    images: [eyecatch.src],
-  },
-}
+export const metadata: Metadata = createMetadata({
+  pageTitle: 'ABOUT',
+  pageDesc: 'ブログサイトについての説明と、私の自己紹介を記載しています。',
+  slug: 'about',
+  pageImg: eyecatch.src,
+  pageImgW: eyecatch.width,
+  pageImgH: eyecatch.height,
+})
 
 const AboutPage: React.FC = () => {
   return (
@@ -47,7 +23,7 @@ const AboutPage: React.FC = () => {
       <UiComponents.Hero
         title="ABOUT"
         description="ブログサイトについての説明と、私の自己紹介を記載しています。"
-        imageSrc="./images/about.jpg"
+        imageSrc={eyecatch.src}
       />
       <UiComponents.Container>
         <div className={styles['profileContainer']}>
@@ -65,7 +41,7 @@ const AboutPage: React.FC = () => {
             <Image
               className={styles['profileImage']}
               src={kakuta0915}
-              alt=""
+              alt="プロフィール画像"
               objectFit="contain"
               priority
               placeholder="blur"
@@ -86,9 +62,6 @@ const AboutPage: React.FC = () => {
             >
               (@_kakuta0915_)
             </a>
-          </p>
-          <p>
-            技術力の向上と実践的なスキル構築を目指し、自主的にプログラミングを学習しています。これまでの学習過程やスキルセットについて、詳しくご紹介いたします。
           </p>
 
           <h4>エンジニアになりたいと思ったきっかけ</h4>

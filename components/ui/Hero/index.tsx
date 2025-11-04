@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './index.module.css'
-import { HeroProps } from '@/types'
+import { HeroProps } from './types'
 
 const Hero: React.FC<HeroProps> = ({
   title,

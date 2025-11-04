@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from './index.module.css'
-import { PostCategoriesProps } from '@/types'
+import { PostCategoriesProps } from './types'
 
 const PostCategories: React.FC<PostCategoriesProps> = ({ categories }) => {
   return (
