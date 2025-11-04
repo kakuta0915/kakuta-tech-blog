@@ -3,43 +3,21 @@ import { getAllArticles } from '@/libs/api'
 import Image from 'next/image'
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import { siteMeta } from '@/libs/constants'
+import { createMetadata } from '@/libs/seo'
 import * as Ui from '@/components/ui'
 import styles from './page.module.css'
 import { Posts } from '@/types'
 import eyecatch from '@/public/images/index.jpg'
 import kakuta0915 from '@/public/images/kakuta0915.png'
 
-const { siteTitle, siteUrl } = siteMeta
-
-export const metadata: Metadata = {
-  title: 'TOP',
-  description: 'プログラミング学習記録をまとめたサイト',
-  alternates: {
-    canonical: siteUrl,
-  },
-  openGraph: {
-    title: `TOP | ${siteTitle}`,
-    description: 'プログラミング学習記録をまとめたサイト',
-    url: siteUrl,
-    siteName: siteTitle,
-    type: 'website',
-    images: [
-      {
-        url: eyecatch.src,
-        width: eyecatch.width,
-        height: eyecatch.height,
-        alt: 'KAKUTA TECH BLOGのアイキャッチ画像',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: `TOP | ${siteTitle}`,
-    description: 'プログラミング学習記録をまとめたサイト',
-    images: [eyecatch.src],
-  },
-}
+export const metadata: Metadata = createMetadata({
+  pageTitle: 'TOP',
+  pageDesc: 'プログラミング学習記録をまとめたサイト',
+  slug: '',
+  pageImg: eyecatch.src,
+  pageImgW: eyecatch.width,
+  pageImgH: eyecatch.height,
+})
 
 export default async function HomePage() {
   const { articles } = await getAllArticles()
@@ -52,7 +30,7 @@ export default async function HomePage() {
         title="KAKUTA"
         title2="TECH BLOG"
         description="このサイトでは、Next.jsとmicroCMSを組み合わせ、プログラミングの技術ブログを制作しました。 学習したことをアウトプットしたり、学習時に躓いた箇所や解決策について、詳細な記事をまとめています。"
-        imageSrc="/images/index.jpg"
+        imageSrc={eyecatch.src}
         contact={true}
       />
       <Ui.Container>

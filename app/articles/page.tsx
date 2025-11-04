@@ -1,45 +1,23 @@
 import React from 'react'
 import type { Metadata } from 'next'
-import { siteMeta } from '@/libs/constants'
+import { createMetadata } from '@/libs/seo'
 import { getAllArticles, getAllCategories } from '@/libs/api'
 import * as Ui from '@/components/ui'
 import * as Article from '@/features/article/components'
-import eyecatch from '@/public/images/articles.jpg'
 import { redirect } from 'next/navigation'
 import { Category, Posts } from '@/types'
-
-const { siteTitle, siteUrl } = siteMeta
-
-export const metadata: Metadata = {
-  title: 'ARTICLES',
-  description: 'プログラミング学習に関する記事をまとめたページです。',
-  alternates: {
-    canonical: `${siteUrl}/articles`,
-  },
-  openGraph: {
-    title: `ARTICLES | ${siteTitle}`,
-    description: 'プログラミング学習に関する記事をまとめたページです。',
-    url: `${siteUrl}/articles`,
-    siteName: siteTitle,
-    type: 'website',
-    images: [
-      {
-        url: eyecatch.src,
-        width: eyecatch.width,
-        height: eyecatch.height,
-        alt: 'プログラミング学習に関する記事のページ',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: `ARTICLES | ${siteTitle}`,
-    description: 'プログラミング学習に関する記事をまとめたページです。',
-    images: [eyecatch.src],
-  },
-}
+import eyecatch from '@/public/images/articles.jpg'
 
 const POSTS_PER_PAGE = 15
+
+export const metadata: Metadata = createMetadata({
+  pageTitle: 'ARTICLES',
+  pageDesc: 'プログラミング学習に関する記事をまとめたページです。',
+  slug: 'articles',
+  pageImg: eyecatch.src,
+  pageImgW: eyecatch.width,
+  pageImgH: eyecatch.height,
+})
 
 type ArticlesPageProps = {
   searchParams?: { page?: string }
@@ -69,7 +47,7 @@ export default async function ArticlesPage({
       <Ui.Hero
         title="ARTICLES"
         description="プログラミング学習に関する記事をまとめたページです。学習中に躓いた箇所や、開発過程で遭遇した具体的な課題、それに対する解決策を紹介しています。"
-        imageSrc="/images/articles.jpg"
+        imageSrc={eyecatch.src}
       />
       <Ui.Container>
         <Ui.Posts posts={pagedPosts} />

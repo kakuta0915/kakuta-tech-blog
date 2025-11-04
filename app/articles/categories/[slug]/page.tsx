@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
-import { createMetadata } from '@/utils/createMetadata'
+import { createMetadata } from '@/libs/seo'
 import { getAllCategories, getAllPostByCategory } from '@/libs/api'
 import * as Ui from '@/components/ui'
 import * as Article from '@/features/article/components'
