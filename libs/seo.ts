@@ -15,7 +15,7 @@ export const getValidOgType = (type?: string): OgType => {
 }
 
 // メタデータ生成
-export interface CreateMetadataArgs {
+export type CreateMetadataArgs = {
   pageTitle: string
   pageDesc?: string
   slug: string
