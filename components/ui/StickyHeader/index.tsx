@@ -3,12 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Nav from '@/components/ui/Nav'
 import styles from './index.module.css'
-import {
-  FontAwesomeIcon,
-  faChevronDown,
-  faMagnifyingGlass,
-  faMoon,
-} from '@/libs/icons'
+import { FontAwesomeIcon, faChevronDown, faMoon } from '@/libs/icons'
 import { TableOfContents } from '@/features/article/components'
 
 export type TocItem = { id: string; text: string }
@@ -68,30 +63,26 @@ const StickyHeader: React.FC<StickyHeaderProps> = ({ toc }) => {
   return (
     <div className={styles['stickyHeader']}>
       <Nav />
-      <div className={styles['control']}>
-        <FontAwesomeIcon icon={faMagnifyingGlass} className={styles['icon']} />
-        <FontAwesomeIcon icon={faMoon} className={styles['icon']} />
-
-        {toc && toc.length > 0 && !isDesktop && (
-          <div className={styles['tocWrapper']} ref={tocWrapperRef}>
-            <button
-              className={styles['tocButton']}
-              onClick={() => setOpen(!open)}
-            >
-              <span>目次</span>
-              <FontAwesomeIcon
-                icon={faChevronDown}
-                className={`${styles['down']} ${open ? styles['rotate'] : ''}`}
-              />
-            </button>
-            {open && (
-              <div className={styles['tocDropdown']}>
-                <TableOfContents toc={toc} />
-              </div>
-            )}
-          </div>
-        )}
-      </div>
+      <FontAwesomeIcon icon={faMoon} className={styles['icon']} />
+      {toc && toc.length > 0 && !isDesktop && (
+        <div className={styles['tocWrapper']} ref={tocWrapperRef}>
+          <button
+            className={styles['tocButton']}
+            onClick={() => setOpen(!open)}
+          >
+            <span>目次</span>
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              className={`${styles['down']} ${open ? styles['rotate'] : ''}`}
+            />
+          </button>
+          {open && (
+            <div className={styles['tocDropdown']}>
+              <TableOfContents toc={toc} />
+            </div>
+          )}
+        </div>
+      )}
     </div>
   )
 }

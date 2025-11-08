@@ -1,6 +1,5 @@
 .stickyHeader {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
@@ -11,20 +10,17 @@
   margin: 0 auto;
 }
 
-.control {
-  display: flex;
-  align-items: center;
-}
-
 .tocWrapper {
   display: block;
 }
 
 .icon {
-  font-size: calc(var(--body) * 0.8);
+  font-size: var(--body);
   color: var(--navy-2);
-  padding: calc(var(--space-1) * 0.3);
-  margin-left: 0.25rem;
+  padding: calc(var(--space-1) * 0.3) calc(var(--space-1) * 0.5);
+  margin-left: var(--space-1);
+  border: 1px solid var(--gray);
+  border-radius: 50%;
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
