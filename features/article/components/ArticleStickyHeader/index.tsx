@@ -2,14 +2,9 @@
 
 import React, { useEffect, useRef, useState } from 'react'
 import Nav from '@/components/ui/Nav'
-import styles from './index.module.css'
-import {
-  FontAwesomeIcon,
-  faChevronDown,
-  faMagnifyingGlass,
-  faMoon,
-} from '@/libs/icons'
 import { TableOfContents } from '@/features/article/components'
+import styles from './index.module.css'
+import { FontAwesomeIcon, faChevronDown, faMoon } from '@/libs/icons'
 
 export type TocItem = { id: string; text: string }
 
@@ -62,9 +57,7 @@ const ArticleStickyHeader: React.FC<StickyHeaderProps> = ({ toc }) => {
     <div className={styles['articleStickyHeader']}>
       <Nav />
       <div className={styles['control']}>
-        <FontAwesomeIcon icon={faMagnifyingGlass} className={styles['icon']} />
         <FontAwesomeIcon icon={faMoon} className={styles['icon']} />
-
         {toc && toc.length > 0 && !isDesktop && (
           <div className={styles['tocWrapper']} ref={tocWrapperRef}>
             <button

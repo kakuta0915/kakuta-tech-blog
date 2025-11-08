@@ -32,9 +32,11 @@
 
 .icon {
   font-size: calc(var(--body) * 0.8);
-  color: var(--navy-2);
-  padding: calc(var(--space-1) * 0.3);
-  margin-left: 0.25rem;
+  color: var(--yellow);
+  background-color: var(--navy);
+  border-radius: 50%;
+  padding: calc(var(--space-1) * 0.3) calc(var(--space-1) * 0.4);
+  margin-left: var(--space-1);
 }
 
 .downIcon {
@@ -58,7 +60,7 @@
 
   .icon {
     font-size: var(--body);
-    padding: calc(var(--space-1) * 0.5);
+    padding: calc(var(--space-1) * 0.5) calc(var(--space-1) * 0.6);
   }
 
   .tocButton {
@@ -79,8 +81,7 @@
 
   .icon {
     font-size: calc(var(--body) * 1.1);
-    padding: calc(var(--space-1) * 0.5);
-    margin-left: 0.5rem;
+    padding: calc(var(--space-1) * 0.5) calc(var(--space-1) * 0.6);
   }
 
   .icon:hover {
