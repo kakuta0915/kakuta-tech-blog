@@ -1,5 +1,4 @@
 import { createClient } from 'microcms-js-sdk'
-import axios from 'axios'
 import { Category, Posts } from '@/types'
 
 // 環境変数チェック
@@ -114,62 +113,13 @@ export async function getAllCategories(limit = 100): Promise<Category[]> {
   }
 }
 
-// Qiita API
-const QIITA_API_URL = 'https://qiita.com/api/v2/users/kakuta0915/items'
+// 全ての記事を取得（microCMSのみ）
+export async function getAllArticles(
+  maxArticles = Infinity,
+): Promise<{ articles: Posts[] }> {
+  const posts = await getAllPosts()
 
-type QiitaUser = {
-  profile_image_url: string
-}
-
-type QiitaApiArticle = {
-  id: string
-  title: string
-  created_at: string
-  user: QiitaUser
-}
-
-type Article = {
-  title: string
-  slug: string
-  eyecatch: { url: string }
-  publishDate: string
-  categories: string[]
-  source: 'qiita'
-}
-
-// Qiita記事を取得
-export async function getAllQiitaArticles(): Promise<Article[]> {
-  try {
-    const response = await axios.get<QiitaApiArticle[]>(QIITA_API_URL, {
-      headers: {
-        Authorization: `Bearer ${process.env['QIITA_API_TOKEN']}`,
-      },
-      params: {
-        per_page: 100,
-      },
-    })
-
-    return response.data.map((article) => ({
-      title: article.title,
-      slug: article.id, // Qiitaはslugを持たないためidを代用
-      eyecatch: { url: article.user.profile_image_url },
-      publishDate: article.created_at, // 公開日としてcreated_atを使用
-      categories: [],
-      source: 'qiita',
-    }))
-  } catch {
-    return []
-  }
-}
-
-// 全ての記事を統合してソート
-export async function getAllArticles(maxArticles = Infinity) {
-  const [qiitaArticles, microCMSArticles] = await Promise.all([
-    getAllQiitaArticles(),
-    getAllPosts(),
-  ])
-
-  let allArticles = [...qiitaArticles, ...microCMSArticles]
+  let allArticles = [...posts]
   allArticles.sort((a, b) => {
     const dateA = new Date(a.publishDate).getTime()
     const dateB = new Date(b.publishDate).getTime()
