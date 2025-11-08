@@ -1,5 +1,6 @@
 .stickyHeader {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
@@ -15,12 +16,12 @@
 }
 
 .icon {
-  font-size: var(--body);
-  color: var(--navy-2);
-  padding: calc(var(--space-1) * 0.3) calc(var(--space-1) * 0.5);
-  margin-left: var(--space-1);
-  border: 1px solid var(--gray);
+  font-size: calc(var(--body) * 0.8);
+  color: var(--yellow);
+  background-color: var(--navy);
   border-radius: 50%;
+  padding: calc(var(--space-1) * 0.3) calc(var(--space-1) * 0.4);
+  margin-left: var(--space-1);
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -30,7 +31,7 @@
 
   .icon {
     font-size: var(--body);
-    padding: calc(var(--space-1) * 0.5);
+    padding: calc(var(--space-1) * 0.5) calc(var(--space-1) * 0.6);
   }
 }
 
@@ -45,7 +46,7 @@
 
   .icon {
     font-size: var(--body);
-    padding: calc(var(--space-1) * 0.5);
+    padding: calc(var(--space-1) * 0.5) calc(var(--space-1) * 0.6);
   }
 
   .icon:hover {
