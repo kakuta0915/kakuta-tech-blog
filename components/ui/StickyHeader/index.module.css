@@ -18,7 +18,7 @@
 .icon {
   font-size: calc(var(--body) * 0.8);
   color: var(--yellow);
-  background-color: var(--navy);
+  background-color: var(--navy-2);
   border-radius: 50%;
   padding: calc(var(--space-1) * 0.3) calc(var(--space-1) * 0.4);
   margin-left: var(--space-1);
