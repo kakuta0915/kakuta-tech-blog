@@ -1,29 +1,6 @@
 @import 'prism-themes/themes/prism-one-light.min.css';
 
 :root {
-  --white: #fff;
-  --black: #494949;
-  --gray: #808080;
-  --gray-2: #ddd;
-  --gray-3: #f6f6f6;
-  --bg-color: #f9f8f8;
-  --blue-base: #286cff;
-  --blue-active: #4383f1;
-  --blue-2: #4385f7;
-  --blue-3: #7babff;
-  --blue-4: #eff6ff;
-  --navy: #383b56;
-  --navy-2: #65717b;
-  --yellow: rgb(255, 255, 29);
-
-  /* コードブロックのカラー */
-  --code-blue: #4c93e3;
-  --code-blue-2: #1212d0;
-  --code-green: #069e06;
-  --code-orange: #e69500;
-  --code-red: #e43030;
-  --code-purple: #b500b5;
-
   /* フォントサイズ */
   --body: clamp(1.031rem, 1.009rem + 0.11vw, 1.094rem); /* 16.5-17.5px */
   --h1: clamp(1.75rem, 1.477rem + 1.36vw, 2.5rem); /*28-40px*/
@@ -39,14 +16,64 @@
   --space-4: calc(var(--space-2) * 2); /* 40-60px */
   --space-5: calc(var(--space-2) * 3); /* 60-90px */
   --space-6: calc(var(--space-2) * 4); /* 80-120px */
+
+  /* ベースカラー */
+  --white: #fff;
+  --black: #494949;
+  --gray: #808080;
+  --gray-2: #ddd;
+  --gray-3: #f6f6f6;
+  --gray-4: #f9f8f8;
+  --blue-base: #286cff;
+  --blue-active: #4383f1;
+  --blue-2: #4385f7;
+  --blue-3: #7babff;
+  --blue-4: #eff6ff;
+  --navy: #383b56;
+  --navy-2: #65717b;
+  --yellow: #ffff1d;
+
+  /* コードブロックカラー */
+  --code-blue: #4c93e3;
+  --code-blue-2: #1212d0;
+  --code-green: #069e06;
+  --code-orange: #e69500;
+  --code-red: #e43030;
+  --code-purple: #b500b5;
+
+  /* Semantic (Light) */
+  --text-color: var(--black);
+  --bg-color: var(--gray-4);
 }
 
-/* 基本設定 */
+/* =========================
+  ダークテーマカラー
+========================= */
+html.dark {
+  --text-color: var(--white);
+  --bg-color: #1a202c;
+  --dark-blue: #95bcfe;
+  --test: #2b2e35;
+
+  /* 仮 ↓ */
+  --color-bg: #111;
+  --color-border: #333;
+  --color-link: #7babff;
+  --code-blue: #78a9ff;
+  --code-green: #58d68d;
+  --code-orange: #f5b041;
+  --code-red: #e57373;
+  --code-purple: #bb8fce;
+}
+
+/* =========================
+  基本設定
+========================= */
 body {
-  color: var(--black);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
     sans-serif;
   font-size: var(--body);
+  color: var(--text-color);
   background-color: var(--bg-color);
 }
 
@@ -74,7 +101,6 @@ p {
   line-height: 1.8;
 }
 
-/* リセット */
 body,
 h1,
 h2,
@@ -100,7 +126,9 @@ a {
   text-decoration: none;
 }
 
-/* microCMS カスタムclass */
+/* =========================
+  microCMS カスタムclass
+========================= */
 .marginTop05,
 .marginTop1,
 .marginBottom05,
@@ -124,7 +152,21 @@ a {
   margin-bottom: 1rem;
 }
 
-/* コードブロック */
+/* =========================
+  インラインコード
+========================= */
+:not(pre) > code {
+  background-color: #f4f8ff;
+  border: 1px solid #cde1ff;
+  color: var(--black);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+/* =========================
+  コードブロック
+========================= */
 pre[class*='language-'] {
   background-color: #fafdff;
   border: 1px solid var(--gray-2);
@@ -141,16 +183,9 @@ code[class*='language-'] {
   line-height: 1.65;
 }
 
-/* インラインコード */
-:not(pre) > code {
-  background-color: #f4f8ff;
-  border: 1px solid #cde1ff;
-  color: var(--black);
-  padding: 0.2rem 0.4rem;
-  border-radius: 4px;
-  font-size: 0.9em;
-}
-
+/* =========================
+  PrismJS トークンカラー
+========================= */
 code[class*='language-'] .token.comment {
   color: var(--gray);
 }
@@ -194,7 +229,6 @@ code[class*='language-'] .token.builtin {
   color: var(--code-purple);
 }
 
-/* CSS */
 code[class*='language-css'] .token.property {
   color: var(--code-blue-2);
 }
