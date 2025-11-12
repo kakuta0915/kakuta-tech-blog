@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react'
+import { useTheme } from 'next-themes'
 import Nav from '@/components/ui/Nav'
 import { TableOfContents } from '@/features/article/components'
 import styles from './index.module.css'
@@ -16,6 +17,10 @@ const ArticleStickyHeader: React.FC<StickyHeaderProps> = ({ toc }) => {
   const [open, setOpen] = useState(false)
   const [isDesktop, setIsDesktop] = useState(false)
   const tocWrapperRef = useRef<HTMLDivElement | null>(null)
+  const { theme, setTheme } = useTheme()
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light')
+  }
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(min-width: 1025px)')
@@ -57,7 +62,15 @@ const ArticleStickyHeader: React.FC<StickyHeaderProps> = ({ toc }) => {
     <div className={styles['articleStickyHeader']}>
       <Nav />
       <div className={styles['control']}>
-        <FontAwesomeIcon icon={faMoon} className={styles['icon']} />
+        {/* ★ テーマ切り替えボタン化 */}
+        <button
+          onClick={toggleTheme}
+          className={styles['themeButton']}
+          aria-label="テーマ切り替え"
+        >
+          <FontAwesomeIcon icon={faMoon} className={styles['icon']} />
+        </button>
+
         {toc && toc.length > 0 && !isDesktop && (
           <div className={styles['tocWrapper']} ref={tocWrapperRef}>
             <button

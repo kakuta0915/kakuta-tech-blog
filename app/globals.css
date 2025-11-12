@@ -41,7 +41,7 @@
   --code-red: #e43030;
   --code-purple: #b500b5;
 
-  /* Semantic (Light) */
+  /* Semantic (Light) 場所の名前 */
   --text-color: var(--black);
   --bg-color: var(--gray-4);
 }
@@ -51,9 +51,9 @@
 ========================= */
 html.dark {
   --text-color: var(--white);
-  --bg-color: #1a202c;
-  --dark-blue: #95bcfe;
-  --test: #2b2e35;
+  --bg-color-1: #1a202c;
+  --bg-color-2: #23272f;
+  --blue-base: #6ea3ff;
 
   /* 仮 ↓ */
   --color-bg: #111;
