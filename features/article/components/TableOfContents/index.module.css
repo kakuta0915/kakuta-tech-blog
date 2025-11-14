@@ -1,7 +1,7 @@
 .toc {
   background-color: var(--bg-color-2);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  border-top: 6px solid var(--blue-2);
+  border-top: 6px solid var(--blue-base);
   border-radius: 5px;
   padding: var(--space-1) var(--space-1) var(--space-1);
 }
