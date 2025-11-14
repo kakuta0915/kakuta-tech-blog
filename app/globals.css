@@ -46,6 +46,10 @@
   --h2-bg-color: var(--gray-3)
   --bg-color-1: var(--gray-4);
   --bg-color-2: var(--white);
+  --inline-code-text-color: var(--black);
+  --inline-code-bg-color: #f4f8ff;
+  --inline-code-border-color: #cde1ff;
+  --post-border-color: var(--gray-2);
 }
 
 /* =========================
@@ -57,16 +61,20 @@ html.dark {
   --text-color: var(--white);
   --h2-bg-color: #343A46;
   --blue-base: #6ea3ff;
+  --inline-code-text-color: var(--white);
+  --inline-code-bg-color: #3c4b6c;
+  --inline-code-border-color: #5575bf;
+  --post-border-color: var(--gray);
 
   /* 仮 ↓ */
-  --color-bg: #111;
+  /* --color-bg: #111;
   --color-border: #333;
   --color-link: #7babff;
   --code-blue: #78a9ff;
   --code-green: #58d68d;
   --code-orange: #f5b041;
   --code-red: #e57373;
-  --code-purple: #bb8fce;
+  --code-purple: #bb8fce; */
 }
 
 /* =========================
@@ -159,9 +167,9 @@ a {
   インラインコード
 ========================= */
 :not(pre) > code {
-  background-color: #f4f8ff;
-  border: 1px solid #cde1ff;
-  color: var(--black);
+  background-color: var(--inline-code-bg-color);
+  border: 1px solid var(--inline-code-border-color);
+  color: var(--inline-code-text-color);
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
   font-size: 0.9em;
