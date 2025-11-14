@@ -29,7 +29,7 @@
   margin-top: var(--space-3);
   padding: 0.8rem;
   border-left: 5px solid var(--blue-3);
-  border-bottom: 1px solid var(--post-border-color);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .postBody h4 {
@@ -43,7 +43,7 @@
 
 .postBody figure img {
   margin: 1rem 0 3rem;
-  border: 1px solid var(--post-border-color);
+  border: 1px solid var(--border-color);
 }
 
 .postBody p {
@@ -83,7 +83,7 @@
 }
 
 .postBody hr {
-  color: var(--post-border-color);
+  color: var(--border-color);
   border: 1px solid;
   margin: 0.25rem 0 0;
 }
@@ -100,17 +100,17 @@
 
 .postBody > table th,
 .postBody > table td {
-  border: 1px solid var(--post-border-color);
+  border: 1px solid var(--border-color);
   padding: 0.85rem var(--space-1);
 }
 
 .postBody > table th {
   background-color: #f4f4f4;
-  border-bottom: 2px solid var(--post-border-color);
+  border-bottom: 2px solid var(--border-color);
 }
 
 .postBody > table td {
-  border-bottom: 1px solid var(--post-border-color);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .postBody > blockquote {
