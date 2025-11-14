@@ -39,6 +39,7 @@
   --bg-color-2: var(--white);
   --text-color: var(--black);
   --h2-bg-color: var(--gray-3);
+  --publish-color: var(--gray);
   --inline-code-text-color: var(--black);
   --inline-code-bg-color: #f4f8ff;
   --inline-code-border-color: #cde1ff;
@@ -65,6 +66,7 @@ html.dark {
   --bg-color-2: #23272f;
   --text-color: var(--white);
   --h2-bg-color: #343a46;
+  --publish-color: #dfd2be;
   --blue-base: #6ea3ff;
   --blue-active: #71a5ff;
   --inline-code-text-color: var(--white);
