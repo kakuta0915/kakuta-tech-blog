@@ -105,7 +105,7 @@
 }
 
 .postBody > table th {
-  background-color: #f4f4f4;
+  background-color: var(--h2-bg-color);
   border-bottom: 2px solid var(--border-color);
 }
 
