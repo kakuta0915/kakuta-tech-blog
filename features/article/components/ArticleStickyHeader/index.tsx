@@ -68,7 +68,7 @@ const ArticleStickyHeader: React.FC<StickyHeaderProps> = ({ toc }) => {
           className={styles['themeButton']}
           aria-label="テーマ切り替え"
         >
-          <FontAwesomeIcon icon={faMoon} className={styles['icon']} />
+          <FontAwesomeIcon icon={faMoon} />
         </button>
 
         {toc && toc.length > 0 && !isDesktop && (

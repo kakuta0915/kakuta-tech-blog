@@ -30,12 +30,14 @@
   cursor: pointer;
 }
 
-.icon {
+.themeButton {
+  width: 1.5rem;
+  height: 1.5rem;
   font-size: calc(var(--body) * 0.8);
   color: var(--yellow);
   background-color: var(--navy-2);
+  border: 1px solid var(--border-color);
   border-radius: 50%;
-  padding: calc(var(--space-1) * 0.3) calc(var(--space-1) * 0.4);
   margin-left: var(--space-1);
 }
 
@@ -58,9 +60,10 @@
     padding: calc(var(--space-1) * 0.5) var(--space-1);
   }
 
-  .icon {
+  .themeButton {
+    width: 2rem;
+    height: 2rem;
     font-size: var(--body);
-    padding: calc(var(--space-1) * 0.5) calc(var(--space-1) * 0.6);
   }
 
   .tocButton {
@@ -79,9 +82,10 @@
     padding: calc(var(--space-1) * 0.5) var(--space-2);
   }
 
-  .icon {
+  .themeButton {
+    width: 2.5rem;
+    height: 2.5rem;
     font-size: calc(var(--body) * 1.1);
-    padding: calc(var(--space-1) * 0.5) calc(var(--space-1) * 0.6);
   }
 
   .icon:hover {
