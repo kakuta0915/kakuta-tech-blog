@@ -5,7 +5,7 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: var(--white);
+  background-color: var(--bg-color-2);
   box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2);
   padding: calc(var(--space-1) * 0.5);
   margin: 0 auto;

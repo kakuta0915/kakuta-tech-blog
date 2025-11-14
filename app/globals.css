@@ -43,16 +43,19 @@
 
   /* Semantic (Light) 場所の名前 */
   --text-color: var(--black);
-  --bg-color: var(--gray-4);
+  --h2-bg-color: var(--gray-3)
+  --bg-color-1: var(--gray-4);
+  --bg-color-2: var(--white);
 }
 
 /* =========================
   ダークテーマカラー
 ========================= */
 html.dark {
-  --text-color: var(--white);
-  --bg-color-1: #1a202c;
+  --bg-color-1: #2b2e35;
   --bg-color-2: #23272f;
+  --text-color: var(--white);
+  --h2-bg-color: #343A46;
   --blue-base: #6ea3ff;
 
   /* 仮 ↓ */
@@ -74,7 +77,7 @@ body {
     sans-serif;
   font-size: var(--body);
   color: var(--text-color);
-  background-color: var(--bg-color);
+  background-color: var(--bg-color-1);
 }
 
 h1 {
