@@ -36,10 +36,10 @@
   /* =========================
   ライトテーマカラー
   ========================= */
-  --text-color: var(--black);
-  --h2-bg-color: var(--gray-3)
   --bg-color-1: var(--gray-4);
   --bg-color-2: var(--white);
+  --text-color: var(--black);
+  --h2-bg-color: var(--gray-3);
   --inline-code-text-color: var(--black);
   --inline-code-bg-color: #f4f8ff;
   --inline-code-border-color: #cde1ff;
@@ -64,24 +64,24 @@ html.dark {
   --bg-color-1: #2b2e35;
   --bg-color-2: #23272f;
   --text-color: var(--white);
-  --h2-bg-color: #343A46;
+  --h2-bg-color: #343a46;
   --blue-base: #6ea3ff;
+  --blue-active: #71a5ff;
   --inline-code-text-color: var(--white);
   --inline-code-bg-color: #3c4b6c;
   --inline-code-border-color: #5575bf;
   --code-block-text-color: var(--white);
-  --code-block-bg: #1D2123;
+  --code-block-bg: #1d2123;
   --post-border-color: var(--black);
 
-    /* PrismJS トークンカラー */
-    --code-gray: #9c9b9b; 
-    --code-blue: #3090ff;
-    --code-blue-2: #70d4ff;
-    --code-green: #29b829;
-    --code-orange: #d89416;
-    --code-red: #d03e3e;
-    --code-purple: #c83ac8;
-
+  /* PrismJS トークンカラー */
+  --code-gray: #9c9b9b;
+  --code-blue: #3090ff;
+  --code-blue-2: #70d4ff;
+  --code-green: #29b829;
+  --code-orange: #d89416;
+  --code-red: #d03e3e;
+  --code-purple: #c83ac8;
 
   /* 仮 ↓ */
   /* --color-bg: #111;

@@ -19,8 +19,8 @@
   align-items: center;
   line-height: 1.5;
   font-size: var(--body);
-  background-color: var(--white);
-  border: 1px solid var(--gray-2);
+  background-color: var(--bg-color-2);
+  border: 1px solid var(--post-border-color);
   border-radius: 1.5rem;
   padding: calc(var(--space-1) * 0.5) calc(var(--space-1) * 0.75);
 }
