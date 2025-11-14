@@ -18,13 +18,13 @@
 
 .icon {
   padding-top: 0.15rem;
-  color: var(--publish-color);
+  color: var(--sub-title-color);
 }
 
 .publish {
   display: flex;
   gap: 0.5rem;
-  color: var(--publish-color);
+  color: var(--sub-title-color);
   font-size: var(--body);
 }
 
