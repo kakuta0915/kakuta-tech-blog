@@ -33,15 +33,9 @@
   --navy-2: #65717b;
   --yellow: #ffff1d;
 
-  /* コードブロックカラー */
-  --code-blue: #4c93e3;
-  --code-blue-2: #1212d0;
-  --code-green: #069e06;
-  --code-orange: #e69500;
-  --code-red: #e43030;
-  --code-purple: #b500b5;
-
-  /* Semantic (Light) 場所の名前 */
+  /* =========================
+  ライトテーマカラー
+  ========================= */
   --text-color: var(--black);
   --h2-bg-color: var(--gray-3)
   --bg-color-1: var(--gray-4);
@@ -49,7 +43,18 @@
   --inline-code-text-color: var(--black);
   --inline-code-bg-color: #f4f8ff;
   --inline-code-border-color: #cde1ff;
+  --code-block-text-color: #383942;
+  --code-block-bg: #fafdff;
   --post-border-color: var(--gray-2);
+
+  /* PrismJS トークンカラー */
+  --code-gray: var(--gray);
+  --code-blue: #4c93e3;
+  --code-blue-2: #1212d0;
+  --code-green: #069e06;
+  --code-orange: #e69500;
+  --code-red: #e43030;
+  --code-purple: #b500b5;
 }
 
 /* =========================
@@ -64,7 +69,19 @@ html.dark {
   --inline-code-text-color: var(--white);
   --inline-code-bg-color: #3c4b6c;
   --inline-code-border-color: #5575bf;
-  --post-border-color: var(--gray);
+  --code-block-text-color: var(--white);
+  --code-block-bg: #1D2123;
+  --post-border-color: var(--black);
+
+    /* PrismJS トークンカラー */
+    --code-gray: #9c9b9b; 
+    --code-blue: #3090ff;
+    --code-blue-2: #70d4ff;
+    --code-green: #29b829;
+    --code-orange: #d89416;
+    --code-red: #d03e3e;
+    --code-purple: #c83ac8;
+
 
   /* 仮 ↓ */
   /* --color-bg: #111;
@@ -179,8 +196,8 @@ a {
   コードブロック
 ========================= */
 pre[class*='language-'] {
-  background-color: #fafdff;
-  border: 1px solid var(--gray-2);
+  background-color: var(--code-block-bg);
+  border: 1px solid var(--post-border-color);
   border-radius: 8px;
   padding: var(--space-1);
   margin: var(--space-2) 0;
@@ -188,21 +205,22 @@ pre[class*='language-'] {
 }
 
 code[class*='language-'] {
-  background-color: #fafdff;
+  background-color: var(--code-block-bg);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: calc(var(--body) * 0.9);
   line-height: 1.65;
+  color: var(--code-block-text-color);
 }
 
 /* =========================
   PrismJS トークンカラー
 ========================= */
 code[class*='language-'] .token.comment {
-  color: var(--gray);
+  color: var(--code-gray);
 }
 
 code[class*='language-'] .token.punctuation {
-  color: var(--black);
+  color: var(--code-block-text-color);
 }
 
 code[class*='language-'] .token.property,
