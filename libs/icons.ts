@@ -4,6 +4,7 @@ export {
   faChevronDown,
   faMagnifyingGlass,
   faMoon,
+  faSun,
   faChevronLeft,
   faChevronRight,
   faAngleUp,

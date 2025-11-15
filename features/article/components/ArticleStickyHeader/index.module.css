@@ -5,7 +5,7 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: var(--white);
+  background-color: var(--bg-color-2);
   box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2);
   padding: calc(var(--space-1) * 0.5);
   margin: 0 auto;
@@ -30,11 +30,15 @@
   cursor: pointer;
 }
 
-.icon {
+.themeButton {
+  width: 1.75rem;
+  height: 1.75rem;
   font-size: calc(var(--body) * 0.8);
-  color: var(--navy-2);
-  padding: calc(var(--space-1) * 0.3);
-  margin-left: 0.25rem;
+  color: var(--white);
+  background-color: var(--gray);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  margin-left: var(--space-1);
 }
 
 .downIcon {
@@ -56,9 +60,10 @@
     padding: calc(var(--space-1) * 0.5) var(--space-1);
   }
 
-  .icon {
+  .themeButton {
+    width: 2rem;
+    height: 2rem;
     font-size: var(--body);
-    padding: calc(var(--space-1) * 0.5);
   }
 
   .tocButton {
@@ -77,14 +82,14 @@
     padding: calc(var(--space-1) * 0.5) var(--space-2);
   }
 
-  .icon {
+  .themeButton {
+    width: 2.5rem;
+    height: 2.5rem;
     font-size: calc(var(--body) * 1.1);
-    padding: calc(var(--space-1) * 0.5);
-    margin-left: 0.5rem;
   }
 
-  .icon:hover {
-    color: var(--blue-1);
+  .themeButton:hover {
+    color: var(--yellow);
     transition: 0.2s;
     cursor: pointer;
   }

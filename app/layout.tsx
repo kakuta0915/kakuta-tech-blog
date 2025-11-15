@@ -5,6 +5,7 @@ import React from 'react'
 import Script from 'next/script'
 import type { Metadata } from 'next'
 import { ToastContainer } from 'react-toastify'
+import { Providers } from './providers'
 import { config } from '@fortawesome/fontawesome-svg-core'
 import Layout from '@/components/Layouts'
 import { siteMeta } from '@/libs/constants'
@@ -72,31 +73,35 @@ export default function RootLayout({
   return (
     <html lang={siteLang}>
       <body>
-        {/* Google Analytics */}
-        <Script
-          strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env['NEXT_PUBLIC_GA_ID']}`}
-        />
-        <Script
-          id="gtag-init"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
+        <Providers>
+          {/* Google Analytics */}
+          <Script
+            strategy="afterInteractive"
+            src={`https://www.googletagmanager.com/gtag/js?id=${process.env['NEXT_PUBLIC_GA_ID']}`}
+          />
+          <Script
+            id="gtag-init"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', '${process.env['NEXT_PUBLIC_GA_ID']}');
             `,
-          }}
-        />
-        <ToastContainer
-          position="top-center"
-          autoClose={1500}
-          hideProgressBar
-          closeOnClick
-          pauseOnHover
-        />
-        <Layout>{children}</Layout>
+            }}
+          />
+          {/* トースト通知 */}
+          <ToastContainer
+            position="top-center"
+            autoClose={1500}
+            hideProgressBar
+            closeOnClick
+            pauseOnHover
+          />
+          {/* 共通レイアウト */}
+          <Layout>{children}</Layout>
+        </Providers>
       </body>
     </html>
   )

@@ -1,6 +1,6 @@
 .header {
   padding: var(--space-1) var(--space-1) calc(var(--space-1) * 0.5);
-  background-color: var(--white);
+  background-color: var(--bg-color-2);
 }
 
 .header h1 {

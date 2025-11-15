@@ -172,12 +172,12 @@ export default async function ArticlePage({ params }: Props) {
               </div>
             </div>
           </div>
-          {prevPost && nextPost && (
+          {(prevPost || nextPost) && (
             <Article.Pagination
-              prevText={prevPost.title}
-              prevUrl={`/articles/${prevPost.slug}`}
-              nextText={nextPost.title}
-              nextUrl={`/articles/${nextPost.slug}`}
+              prevText={prevPost?.title}
+              prevUrl={prevPost ? `/articles/${prevPost.slug}` : undefined}
+              nextText={nextPost?.title}
+              nextUrl={nextPost ? `/articles/${nextPost.slug}` : undefined}
             />
           )}
         </article>

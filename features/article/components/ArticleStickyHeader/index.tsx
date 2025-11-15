@@ -1,15 +1,11 @@
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react'
+import { useTheme } from 'next-themes'
 import Nav from '@/components/ui/Nav'
-import styles from './index.module.css'
-import {
-  FontAwesomeIcon,
-  faChevronDown,
-  faMagnifyingGlass,
-  faMoon,
-} from '@/libs/icons'
 import { TableOfContents } from '@/features/article/components'
+import styles from './index.module.css'
+import { FontAwesomeIcon, faChevronDown, faMoon, faSun } from '@/libs/icons'
 
 export type TocItem = { id: string; text: string }
 
@@ -21,6 +17,10 @@ const ArticleStickyHeader: React.FC<StickyHeaderProps> = ({ toc }) => {
   const [open, setOpen] = useState(false)
   const [isDesktop, setIsDesktop] = useState(false)
   const tocWrapperRef = useRef<HTMLDivElement | null>(null)
+  const { theme, setTheme } = useTheme()
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light')
+  }
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(min-width: 1025px)')
@@ -62,8 +62,13 @@ const ArticleStickyHeader: React.FC<StickyHeaderProps> = ({ toc }) => {
     <div className={styles['articleStickyHeader']}>
       <Nav />
       <div className={styles['control']}>
-        <FontAwesomeIcon icon={faMagnifyingGlass} className={styles['icon']} />
-        <FontAwesomeIcon icon={faMoon} className={styles['icon']} />
+        <button
+          onClick={toggleTheme}
+          className={styles['themeButton']}
+          aria-label="テーマ切り替え"
+        >
+          <FontAwesomeIcon icon={theme === 'light' ? faMoon : faSun} />
+        </button>
 
         {toc && toc.length > 0 && !isDesktop && (
           <div className={styles['tocWrapper']} ref={tocWrapperRef}>
