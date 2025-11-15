@@ -16,8 +16,8 @@
 }
 
 .categoryItem {
-  border: 1px solid var(--gray-2);
-  background-color: var(--white);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-color-2);
   border-radius: 1rem;
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
 }
@@ -44,19 +44,6 @@
   .categoriesListWrapper {
     grid-template-columns: repeat(4, 1fr);
   }
-
-  .categoryItem {
-    margin: calc(var(--space-1) * 0.5);
-    transition: box-shadow 0.3s, transform 0.3s;
-  }
-
-  .categoryItem:hover {
-    color: var(--blue);
-    cursor: pointer;
-    border: 1px solid var(--blue);
-    box-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
-    transform: scale(1.05);
-  }
 }
 
 @media (min-width: 1025px) {
@@ -70,9 +57,9 @@
   }
 
   .categoryItem:hover {
-    color: var(--blue);
+    color: var(--blue-base);
     cursor: pointer;
-    border: 1px solid var(--blue);
+    border: 1px solid var(--blue-base);
     box-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
     transform: scale(1.05);
   }
