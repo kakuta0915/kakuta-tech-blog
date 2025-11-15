@@ -5,7 +5,7 @@ import { useTheme } from 'next-themes'
 import Nav from '@/components/ui/Nav'
 import { TableOfContents } from '@/features/article/components'
 import styles from './index.module.css'
-import { FontAwesomeIcon, faChevronDown, faMoon } from '@/libs/icons'
+import { FontAwesomeIcon, faChevronDown, faMoon, faSun } from '@/libs/icons'
 
 export type TocItem = { id: string; text: string }
 
@@ -62,13 +62,12 @@ const ArticleStickyHeader: React.FC<StickyHeaderProps> = ({ toc }) => {
     <div className={styles['articleStickyHeader']}>
       <Nav />
       <div className={styles['control']}>
-        {/* ★ テーマ切り替えボタン化 */}
         <button
           onClick={toggleTheme}
           className={styles['themeButton']}
           aria-label="テーマ切り替え"
         >
-          <FontAwesomeIcon icon={faMoon} />
+          <FontAwesomeIcon icon={theme === 'light' ? faMoon : faSun} />
         </button>
 
         {toc && toc.length > 0 && !isDesktop && (

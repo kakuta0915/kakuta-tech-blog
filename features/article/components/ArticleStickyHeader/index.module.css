@@ -31,8 +31,8 @@
 }
 
 .themeButton {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.75rem;
+  height: 1.75rem;
   font-size: calc(var(--body) * 0.8);
   color: var(--yellow);
   background-color: var(--navy-2);
@@ -88,7 +88,7 @@
     font-size: calc(var(--body) * 1.1);
   }
 
-  .icon:hover {
+  .themeButton:hover {
     color: var(--blue-1);
     transition: 0.2s;
     cursor: pointer;
