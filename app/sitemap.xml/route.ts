@@ -17,7 +17,7 @@ export async function GET() {
     ...posts.map(
       (post) => `
       <url>
-        <loc>${siteMeta.siteUrl}/pages/articles/categories/${post.slug}</loc>
+        <loc>${siteMeta.siteUrl}/articles/categories/${post.slug}</loc>
         <lastmod>${new Date().toISOString()}</lastmod>
       </url>
     `,
@@ -25,9 +25,7 @@ export async function GET() {
     ...categories.map(
       (category) => `
       <url>
-        <loc>${siteMeta.siteUrl}/pages/articles/categories/${
-        category.slug
-      }</loc>
+        <loc>${siteMeta.siteUrl}/articles/categories/${category.slug}</loc>
         <lastmod>${new Date().toISOString()}</lastmod>
       </url>
     `,
