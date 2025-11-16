@@ -1,9 +1,16 @@
 import { render, screen } from '@testing-library/react'
-import Header from './'
+import Header from './index'
 
 describe('Headerコンポーネント', () => {
-  it('Navコンポーネントがレンダリングされているか', () => {
+  it('ヘッダーのテキストが表示される', () => {
     render(<Header />)
-    expect(screen.getByRole('navigation')).toBeInTheDocument()
+    const heading = screen.getByRole('heading', { name: /KAKUTA TECH BLOG/i })
+    expect(heading).toBeInTheDocument()
+  })
+
+  it('正しいCSSクラスが適用されている', () => {
+    render(<Header />)
+    const headerElement = screen.getByRole('banner')
+    expect(headerElement).toHaveClass('header')
   })
 })
