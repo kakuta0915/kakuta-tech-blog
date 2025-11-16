@@ -122,7 +122,8 @@ export default async function ArticlePage({ params }: Props) {
   const rawToc = renderToc(content)
   const toc = rawToc
     .filter(
-      (item): item is { id: string; text: string; name: string } => !!item.id,
+      (item): item is { id: string; text: string; name: 'h2' | 'h3' } =>
+        !!item.id && (item.name === 'h2' || item.name === 'h3'),
     )
     .map(({ id, text, name }) => ({ id, text, name }))
 
