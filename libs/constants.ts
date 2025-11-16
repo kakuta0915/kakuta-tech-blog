@@ -6,4 +6,4 @@ export const siteMeta = {
   siteLocale: 'ja_JP',
   siteType: 'website',
   siteIcon: '/images/favicon.png',
-}
+} as const
