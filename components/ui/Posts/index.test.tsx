@@ -19,8 +19,8 @@ describe('Posts Component', () => {
     expect(screen.queryByText('MORE')).toBeNull()
   })
 
-  test('btnプロパティがtrueのときに「MORE」ボタンが表示されるか確認', () => {
-    render(<Posts {...mockPosts} btn={true} />)
+  test('showMoreButton プロパティが true のときに「MORE」ボタンが表示されるか確認', () => {
+    render(<Posts {...mockPosts} showMoreButton={true} />)
     expect(screen.getByText('MORE')).toBeInTheDocument()
   })
 
