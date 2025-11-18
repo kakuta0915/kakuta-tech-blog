@@ -9,7 +9,7 @@ import styles from './index.module.css'
 const CategoriesList: React.FC<CategoriesListProps> = ({ allCategories }) => {
   return (
     <div className={styles['categories']}>
-      <h3>カテゴリ一覧</h3>
+      <h3>カテゴリ 一覧</h3>
       <ul className={styles['categoriesListWrapper']}>
         {allCategories.map(({ name, slug, icon }) => (
           <li className={styles['categoryItem']} key={slug}>
