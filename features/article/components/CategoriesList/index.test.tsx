@@ -26,10 +26,12 @@ describe('CategoriesList component', () => {
         'href',
         `/articles/categories/${category.slug}`,
       )
-      expect(screen.getByAltText(`${category.name} icon`)).toHaveAttribute(
-        'src',
-        category.icon.url,
-      )
+      if (category.icon) {
+        expect(screen.getByAltText(`${category.name} icon`)).toHaveAttribute(
+          'src',
+          category.icon.url,
+        )
+      }
       expect(screen.getByTestId(`icon-${category.slug}`)).toBeInTheDocument()
     })
   })

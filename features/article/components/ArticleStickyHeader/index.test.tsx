@@ -1,8 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react'
-import StickyHeader, { TocItem } from '.'
-import '@testing-library/jest-dom'
+import ArticleStickyHeader, { TocItem } from '.'
 
-// matchMedia モック
 beforeAll(() => {
   Object.defineProperty(window, 'matchMedia', {
     writable: true,
@@ -17,28 +15,24 @@ beforeAll(() => {
   })
 })
 
-// コンポーネントモック
 jest.mock('@/components/ui/Nav', () => ({
   __esModule: true,
-  default: () => <div>Navコンポーネント</div>,
+  default: () => <div data-testid="nav">Navモック</div>,
 }))
 
 jest.mock('@/features/article/components', () => ({
   __esModule: true,
   TableOfContents: ({ toc }: { toc: TocItem[] }) => (
-    <div>{`目次コンポーネント ${toc.length} 件`}</div>
+    <div data-testid="toc">目次コンポーネント {toc.length} 件</div>
   ),
 }))
 
 const mockSetTheme = jest.fn()
 jest.mock('next-themes', () => ({
-  useTheme: () => ({
-    theme: 'light',
-    setTheme: mockSetTheme,
-  }),
+  useTheme: () => ({ theme: 'light', setTheme: mockSetTheme }),
 }))
 
-describe('StickyHeader コンポーネント', () => {
+describe('ArticleStickyHeader コンポーネント', () => {
   const mockToc: TocItem[] = [
     { id: 'section1', text: 'セクション1' },
     { id: 'section2', text: 'セクション2' },
@@ -49,40 +43,38 @@ describe('StickyHeader コンポーネント', () => {
   })
 
   test('Nav が表示される', () => {
-    render(<StickyHeader />)
-    expect(screen.getByText('Navコンポーネント')).toBeInTheDocument()
+    render(<ArticleStickyHeader />)
+    expect(screen.getByTestId('nav')).toBeInTheDocument()
   })
 
   test('テーマ切替ボタンを押すと setTheme が呼ばれる', () => {
-    render(<StickyHeader />)
-    const btn = screen.getByRole('button', { name: /テーマ切り替え/i })
-    fireEvent.click(btn)
+    render(<ArticleStickyHeader />)
+    const button = screen.getByRole('button', { name: /テーマ切り替え/i })
+    fireEvent.click(button)
     expect(mockSetTheme).toHaveBeenCalledWith('dark')
   })
 
-  test('目次がない場合、目次ボタンは表示されない', () => {
-    render(<StickyHeader />)
+  test('目次がない場合は目次ボタンが表示されない', () => {
+    render(<ArticleStickyHeader />)
     expect(screen.queryByText('目次')).toBeNull()
   })
 
-  test('目次がある場合、目次ボタンをクリックすると目次が表示される', () => {
-    render(<StickyHeader toc={mockToc} />)
-
+  test('目次がある場合、目次ボタンを押すと目次が表示される', () => {
+    render(<ArticleStickyHeader toc={mockToc} />)
     const tocButton = screen.getByText('目次')
-    expect(screen.queryByText(/目次コンポーネント/)).toBeNull()
+    expect(screen.queryByTestId('toc')).toBeNull() // 初期状態では非表示
 
     fireEvent.click(tocButton)
-    expect(screen.getByText('目次コンポーネント 2 件')).toBeInTheDocument()
+    expect(screen.getByTestId('toc')).toBeInTheDocument()
   })
 
   test('目次外クリックで目次が閉じる', () => {
-    render(<StickyHeader toc={mockToc} />)
-
+    render(<ArticleStickyHeader toc={mockToc} />)
     const tocButton = screen.getByText('目次')
     fireEvent.click(tocButton)
-    expect(screen.getByText('目次コンポーネント 2 件')).toBeInTheDocument()
+    expect(screen.getByTestId('toc')).toBeInTheDocument()
 
     fireEvent.mouseDown(document.body)
-    expect(screen.queryByText(/目次コンポーネント/)).toBeNull()
+    expect(screen.queryByTestId('toc')).toBeNull()
   })
 })

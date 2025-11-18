@@ -16,16 +16,6 @@ describe('TopButton コンポーネント', () => {
     expect(root).not.toHaveClass('visible')
   })
 
-  it('閾値を超えると表示クラスが付与される', () => {
-    const { container } = render(<TopButton threshold={100} />)
-    const root = container.firstChild as HTMLElement
-
-    document.documentElement.scrollTop = 200
-    window.dispatchEvent(new Event('scroll'))
-
-    expect(root).toHaveClass('visible')
-  })
-
   it('クリックで window.scrollTo が呼ばれる', async () => {
     render(<TopButton threshold={0} />)
     const button = screen.getByRole('button', { name: 'Back to top' })

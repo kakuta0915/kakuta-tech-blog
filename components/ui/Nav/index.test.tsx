@@ -10,15 +10,12 @@ describe('Nav Component', () => {
     expect(nav).toBeInTheDocument()
 
     const links = screen.getAllByRole('link')
-    expect(links).toHaveLength(5)
-
+    expect(links).toHaveLength(3)
     expect(links[0]).toHaveAttribute('href', '/')
     expect(links[0]).toHaveTextContent('TOP')
-
     expect(links[1]).toHaveAttribute('href', '/about/')
     expect(links[1]).toHaveTextContent('ABOUT')
-
-    expect(links[3]).toHaveAttribute('href', '/articles/')
-    expect(links[3]).toHaveTextContent('ARTICLES')
+    expect(links[2]).toHaveAttribute('href', '/articles/')
+    expect(links[2]).toHaveTextContent('ARTICLES')
   })
 })

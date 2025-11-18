@@ -1,8 +1,14 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import PostHeader from '.'
-import { mockPostHeader } from '@/__mocks__/post-header'
 import styles from './index.module.css'
+
+const mockPostHeader = {
+  icon: { url: '/icons/icon.png', width: 50, height: 50 },
+  title: 'Post Title',
+  subtitle: 'Post Subtitle',
+  publish: '2024-07-23T00:00:00Z',
+}
 
 describe('PostHeader Component', () => {
   it('アイコン画像を正しくレンダリングできるか', () => {

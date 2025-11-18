@@ -2,6 +2,7 @@ import { Category } from '@/types'
 
 export const mockCategories: Category[] = [
   {
+    id: '1',
     name: 'Tech',
     slug: 'tech',
     icon: {
@@ -9,9 +10,9 @@ export const mockCategories: Category[] = [
       width: 30,
       height: 30,
     },
-    id: '',
   },
   {
+    id: '2',
     name: 'Lifestyle',
     slug: 'lifestyle',
     icon: {
@@ -19,6 +20,5 @@ export const mockCategories: Category[] = [
       width: 30,
       height: 30,
     },
-    id: '',
   },
 ]
