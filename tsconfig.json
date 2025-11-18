@@ -5,14 +5,13 @@
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["*"]
+      "@/*": [
+        "*"
+      ]
     },
-
     "outDir": "./dist",
-
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -20,26 +19,24 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedIndexedAccess": true,
     "noPropertyAccessFromIndexSignature": true,
-
     "skipLibCheck": true,
-
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
     "allowJs": true,
     "incremental": true,
     "resolveJsonModule": true,
-
-    "isolatedModules": false,
+    "isolatedModules": true,
     "noEmit": true,
-
     "jsx": "preserve",
-
     "plugins": [
       {
         "name": "next"
       }
     ]
   },
-
   "include": [
     "next-env.d.ts",
     "**/*.ts",
@@ -47,6 +44,8 @@
     ".next/types/**/*.ts",
     "__mocks__"
   ],
-
-  "exclude": ["node_modules", "jest.config.js"]
+  "exclude": [
+    "node_modules",
+    "jest.config.js"
+  ]
 }
