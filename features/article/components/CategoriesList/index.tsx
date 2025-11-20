@@ -4,7 +4,7 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { CategoriesListProps } from '@/types'
-import styles from './index.module.css'
+import styles from './index.module.scss'
 
 const CategoriesList: React.FC<CategoriesListProps> = ({ allCategories }) => {
   return (
