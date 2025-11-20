@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { toast } from 'react-toastify'
-import styles from './index.module.css'
+import styles from './index.module.scss'
 import { CodeBlockProps } from './types'
 import { FontAwesomeIcon, faCopy } from '@/libs/icons'
 

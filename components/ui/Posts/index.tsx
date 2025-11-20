@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import ConvertDate from '@/features/article/components/Convert/ConvertDate'
-import styles from './index.module.css'
+import styles from './index.module.scss'
 import qiitaImg from '@/public/images/qiitaEyecatch.png'
 import { PostsProps } from '@/types'
 
@@ -49,7 +49,7 @@ const Posts: React.FC<PostsProps> = ({
                 <div className={styles['publishDate']}>
                   <ConvertDate dateISO={publishDate} />
                 </div>
-                <h2>{title}</h2>
+                <h2 className={styles['postsTitle']}>{title}</h2>
                 <ul>
                   {categories.map((category) => (
                     <li className={styles['postsCategory']} key={category.slug}>

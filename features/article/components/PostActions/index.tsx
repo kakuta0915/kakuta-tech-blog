@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import styles from './index.module.css'
+import styles from './index.module.scss'
 import { FontAwesomeIcon, faXTwitter } from '@/libs/icons'
 
 type PostActionsProps = {

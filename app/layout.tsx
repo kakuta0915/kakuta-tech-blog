@@ -11,7 +11,7 @@ import Layout from '@/components/Layouts'
 import { siteMeta } from '@/libs/constants'
 import { getValidOgType } from '@/libs/seo'
 import siteImg from '/public/images/ogp.jpg'
-import './globals.css'
+import './globals.scss'
 import 'react-toastify/dist/ReactToastify.css'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 

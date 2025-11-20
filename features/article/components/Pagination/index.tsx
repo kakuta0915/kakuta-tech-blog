@@ -3,7 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { FontAwesomeIcon, faChevronLeft, faChevronRight } from '@/libs/icons'
-import styles from './index.module.css'
+import styles from './index.module.scss'
 import { PaginationProps } from './types'
 
 const Pagination: React.FC<PaginationProps> = ({

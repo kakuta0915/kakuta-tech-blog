@@ -1,0 +1,38 @@
+.heroContainer {
+  display: flex;
+  align-items: center;
+  height: 65vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  > h1 {
+    margin-bottom: calc(var(--space-2) * 0.5);
+  }
+
+  .heroText {
+    width: 90%;
+    text-align: left;
+    color: var(--white);
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: var(--space-2);
+    margin: 0 auto;
+
+    > p {
+      font-size: var(--body);
+      margin-top: 0.5rem;
+    }
+  }
+}
+
+@media (min-width: 1025px) {
+  .heroContainer {
+    height: 60vh;
+
+    .heroText {
+      width: 50%;
+      padding: var(--space-3);
+      margin-left: var(--space-3);
+    }
+  }
+}

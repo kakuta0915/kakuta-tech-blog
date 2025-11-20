@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useTheme } from 'next-themes'
 import Nav from '@/components/ui/Nav'
 import { TableOfContents } from '@/features/article/components'
-import styles from './index.module.css'
+import styles from './index.module.scss'
 import { FontAwesomeIcon, faChevronDown, faMoon, faSun } from '@/libs/icons'
 
 export type TocItem = { id: string; text: string }

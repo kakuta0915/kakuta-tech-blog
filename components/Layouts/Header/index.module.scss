@@ -1,10 +1,10 @@
 .header {
   padding: var(--space-1) var(--space-1) calc(var(--space-1) * 0.5);
   background-color: var(--bg-color-2);
-}
 
-.header h1 {
-  color: var(--blue-base);
+  h1 {
+    color: var(--blue-base);
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
