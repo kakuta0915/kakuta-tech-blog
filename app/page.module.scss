@@ -1,16 +1,16 @@
 .btnContainer {
   margin: var(--space-3) auto;
-}
 
-.showMoreButton {
-  display: inline-block;
-  background-color: var(--blue-2);
-  padding: var(--space-1) var(--space-3);
-  color: var(--white);
-  transition: 0.3s;
+  .showMoreButton {
+    display: inline-block;
+    background-color: var(--blue-2);
+    padding: var(--space-1) var(--space-3);
+    color: var(--white);
+    transition: 0.3s;
 
-  &:active {
-    background-color: var(--blue-active);
+    &:active {
+      background-color: var(--blue-active);
+    }
   }
 }
 
@@ -81,9 +81,11 @@
     }
   }
 
-  .showMoreButton:hover {
-    background-color: var(--blue-3);
-    color: var(--white);
-    transform: scale(1.05);
+  .showMoreButton {
+    &:hover {
+      background-color: var(--blue-3);
+      color: var(--white);
+      transform: scale(1.05);
+    }
   }
 }

@@ -49,7 +49,7 @@ const Posts: React.FC<PostsProps> = ({
                 <div className={styles['publishDate']}>
                   <ConvertDate dateISO={publishDate} />
                 </div>
-                <h2>{title}</h2>
+                <h2 className={styles['postsTitle']}>{title}</h2>
                 <ul>
                   {categories.map((category) => (
                     <li className={styles['postsCategory']} key={category.slug}>
