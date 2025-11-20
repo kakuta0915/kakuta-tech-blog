@@ -9,7 +9,7 @@ import { prevNextPost } from '@/libs/prev-next-post'
 import { renderToc } from '@/libs/render-toc'
 import * as Ui from '@/components/ui'
 import * as Article from '@/features/article/components'
-import styles from './page.module.css'
+import styles from './page.module.scss'
 import { Category, Posts } from '@/types'
 
 export const fetchCache =
