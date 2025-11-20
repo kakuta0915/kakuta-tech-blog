@@ -51,11 +51,10 @@
     width: 2.5rem;
     height: 2.5rem;
     font-size: calc(var(--body) * 1.1);
-  }
-
-  .themeButton:hover {
-    color: var(--yellow);
-    transition: 0.2s;
-    cursor: pointer;
+    &:hover {
+      color: var(--yellow);
+      transition: 0.2s;
+      cursor: pointer;
+    }
   }
 }
