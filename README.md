@@ -4,118 +4,140 @@
 
 ---
 
-## サイト概要
+## プロジェクト概要
 
-**KAKUTA TECH BLOG**は、Next.js・microCMS を活用した技術ブログです。プログラミング学習の記録や、学習・開発過程で遭遇した課題とその解決策を記事としてまとめています。他の開発者や学習者との知識共有を目指しています。
+**KAKUTA TECH BLOG**は、Next.js 14 (App Router)と microCMS を組み合わせた技術ブログです。学習中に躓いた箇所や、開発過程で遭遇した問題、それに対する解決策を紹介しています。
+
+---
+
+## 公開情報
 
 - **サイト URL**: https://kakuta-tech-blog.vercel.app
+- **ホスティング**: Vercel
+
+---
+
+## 機能ハイライト
+
+- **microCMS 連携**: ブログ記事・カテゴリをヘッドレス CMS から取得し、App Router の SSG/SSR で表示
+- **Markdown & シンタックスハイライト**: `html-react-parser` + `Prism.js` でリッチな本文とコードを描画
+- **テーマ切り替え**: `next-themes` によるライト/ダークモード
 
 ---
 
 ## 技術スタック
 
-- **フロントエンド**: Next.js, TypeScript, CSS Modules, styled-jsx
-- **バックエンド/ヘッドレス CMS**: microCMS
+- **フロントエンド**: Next.js, React, TypeScript, Sass Modules
+- **CMS / API**: microCMS (`microcms-js-sdk`)
+- **ユーティリティ**: date-fns, html-react-parser, html-to-text, react-toastify, Font Awesome, Prism.js
+- **テーマ/UX**: next-themes, prism-themes
+- **品質管理**: Jest + Testing Library, ESLint, Prettier
 - **デプロイ**: Vercel
-- **その他**: Jest（テスト）, ESLint/Prettier（静的解析・整形）, axios, cheerio, react-markdown, react-syntax-highlighter, react-toastify など
-
----
-
-## 主な機能
-
-### 記事管理
-
-- microCMS・Qiita API から記事を取得し、一覧・詳細表示
-- 記事のカテゴリ分け・カテゴリごとの記事一覧
-
-### ポートフォリオ
-
-- 制作した Web サイトやアプリの紹介
-- GitHub リンク
-
-### お問い合わせ
-
-- フォームからの連絡受付
 
 ---
 
 ## ディレクトリ構成（抜粋）
 
 ```
-app/           # Next.jsのルーティング・各ページ
-  about/       # サイト・運営者紹介
-  articles/    # 記事一覧・カテゴリ別記事
-  my-account/  # ユーザーの「いいね」「ブックマーク」管理
-  contact/     # お問い合わせフォーム
-  settings/    # アカウント編集・削除
-features/
-  article/     # 記事関連の機能コンポーネント
+app/
+  page.tsx                 # トップ
+  about/                   # サイト/プロフィール紹介
+  articles/
+    page.tsx               # 記事一覧
+    [slug]/page.tsx        # 記事詳細 (目次・カテゴリー・前後記事)
+    categories/[slug]/     # カテゴリ別一覧
+  globals.scss             # グローバルスタイル
+  providers.tsx            # ThemeProvider などのクライアントプロバイダ
+
 components/
-  ui/          # 汎用UIコンポーネント
-  Layouts/     # レイアウト用コンポーネント
-libs/          # API連携・定数・ユーティリティ
-public/        # 画像等の静的ファイル
-types/         # 型定義
+  ui/                      # Hero, Nav, Posts などの汎用 UI
+
+features/
+  article/components/      # PostHeader, TableOfContents, Pagination etc.
+
+libs/                      # API クライアント、SEO、TOC 生成、GA など
+public/                    # ogp, プロフィール画像等の静的アセット
+types/                     # microCMS レスポンスの型
 ```
 
 ---
 
 ## ページ構成
 
-- **トップページ**: サイト概要、最新記事、ポートフォリオ紹介
-- **About**: サイトの目的・運営者プロフィール・技術スタック
-- **Articles**: 記事一覧、カテゴリ別記事、記事詳細
-- **My Account**: ログインユーザーの「いいね」「ブックマーク」記事管理
-- **Contact**: お問い合わせフォーム
-- **Settings**: アカウント情報編集・削除
+- **Top (`/`)**: 自己紹介、最新記事
+- **About (`/about`)**: サイト概要、プロフィール、SNS リンク
+- **Articles (`/articles`)**: microCMS から取得した記事一覧
+- **Article Detail (`/articles/[slug]`)**: 目次・カテゴリ一覧・前後記事ナビ・Markdown 本文
+- **Category (`/articles/categories/[slug]`)**: 特定カテゴリの投稿とカテゴリリスト
 
 ---
 
-## データ取得・API 連携
+## データ取得と外部サービス
 
-- **microCMS**: 記事・カテゴリデータの取得
-- **Qiita API**: Qiita 投稿記事の取得
-
----
-
----
-
-## UI/UX
-
-- レスポンシブデザイン
-- アイキャッチ画像・プロフィール画像等の最適化
-- 記事の目次自動生成
-- 記事本文の Markdown 対応・シンタックスハイライト
-- トースト通知によるフィードバック
+- **microCMS**: `libs/api.ts` で記事・カテゴリを取得
+- **Google Analytics 4**: `libs/gtag.ts` と `app/layout.tsx` から計測スクリプトを挿入
+- **サイトマップ**: `next-sitemap` + `app/sitemap.xml/route.ts` で生成
 
 ---
 
-## 開発・ビルド・デプロイ
+## ローカル開発手順
 
-- 開発: `npm run dev`
-- 本番ビルド: `npm run build`
-- 本番起動: `npm start`
-- 静的サイトマップ生成: `npm run postbuild`
-- テスト: `npm test`
-- デプロイ: Vercel 連携
+1. Node.js 22 系を用意（例: `nvm use 22`）
+2. リポジトリを取得
+   ```bash
+   git clone https://github.com/kakuta0915/kakuta-tech-blog.git
+   cd kakuta-tech-blog
+   ```
+3. 依存関係をインストール
+   ```bash
+   npm install
+   ```
+4. `.env.local` を作成して必要な環境変数を設定（後述）
+5. 開発サーバーを起動
+   ```bash
+   npm run dev
+   ```
+6. `http://localhost:3000` にアクセス
 
 ---
 
-## 環境変数例
+## 利用可能な npm scripts
 
-- `SERVICE_DOMAIN` ... microCMS のサービスドメイン
-- `API_KEY` ... microCMS の API キー
-- `QIITA_API_TOKEN` ... Qiita API トークン
+- `npm run dev` – Next.js 開発サーバー（ホットリロード対応）
+- `npm run build` – 本番ビルド
+- `npm run start` – 本番サーバー起動
+- `npm run lint` – ESLint による静的解析
+- `npm run test` – Jest + Testing Library の単体テスト
+- `npm run postbuild` – `next-sitemap` でサイトマップ・robots を出力
+
+---
+
+## テスト
+
+- `components/ui` と `features/article/components` を中心にスナップショット/DOM 振る舞いをテスト
+- Jest（`ts-jest`）+ Testing Library + `identity-obj-proxy` で CSS Modules をモック
+- `npm test -- --watch` で差分テストが可能
+
+---
+
+## 必要な環境変数
+
+`.env.local` に以下を設定します。
+
+- `SERVICE_DOMAIN` … microCMS のサービスドメイン
+- `API_KEY` … microCMS の API キー
+- `NEXT_PUBLIC_GA_ID` … Google Analytics 4 の測定 ID（任意、`G-xxxx` 形式）
 
 ---
 
 ## 連絡先・運営者
 
 - サイト運営: 角田（かくた）
-- [Twitter: @_kakuta0915_](https://twitter.com/_kakuta0915_)
+- [X (Twitter): @_kakuta0915_](https://twitter.com/_kakuta0915_)
+- [Qiita: kakuta0915](https://qiita.com/kakuta0915) – 記事のサイド導線にも表示
 
 ---
 
-## ライセンス
+## ライセンス / 利用目的
 
-本プロジェクトは個人学習・ポートフォリオ目的で公開しています。
+本リポジトリは個人学習・ポートフォリオ公開を目的としており、商用ライセンスは付与していません。内容の引用・参考は歓迎しますが、再配布する場合は出典の明記をお願いします。
