@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import ConvertDate from '@/features/article/components/Convert/ConvertDate'
-import styles from './index.module.css'
+import styles from './index.module.scss'
 import qiitaImg from '@/public/images/qiitaEyecatch.png'
 import { PostsProps } from '@/types'
 

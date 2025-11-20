@@ -12,28 +12,35 @@
   padding: var(--space-1);
   width: 100%;
   height: 100%;
-}
 
-.link figure {
-  position: relative;
-  aspect-ratio: 16/9;
+  figure {
+    position: relative;
+    aspect-ratio: 16/9;
+  }
+
+  > h2 {
+    font-size: calc(var(--body) * 1.3);
+    font-weight: bold;
+  }
+
+  > ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+
+  &:hover {
+    box-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+  }
+
+  transition: box-shadow 0.3s, transform 0.3s;
 }
 
 .publishDate {
   font-size: calc(var(--body));
   color: var(--sub-title-color);
   margin-top: calc(var(--space-1) * 0.5);
-}
-
-.link > h2 {
-  font-size: calc(var(--body) * 1.3);
-  font-weight: bold;
-}
-
-.link > ul {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 0.5rem;
 }
 
 .postsCategory {
@@ -71,10 +78,16 @@
   background-color: var(--blue-2);
   padding: var(--space-1) var(--space-3);
   transition: 0.3s;
-}
 
-.showMoreButton:active {
-  background-color: var(--blue-active);
+  &:active {
+    background-color: var(--blue-active);
+  }
+
+  &:hover {
+    background-color: var(--blue-3);
+    color: var(--white);
+    transform: scale(1.05);
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -106,9 +119,11 @@
     font-size: calc(var(--body) * 0.7);
   }
 
-  .link > h2 {
-    font-size: var(--body);
-    margin-bottom: calc(var(--space-1) * 0.5);
+  .link {
+    > h2 {
+      font-size: var(--body);
+      margin-bottom: calc(var(--space-1) * 0.5);
+    }
   }
 }
 
@@ -121,11 +136,6 @@
 
   .link {
     transition: box-shadow 0.3s, transform 0.3s;
-  }
-
-  .link:hover {
-    box-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
-    transform: scale(1.05);
   }
 
   .publishDate {
@@ -144,19 +154,10 @@
     font-size: calc(var(--body) * 0.8);
   }
 
-  .link:hover {
-    box-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
-    transform: scale(1.05);
-  }
-
-  .link > h2 {
-    font-size: calc(var(--body) * 1.3);
-    margin-bottom: calc(var(--space-1) * 0.5);
-  }
-
-  .showMoreButton:hover {
-    background-color: var(--blue-3);
-    color: var(--white);
-    transform: scale(1.05);
+  .link {
+    > h2 {
+      font-size: calc(var(--body) * 1.3);
+      margin-bottom: calc(var(--space-1) * 0.5);
+    }
   }
 }
