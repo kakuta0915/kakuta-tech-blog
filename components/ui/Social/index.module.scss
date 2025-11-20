@@ -38,10 +38,6 @@
     width: 3rem;
     height: 3rem;
   }
-
-  .link:hover {
-    transform: scale(1.1);
-  }
 }
 
 @media (min-width: 1025px) {
@@ -58,7 +54,9 @@
     height: 3.5rem;
   }
 
-  .link:hover {
-    transform: scale(1.1);
+  .link {
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 }
