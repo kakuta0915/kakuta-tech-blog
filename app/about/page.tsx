@@ -3,7 +3,7 @@ import Image from 'next/image'
 import type { Metadata } from 'next'
 import { createMetadata } from '@/libs/seo'
 import * as UiComponents from '@/components/ui'
-import styles from './page.module.css'
+import styles from './page.module.scss'
 import eyecatch from '@/public/images/about.jpg'
 import kakuta0915 from '@/public/images/kakuta0915.png'
 
