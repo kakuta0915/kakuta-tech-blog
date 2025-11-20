@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import { FontAwesomeIcon, faClock } from '@/libs/icons'
 import ConvertDate from '../Convert/ConvertDate'
-import styles from './index.module.css'
+import styles from './index.module.scss'
 import { PostHeaderProps } from './types'
 
 const PostHeader: React.FC<PostHeaderProps> = ({
