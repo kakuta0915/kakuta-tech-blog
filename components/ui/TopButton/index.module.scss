@@ -30,19 +30,19 @@
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   padding: var(--space-1);
   cursor: pointer;
-}
 
-.icon {
-  font-size: 1.5rem;
-}
+  &:active {
+    background-color: var(--blue-active);
+  }
 
-.label {
-  font-size: calc(var(--body) * 0.8);
-  letter-spacing: 0.07rem;
-}
+  .icon {
+    font-size: 1.5rem;
+  }
 
-.button:active {
-  background-color: var(--blue-active);
+  .label {
+    font-size: calc(var(--body) * 0.8);
+    letter-spacing: 0.07rem;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {

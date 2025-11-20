@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useCallback, useEffect, useState } from 'react'
-import styles from './index.module.css'
+import styles from './index.module.scss'
 import { FontAwesomeIcon, faAngleUp } from '@/libs/icons'
 
 type TopButtonProps = {
