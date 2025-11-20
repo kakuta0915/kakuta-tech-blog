@@ -12,14 +12,6 @@
   &:active {
     background-color: var(--blue-active);
   }
-
-  @media (min-width: 1025px) {
-    &:hover {
-      background-color: var(--blue-3);
-      color: var(--white);
-      transform: scale(1.05);
-    }
-  }
 }
 
 .aboutSection {
@@ -87,5 +79,11 @@
       width: 20%;
       height: 20%;
     }
+  }
+
+  .showMoreButton:hover {
+    background-color: var(--blue-3);
+    color: var(--white);
+    transform: scale(1.05);
   }
 }
