@@ -1,0 +1,100 @@
+.articleStickyHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--bg-color-2);
+  box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2);
+  padding: calc(var(--space-1) * 0.5);
+  margin: 0 auto;
+
+  .control {
+    display: flex;
+    align-items: center;
+
+    .themeButton {
+      width: 1.75rem;
+      height: 1.75rem;
+      font-size: calc(var(--body) * 0.8);
+      color: var(--white);
+      background-color: var(--gray);
+      border: 1px solid var(--border-color);
+      border-radius: 50%;
+      margin-left: var(--space-1);
+    }
+
+    .tocWrapper {
+      position: relative;
+
+      .tocButton {
+        display: flex;
+        align-items: center;
+        background: none;
+        border: none;
+        color: var(--black-2);
+        font-size: calc(var(--body) * 0.8);
+        cursor: pointer;
+
+        .downIcon {
+          margin-left: 0.25rem;
+        }
+      }
+
+      .tocDropdown {
+        position: absolute;
+        top: 3rem;
+        right: 0;
+        width: 300px;
+        max-height: 80vh;
+        overflow-y: auto;
+        z-index: 999;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .articleStickyHeader {
+    padding: calc(var(--space-1) * 0.5) var(--space-1);
+
+    .themeButton {
+      width: 2rem;
+      height: 2rem;
+      font-size: var(--body);
+    }
+
+    .tocButton {
+      color: var(--black-2);
+      font-size: var(--body);
+    }
+
+    .tocDropdown {
+      width: 380px;
+      top: 3.5rem;
+    }
+  }
+}
+
+@media (min-width: 1025px) {
+  .articleStickyHeader {
+    padding: calc(var(--space-1) * 0.5) var(--space-2);
+
+    .themeButton {
+      width: 2.5rem;
+      height: 2.5rem;
+      font-size: calc(var(--body) * 1.1);
+
+      &:hover {
+        color: var(--yellow);
+        transition: 0.2s;
+        cursor: pointer;
+      }
+    }
+
+    .tocButton {
+      display: none;
+    }
+  }
+}
