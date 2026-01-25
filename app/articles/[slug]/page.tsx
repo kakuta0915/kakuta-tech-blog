@@ -15,6 +15,7 @@ import { Category, Posts } from '@/types'
 export const fetchCache =
   process.env.NODE_ENV === 'development' ? 'force-no-store' : 'default-cache'
 export const revalidate = 60
+export const dynamicParams = true
 
 // 記事ページのslug
 type Params = { slug: string }

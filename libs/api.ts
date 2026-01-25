@@ -19,7 +19,10 @@ export async function getPostBySlug(slug: string): Promise<Posts | null> {
   try {
     const post = await client.get({
       endpoint: 'blog',
-      queries: { filters: `slug[equals]${slug}` },
+      queries: { 
+        filters: `slug[equals]${slug}`,
+        limit: 1,
+      },
     })
     return post.contents[0] || null
   } catch {
@@ -29,7 +32,7 @@ export async function getPostBySlug(slug: string): Promise<Posts | null> {
 
 // 全Slugを取得
 export async function getAllSlugs(
-  limit = 100,
+  limit = 1000,
 ): Promise<{ title: string; slug: string }[]> {
   try {
     const slugs = await client.get({
@@ -43,12 +46,12 @@ export async function getAllSlugs(
 }
 
 // 全記事データを取得
-export async function getAllPosts(limit = 100): Promise<Posts[]> {
+export async function getAllPosts(limit = 1000): Promise<Posts[]> {
   try {
     const posts = await client.get({
       endpoint: 'blog',
       queries: {
-        fields: 'title,slug,eyecatch,categories,publishDate',
+        fields: 'title,slug,eyecatch,categories,publishDate,category,content',
         orders: '-publishDate',
         limit: limit,
       },
@@ -62,43 +65,26 @@ export async function getAllPosts(limit = 100): Promise<Posts[]> {
 // カテゴリーIDで記事を取得
 export async function getAllPostByCategory(
   categoryID: string,
-  limit = 100,
+  limit = 1000,
 ): Promise<Posts[]> {
   try {
     const posts = await client.get({
       endpoint: 'blog',
       queries: {
         filters: `categories[contains]${categoryID}`,
-        fields: 'title,slug,eyecatch,categories,publishDate',
+        fields: 'title,slug,eyecatch,categories,publishDate,category,content',
         orders: '-publishDate',
         limit: limit,
       },
     })
-    return (
-      posts.contents?.map(
-        (p: {
-          title: string
-          slug: string
-          eyecatch: string | { url: string }
-          publishDate: string
-          categories: string[]
-        }) => ({
-          title: p.title,
-          slug: p.slug,
-          eyecatch: p.eyecatch,
-          publishDate: p.publishDate,
-          categories: p.categories || [],
-          source: 'microcms',
-        }),
-      ) || []
-    )
+    return posts.contents || []
   } catch (err) {
     return []
   }
 }
 
 // 全カテゴリーを取得
-export async function getAllCategories(limit = 100): Promise<Category[]> {
+export async function getAllCategories(limit = 1000): Promise<Category[]> {
   try {
     const categories = await client.get({
       endpoint: 'categories',
