@@ -10,10 +10,6 @@ import eyecatch from '@/public/images/articles.jpg'
 
 const POSTS_PER_PAGE = 15
 
-export const fetchCache =
-  process.env.NODE_ENV === 'development' ? 'force-no-store' : 'default-cache'
-export const revalidate = 60
-
 export const metadata: Metadata = createMetadata({
   pageTitle: 'ARTICLES',
   pageDesc: 'プログラミング学習に関する記事をまとめたページです。',
