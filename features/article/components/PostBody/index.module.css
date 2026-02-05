@@ -133,10 +133,10 @@
   padding-top: 5px;
   text-align: center;
   content: '\f10d';
-  font-family: FontAwesome;
+  font-family: 'Font Awesome 6 Free';
   color: var(--white);
   font-size: 18px;
-  background: var(--blue);
+  background: var(--blue-2);
   box-shadow: 0 2px 2px rgba(26, 26, 26, 0.14);
   font-weight: 900;
 }

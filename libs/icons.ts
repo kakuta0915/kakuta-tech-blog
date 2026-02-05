@@ -2,7 +2,6 @@ export { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 export {
   faListUl,
   faChevronDown,
-  faMagnifyingGlass,
   faMoon,
   faSun,
   faChevronLeft,
