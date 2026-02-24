@@ -9,6 +9,7 @@ import PostActions from './PostActions'
 import PostBody from './PostBody'
 import PostCategories from './PostCategories'
 import PostHeader from './PostHeader'
+import Questions from './Questions'
 import TableOfContents from './TableOfContents'
 
 export {
@@ -23,5 +24,6 @@ export {
   PostBody,
   PostCategories,
   PostHeader,
+  Questions,
   TableOfContents,
 }

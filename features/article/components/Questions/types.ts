@@ -1,6 +1,7 @@
+// UI用の型
 export type ChoiceKey = 'A' | 'B' | 'C'
 
-export type QuestionItem = {
+export type Question = {
   id: string
   question: string
   choices: Record<ChoiceKey, string>
@@ -8,8 +9,6 @@ export type QuestionItem = {
   explanation: string
 }
 
-export type QuestionsProps = {  
-  questions?: QuestionItem[]
+export type QuestionsProps = {
+  questions?: Question[]
 }
-
-

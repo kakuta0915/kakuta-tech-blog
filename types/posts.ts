@@ -1,6 +1,8 @@
 import { Category } from '@/types/category'
+import { MicroCMSQuestion } from '@/types/questions'
 
 export type Posts = {
+  questions: MicroCMSQuestion
   content: string
   category: string
   title: string
