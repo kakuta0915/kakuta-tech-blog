@@ -94,6 +94,10 @@
   gap: 0.75rem;
 }
 
+.choiceKey {
+  font-weight: 800;
+}
+
 .choice {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -150,10 +154,6 @@
 
 :global(html.dark) .choice[data-wrong='true'] {
   --wrong-bg: #342733;
-}
-
-.choiceKey {
-  font-weight: 800;
 }
 
 .result {
@@ -232,4 +232,35 @@
 
 .explanation {
   color: var(--text-color);
+}
+
+@media (max-width: 768px) {
+  .questions {
+    padding: var(--space-3) var(--space-2);
+  }
+
+  .label {
+    font-size: var(--body);
+  }
+
+  .description {
+    margin-bottom: var(--space-1);
+  }
+
+  .item {
+    padding: var(--space-1);
+  }
+
+  .choices {
+    gap: var(--space-1);
+  }
+
+  .choice {
+    padding: var(--space-1);
+    font-size: var(--body);
+  }
+
+  .result {
+    padding: var(--space-1);
+  }
 }
