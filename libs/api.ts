@@ -19,7 +19,7 @@ export async function getPostBySlug(slug: string): Promise<Posts | null> {
   try {
     const post = await client.get({
       endpoint: 'blog',
-      queries: { 
+      queries: {
         filters: `slug[equals]${slug}`,
         limit: 1,
       },

@@ -11,6 +11,8 @@ import * as Ui from '@/components/ui'
 import * as Article from '@/features/article/components'
 import styles from './page.module.scss'
 import { Category, Posts } from '@/types'
+import { transformQuestions } from '@/libs/transform-questions'
+import type { Question } from '@/features/article/components/Questions/types'
 
 export const fetchCache =
   process.env.NODE_ENV === 'development' ? 'force-no-store' : 'default-cache'
@@ -24,13 +26,14 @@ type Props = {
 }
 
 // 記事詳細ページ専用の型を追加
-type ArticleDetail = Posts & {
+type ArticleDetail = Omit<Posts, 'questions'> & {
   icon?: { url: string; width: number; height: number }
   description: string
   prevPost?: { title: string; slug: string }
   nextPost?: { title: string; slug: string }
   postId: string
   publish: string
+  questions?: Question[]
 }
 
 const fetchPost = cache(async (slug: string): Promise<ArticleDetail | null> => {
@@ -43,6 +46,9 @@ const fetchPost = cache(async (slug: string): Promise<ArticleDetail | null> => {
   if (!category) return null
 
   const [prevPost, nextPost] = prevNextPost(allSlugs, slug)
+
+  // microCMSのquestionsフィールドを問題用の構造に変換
+  const questions: Question[] | undefined = transformQuestions(post.questions)
 
   return {
     icon: category.icon,
@@ -72,6 +78,7 @@ const fetchPost = cache(async (slug: string): Promise<ArticleDetail | null> => {
     nextPost,
     postId: slug,
     source: post.source ?? '',
+    questions,
   }
 })
 
@@ -113,6 +120,7 @@ export default async function ArticlePage({ params }: Props) {
     title,
     publish,
     content,
+    questions,
     eyecatch,
     categories,
     prevPost,
@@ -153,6 +161,9 @@ export default async function ArticlePage({ params }: Props) {
                 />
                 <Article.ConvertBody contentHTML={content} />
               </Article.PostBody>
+              {questions && questions.length > 0 && (
+                <Article.Questions questions={questions} />
+              )}
             </div>
             <div className={styles['sidebar']}>
               {/* <Article.PostActions postId={postId} title={title} /> */}
