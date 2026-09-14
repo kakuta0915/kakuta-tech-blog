@@ -63,8 +63,6 @@ const AboutPage: React.FC = () => {
               (@_kakuta0915_)
             </a>
             <br />
-            Webエンジニアを目指し、日々学習に励んでいます。
-            <br />
             よろしくお願いいたします。
           </p>
 
