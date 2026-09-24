@@ -4,7 +4,7 @@ import { MicroCMSQuestion } from '@/types/microcms-question'
 export type Posts = {
   questions: MicroCMSQuestion[]
   content: string
-  category: string
+  category: Category
   title: string
   slug: string
   eyecatch: {
