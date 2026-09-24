@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import type { Metadata } from 'next'
 import { createMetadata } from '@/libs/seo'
-import { getPostBySlug, getAllSlugs, getAllCategories } from '@/libs/api'
+import { getPostBySlug, getAllSlugs } from '@/libs/api'
 import { extractText } from '@/libs/extract-text'
 import { prevNextPost } from '@/libs/prev-next-post'
 import { renderToc } from '@/libs/render-toc'
@@ -41,8 +41,7 @@ const fetchPost = cache(async (slug: string): Promise<ArticleDetail | null> => {
   if (!post) return null
 
   const allSlugs = await getAllSlugs()
-  const allCategories = await getAllCategories()
-  const category = allCategories.find(({ slug: s }) => s === post.category)
+  const category = post.category
   if (!category) return null
 
   const [prevPost, nextPost] = prevNextPost(allSlugs, slug)
